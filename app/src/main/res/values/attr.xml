@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LabeledText">
+        <attr name="mainText" format="string"/>
+        <attr name="upperText" format="string"/>
+        <attr name="bottomText" format="string"/>
+    </declare-styleable>
+</resources>
