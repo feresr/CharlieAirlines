@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:id="@+id/confirmation_layout">
+
+    <FrameLayout android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="bottom|left"
+                 android:layout_marginBottom="2sp">
+
+        <ImageView
+                android:id="@+id/bg_new_message_ind"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                />
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="You're checked in!"
+                  android:layout_gravity="center"
+                  android:textStyle="bold"
+                  android:id="@+id/success"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <com.southwest.southwestapp.LabeledText
+                    android:id="@+id/flight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:upperText="FLIGHT"
+                    app:mainText="1977"/>
+
+            <com.southwest.southwestapp.LabeledText
+                    android:id="@+id/travel_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:upperText="TRAVEL TIME"
+                    app:mainText="1h 35m"/>
+
+            <com.southwest.southwestapp.LabeledText
+                    android:id="@+id/gate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:upperText="GATE"
+                    app:mainText="A7"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <com.southwest.southwestapp.LabeledText
+                    android:id="@+id/passenger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:upperText="PASSENGER(S)"
+                    app:mainText="Kevin Thompson"
+                    app:bottomText="TSA Pre✓"/>
+
+            <com.southwest.southwestapp.LabeledText
+                    android:id="@+id/confirmation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:upperText="CONFIRMATION #"
+                    app:mainText="MVWGL4"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="boarding group"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:text="A"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="position"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:text="38"/>
+
+        </LinearLayout>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View boarding pass"/>
+
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile boarding pass FAQ"/>
+
+</LinearLayout>
