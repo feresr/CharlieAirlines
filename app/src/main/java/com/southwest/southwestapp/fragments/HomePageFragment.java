@@ -53,10 +53,10 @@ public class HomePageFragment extends Fragment{
 
     private void animate(){
 
-        Animation mListAnimation     = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_bottom);
+        Animation mDiscountAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right_to_left);
 
-        Animation mDiscountAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_bottom);
-        mDiscountAnimation.setAnimationListener(new Animation.AnimationListener(){
+        Animation mListAnimation     = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_bottom);
+        mListAnimation.setAnimationListener(new Animation.AnimationListener(){
             @Override
             public void onAnimationStart(Animation arg0) {
 
