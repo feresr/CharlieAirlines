@@ -89,22 +89,18 @@
                     android:id="@+id/boardingPassPosition"
                     />
 
-        </RelativeLayout>
-
-        <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/common_ic_googleplayservices"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:id="@+id/boardingPassQrCode"
-                    />
+                     />
 
         </RelativeLayout>
+
 
     </LinearLayout>
 
