@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single" android:id="@+id/asd">
+        <item
+            android:id="@+id/navigation_item_1"
+            android:checkable="false"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Home" />
+        <item
+            android:id="@+id/navigation_item_2"
+            android:icon="@android:drawable/ic_input_add"
+
+            android:enabled="false"
+            android:title="Flight"/>
+        <item
+            android:id="@+id/navigation_item_5"
+            android:icon="@android:drawable/ic_input_add"
+            android:checkable="true"
+            android:title="Flight"/>
+        <item
+            android:id="@+id/navigation_item_3"
+            android:icon="@android:drawable/ic_input_add"
+            android:checkable="false"
+            android:title="Car"/>
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/fer">
+
+        <item
+            android:id="@+id/navigation_item_1s"
+            android:checkable="false"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Home" />
+        <item
+            android:id="@+id/navigation_item_2a"
+            android:icon="@android:drawable/ic_input_add"
+
+            android:enabled="false"
+            android:title="Flight"/>
+
+    </group>
+</menu>
