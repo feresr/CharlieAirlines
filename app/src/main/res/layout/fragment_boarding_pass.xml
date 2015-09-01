@@ -8,15 +8,16 @@
         android:id="@+id/boardingPassDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Small Text"
+        android:text="Feb 18- 19"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/boardingPassCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="Denver"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="wrap_content"
@@ -65,7 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/boardingPassGroupTitle"
-            android:text="A65" />
+            android:text="A65"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassPosition"
@@ -110,8 +112,9 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/boardingPassPassanger"
             android:layout_toRightOf="@+id/boardingPassPassanger"
-            android:text="text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="Kelly / Gary"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassBoardingTime"
@@ -121,7 +124,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/boardingPassPassanger"
             android:text="@string/boarding_pass_time"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassTime"
@@ -130,8 +134,9 @@
             android:layout_alignTop="@+id/boardingPassBoardingTime"
             android:layout_toEndOf="@+id/boardingPassBoardingTime"
             android:layout_toRightOf="@+id/boardingPassBoardingTime"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="12:04 PM"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
         <View
             android:id="@+id/view"
@@ -147,7 +152,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/view"
-            android:text="Text"
+            android:text="Flight 3041"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
@@ -157,7 +162,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/boardingPassFlight"
-            android:text="Small Text"
+            android:text="Dallas TX (DAL) - Denver, CO (DEN)"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
@@ -180,8 +185,9 @@
             android:layout_below="@+id/boardingPassFlightDetail"
             android:layout_toEndOf="@+id/boardingPassFlightDetail"
             android:layout_toRightOf="@+id/boardingPassFlightDetail"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="Saturday, 2015"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassInfoDeparts"
@@ -201,8 +207,9 @@
             android:layout_below="@+id/boardingPassInfoDate"
             android:layout_toEndOf="@+id/boardingPassInfoDate"
             android:layout_toRightOf="@+id/boardingPassInfoDate"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="12:34"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassInfoGate"
@@ -222,8 +229,9 @@
             android:layout_alignBottom="@+id/boardingPassInfoGate"
             android:layout_toEndOf="@+id/boardingPassInfoDeparts"
             android:layout_toRightOf="@+id/boardingPassInfoDeparts"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="10"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassBottomInfo"
@@ -234,7 +242,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/boardingPassInfoGate"
-            android:text="Small Text"
+            android:text="Time, gate and terminal might change - check monitors"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <View
@@ -251,8 +259,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/BottomView"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="Business select"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassBusinessCodeInfo"
@@ -261,8 +270,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/BottomView"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="Conf# AB254L"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/boardingPassBusinessDetailInfo"
@@ -271,7 +281,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/boardingPassBusiness"
-            android:text="Small Text"
+            android:text="Rapid rewards# 123456"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </RelativeLayout>
