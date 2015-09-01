@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:id="@+id/confirmation_layout">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <FrameLayout android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="bottom|left"
-                 android:layout_marginBottom="2sp">
+    <FrameLayout
+            android:id="@+id/success_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="2sp">
 
         <ImageView
-                android:id="@+id/bg_new_message_ind"
+                android:id="@+id/green_cheek"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 />
@@ -26,8 +28,10 @@
     </FrameLayout>
 
     <LinearLayout
+            android:id="@+id/data_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/success_frame"
             android:orientation="vertical">
 
         <LinearLayout
@@ -99,6 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
+                    android:textStyle="bold"
                     android:text="A"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -109,6 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
+                    android:textStyle="bold"
                     android:text="38"/>
 
         </LinearLayout>
@@ -123,6 +129,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/data_layout"
             android:text="Mobile boarding pass FAQ"/>
 
-</LinearLayout>
+</RelativeLayout>
