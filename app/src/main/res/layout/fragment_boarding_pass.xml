@@ -34,7 +34,6 @@
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:id="@+id/imageView"
                     android:src="@drawable/common_signin_btn_text_focus_dark"/>
 
@@ -43,7 +42,6 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Small Text"
-                    android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"/>
             <ImageView
                     android:layout_width="wrap_content"
@@ -57,7 +55,6 @@
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 >
 
             <TextView
@@ -101,13 +98,11 @@
     <View
             android:layout_width="wrap_content"
             android:layout_height="2dp"
-            android:layout_marginTop="15dp"
             android:background="@color/bright_foreground_material_light" />
 
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             >
 
 
@@ -124,7 +119,6 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="text"
                 android:id="@+id/boardingPassPassangerName"
-                android:layout_marginLeft="5dp"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/boardingPassPassanger"
                 android:layout_toEndOf="@+id/boardingPassPassanger"/>
@@ -147,13 +141,11 @@
                 android:layout_alignTop="@+id/boardingPassBoardingTime"
                 android:layout_toRightOf="@+id/boardingPassBoardingTime"
                 android:layout_toEndOf="@+id/boardingPassBoardingTime"
-                android:layout_marginLeft="5dp"
                 android:id="@+id/boardingPassTime" />
 
         <View
                 android:layout_width="wrap_content"
                 android:layout_height="2dp"
-                android:layout_marginTop="15dp"
                 android:layout_below="@+id/boardingPassTime"
                 android:background="@color/bright_foreground_material_light"
                 android:id="@+id/view"
@@ -196,7 +188,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_marginLeft="5dp"
                 android:text="Small Text"
                 android:layout_below="@+id/boardingPassFlightDetail"
                 android:layout_toRightOf="@+id/boardingPassFlightDetail"
@@ -218,7 +209,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_marginLeft="5dp"
                 android:text="Small Text"
                 android:layout_below="@+id/boardingPassInfoDate"
                 android:layout_toRightOf="@+id/boardingPassInfoDate"
@@ -240,7 +230,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_marginLeft="5dp"
                 android:text="Small Text"
                 android:layout_alignBottom="@+id/boardingPassInfoGate"
                 android:layout_toRightOf="@+id/boardingPassInfoDeparts"
@@ -262,7 +251,6 @@
         <View
                 android:layout_width="wrap_content"
                 android:layout_height="2dp"
-                android:layout_marginTop="15dp"
                 android:layout_below="@+id/boardingPassBottomInfo"
                 android:background="@color/bright_foreground_material_light"
                 android:id="@+id/BottomView"
