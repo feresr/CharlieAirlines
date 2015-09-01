@@ -38,7 +38,6 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
             android:id="@+id/homepagePreferredContainer"
             >
 
@@ -48,7 +47,10 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
-                android:id="@+id/homepageMainPreferred" android:layout_alignTop="@+id/homepagePoints" android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+                android:layout_alignTop="@+id/homepagePoints"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/homepageMainPreferred" />
 
         <TextView
                 android:layout_width="wrap_content"
@@ -65,7 +67,10 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
-                android:id="@+id/homepagePoints" android:layout_centerVertical="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true"/>
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/homepagePoints" />
 
         <TextView
                 android:layout_width="wrap_content"
