@@ -2,21 +2,18 @@ package com.southwest.southwestapp.fragments;
 
 
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.utils.CascadeAnimator;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -26,8 +23,7 @@ public class HomePageFragment extends Fragment{
 
     private View mDiscountContainer;
     private RelativeLayout mPreferredContainer;
-    private RelativeLayout mBookManageContainer;
-    private ImageView mList;
+    private ViewPager mViewPager;
 
     public HomePageFragment(){}
 
@@ -43,8 +39,7 @@ public class HomePageFragment extends Fragment{
 
         mDiscountContainer = view.findViewById(R.id.homepageDiscountContainer);
         mPreferredContainer = (RelativeLayout) view.findViewById(R.id.homepagePreferredContainer);
-        mBookManageContainer = (RelativeLayout) view.findViewById(R.id.homepageBookManageContainer);
-        mList = (ImageView) view.findViewById(R.id.viewDummy);
+        mViewPager = (ViewPager) view.findViewById(R.id.homepageManagePager);
 
         return view;
 
@@ -53,18 +48,33 @@ public class HomePageFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        animate();
+    }
 
-        List<View> viewsToAnimate = new ArrayList<View>();
-        viewsToAnimate.add(mList);
-        viewsToAnimate.add(mBookManageContainer);
-        viewsToAnimate.add(mPreferredContainer);
-        viewsToAnimate.add(mDiscountContainer);
+    private void animate(){
 
-        Animation mListAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_bottom);
+        Animation mListAnimation     = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_bottom);
 
-        CascadeAnimator animator = new CascadeAnimator(viewsToAnimate,mListAnimation);
-        animator.startCascadeAnimation();
+        Animation mDiscountAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_bottom);
+        mDiscountAnimation.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation arg0) {
 
+            }
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                AnimationGenericUtils.fadeInAnimation(mPreferredContainer, getContext());
+            }
+        });
+
+        mViewPager.setAnimation(mListAnimation);
+        mDiscountContainer.setAnimation(mDiscountAnimation);
+
+        mViewPager.animate();
+        mDiscountContainer.animate();
 
     }
 

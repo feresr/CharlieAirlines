@@ -38,6 +38,7 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="50dp"
+            android:visibility="invisible"
             android:id="@+id/homepagePreferredContainer"
             >
 
@@ -88,6 +89,7 @@
             android:layout_width="fill_parent"
             android:layout_height="70dp"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:id="@+id/homepageBookManageContainer"
             >
 
@@ -115,11 +117,12 @@
 
     </RelativeLayout>
 
-    <ImageView
-            android:layout_width="393dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/abc_btn_radio_to_on_mtrl_015"
-            android:layout_weight="0.88"
-            android:id="@+id/viewDummy" />
+    <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bright_foreground_material_light"
+            android:id="@+id/homepageManagePager"
+            />
 
 </LinearLayout>
