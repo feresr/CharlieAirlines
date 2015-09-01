@@ -13,17 +13,10 @@ public class CascadeAnimator {
 
     private List<View> mViewsToAnimate;
     private Animation  mAnimation;
-    private AnimationSet as;
-
 
     public CascadeAnimator(List<View> viewsToAnimate, Animation animation){
         this.mViewsToAnimate = viewsToAnimate;
         this.mAnimation = animation;
-
-        as = new AnimationSet(true);
-        as.setFillEnabled(true);
-        as.addAnimation(mAnimation);
-
     }
 
     public void startCascadeAnimation(){
