@@ -1,5 +1,8 @@
 package com.southwest.southwestapp.utils;
 
+
+import com.southwest.southwestapp.R;
+
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -7,17 +10,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 
-import com.ebay.flookcore.R;
-
-
 /**
- * Created by luis.bejarano on 2/2/15.
+ * Created by Created by luisalfonsobejaranosanchez on 9/1/15.
  */
 public class AnimationGenericUtils {
 
-    public AnimationGenericUtils(){}
 
-    public void fadeInAnimation(final View view , Context context){
+    public static void fadeInAnimation(final View view , Context context){
 
         Animation fadeInAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
@@ -41,7 +40,7 @@ public class AnimationGenericUtils {
 
     }
 
-    public void fadeOutAnimation(final View view ,Context context){
+    public static void fadeOutAnimation(final View view ,Context context){
 
         Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out);
         fadeOutAnimation.setAnimationListener(new Animation.AnimationListener(){
@@ -64,7 +63,7 @@ public class AnimationGenericUtils {
     }
 
 
-    public void transitionFadeInFadeOut(final View view , int timeToOut,final Context context){
+    public static void transitionFadeInFadeOut(final View view , int timeToOut,final Context context){
 
         fadeInAnimation(view, context);
 
