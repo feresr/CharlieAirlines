@@ -53,8 +53,6 @@ public class HomePageFragment extends Fragment{
 
     private void animate(){
 
-        Animation mDiscountAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right_to_left);
-
         Animation mListAnimation     = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_bottom);
         mListAnimation.setAnimationListener(new Animation.AnimationListener(){
             @Override
@@ -71,10 +69,9 @@ public class HomePageFragment extends Fragment{
         });
 
         mViewPager.setAnimation(mListAnimation);
-        mDiscountContainer.setAnimation(mDiscountAnimation);
 
         mViewPager.animate();
-        mDiscountContainer.animate();
+        AnimationGenericUtils.slideRightToLeft(mDiscountContainer, getContext());
 
     }
 

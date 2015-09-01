@@ -62,6 +62,29 @@ public class AnimationGenericUtils {
 
     }
 
+    public static void slideRightToLeft(final View view, Context context){
+
+
+        Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_right_to_left);
+        fadeOutAnimation.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation arg0) {
+                if(!view.isShown())
+                    view.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+            }
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+
+            }
+        });
+
+        view.startAnimation(fadeOutAnimation);
+
+
+    }
 
     public static void transitionFadeInFadeOut(final View view , int timeToOut,final Context context){
 
