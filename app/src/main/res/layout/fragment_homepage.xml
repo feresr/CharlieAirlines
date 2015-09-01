@@ -112,7 +112,7 @@
 
     <ImageView
             android:layout_width="393dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:src="@drawable/abc_btn_radio_to_on_mtrl_015"
             android:layout_weight="0.88"
             android:id="@+id/viewDummy" />
