@@ -11,24 +11,24 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:checkable="false"
+                    android:checkable="true"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="Book a flight" />
                 <item
                     android:id="@+id/checkIn"
-                    android:checkable="false"
+                    android:checkable="true"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="Checkin" />
                 <item
-                    android:checkable="false"
+                    android:checkable="true"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="EarlyBird Check-in™" />
                 <item
-                    android:checkable="false"
+                    android:checkable="true"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="Flight Status" />
                 <item
-                    android:checkable="false"
+                    android:checkable="true"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="View Reservations" />
             </group>
@@ -40,11 +40,11 @@
                 android:id="@+id/asd"
                 android:checkableBehavior="single">
                 <item
-                    android:checkable="false"
+                    android:checkable="true"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="Book A Car" />
                 <item
-                    android:checkable="false"
+                    android:checkable="true"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="Preferred Partners" />
             </group>
