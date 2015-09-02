@@ -1,130 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <RelativeLayout
 
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <com.southwest.southwestapp.LabeledText
             android:id="@+id/passenger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:upperText="PASSENGER(S)"
-            app:mainText="Kevin Thompson"/>
+            app:mainText="Kevin Thompson"
+            app:upperText="PASSENGER(S)" />
 
         <com.southwest.southwestapp.LabeledText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            app:upperText="CONFIRMATION #"
-            app:mainText="MVWGL4"/>
+            app:mainText="MVWGL4"
+            app:upperText="CONFIRMATION #" />
 
         <RelativeLayout
             android:id="@+id/flight"
-            android:layout_below="@id/passenger"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passenger">
+
             <com.southwest.southwestapp.LabeledText
                 android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:upperText="Feb 18 - 19"
-                app:mainText="Minneapolis/St. Paul"/>
+                app:mainText="Minneapolis/St. Paul"
+                app:upperText="Feb 18 - 19" />
+
             <LinearLayout
                 android:id="@+id/travel_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_below="@id/city"
-                >
+                android:orientation="horizontal">
+
                 <com.southwest.southwestapp.LabeledText
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:upperText="DATE"
                     android:layout_weight="1"
+                    app:bottomText="Tuesday"
                     app:mainText="Feb 18"
-                    app:bottomText="Tuesday"/>
+                    app:upperText="DATE" />
+
                 <com.southwest.southwestapp.LabeledText
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    app:upperText="DEPARTS"
+                    android:layout_weight="1"
+                    app:bottomText="2:20PM"
                     app:mainText="DAL"
-                    app:bottomText="2:20PM"/>
+                    app:upperText="DEPARTS" />
+
                 <com.southwest.southwestapp.LabeledText
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    app:upperText="ARRIVES"
+                    android:layout_weight="1"
+                    app:bottomText="4:50PM"
                     app:mainText="MSP"
-                    app:bottomText="4:50PM"/>
+                    app:upperText="ARRIVES" />
             </LinearLayout>
+
             <View
                 android:id="@+id/divider"
-                android:layout_below="@id/travel_info"
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:layout_below="@id/travel_info"
+                android:background="@android:color/darker_gray" />
+
             <LinearLayout
                 android:id="@+id/flight_info"
                 android:layout_width="match_parent"
-                android:layout_below="@id/divider"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider">
+
                 <com.southwest.southwestapp.LabeledText
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    app:upperText="FLIGHT"
-                    app:mainText="1977 588"/>
+                    app:mainText="1977 588"
+                    app:upperText="FLIGHT" />
+
                 <com.southwest.southwestapp.LabeledText
                     android:layout_width="wrap_content"
-                    android:layout_weight="2"
                     android:layout_height="wrap_content"
-                    app:upperText="TRAVEL TIME"
-                    app:mainText="2h 30m"/>
+                    android:layout_weight="2"
+                    app:mainText="2h 30m"
+                    app:upperText="TRAVEL TIME" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/checkin_warning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/flight_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="By tapping the check in button, you accept the hazardous materials transportation conditions."/>
+                android:text="By tapping the check in button, you accept the hazardous materials transportation conditions." />
+
             <Button
-                android:layout_below="@id/checkin_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CHECK IN"/>
+                android:layout_below="@id/checkin_warning"
+                android:text="CHECK IN" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
             android:layout_height="wrap_content"
-            android:layout_below="@id/flight">
+            android:layout_below="@id/flight"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/federal_law"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."/>
+                android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt." />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="View more details"/>
+                android:text="View more details"
+                android:textStyle="bold" />
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Baggage weight, size &amp; limits apply."/>
+                android:text="Baggage weight, size &amp; limits apply."
+                android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

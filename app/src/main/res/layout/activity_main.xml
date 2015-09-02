@@ -16,14 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#eee"
-            android:minHeight="?attr/actionBarSize"/>
+            android:minHeight="?attr/actionBarSize" />
 
         <fragment
             android:id="@+id/fragment"
             android:name="com.southwest.southwestapp.fragments.HomePageFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout="@layout/fragment_homepage"/>
+            tools:layout="@layout/fragment_homepage" />
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

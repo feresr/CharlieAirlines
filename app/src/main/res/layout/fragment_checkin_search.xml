@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/eligible_trips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="You have 2 trip(s) elegible for checkin"/>
+        android:text="You have 2 trip(s) elegible for checkin" />
 
     <LinearLayout
-        android:layout_below="@id/eligible_trips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/eligible_trips"
         android:orientation="vertical">
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirmation #"/>
+            android:hint="Confirmation #" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First name"/>
+            android:hint="First name" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Last name"/>
+            android:hint="Last name" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Retrieve reservation"/>
+            android:text="Retrieve reservation" />
     </LinearLayout>
 
 </RelativeLayout>
