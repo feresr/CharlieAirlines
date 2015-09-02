@@ -106,6 +106,7 @@
                 android:text="By tapping the check in button, you accept the hazardous materials transportation conditions." />
 
             <Button
+                android:id="@+id/buttonCheckIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/checkin_warning"

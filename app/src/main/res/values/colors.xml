@@ -6,4 +6,7 @@
     <color name="button_text">#111b40</color>
     <color name="button_text_disabled">#636363</color>
     <color name="color_accent_dark">#2000</color>
+    <color name="secondary_green">#008522</color>
+    <color name="primary_dark_blue">#111B40</color>
+    <color name="neutral_white">#FFFFFF</color>
 </resources>

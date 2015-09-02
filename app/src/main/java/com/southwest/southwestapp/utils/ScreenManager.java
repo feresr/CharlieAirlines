@@ -3,6 +3,7 @@ package com.southwest.southwestapp.utils;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
+import com.southwest.southwestapp.fragments.CheckinConfirmationFragment;
 import com.southwest.southwestapp.fragments.HomePageFragment;
 
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +14,13 @@ import android.support.v4.app.FragmentTransaction;
  * Created by emiliano.gudino on 02/09/2015.
  */
 public class ScreenManager {
+
+    public void showCheckInConfirmationScreen(FragmentActivity origin) {
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        CheckinConfirmationFragment checkinConfirmationFragment = new CheckinConfirmationFragment();
+        ft.replace(R.id.container, checkinConfirmationFragment);
+        ft.commit();
+    }
 
     public void showCheckInScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();

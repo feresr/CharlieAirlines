@@ -31,4 +31,18 @@
         <item name="colorAccent">@color/button_background</item>
     </style>
 
+    <style name="textWhite" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/neutral_white</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="textBlue" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/primary_dark_blue</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
 </resources>
