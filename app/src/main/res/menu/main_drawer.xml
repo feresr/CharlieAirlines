@@ -21,7 +21,7 @@
                 <item
                     android:checkable="false"
                     android:icon="@android:drawable/ic_input_add"
-                    android:title="EarlyBird Check-in" />
+                    android:title="EarlyBird Check-in™" />
                 <item
                     android:checkable="false"
                     android:icon="@android:drawable/ic_input_add"

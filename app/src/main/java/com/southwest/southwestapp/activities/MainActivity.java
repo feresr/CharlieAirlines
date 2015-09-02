@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.southwest.southwestapp.R;
 
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         setUpToolbar();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
+
+        //Close on back pressed
+        mDrawerLayout.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
