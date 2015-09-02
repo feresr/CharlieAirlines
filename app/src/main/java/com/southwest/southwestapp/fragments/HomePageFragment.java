@@ -4,7 +4,6 @@ package com.southwest.southwestapp.fragments;
 import android.animation.Animator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,7 @@ import com.southwest.southwestapp.utils.AnimationGenericUtils;
 /**
  * Created by luisalfonsobejaranosanchez on 9/1/15.
  */
-public class HomePageFragment extends Fragment implements View.OnClickListener {
+public class HomePageFragment extends BaseFragment implements View.OnClickListener {
 
     private static final float ZOOM_FACTOR = 1.03f;
     private FrameLayout mRoot;
