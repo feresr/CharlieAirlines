@@ -52,7 +52,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.retrieve_reservation_btn:
+            case R.id.btn_retrieve_reservation:
                 AppHelper.screenManager.showCheckInScreen(getActivity());
                 break;
 
