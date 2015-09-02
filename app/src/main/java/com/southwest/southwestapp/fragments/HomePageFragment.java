@@ -1,9 +1,6 @@
 package com.southwest.southwestapp.fragments;
 
 
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-
 import android.animation.Animator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,21 +13,24 @@ import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
+
 
 /**
  * Created by luisalfonsobejaranosanchez on 9/1/15.
  */
-public class HomePageFragment extends Fragment implements View.OnClickListener{
+public class HomePageFragment extends Fragment implements View.OnClickListener {
 
-    private FrameLayout mRoot;
     private static final float ZOOM_FACTOR = 1.03f;
-
+    private FrameLayout mRoot;
     private View mDiscountContainer;
     private RelativeLayout mPreferredContainer;
     private ViewPager mViewPager;
     private ViewPager mViewPromoPager;
 
-    public HomePageFragment(){}
+    public HomePageFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
@@ -61,35 +61,37 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
         introAnimation();
     }
 
-    private void introAnimation(){
+    private void introAnimation() {
 
-        Animation.AnimationListener listener = new Animation.AnimationListener(){
+        Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation arg0) {
 
             }
+
             @Override
             public void onAnimationRepeat(Animation arg0) {
             }
+
             @Override
             public void onAnimationEnd(Animation arg0) {
                 AnimationGenericUtils.fadeInAnimation(mPreferredContainer, getContext());
             }
         };
 
-        AnimationGenericUtils.fadeInBottom(mViewPager,listener,getContext());
+        AnimationGenericUtils.fadeInBottom(mViewPager, listener, getContext());
         AnimationGenericUtils.slideRightToLeft(mDiscountContainer, getContext());
 
     }
 
 
-    private void outroAnimation(){
+    private void outroAnimation() {
 
         AnimationGenericUtils.fadeOutScreenBottom(mViewPager, getContext());
 
         AnimationGenericUtils.slideOutBottomWithFadeOut(mPreferredContainer, getContext());
 
-        Animator.AnimatorListener  animatorListener = new Animator.AnimatorListener() {
+        Animator.AnimatorListener animatorListener = new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
 
@@ -97,7 +99,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                   AnimationGenericUtils.fadeInAnimation(mViewPromoPager, getContext());
+                AnimationGenericUtils.fadeInAnimation(mViewPromoPager, getContext());
             }
 
             @Override
@@ -112,7 +114,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
         };
 
 
-        AnimationGenericUtils.zoomIn(mRoot, animatorListener,ZOOM_FACTOR);
+        AnimationGenericUtils.zoomIn(mRoot, animatorListener, ZOOM_FACTOR);
 
     }
 
@@ -122,7 +124,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
         switch (view.getId()) {
 
             case R.id.homepageDiscountContainer:
-                   outroAnimation();
+                outroAnimation();
                 break;
 
         }
