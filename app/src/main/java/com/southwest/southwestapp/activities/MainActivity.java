@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpNavigationDrawer() {
         if (mToolbar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationIcon(android.R.drawable.ic_media_next);
+
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
