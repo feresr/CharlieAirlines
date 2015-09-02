@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
-            android:id="@+id/tv_eligible_trips"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/search_eligible_tickets"
-            android:visibility="gone"/>
+        android:id="@+id/tv_eligible_trips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/search_eligible_tickets"
+        android:visibility="gone" />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_eligible_trips"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edt_confirmation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_eligible_trips"
-            android:orientation="vertical">
+            android:hint="@string/search_confirmation_number"
+            android:textColorHint="@android:color/darker_gray" />
 
         <EditText
-                android:id="@+id/edt_confirmation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/darker_gray"
-                android:hint="@string/search_confirmation_number"/>
+            android:id="@+id/edt_first_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_first_name"
+            android:textColorHint="@android:color/darker_gray" />
 
         <EditText
-                android:id="@+id/edt_first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/darker_gray"
-                android:hint="@string/search_first_name"/>
-
-        <EditText
-                android:id="@+id/edt_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@android:color/darker_gray"
-                android:hint="@string/search_last_name"/>
+            android:id="@+id/edt_last_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_last_name"
+            android:textColorHint="@android:color/darker_gray" />
 
         <Button
-                android:id="@+id/btn_retrieve_reservation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/search_retrieve_reservation"/>
+            android:id="@+id/btn_retrieve_reservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search_retrieve_reservation" />
     </LinearLayout>
 
 </RelativeLayout>

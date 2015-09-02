@@ -6,6 +6,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.utils.ScreenManager;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
+        } else {
+            AppHelper.screenManager.showMainScreen(this);
         }
         setUpNavigationDrawer();
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -47,18 +49,17 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
                 menuItem.setChecked(true);
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 switch (menuItem.getItemId()) {
                     case R.id.checkIn:
                         AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this);
                         mCurrentSelectedPosition = 0;
                         return true;
-                    /*case R.id.navigation_item_2:
-                        Snackbar.make(mContentFrame, "Item Two", Snackbar.LENGTH_SHORT).show();
-                        mCurrentSelectedPosition = 1;
-                        return true;*/
                     default:
-                        return true;
+                        //Event not handled: return false.
+                        return false;
                 }
+
             }
         });
     }
