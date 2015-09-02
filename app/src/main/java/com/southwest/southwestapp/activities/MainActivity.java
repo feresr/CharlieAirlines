@@ -11,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.utils.ScreenManager;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,19 +47,18 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
                 menuItem.setChecked(true);
-                /*switch (menuItem.getItemId()) {
-                    case R.id.navigation_item_1:
-                        Snackbar.make(mContentFrame, "Item One", Snackbar.LENGTH_SHORT).show();
+                switch (menuItem.getItemId()) {
+                    case R.id.checkIn:
+                        AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this);
                         mCurrentSelectedPosition = 0;
                         return true;
-                    case R.id.navigation_item_2:
+                    /*case R.id.navigation_item_2:
                         Snackbar.make(mContentFrame, "Item Two", Snackbar.LENGTH_SHORT).show();
                         mCurrentSelectedPosition = 1;
-                        return true;
+                        return true;*/
                     default:
                         return true;
-                }*/
-                return false;
+                }
             }
         });
     }

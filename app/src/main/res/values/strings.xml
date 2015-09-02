@@ -18,4 +18,13 @@
     <string name="boarding_send_pass_main_info">Enter your email or phone number you would \n like to send your boarding pass to</string>
     <string name="boarding_send_pass_action">Send</string>
 
+    <!-- Layout Check In -->
+
+    <!-- Layout Check In Search-->
+    <string name="search_confirmation_number">Confirmation #</string>
+    <string name="search_first_name">First name</string>
+    <string name="search_last_name">Last name</string>
+    <string name="search_retrieve_reservation">Retrieve Reservation</string>
+    <string name="search_eligible_tickets">You have %s trip(s) eligible for check in</string>
+    
 </resources>

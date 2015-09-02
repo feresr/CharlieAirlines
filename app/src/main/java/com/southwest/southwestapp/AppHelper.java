@@ -1,5 +1,7 @@
 package com.southwest.southwestapp;
 
+import com.southwest.southwestapp.utils.ScreenManager;
+
 import android.app.Application;
 
 /**
@@ -7,6 +9,7 @@ import android.app.Application;
  */
 public class AppHelper extends Application {
     private static AppHelper instance;
+    public static final ScreenManager screenManager = new ScreenManager();
 
     public static AppHelper getInstance() {
         return instance;

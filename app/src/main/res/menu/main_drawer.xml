@@ -15,6 +15,7 @@
                     android:icon="@android:drawable/ic_input_add"
                     android:title="Book a flight" />
                 <item
+                    android:id="@+id/checkIn"
                     android:checkable="false"
                     android:icon="@android:drawable/ic_input_add"
                     android:title="Checkin" />
