@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/common_ic_googleplayservices"
+              android:weightSum="1"
+              android:id="@+id/homepageDiscountRoot"
+              >
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:id="@+id/homepageDiscountContainer"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/homepageMainDiscount"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:gravity="center"
+                android:text="--Small Text--"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/homepageInfoDiscount"
+                />
+
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:id="@+id/homepageBookManageContainer"
+            >
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:background="@null"
+                android:drawableLeft="@drawable/abc_btn_check_material"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/homepageBookTrips" />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:background="@null"
+                android:drawableLeft="@drawable/abc_btn_check_material"
+                android:layout_alignTop="@+id/homepageBookTrips"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/homepageManageTrips" />
+
+    </RelativeLayout>
+
+
+    <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@android:color/black"
+            android:id="@+id/homepageManagePager"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+    <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@android:color/holo_blue_light"
+            android:layout_gravity="center_horizontal|bottom"
+            android:visibility="gone"
+            android:id="@+id/homepageManagePromoPager"
+            />
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:visibility="invisible"
+            android:id="@+id/homepagePreferredContainer"
+            android:layout_gravity="center">
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:layout_alignTop="@+id/homepagePoints"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/homepageMainPreferred" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:layout_below="@+id/homepageMainPreferred"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/homepageMainPreferredDetail" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/homepagePoints" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:layout_below="@+id/homepagePoints"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/textView"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
