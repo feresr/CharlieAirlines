@@ -7,10 +7,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
+        } else {
+            AppHelper.screenManager.showMainScreen(this);
         }
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -46,19 +51,17 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
                 menuItem.setChecked(true);
-                /*switch (menuItem.getItemId()) {
-                    case R.id.navigation_item_1:
-                        Snackbar.make(mContentFrame, "Item One", Snackbar.LENGTH_SHORT).show();
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+                switch (menuItem.getItemId()) {
+                    case R.id.checkIn:
+                        AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this);
                         mCurrentSelectedPosition = 0;
                         return true;
-                    case R.id.navigation_item_2:
-                        Snackbar.make(mContentFrame, "Item Two", Snackbar.LENGTH_SHORT).show();
-                        mCurrentSelectedPosition = 1;
-                        return true;
                     default:
-                        return true;
-                }*/
-                return false;
+                        //Event not handled: return false.
+                        return false;
+                }
+
             }
         });
     }
@@ -111,5 +114,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+            mDrawerLayout.closeDrawer(Gravity.LEFT);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

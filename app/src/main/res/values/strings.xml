@@ -36,4 +36,13 @@
     </string-array>
 
 
+    <!-- Layout Check In -->
+
+    <!-- Layout Check In Search-->
+    <string name="search_confirmation_number">Confirmation #</string>
+    <string name="search_first_name">First name</string>
+    <string name="search_last_name">Last name</string>
+    <string name="search_retrieve_reservation">Retrieve Reservation</string>
+    <string name="search_eligible_tickets">You have %s trip(s) eligible for check in</string>
+    
 </resources>

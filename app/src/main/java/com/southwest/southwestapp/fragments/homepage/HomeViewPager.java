@@ -27,26 +27,6 @@ public class HomeViewPager extends BaseFragment {
     private TextView[] mArrTabTitleViews;
     private LinearLayout mTabTitleHolder;
     private BookingViewPagerAdapter mAdapter;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.fragment_home_view_pager, container, false);
-        mTabTitleHolder = (LinearLayout) rootView.findViewById(R.id.viwTabTitleHolder);
-        mViewPager = (ViewPager) rootView.findViewById(R.id.homepageManagePager);
-
-        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
-        mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
-        mViewPager.setAdapter(mAdapter);
-
-        generateTabTitles();
-
-        mViewPager.addOnPageChangeListener(onPageChangeListener);
-
-        return rootView;
-    }
-
-
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
 
         @Override
@@ -70,7 +50,6 @@ public class HomeViewPager extends BaseFragment {
         }
 
     };
-
     private View.OnClickListener tabClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -84,6 +63,23 @@ public class HomeViewPager extends BaseFragment {
         }
     };
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_home_view_pager, container, false);
+        mTabTitleHolder = (LinearLayout) rootView.findViewById(R.id.viwTabTitleHolder);
+        mViewPager = (ViewPager) rootView.findViewById(R.id.homepageManagePager);
+
+        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
+        mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
+        mViewPager.setAdapter(mAdapter);
+
+        generateTabTitles();
+
+        mViewPager.addOnPageChangeListener(onPageChangeListener);
+
+        return rootView;
+    }
 
     private void generateTabTitles() {
 
