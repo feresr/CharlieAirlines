@@ -11,6 +11,14 @@
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
     </style>
 
+
+    <style name="toolBarStyleCheckIn">
+        <item name="android:background">@color/primary_blue</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
     <style name="bigButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/height_button</item>
@@ -29,6 +37,10 @@
 
     <style name="checkboxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="colorAccent">@color/button_background</item>
+    </style>
+
+    <style name="fragmentCheckInBackground">
+        <item name="android:windowBackground">@color/fragments_background</item>
     </style>
 
 </resources>

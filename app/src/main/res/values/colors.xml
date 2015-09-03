@@ -7,7 +7,8 @@
     <color name="button_text_disabled">#636363</color>
     <color name="homepage_main_title">#FF0000</color>
     <color name="homepage_sub_title">#000047</color>
-
+    <color name="fragments_background">#111b40</color>
+    <color name="primary_blue">#304cb2</color>
 
     <color name="color_accent_dark">#2000</color>
 </resources>

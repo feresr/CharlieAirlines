@@ -1,10 +1,13 @@
 package com.southwest.southwestapp.utils;
 
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.activities.BaseActivity;
+import com.southwest.southwestapp.activities.CheckInActivity;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
 import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
@@ -22,10 +25,9 @@ public class ScreenManager {
     }
 
     public void showCheckInSearchScreen(FragmentActivity origin) {
-        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
-        CheckInSearchFragment checkinSearchFragment = new CheckInSearchFragment();
-        ft.replace(R.id.container, checkinSearchFragment);
-        ft.commit();
+        Intent intent = new Intent(origin, CheckInActivity.class);
+        intent.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
+        origin.startActivity(intent);
     }
 
     public void showMainScreen(FragmentActivity origin) {
