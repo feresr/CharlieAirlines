@@ -1,8 +1,8 @@
 package com.southwest.southwestapp;
 
-import com.southwest.southwestapp.utils.ScreenManager;
-
 import android.app.Application;
+
+import com.southwest.southwestapp.utils.ScreenManager;
 
 /**
  * Created by Fernando on 31/8/2015.

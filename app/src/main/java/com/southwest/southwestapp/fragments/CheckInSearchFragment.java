@@ -1,8 +1,5 @@
 package com.southwest.southwestapp.fragments;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.R;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.R;
 
 
 /**
@@ -33,11 +33,11 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
         View view = inflater.inflate(R.layout.fragment_checkin_search, container, false);
 
-        mBtRetrieve = (Button)view.findViewById(R.id.btn_retrieve_reservation);
-        mEtConfirmationNumber = (EditText)view.findViewById(R.id.edt_confirmation);
-        mEtFirstName = (EditText)view.findViewById(R.id.edt_first_name);
-        mEtLastName = (EditText)view.findViewById(R.id.edt_last_name);
-        mTvEligibleTrips = (TextView)view.findViewById(R.id.tv_eligible_trips);
+        mBtRetrieve = (Button) view.findViewById(R.id.btn_retrieve_reservation);
+        mEtConfirmationNumber = (EditText) view.findViewById(R.id.edt_confirmation);
+        mEtFirstName = (EditText) view.findViewById(R.id.edt_first_name);
+        mEtLastName = (EditText) view.findViewById(R.id.edt_last_name);
+        mTvEligibleTrips = (TextView) view.findViewById(R.id.tv_eligible_trips);
 
         mBtRetrieve.setOnClickListener(this);
 

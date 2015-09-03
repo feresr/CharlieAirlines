@@ -1,20 +1,20 @@
 package com.southwest.southwestapp.fragments;
 
-import com.southwest.southwestapp.R;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.southwest.southwestapp.R;
+
 
 /**
  * Created by emiliano.gudino on 02/09/2015.
  */
-public class CheckInFragment extends BaseFragment{
+public class CheckInFragment extends BaseFragment {
 
-    public CheckInFragment(){
+    public CheckInFragment() {
     }
 
     @Nullable

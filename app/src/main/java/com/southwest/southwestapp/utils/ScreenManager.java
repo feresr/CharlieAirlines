@@ -3,7 +3,7 @@ package com.southwest.southwestapp.utils;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
-import com.southwest.southwestapp.fragments.HomePageFragment;
+import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
