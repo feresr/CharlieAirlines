@@ -5,5 +5,9 @@
     <color name="button_background_disabled">#E6E7E8</color>
     <color name="button_text">#111b40</color>
     <color name="button_text_disabled">#636363</color>
+    <color name="homepage_main_title">#FF0000</color>
+    <color name="homepage_sub_title">#000047</color>
+
+
     <color name="color_accent_dark">#2000</color>
 </resources>
