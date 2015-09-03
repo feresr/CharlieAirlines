@@ -50,4 +50,28 @@
             </group>
         </menu>
     </item>
+    <group
+        android:id="@+id/asad"
+        android:checkableBehavior="single">
+        <item
+            android:checkable="true"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Contact Us" />
+        <item
+            android:checkable="true"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Nuts About Southwest Blog!" />
+        <item
+            android:checkable="true"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Terms And Conditions" />
+        <item
+            android:checkable="true"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Visit Southwest.com" />
+        <item
+            android:checkable="true"
+            android:icon="@android:drawable/ic_input_add"
+            android:title="Log out" />
+    </group>
 </menu>
