@@ -20,29 +20,6 @@
 
     <!-- Layout Check In -->
 
-    <!--Checkin Confirmation-->
-    <string name="check_in_success">You re checked in!</string>
-    <string name="check_in_flight">FLIGHT</string>
-    <string name="check_in_travel_time">TRAVEL TIME</string>
-    <string name="check_in_gate">GATE</string>
-    <string name="check_in_passenger">PASSENGER(S)</string>
-    <string name="check_in_confirmation">CONFIRMATION #</string>
-    <string name="check_in_button">View boarding pass</string>
-    <string name="check_in_faq">Mobile boarding pass FAQ</string>
-    <string name="check_in_boarding_group">boarding group</string>
-    <string name="check_in_position">position</string>
-
-    <!--Check in confirmation dummy data -->
-    <string name="dummy_flight">1977</string>
-    <string name="dummy_travel_time">1h 35 m</string>
-    <string name="dummy_gate">A7</string>
-    <string name="dummy_passenger">Homer Simpson</string>
-    <string name="dummy_passenger_2">Marge Simpson</string>
-    <string name="dummy_confirmation">MVWGL04</string>
-    <string name="dummy_boarding_group">A</string>
-    <string name="dummy_position">38</string>
-    <string name="dummy_position_2">39</string>
-
     <!-- Layout Check In Search-->
     <string name="search_confirmation_number">Confirmation #</string>
     <string name="search_first_name">First name</string>
