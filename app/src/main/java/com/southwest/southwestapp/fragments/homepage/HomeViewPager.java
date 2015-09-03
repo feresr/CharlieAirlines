@@ -1,9 +1,5 @@
 package com.southwest.southwestapp.fragments.homepage;
 
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.adapters.BookingViewPagerAdapter;
-import com.southwest.southwestapp.fragments.BaseFragment;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
@@ -15,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.adapters.BookingViewPagerAdapter;
+import com.southwest.southwestapp.fragments.BaseFragment;
 
 
 /**
@@ -35,7 +35,7 @@ public class HomeViewPager extends BaseFragment {
         mTabTitleHolder = (LinearLayout) rootView.findViewById(R.id.viwTabTitleHolder);
         mViewPager = (ViewPager) rootView.findViewById(R.id.homepageManagePager);
 
-        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(),getContext());
+        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
         mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
         mViewPager.setAdapter(mAdapter);
 
