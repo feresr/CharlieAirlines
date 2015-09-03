@@ -2,7 +2,6 @@ package com.southwest.southwestapp.utils;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
-import com.southwest.southwestapp.activities.CheckInActivity;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
 import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
@@ -25,7 +24,7 @@ public class ScreenManager {
     }
 
     public void showCheckInSearchScreen(FragmentActivity origin) {
-        Intent intent = new Intent(origin, CheckInActivity.class);
+        Intent intent = new Intent(origin, BaseActivity.class);
         intent.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
         origin.startActivity(intent);
     }
