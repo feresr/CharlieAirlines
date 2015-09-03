@@ -10,9 +10,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/Theme.AppCompat.NoActionBar"
-            style="@style/toolBarStyle"/>
+            app:theme="@style/toolBarStyle"
+            app:popupTheme="@style/Theme.AppCompat.NoActionBar"/>
     <FrameLayout
             android:id="@+id/container"
             style="@style/fragmentsCheckInBackground"

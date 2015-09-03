@@ -32,7 +32,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardElevation="5dp"
+        card_view:cardElevation="15dp"
         card_view:contentPadding="15dp"
         card_view:cardCornerRadius="4dp"
         android:layout_marginLeft="15dp"
@@ -150,6 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/card_view"
+        android:layout_marginTop="10dp"
         style="@style/textLink"
         android:text="Mobile boarding pass FAQ" />
 

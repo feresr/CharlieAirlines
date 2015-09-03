@@ -11,7 +11,7 @@
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
     </style>
 
-    <style name="toolBarStyle">
+    <style name="toolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:background">@color/primary_blue</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>
