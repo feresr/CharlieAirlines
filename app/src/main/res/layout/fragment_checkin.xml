@@ -5,10 +5,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        style="@style/checkInLayout">
 
         <com.southwest.southwestapp.LabeledText
             android:id="@+id/passenger"
@@ -106,8 +103,7 @@
                 android:text="By tapping the check in button, you accept the hazardous materials transportation conditions." />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/bigButton"
                 android:layout_below="@id/checkin_warning"
                 android:text="CHECK IN"
                 android:id="@+id/confirmationButton"/>
