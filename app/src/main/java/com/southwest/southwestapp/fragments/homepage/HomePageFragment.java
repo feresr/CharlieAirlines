@@ -1,4 +1,4 @@
-package com.southwest.southwestapp.fragments;
+package com.southwest.southwestapp.fragments.homepage;
 
 
 import android.animation.Animator;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
@@ -25,7 +25,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     private FrameLayout mRoot;
     private View mDiscountContainer;
     private RelativeLayout mPreferredContainer;
-    private ViewPager mViewPager;
+    private FrameLayout mFragmentPagerContainer;
     private ViewPager mViewPromoPager;
 
     public HomePageFragment() {
@@ -45,7 +45,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
         mDiscountContainer = view.findViewById(R.id.homepageDiscountContainer);
         mPreferredContainer = (RelativeLayout) view.findViewById(R.id.homepagePreferredContainer);
-        mViewPager = (ViewPager) view.findViewById(R.id.homepageManagePager);
+        mFragmentPagerContainer = (FrameLayout) view.findViewById(R.id.fragmentPagerContainer);
         mViewPromoPager = (ViewPager) view.findViewById(R.id.homepageManagePromoPager);
 
         mDiscountContainer.setOnClickListener(this);
@@ -58,6 +58,11 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         introAnimation();
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragmentPagerContainer, new HomeViewPager()).commit();
+
+
     }
 
     private void introAnimation() {
@@ -78,7 +83,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             }
         };
 
-        AnimationGenericUtils.fadeInBottom(mViewPager, listener, getContext());
+        AnimationGenericUtils.fadeInBottom(mFragmentPagerContainer, listener, getContext());
         AnimationGenericUtils.slideRightToLeft(mDiscountContainer, getContext());
 
     }
@@ -86,7 +91,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
     private void outroAnimation() {
 
-        AnimationGenericUtils.fadeOutScreenBottom(mViewPager, getContext());
+        AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, getContext());
 
         AnimationGenericUtils.slideOutBottomWithFadeOut(mPreferredContainer, getContext());
 
@@ -111,7 +116,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
             }
         };
-
 
         AnimationGenericUtils.zoomIn(mRoot, animatorListener, ZOOM_FACTOR);
 
