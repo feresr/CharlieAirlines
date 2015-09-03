@@ -82,13 +82,15 @@
             android:layout_marginBottom="27dp" >
 
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_lock_idle_low_battery"
-                    android:id="@+id/ptsArrow"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/carat_right"
+                    android:layout_marginLeft="8dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true" />
+                    android:layout_centerVertical="true"
+                    android:id="@+id/ptsArrow"
+            />
 
             <TextView
                 android:id="@+id/homepageMainPreferred"
