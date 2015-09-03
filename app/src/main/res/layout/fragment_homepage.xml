@@ -185,6 +185,7 @@
 
     </RelativeLayout>
 
+
     <FrameLayout
         android:id="@+id/fragmentPagerContainer"
         android:layout_width="match_parent"
