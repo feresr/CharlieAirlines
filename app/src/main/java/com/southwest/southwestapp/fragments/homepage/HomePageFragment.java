@@ -23,6 +23,8 @@ import com.southwest.southwestapp.utils.AnimationGenericUtils;
 public class HomePageFragment extends BaseFragment implements View.OnClickListener {
 
     private static final float ZOOM_FACTOR = 1.03f;
+    private boolean isValidOutro = true;
+
     private FrameLayout mRoot;
     private View mDiscountContainer;
     private RelativeLayout mPreferredContainer;
@@ -120,6 +122,8 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
         AnimationGenericUtils.zoomIn(mRoot, animatorListener, ZOOM_FACTOR);
 
+        isValidOutro = false;
+
     }
 
     @Override
@@ -128,7 +132,9 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         switch (view.getId()) {
 
             case R.id.homepageDiscountContainer:
-                outroAnimation();
+                if(isValidOutro) {
+                    outroAnimation();
+                }
                 break;
 
         }
