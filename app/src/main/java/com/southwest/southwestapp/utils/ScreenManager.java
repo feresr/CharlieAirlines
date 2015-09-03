@@ -1,12 +1,11 @@
 package com.southwest.southwestapp.utils;
 
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.activities.BaseActivity;
+import com.southwest.southwestapp.fragments.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
 import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
 
-import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
@@ -16,6 +15,13 @@ import android.support.v4.app.FragmentTransaction;
  */
 public class ScreenManager {
 
+    public void showCheckInConfirmationScreen(FragmentActivity origin) {
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        CheckInConfirmationFragment checkinConfirmationFragment = new CheckInConfirmationFragment();
+        ft.replace(R.id.container, checkinConfirmationFragment);
+        ft.commit();
+    }
+
     public void showCheckInScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
         CheckInFragment checkinFragment = new CheckInFragment();
@@ -24,9 +30,10 @@ public class ScreenManager {
     }
 
     public void showCheckInSearchScreen(FragmentActivity origin) {
-        Intent intent = new Intent(origin, BaseActivity.class);
-        intent.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
-        origin.startActivity(intent);
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        CheckInSearchFragment checkinSearchFragment = new CheckInSearchFragment();
+        ft.replace(R.id.container, checkinSearchFragment);
+        ft.commit();
     }
 
     public void showMainScreen(FragmentActivity origin) {

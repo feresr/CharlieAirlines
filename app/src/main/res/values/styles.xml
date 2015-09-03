@@ -11,14 +11,6 @@
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
     </style>
 
-
-    <style name="toolBarStyleCheckIn">
-        <item name="android:background">@color/primary_blue</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
-        <item name="actionMenuTextColor">@android:color/white</item>
-    </style>
-
     <style name="bigButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/height_button</item>
@@ -39,8 +31,39 @@
         <item name="colorAccent">@color/button_background</item>
     </style>
 
-    <style name="fragmentCheckInBackground">
-        <item name="android:windowBackground">@color/fragments_background</item>
+    <style name="textWhiteTitle" parent="@android:style/TextAppearance" >
+        <item name="android:textColor">@color/neutral_white</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textLabeledAbove" parent="@android:style/TextAppearance" >
+        <item name="android:textColor">@color/neutral_gray_4</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+    <style name="textLabeledMain" parent="@android:style/TextAppearance" >
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+    <style name="textLink" parent="@android:style/TextAppearance" >
+        <item name="android:textColor">@color/link_blue</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+    <style name="textGreen" parent="@android:style/TextAppearance" >
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:gravity">bottom</item>
     </style>
 
 </resources>

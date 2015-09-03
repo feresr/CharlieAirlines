@@ -109,7 +109,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/checkin_warning"
-                android:text="CHECK IN" />
+                android:text="CHECK IN"
+                android:id="@+id/confirmationButton"/>
         </RelativeLayout>
 
         <LinearLayout
