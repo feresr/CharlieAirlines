@@ -1,24 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-            android:id="@+id/viwTabTitleHolder"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:background="@android:color/holo_blue_dark"
-            android:gravity="top"
-            android:orientation="horizontal">
-        <!-- Will add the tab title text views dynamically from code -->
+        android:id="@+id/viwTabTitleHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.southwest.southwestapp.widgets.BookingTabTitleWidget
+                android:id="@+id/booking_trips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:bookingTitle="@string/homeview_pager_booktrip_text"
+                app:bookingIcon="@drawable/ic_launcher"
+                >
+
+        </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
+
+        <com.southwest.southwestapp.widgets.BookingTabTitleWidget
+                android:id="@+id/manage_trips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:bookingTitle="@string/homeview_pager_manage_text"
+                app:bookingIcon="@drawable/ic_launcher"
+                >
+
+        </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
+
+
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/homepageManagePager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    />
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/homepageManagePager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

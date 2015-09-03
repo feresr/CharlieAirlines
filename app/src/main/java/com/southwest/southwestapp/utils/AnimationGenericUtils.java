@@ -2,12 +2,15 @@ package com.southwest.southwestapp.utils;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import com.southwest.southwestapp.R;
 
@@ -164,6 +167,10 @@ public class AnimationGenericUtils {
         animator.scaleY(zoom);
         animator.scaleX(zoom);
         animator.start();
+
+    }
+
+    public static void blinkColorAnimation(final TextView view, int timeToOut,final int fromColor, int toColor){
 
     }
 
