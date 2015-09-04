@@ -4,5 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="height_button">40dp</dimen>
     <dimen name="tabs_margin">5dp</dimen>
-
+    <dimen name="divider_booking">1dp</dimen>
+    <dimen name="height_items_homepage">67dp</dimen>
 </resources>
