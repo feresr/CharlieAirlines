@@ -150,19 +150,7 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         }
 
         protected int getAnimationDelay(int position) {
-            int delay = 0;
-            switch (position) {
-                case 0:
-                    delay = 0;
-                    break;
-                case 1:
-                    delay = 200;
-                    break;
-                case 2:
-                    delay = 400;
-                    break;
-            }
-            return delay;
+            return position * 200;
         }
 
     }
