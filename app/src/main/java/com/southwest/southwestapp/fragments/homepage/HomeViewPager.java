@@ -2,16 +2,11 @@ package com.southwest.southwestapp.fragments.homepage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.BookingViewPagerAdapter;
@@ -76,11 +71,13 @@ public class HomeViewPager extends BaseFragment {
                 case 0:
                     mBookingTrips.setSelected();
                     mManageTrips.setDeselected();
+                    mAdapter.animateAtIndex(0);
                     break;
 
                 case 1:
                     mManageTrips.setSelected();
                     mBookingTrips.setDeselected();
+                    mAdapter.animateAtIndex(1);
                     break;
             }
 
