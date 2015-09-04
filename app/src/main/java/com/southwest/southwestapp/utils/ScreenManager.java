@@ -17,8 +17,14 @@ import android.support.v4.app.FragmentTransaction;
  */
 public class ScreenManager {
 
+    protected void setDefaultAnim(FragmentTransaction ft) {
+        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, android.R.anim.slide_in_left,
+                               android.R.anim.slide_out_right);
+    }
+
     public void showCheckInConfirmationScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        setDefaultAnim(ft);
         CheckInConfirmationFragment checkinConfirmationFragment = new CheckInConfirmationFragment();
         ft.replace(R.id.container, checkinConfirmationFragment);
         ft.commit();
@@ -26,6 +32,7 @@ public class ScreenManager {
 
     public void showCheckInScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        setDefaultAnim(ft);
         CheckInFragment checkinFragment = new CheckInFragment();
         ft.replace(R.id.container, checkinFragment);
         ft.commit();
