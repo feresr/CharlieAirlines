@@ -25,6 +25,7 @@ public class ScreenManager {
     public void showCheckInConfirmationScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
         setDefaultAnim(ft);
+        ft.addToBackStack("checkInConfScreen");
         CheckInConfirmationFragment checkinConfirmationFragment = new CheckInConfirmationFragment();
         ft.replace(R.id.container, checkinConfirmationFragment);
         ft.commit();
@@ -33,6 +34,7 @@ public class ScreenManager {
     public void showCheckInScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
         setDefaultAnim(ft);
+        ft.addToBackStack("checkInScreen");
         CheckInFragment checkinFragment = new CheckInFragment();
         ft.replace(R.id.container, checkinFragment);
         ft.commit();

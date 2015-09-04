@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        >
 
-    <RelativeLayout
+    <RelativeLayout android:layout_margin="20dp"
         style="@style/checkInLayout">
 
         <com.southwest.southwestapp.LabeledText
             android:id="@+id/passenger"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             app:mainText="Kevin Thompson"
             app:upperText="PASSENGER(S)" />
 
         <com.southwest.southwestapp.LabeledText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             app:mainText="MVWGL4"
             app:upperText="CONFIRMATION #" />
 
@@ -31,6 +35,8 @@
                 android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 app:mainText="Minneapolis/St. Paul"
                 app:upperText="Feb 18 - 19" />
 
@@ -46,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="left"
                     app:bottomText="Tuesday"
                     app:mainText="Feb 18"
                     app:upperText="DATE" />
@@ -54,6 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     app:bottomText="2:20PM"
                     app:mainText="DAL"
                     app:upperText="DEPARTS" />
@@ -62,6 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     app:bottomText="4:50PM"
                     app:mainText="MSP"
                     app:upperText="ARRIVES" />
@@ -71,6 +80,8 @@
                 android:id="@+id/divider"
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_below="@id/travel_info"
                 android:background="@android:color/darker_gray" />
 
@@ -99,14 +110,18 @@
                 android:id="@+id/checkin_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_below="@id/flight_info"
                 android:text="By tapping the check in button, you accept the hazardous materials transportation conditions." />
 
             <Button
                 style="@style/bigButton"
                 android:layout_below="@id/checkin_warning"
+                android:layout_marginBottom="10dp"
                 android:text="CHECK IN"
                 android:id="@+id/confirmationButton"/>
+
         </RelativeLayout>
 
         <LinearLayout
@@ -119,17 +134,20 @@
                 android:id="@+id/federal_law"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt." />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="View more details"
+                android:layout_marginBottom="5dp"
                 android:textStyle="bold" />
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
                 android:background="@android:color/darker_gray" />
 
             <TextView
@@ -139,4 +157,5 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>
+
 </ScrollView>
