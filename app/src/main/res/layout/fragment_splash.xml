@@ -1,16 +1,22 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/splash_background"
     tools:context="com.southwest.southwestapp.fragments.SplashFragment">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="10sp"
-        android:layout_gravity="center"
-        android:src="@drawable/southwest_logo"/>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:tint="#8fff"
+        android:src="@drawable/splash_background" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:paddingBottom="100px"
+        android:layout_gravity="center"
+        android:src="@drawable/southwest_logo" />
+
+</FrameLayout>
