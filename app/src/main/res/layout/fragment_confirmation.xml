@@ -12,14 +12,17 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/green_cheek"
             android:layout_width="35dp"
-            android:layout_height="35dp" />
+            android:layout_height="35dp" />-->
 
         <TextView
+            android:id="@+id/successText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/check_mark_circle"
+            android:layout_gravity="center_vertical"
             style="@style/textWhiteTitle"
             android:text="@string/check_in_success"/>
 
