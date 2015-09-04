@@ -87,7 +87,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         };
 
         AnimationGenericUtils.fadeInBottom(mFragmentPagerContainer, listener, getContext());
-        AnimationGenericUtils.slideRightToLeft(mDiscountContainer, getContext());
+        AnimationGenericUtils.slideRightToLeft(mDiscountContainer,0 , getContext());
 
     }
 

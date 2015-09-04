@@ -71,10 +71,10 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void slideRightToLeft(final View view, Context context) {
+    public static void slideRightToLeft(final View view,int delay ,Context context) {
 
-        Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_right_to_left);
-        fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+        Animation slideRightToLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_right_to_left);
+        slideRightToLeftAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation arg0) {
                 if (!view.isShown())
@@ -91,7 +91,8 @@ public class AnimationGenericUtils {
             }
         });
 
-        view.startAnimation(fadeOutAnimation);
+        slideRightToLeftAnimation.setStartOffset(delay);
+        view.startAnimation(slideRightToLeftAnimation);
 
     }
 

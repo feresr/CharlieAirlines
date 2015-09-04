@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
 /**
@@ -38,9 +38,8 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         ae[1] = android.R.drawable.ic_lock_idle_alarm;
         ae[2] = android.R.drawable.ic_lock_idle_alarm;
 
-        bookTrips   =  BookTripsItemsFragment.newInstance(new String[]{"1","1","1"}, ae  );
-
-        manageTrips =  ManageTripsItemsFragment.newInstance(new String[]{"1","1","1"}, ae  );
+        bookTrips   =  BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), ae  );
+        manageTrips =  ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), ae  );
 
     }
 
@@ -187,10 +186,7 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
 
             for(int b=0; b<childCount; b++){
                 mItems[b] = (RelativeLayout) linearContainer.getChildAt(b);
-                Animation fadeOutAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right_to_left);
-                fadeOutAnimation.setStartOffset(getAnimationDelay(b));
-                mItems[b].startAnimation(fadeOutAnimation);
-
+                AnimationGenericUtils.slideRightToLeft(mItems[b],getAnimationDelay(b) , getContext());
             }
 
         }
