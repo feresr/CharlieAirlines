@@ -1,45 +1,58 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="180dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/passenger_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="Hi, Kevin"
-        android:textColor="@android:color/secondary_text_light"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/passenger_name"
-        android:text="A-List Preferred"
-        android:textColor="@android:color/secondary_text_light"
-        android:textSize="16sp" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bw_drawable_header"
+        android:tint="#8000" />
 
-    <TextView
-        android:id="@+id/points"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="34,500"
-        android:textColor="@android:color/secondary_text_light"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+    <RelativeLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/points"
-        android:text="PTS"
-        android:textColor="@android:color/secondary_text_light"
-        android:textSize="16sp" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/passenger_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Hi, Kevin"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passenger_name"
+            android:text="A-List Preferred"
+            android:textColor="@android:color/background_light"
+
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="34,500"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/points"
+            android:text="PTS"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+</FrameLayout>
