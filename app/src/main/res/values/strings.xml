@@ -36,5 +36,18 @@
         <item>Manage Trips</item>
     </string-array>
 
+    <!-- BookingViewPagerAdapter -->
+
+    <string-array name="booking_adapter_trips_titles">
+        <item>BOOK A FLIGHT</item>
+        <item>BOOK A CAR</item>
+        <item>SPECIAL OFFERS</item>
+    </string-array>
+
+    <string-array name="booking_adapter_manage_titles">
+        <item>CHECKIN</item>
+        <item>FLIGHT STATUS</item>
+        <item>CHANGE FLIGHT</item>
+    </string-array>
 
 </resources>
