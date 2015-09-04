@@ -17,6 +17,8 @@
     <!-- Layout Send Boarding Pass -->
     <string name="boarding_send_pass_main_info">Enter your email or phone number you would \n like to send your boarding pass to</string>
     <string name="boarding_send_pass_action">Send</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
     <!-- Home Page -->
     <string name="homepage_main_title">69 Sale</string>
@@ -50,4 +52,13 @@
         <item>CHANGE FLIGHT</item>
     </string-array>
 
+    <!-- Layout Check In -->
+    <string name="check_in_success">You\'re checked in!</string>
+    <!-- Layout Check In Search-->
+    <string name="search_confirmation_number">Confirmation #</string>
+    <string name="search_first_name">First name</string>
+    <string name="search_last_name">Last name</string>
+    <string name="search_retrieve_reservation">Retrieve Reservation</string>
+    <string name="search_eligible_tickets">You have %s trip(s) eligible for check in</string>
+    
 </resources>
