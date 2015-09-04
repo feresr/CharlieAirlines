@@ -92,8 +92,6 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         protected RelativeLayout[] mItems;
         protected LinearLayout linearContainer;
 
-        protected Interpolator interpolator;
-
         protected String[] titles;
         protected int[] drawables;
 
