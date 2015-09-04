@@ -1,21 +1,27 @@
 package com.southwest.southwestapp.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
+
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
+
 
 
 /**
@@ -89,7 +95,7 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
     public static class BookTripsItemsFragment extends Fragment {
 
         protected RelativeLayout[] mItems;
-        protected LinearLayout linearContainer;
+        protected LinearLayout mLinearContainer;
 
         protected String[] titles;
         protected int[] drawables;
@@ -115,33 +121,33 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
             drawables = getArguments().getIntArray(DRAWABLE_TAG);
         }
 
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
-            View rootView = inflater.inflate(R.layout.items_homepage_booking, container, false);
-            linearContainer  = (LinearLayout) rootView.findViewById(R.id.items_homepage_booking_container);
+            View rootView     = inflater.inflate(R.layout.items_homepage_booking, container, false);
+            mLinearContainer  = (LinearLayout) rootView.findViewById(R.id.items_homepage_booking_container);
+
             initializeChilds();
 
             return rootView;
 
         }
 
-        protected void initializeChilds(){
-            int childCount = linearContainer.getChildCount();
-            mItems = new RelativeLayout[childCount];
 
+        protected void initializeChilds(){
+            int childCount = mLinearContainer.getChildCount();
+            mItems = new RelativeLayout[childCount];
             for(int b=0; b<childCount; b++){
-                mItems[b] = (RelativeLayout) linearContainer.getChildAt(b);
+                mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
                 ( (TextView)mItems[b].findViewById(R.id.item_homepage_first_title)).setText(titles[b]);
                 ( (ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setBackgroundResource(drawables[b]);
             }
-
         }
 
         public void introAnimate(){
 
         }
-
 
         protected int getAnimationDelay(int position) {
             int delay = 0;
@@ -158,7 +164,6 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
             }
             return delay;
         }
-
 
     }
 
@@ -181,16 +186,15 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
 
         public void introAnimate(){
 
-            int childCount = linearContainer.getChildCount();
+            int childCount = mLinearContainer.getChildCount();
             mItems = new RelativeLayout[childCount];
 
             for(int b=0; b<childCount; b++){
-                mItems[b] = (RelativeLayout) linearContainer.getChildAt(b);
+                mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
                 AnimationGenericUtils.slideRightToLeft(mItems[b],getAnimationDelay(b) , getContext());
             }
 
         }
-
 
     }
 
