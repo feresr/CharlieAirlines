@@ -2,6 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/checkInLayout"
                 >
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"/>
+    </FrameLayout>
+
     <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
         android:src="@drawable/airport_picture" android:scaleType="centerCrop"
         android:tint="#7000"

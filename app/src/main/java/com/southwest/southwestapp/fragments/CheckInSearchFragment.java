@@ -5,6 +5,7 @@ import com.southwest.southwestapp.R;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     private EditText mEtFirstName;
     private EditText mEtLastName;
     private TextView mTvEligibleTrips;
+    private Toolbar mToolbar;
 
     public CheckInSearchFragment() {
     }
@@ -32,6 +34,10 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_checkin_search, container, false);
+
+        mToolbar = (android.support.v7.widget.Toolbar)view.findViewById(R.id.toolbar);
+        mToolbar.setTitle("Check In");
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.dark_blue));
 
         mBtRetrieve = (Button)view.findViewById(R.id.btn_retrieve_reservation);
         mEtConfirmationNumber = (EditText)view.findViewById(R.id.edt_confirmation);
