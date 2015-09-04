@@ -44,5 +44,9 @@
     <string name="search_last_name">Last name</string>
     <string name="search_retrieve_reservation">Retrieve Reservation</string>
     <string name="search_eligible_tickets">You have %s trip(s) eligible for check in</string>
+    <string name="title_activity_splash">Charlie Airlines</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     
 </resources>
