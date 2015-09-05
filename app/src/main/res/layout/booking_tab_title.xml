@@ -7,6 +7,8 @@
               android:id="@+id/booking_tab_container"
         >
 
+
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
