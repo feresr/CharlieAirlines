@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/home_page_background_image_blurred" />
+        android:src="@drawable/home_page_background_image" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -189,7 +189,7 @@
     <FrameLayout
         android:id="@+id/fragmentPagerContainer"
         android:layout_width="match_parent"
-        android:layout_height="274dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal|bottom" />
 
 

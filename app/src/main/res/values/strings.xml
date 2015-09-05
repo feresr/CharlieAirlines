@@ -64,5 +64,10 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- FirstPage Fragment -->
+    <string name="firstpage_main_title">Picture yourself here.</string>
+    <string name="firstpage_sub_title">Dallas to Phoenix for as little \n as $69 one-way</string>
+    <string name="firstpage_book_now">Book now</string>
     
 </resources>
