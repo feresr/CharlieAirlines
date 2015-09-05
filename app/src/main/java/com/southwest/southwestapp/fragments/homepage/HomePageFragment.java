@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.southwest.southwestapp.R;
@@ -31,6 +32,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     private FrameLayout mFragmentPagerContainer;
     private ViewPager mViewPromoPager;
 
+
     public HomePageFragment() {
     }
 
@@ -46,7 +48,9 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         mFragmentPagerContainer = (FrameLayout) view.findViewById(R.id.fragmentPagerContainer);
         mViewPromoPager = (ViewPager) view.findViewById(R.id.homepageManagePromoPager);
 
+
         mDiscountContainer.setOnClickListener(this);
+
 
         return view;
 
@@ -113,7 +117,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             }
         };
 
-        AnimationGenericUtils.zoomIn(mRoot, animatorListener, ZOOM_FACTOR);
+        AnimationGenericUtils.zoomOut(mRoot, animatorListener, ZOOM_FACTOR);
 
         isValidOutro = false;
 

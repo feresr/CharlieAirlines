@@ -37,6 +37,7 @@ public class HomeViewPager extends BaseFragment {
         mBookingTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.booking_trips);
         mManageTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.manage_trips);
 
+
         mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
         mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
         mViewPager.setAdapter(mAdapter);

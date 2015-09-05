@@ -3,7 +3,7 @@
               android:orientation="horizontal"
               android:layout_width="170dp"
               android:layout_height="50dp"
-              android:background="@color/button_background"
+              android:background="@android:color/transparent"
               android:id="@+id/booking_tab_container"
         >
 
