@@ -7,13 +7,13 @@ import com.southwest.southwestapp.fragments.information.ThirdPageFragment;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 
 /**
  * Created by luisalfonsobejaranosanchez on 9/5/15.
  */
-public class InformationAdapter extends FragmentPagerAdapter {
+public class InformationAdapter extends FragmentStatePagerAdapter {
 
     private Context context;
     private static final int TOTAL_PAGE = 3;

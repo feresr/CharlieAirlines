@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                         AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this);
                         mCurrentSelectedPosition = 0;
                         return true;
+
+                    case R.id.home:
+                        AppHelper.screenManager.showMainScreen(MainActivity.this);
+                        return true;
                     default:
                         //Event not handled: return false.
                         return false;
