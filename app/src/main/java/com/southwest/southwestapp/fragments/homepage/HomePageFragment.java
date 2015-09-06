@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.fragments.information.InformationFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
