@@ -1,14 +1,10 @@
 package com.southwest.southwestapp.fragments.information;
 
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.adapters.ItemsInformationAdapter;
+import com.southwest.southwestapp.adapters.InformationAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
 
-import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +18,7 @@ import android.widget.Button;
 public class InformationFragment extends BaseFragment {
 
     private ViewPager mViewPager;
-    private ItemsInformationAdapter viewPagerAdapter;
+    private InformationAdapter viewPagerAdapter;
     private Button firstBtn;
     private Button secondBtn;
     private Button thirdButton;
@@ -34,7 +30,7 @@ public class InformationFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_pager_information, container, false);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPagerAdapter = new ItemsInformationAdapter(getContext(),getActivity().getSupportFragmentManager());
+        viewPagerAdapter = new InformationAdapter(getContext(),getActivity().getSupportFragmentManager());
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setCurrentItem(0);
 
@@ -63,6 +59,7 @@ public class InformationFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
+
                 btnAction(position);
             }
 

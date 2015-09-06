@@ -69,5 +69,10 @@
     <string name="firstpage_main_title">Picture yourself here.</string>
     <string name="firstpage_sub_title">Dallas to Phoenix for as little \n as $69 one-way</string>
     <string name="firstpage_book_now">Book now</string>
+
+    <!-- SecondPage Fragment -->
+    <string name="secondpage_main_title_first">Fly to the</string>
+    <string name="secondpage_main_title_second">Big Game</string>
+    <string name="secondpage_information"> <![CDATA[  <b>  Road to Arizona </b>  <br> One-way fares from <b> $169 </b>   ]]></string>
     
 </resources>

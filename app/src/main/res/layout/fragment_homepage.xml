@@ -189,18 +189,23 @@
     <FrameLayout
         android:id="@+id/fragmentPagerContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="260dp"
         android:layout_gravity="center_horizontal|bottom" />
 
+    <FrameLayout
+            android:id="@+id/fragmentInformationPagerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|bottom" />
 
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/homepageManagePromoPager"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:layout_gravity="center_horizontal|bottom"
         android:background="@android:color/holo_blue_light"
         android:visibility="gone" />
-
 
 
 </FrameLayout>

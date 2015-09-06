@@ -2,12 +2,10 @@ package com.southwest.southwestapp.utils;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -160,7 +158,7 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void zoomIn(final View expandedImageView, Animator.AnimatorListener listener, float zoom) {
+    public static void zoomOut(final View expandedImageView, Animator.AnimatorListener listener, float zoom) {
 
         ViewPropertyAnimator animator = expandedImageView.animate();
         animator.setListener(listener);

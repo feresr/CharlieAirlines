@@ -2,6 +2,8 @@
 <resources>
 
     <color name="button_background">#FFBF27</color>
+    <color name="information_book_text">#FCDB07</color>
+    <color name="information_book_blue_text">#4161AA</color>
     <color name="button_background_disabled">#E6E7E8</color>
     <color name="button_text">#111b40</color>
     <color name="button_text_disabled">#636363</color>
