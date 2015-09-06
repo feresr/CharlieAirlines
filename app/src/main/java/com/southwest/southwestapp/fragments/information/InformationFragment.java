@@ -5,6 +5,7 @@ import com.southwest.southwestapp.adapters.InformationAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,12 +39,14 @@ public class InformationFragment extends BaseFragment {
         secondBtn =(Button)rootView. findViewById(R.id.footer_information_btn2);
         thirdButton = (Button)rootView. findViewById(R.id.footer_information_btn3);
 
-        firstBtn.setPressed(true);
-
-        setTab();
-
         return rootView;
 
+    }
+
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setTab();
+        firstBtn.setPressed(true);
     }
 
     private void setTab(){
@@ -59,7 +62,6 @@ public class InformationFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-
                 btnAction(position);
             }
 
@@ -79,11 +81,13 @@ public class InformationFragment extends BaseFragment {
                 secondBtn.setPressed(true);
                 firstBtn.setPressed(false);
                 thirdButton.setPressed(false);
+                viewPagerAdapter.animateAtIndex(1);
                 break;
             case 2:
                 thirdButton.setPressed(true);
                 secondBtn.setPressed(false);
                 firstBtn.setPressed(false);
+                viewPagerAdapter.animateAtIndex(2);
                 break;
         }
 

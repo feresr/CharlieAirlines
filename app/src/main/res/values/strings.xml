@@ -65,14 +65,21 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- FirstPage Fragment -->
+    <!-- FirstPage Fragment Information -->
     <string name="firstpage_main_title">Picture yourself here.</string>
     <string name="firstpage_sub_title">Dallas to Phoenix for as little \n as $69 one-way</string>
     <string name="firstpage_book_now">Book now</string>
 
-    <!-- SecondPage Fragment -->
+    <!-- SecondPage Fragment Information -->
     <string name="secondpage_main_title_first">Fly to the</string>
     <string name="secondpage_main_title_second">Big Game</string>
     <string name="secondpage_information"> <![CDATA[  <b>  Road to Arizona </b>  <br> One-way fares from <b> $169 </b>   ]]></string>
-    
+
+    <!-- Third Fragment Information -->
+    <string name="thirdpage_main_title_second">Big Game</string>
+    <string name="thirdpage_main_title_top">let</string>
+    <string name="thirdpage_main_title_middle">Everyday \n Purchases</string>
+    <string name="thirdpage_main_title_bottom">cover your next trip</string>
+    <string name="thirdpage_details">Get details</string>
+
 </resources>

@@ -13,7 +13,7 @@
             android:src="@drawable/nfl_image" />
 
     <RelativeLayout
-            android:id="@+id/secondInformationTitlesContainer"
+            android:id="@+id/thirdInformationTitlesContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -28,7 +28,7 @@
             android:layout_alignParentTop="true" >
 
         <TextView
-                android:id="@+id/informationMain"
+                android:id="@+id/informationMainTitleMiddle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -36,12 +36,12 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/homepage_main_title"
                 android:textSize="45sp"
-                android:layout_below="@+id/informationfoDiscount"
+                android:layout_below="@+id/mainTitleTop"
                 android:layout_centerHorizontal="true"
                 android:textStyle="bold" />
 
         <TextView
-                android:id="@+id/informationfoDiscount"
+                android:id="@+id/mainTitleTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -50,8 +50,8 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/neutral_white"
                 android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/informationMain"
-                android:layout_alignStart="@+id/informationMain"/>
+                android:layout_alignLeft="@+id/informationMainTitleMiddle"
+                android:layout_alignStart="@+id/informationMainTitleMiddle"/>
 
     </RelativeLayout>
 
@@ -59,9 +59,9 @@
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@+id/secondInformationTitlesContainer"
-            android:layout_alignLeft="@+id/secondInformationTitlesContainer"
-            android:layout_alignStart="@+id/secondInformationTitlesContainer"
+            android:layout_below="@+id/thirdInformationTitlesContainer"
+            android:layout_alignLeft="@+id/thirdInformationTitlesContainer"
+            android:layout_alignStart="@+id/thirdInformationTitlesContainer"
             android:layout_marginTop="20dp"
             android:id="@+id/secondInformationfoContainer"
             android:layout_alignParentRight="true" >

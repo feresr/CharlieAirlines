@@ -26,6 +26,8 @@ public class SecondPageFragment extends BaseFragment {
     private RelativeLayout titlesContainer;
     private LinearLayout informationContainer;
 
+    private boolean isValidIntro = true;
+
     public static SecondPageFragment newInstance(Context context) {
         SecondPageFragment fragment = new SecondPageFragment();
         return fragment;
@@ -38,7 +40,7 @@ public class SecondPageFragment extends BaseFragment {
         mInformation = (TextView) rootView.findViewById(R.id.secondInformation);
         mInformation.setText(Html.fromHtml(getContext().getResources().getString(R.string.secondpage_information)));
 
-        titlesContainer = (RelativeLayout) rootView.findViewById(R.id.secondInformationTitlesContainer);
+        titlesContainer = (RelativeLayout) rootView.findViewById(R.id.thirdInformationTitlesContainer);
         informationContainer = (LinearLayout) rootView.findViewById(R.id.secondInformationfoContainer);
 
         return rootView;
@@ -48,10 +50,14 @@ public class SecondPageFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
 
-        AnimationGenericUtils.slideRightToLeft(titlesContainer, 0, getContext());
-        AnimationGenericUtils.slideRightToLeft(informationContainer,300, getContext());
-
+    public void introAnimation(){
+        if(isValidIntro) {
+            AnimationGenericUtils.slideRightToLeft(titlesContainer, 0, getContext());
+            AnimationGenericUtils.slideRightToLeft(informationContainer, 300, getContext());
+            isValidIntro = false;
+        }
     }
 
 }

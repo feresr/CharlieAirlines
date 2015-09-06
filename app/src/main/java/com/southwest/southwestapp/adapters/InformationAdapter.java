@@ -44,6 +44,23 @@ public class InformationAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
+
+    public void animateAtIndex(int index){
+        switch (index){
+            case 0:
+                firstPage.introAnimation();
+                break;
+
+            case 1:
+                secondPage.introAnimation();
+                break;
+
+            case 2:
+                thirdPage.introAnimation();
+                break;
+        }
+    }
+
     @Override
     public int getCount() {
         return TOTAL_PAGE;

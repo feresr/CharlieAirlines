@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.fragments.information.InformationFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
@@ -48,9 +48,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         mFragmentPagerContainer = (FrameLayout) view.findViewById(R.id.fragmentPagerContainer);
         mViewPromoPager = (ViewPager) view.findViewById(R.id.homepageManagePromoPager);
 
-
         mDiscountContainer.setOnClickListener(this);
-
 
         return view;
 
@@ -63,6 +61,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragmentPagerContainer, new HomeViewPager()).commit();
+
     }
 
     private void introAnimation() {
@@ -84,7 +83,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         };
 
         AnimationGenericUtils.fadeInBottom(mFragmentPagerContainer, listener, getContext());
-        AnimationGenericUtils.slideRightToLeft(mDiscountContainer,0 , getContext());
+        AnimationGenericUtils.slideRightToLeft(mDiscountContainer,0, getContext());
 
     }
 
@@ -103,7 +102,8 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                AnimationGenericUtils.fadeInAnimation(mViewPromoPager, getContext());
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentInformationPagerContainer, new InformationFragment()).commit();
             }
 
             @Override
@@ -118,7 +118,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         };
 
         AnimationGenericUtils.zoomOut(mRoot, animatorListener, ZOOM_FACTOR);
-
         isValidOutro = false;
 
     }
