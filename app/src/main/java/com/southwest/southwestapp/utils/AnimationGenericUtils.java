@@ -133,26 +133,30 @@ public class AnimationGenericUtils {
     }
 
 
-    public static void slideOutBottomWithFadeOut(final View view, Context context) {
+    public static void slideOutBottomWithFadeOut(final View view, Animation.AnimationListener listener ,Context context) {
 
         Animation slideOutBottomWithFadeOut = AnimationUtils.loadAnimation(context, R.anim.slide_out_bottom_with_fade_out);
 
-        slideOutBottomWithFadeOut.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation arg0) {
+        if(listener == null) {
+            slideOutBottomWithFadeOut.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation arg0) {
 
-            }
+                }
 
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-            }
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
 
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                if (view.isShown())
-                    view.setVisibility(View.GONE);
-            }
-        });
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    if (view.isShown())
+                        view.setVisibility(View.GONE);
+                }
+            });
+        }else{
+            slideOutBottomWithFadeOut.setAnimationListener(listener);
+        }
 
         view.startAnimation(slideOutBottomWithFadeOut);
 

@@ -50,11 +50,9 @@ public class InformationAdapter extends FragmentPagerAdapter {
             case 0:
                 firstPage.introAnimation();
                 break;
-
             case 1:
                 secondPage.introAnimation();
                 break;
-
             case 2:
                 thirdPage.introAnimation();
                 break;

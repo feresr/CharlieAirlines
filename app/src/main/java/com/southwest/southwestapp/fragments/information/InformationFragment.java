@@ -3,13 +3,16 @@ package com.southwest.southwestapp.fragments.information;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.InformationAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 
 
@@ -18,6 +21,9 @@ import android.widget.Button;
  */
 public class InformationFragment extends BaseFragment {
 
+    private static final float ZOOM_FACTOR = 1.03f;
+
+    private View rootView;
     private ViewPager mViewPager;
     private InformationAdapter viewPagerAdapter;
     private Button firstBtn;
@@ -28,7 +34,7 @@ public class InformationFragment extends BaseFragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_pager_information, container, false);
+        rootView = inflater.inflate(R.layout.fragment_pager_information, container, false);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
         viewPagerAdapter = new InformationAdapter(getContext(),getActivity().getSupportFragmentManager());
@@ -46,6 +52,7 @@ public class InformationFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setTab();
+        introAnimation();
         firstBtn.setPressed(true);
     }
 
@@ -66,6 +73,35 @@ public class InformationFragment extends BaseFragment {
             }
 
         });
+
+    }
+
+    private void introAnimation(){
+
+        Animator.AnimatorListener listener = new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        };
+
+
+        AnimationGenericUtils.zoomOut(rootView, listener, ZOOM_FACTOR);
 
     }
 
