@@ -45,25 +45,30 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void fadeOutAnimation(final View view, Context context) {
+    public static void fadeOutAnimation(final View view,Animation.AnimationListener listener ,Context context) {
 
         Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out);
-        fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation arg0) {
-            }
+        if(listener!=null){
+            fadeOutAnimation.setAnimationListener(listener);
+        }else {
 
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-            }
+            fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation arg0) {
+                }
 
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                if (view.isShown())
-                    view.setVisibility(View.GONE);
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
 
-            }
-        });
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    if (view.isShown())
+                        view.setVisibility(View.INVISIBLE);
+
+                }
+            });
+        }
 
         view.startAnimation(fadeOutAnimation);
 
@@ -124,7 +129,7 @@ public class AnimationGenericUtils {
             @Override
             public void onAnimationEnd(Animation arg0) {
                 if (view.isShown())
-                    view.setVisibility(View.GONE);
+                    view.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -151,7 +156,7 @@ public class AnimationGenericUtils {
                 @Override
                 public void onAnimationEnd(Animation arg0) {
                     if (view.isShown())
-                        view.setVisibility(View.GONE);
+                        view.setVisibility(View.INVISIBLE);
                 }
             });
         }else{
@@ -165,7 +170,10 @@ public class AnimationGenericUtils {
     public static void zoomOut(final View expandedImageView, Animator.AnimatorListener listener, float zoom) {
 
         ViewPropertyAnimator animator = expandedImageView.animate();
-        animator.setListener(listener);
+
+        if(listener != null) {
+            animator.setListener(listener);
+        }
 
         animator.scaleY(zoom);
         animator.scaleX(zoom);
@@ -187,7 +195,7 @@ public class AnimationGenericUtils {
             }
 
             public void onFinish() {
-                fadeOutAnimation(view, context);
+                fadeOutAnimation(view,null ,context);
             }
 
         }.start();

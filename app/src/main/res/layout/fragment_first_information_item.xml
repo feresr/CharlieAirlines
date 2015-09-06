@@ -60,7 +60,7 @@
                 android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginRight="15dp"
                 android:layout_below="@+id/thirdInformationTitlesContainer"
                 android:layout_alignStart="@+id/thirdInformationTitlesContainer"
@@ -98,7 +98,7 @@
                     android:text="@string/firstpage_book_now"
                     android:textStyle="bold"
                     android:textColor="@color/information_book_text"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="8dp"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/firstInformationBooking" />
 

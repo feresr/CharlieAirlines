@@ -86,7 +86,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
         AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, getContext());
 
-
         Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation arg0) {
