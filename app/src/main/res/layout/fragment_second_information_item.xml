@@ -4,13 +4,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:scaleType="centerCrop">
+                >
 
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/nfl_image" />
+            android:src="@drawable/rsz_nfl_image" />
 
     <RelativeLayout
             android:id="@+id/thirdInformationTitlesContainer"
