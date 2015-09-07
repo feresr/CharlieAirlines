@@ -22,8 +22,8 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_base);
 
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+        /*Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);*/
 
         if (getIntent().getExtras() != null) {
             Class<?> fragment = (Class<?>) getIntent().getExtras().getSerializable(FRAGMENT);

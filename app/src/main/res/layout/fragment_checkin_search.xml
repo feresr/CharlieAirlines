@@ -1,67 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/checkInLayout"
-                >
-
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <FrameLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"/>
-    </FrameLayout>
+                style="@style/checkInLayout">
 
     <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:src="@drawable/airport_picture" android:scaleType="centerCrop"
-        android:tint="#7000"
-        />
+               android:src="@drawable/airport_picture" android:scaleType="centerCrop"
+               android:tint="#7000"
+            />
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"/>
 
     <TextView
-        android:id="@+id/tv_eligible_trips"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/search_eligible_tickets"
-        android:visibility="gone" />
+            android:id="@+id/tv_eligible_trips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/search_eligible_tickets"
+            android:visibility="gone"/>
 
     <LinearLayout
-        android:id="@+id/lnr_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_eligible_trips"
-        android:padding="10dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/edt_confirmation"
+            android:id="@+id/lnr_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:hint="@string/search_confirmation_number"
-            android:textColorHint="@android:color/white"/>
+            android:layout_below="@id/tv_eligible_trips"
+            android:padding="10dp"
+            android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edt_first_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:hint="@string/search_first_name"
-            android:textColorHint="@android:color/white" />
+                android:id="@+id/edt_confirmation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:hint="@string/search_confirmation_number"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"/>
 
         <EditText
-            android:id="@+id/edt_last_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:hint="@string/search_last_name"
-            android:textColorHint="@android:color/white" />
+                android:id="@+id/edt_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:hint="@string/search_first_name"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"/>
 
+        <EditText
+                android:id="@+id/edt_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:hint="@string/search_last_name"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"/>
     </LinearLayout>
 
     <Button
@@ -70,5 +63,4 @@
             style="@style/bigButton"
             android:text="@string/search_retrieve_reservation"
             android:layout_alignParentBottom="true"/>
-
 </RelativeLayout>

@@ -36,8 +36,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         View view = inflater.inflate(R.layout.fragment_checkin_search, container, false);
 
         mToolbar = (android.support.v7.widget.Toolbar)view.findViewById(R.id.toolbar);
-        mToolbar.setTitle("Check In");
-        mToolbar.setBackgroundColor(getResources().getColor(R.color.dark_blue));
+        setUpToolBar();
 
         mBtRetrieve = (Button)view.findViewById(R.id.btn_retrieve_reservation);
         mEtConfirmationNumber = (EditText)view.findViewById(R.id.edt_confirmation);
@@ -63,5 +62,19 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 break;
 
         }
+    }
+
+    private void setUpToolBar() {
+        //TODO Add assets
+        /*mToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_icon_nav_andr_back_arrow));
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+            }
+        });*/
+        mToolbar.setTitle("Check In");
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.neutral_white));
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.dark_blue));
     }
 }
