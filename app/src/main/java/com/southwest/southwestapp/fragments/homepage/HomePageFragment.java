@@ -22,7 +22,7 @@ import com.southwest.southwestapp.utils.AnimationGenericUtils;
 public class HomePageFragment extends BaseFragment implements View.OnClickListener {
 
     private boolean isValidOutro = true;
-    
+
     private View mDiscountContainer;
     private RelativeLayout mPreferredContainer;
     private FrameLayout mFragmentPagerContainer;
