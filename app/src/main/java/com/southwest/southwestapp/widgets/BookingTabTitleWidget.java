@@ -15,9 +15,7 @@ import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
-/**
- * Created by luisalfonsobejaranosanchez on 9/3/15.
- */
+
 public class BookingTabTitleWidget extends LinearLayout {
 
     private int animationTime;
@@ -76,7 +74,6 @@ public class BookingTabTitleWidget extends LinearLayout {
 
 
     public void setSelected() {
-        AnimationGenericUtils.blinkColorAnimation(mTitle, 10, mTitle.getCurrentTextColor(), Color.BLACK);
         icon.setBackgroundResource(android.R.drawable.ic_menu_agenda);
     }
 

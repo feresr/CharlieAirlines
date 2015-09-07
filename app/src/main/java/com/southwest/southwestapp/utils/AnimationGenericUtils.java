@@ -13,9 +13,6 @@ import android.widget.TextView;
 import com.southwest.southwestapp.R;
 
 
-/**
- * Created by Created by luisalfonsobejaranosanchez on 9/1/15.
- */
 public class AnimationGenericUtils {
 
 
@@ -45,12 +42,12 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void fadeOutAnimation(final View view,Animation.AnimationListener listener ,Context context) {
+    public static void fadeOutAnimation(final View view, Animation.AnimationListener listener, Context context) {
 
         Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out);
-        if(listener!=null){
+        if (listener != null) {
             fadeOutAnimation.setAnimationListener(listener);
-        }else {
+        } else {
 
             fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
@@ -74,7 +71,7 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void slideRightToLeft(final View view,int delay ,Context context) {
+    public static void slideRightToLeft(final View view, int delay, Context context) {
 
         Animation slideRightToLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_right_to_left);
         slideRightToLeftAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -138,11 +135,11 @@ public class AnimationGenericUtils {
     }
 
 
-    public static void slideOutBottomWithFadeOut(final View view, Animation.AnimationListener listener ,Context context) {
+    public static void slideOutBottomWithFadeOut(final View view, Animation.AnimationListener listener, Context context) {
 
         Animation slideOutBottomWithFadeOut = AnimationUtils.loadAnimation(context, R.anim.slide_out_bottom_with_fade_out);
 
-        if(listener == null) {
+        if (listener == null) {
             slideOutBottomWithFadeOut.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation arg0) {
@@ -159,7 +156,7 @@ public class AnimationGenericUtils {
                         view.setVisibility(View.INVISIBLE);
                 }
             });
-        }else{
+        } else {
             slideOutBottomWithFadeOut.setAnimationListener(listener);
         }
 
@@ -171,7 +168,7 @@ public class AnimationGenericUtils {
 
         ViewPropertyAnimator animator = expandedImageView.animate();
 
-        if(listener != null) {
+        if (listener != null) {
             animator.setListener(listener);
         }
 
@@ -180,26 +177,4 @@ public class AnimationGenericUtils {
         animator.start();
 
     }
-
-    public static void blinkColorAnimation(final TextView view, int timeToOut,final int fromColor, int toColor){
-
-    }
-
-    public static void transitionFadeInFadeOut(final View view, int timeToOut, final Context context) {
-
-        fadeInAnimation(view, context);
-
-        new CountDownTimer(timeToOut, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-            }
-
-            public void onFinish() {
-                fadeOutAnimation(view,null ,context);
-            }
-
-        }.start();
-
-    }
-
 }
