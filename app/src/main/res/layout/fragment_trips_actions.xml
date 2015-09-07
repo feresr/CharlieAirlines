@@ -15,7 +15,8 @@
 
         <com.southwest.southwestapp.widgets.BookingTabTitleWidget
             android:id="@+id/book_trips"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:clickable="true"
             app:bookingIcon="@drawable/ic_launcher"
@@ -25,7 +26,8 @@
 
         <com.southwest.southwestapp.widgets.BookingTabTitleWidget
             android:id="@+id/manage_trips"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:clickable="true"
             app:bookingIcon="@drawable/ic_launcher"

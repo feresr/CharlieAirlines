@@ -24,7 +24,6 @@ public class BookingTabTitleWidget extends LinearLayout {
     private int animationTime;
     private String mainTitle;
 
-    private RelativeLayout container;
     private TextView mTitle;
     private ImageView icon;
 
@@ -70,7 +69,6 @@ public class BookingTabTitleWidget extends LinearLayout {
         inflate(context, R.layout.booking_tab_title, this);
         mTitle = (TextView) findViewById(R.id.booking_tab_main_title);
         mTitle.setText(mainTitle);
-        container = (RelativeLayout) findViewById(R.id.booking_tab_container);
         icon      = (ImageView) findViewById(R.id.booking_tab);
         if(hasValue) {
             icon.setBackgroundResource(iconResource.resourceId);
