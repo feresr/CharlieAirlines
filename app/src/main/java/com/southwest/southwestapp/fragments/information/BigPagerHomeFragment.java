@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.adapters.InformationAdapter;
+import com.southwest.southwestapp.adapters.PromoAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
@@ -29,7 +29,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
     private View mFooter;
 
     private ViewPager mViewPager;
-    private InformationAdapter viewPagerAdapter;
+    private PromoAdapter viewPagerAdapter;
     private FrameLayout bookinMenuContainer;
 
     private Button firstBtn;
@@ -46,7 +46,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
         rootView = inflater.inflate(R.layout.fragment_pager_information, container, false);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPagerAdapter = new InformationAdapter(getContext(), getActivity().getSupportFragmentManager());
+        viewPagerAdapter = new PromoAdapter(getContext(), getActivity().getSupportFragmentManager());
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setCurrentItem(0);
 

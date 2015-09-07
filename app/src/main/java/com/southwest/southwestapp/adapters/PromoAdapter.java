@@ -1,43 +1,41 @@
 package com.southwest.southwestapp.adapters;
 
-import com.southwest.southwestapp.fragments.information.FirstPageFragment;
-import com.southwest.southwestapp.fragments.information.SecondPageFragment;
-import com.southwest.southwestapp.fragments.information.ThirdPageFragment;
-
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.southwest.southwestapp.fragments.information.FirstPageFragment;
+import com.southwest.southwestapp.fragments.information.SecondPageFragment;
+import com.southwest.southwestapp.fragments.information.ThirdPageFragment;
 
-/**
- * Created by luisalfonsobejaranosanchez on 9/5/15.
- */
-public class InformationAdapter extends FragmentStatePagerAdapter {
+public class PromoAdapter extends FragmentStatePagerAdapter {
 
-    private Context context;
     private static final int TOTAL_PAGE = 3;
 
+    //TODO: refactor this, there should be just ONE promo fragment with different parameters
+    //(consider builder pattern)
     private FirstPageFragment firstPage;
     private SecondPageFragment secondPage;
     private ThirdPageFragment thirdPage;
 
-    public InformationAdapter(Context context, FragmentManager fragmentManager) {
+    public PromoAdapter(Context context, FragmentManager fragmentManager) {
         super(fragmentManager);
-        this.context=context;
-        firstPage  = FirstPageFragment.newInstance(context);
+        firstPage = FirstPageFragment.newInstance(context);
         secondPage = SecondPageFragment.newInstance(context);
-        thirdPage  = ThirdPageFragment.newInstance(context);
+        thirdPage = ThirdPageFragment.newInstance(context);
     }
 
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = new Fragment();
-        switch(position){
+        switch (position) {
             case 0:
+                //TODO: refactor this as well, initializing this on the constructor is not a good idea.
+                //it could get garbage collected while the app is on the background. (null pointer)
                 return firstPage;
             case 1:
-               return secondPage;
+                return secondPage;
             case 2:
                 return thirdPage;
         }
@@ -45,8 +43,8 @@ public class InformationAdapter extends FragmentStatePagerAdapter {
     }
 
 
-    public void animateAtIndex(int index){
-        switch (index){
+    public void animateAtIndex(int index) {
+        switch (index) {
             case 0:
                 firstPage.introAnimation();
                 break;
