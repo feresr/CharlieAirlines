@@ -45,5 +45,9 @@
     <string name="search_last_name">Last name</string>
     <string name="search_retrieve_reservation">Retrieve Reservation</string>
     <string name="search_eligible_tickets">You have %s trip(s) eligible for check in</string>
+
+    <!-- Layout Boarding Pass -->
+    <string name="boarding_pass_business_select">Business select</string>
+    <string name="boarding_pass_conf_num">Conf#</string>
     
 </resources>

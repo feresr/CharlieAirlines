@@ -2,6 +2,7 @@ package com.southwest.southwestapp.utils;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
+import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.fragments.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
@@ -50,6 +51,13 @@ public class ScreenManager {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
         HomePageFragment homePageFragment = new HomePageFragment();
         ft.replace(R.id.container, homePageFragment);
+        ft.commit();
+    }
+
+    public void showBoardingPassScreen(FragmentActivity origin) {
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        BoardingPassFragment boardingPassFragment = new BoardingPassFragment();
+        ft.replace(R.id.container, boardingPassFragment);
         ft.commit();
     }
 
