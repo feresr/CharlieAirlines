@@ -25,6 +25,9 @@
     <string name="homepage_main_title_symbol">$</string>
     <string name="homepage_sub_title">--- one-way fares ---</string>
 
+    <string name="book_trips">Book Trips</string>
+    <string name="manage_trips">Manage Trips</string>
+
     <string name="homepage_list_preferred">A-List Preferred</string>
     <string name="homepage_list_preferred_code">RR 1234567890</string>
     <string name="homepage_list_preferred_pts">PTS</string>
@@ -35,6 +38,19 @@
         <item>Manage Trips</item>
     </string-array>
 
+    <!-- BookingViewPagerAdapter -->
+
+    <string-array name="booking_adapter_trips_titles">
+        <item>BOOK A FLIGHT</item>
+        <item>BOOK A CAR</item>
+        <item>SPECIAL OFFERS</item>
+    </string-array>
+
+    <string-array name="booking_adapter_manage_titles">
+        <item>CHECKIN</item>
+        <item>FLIGHT STATUS</item>
+        <item>CHANGE FLIGHT</item>
+    </string-array>
 
     <!-- Layout Check In -->
     <string name="check_in_success">You\'re checked in!</string>
@@ -48,5 +64,22 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
+    <!-- FirstPage Fragment Information -->
+    <string name="firstpage_main_title">Picture yourself here.</string>
+    <string name="firstpage_sub_title">Dallas to Phoenix for as little \n as $69 one-way</string>
+    <string name="firstpage_book_now">Book now</string>
+
+    <!-- SecondPage Fragment Information -->
+    <string name="secondpage_main_title_first">Fly to the</string>
+    <string name="secondpage_main_title_second">Big Game</string>
+    <string name="secondpage_information"> <![CDATA[  <b>  Road to Arizona </b>  <br> One-way fares from <b> $169 </b>   ]]></string>
+
+    <!-- Third Fragment Information -->
+    <string name="thirdpage_main_title_second">Big Game</string>
+    <string name="thirdpage_main_title_top">let</string>
+    <string name="thirdpage_main_title_middle">Everyday \n Purchases</string>
+    <string name="thirdpage_main_title_bottom">cover your next trip</string>
+    <string name="thirdpage_details">Get details</string>
+
 </resources>

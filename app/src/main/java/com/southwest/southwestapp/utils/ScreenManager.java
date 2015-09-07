@@ -7,6 +7,7 @@ import com.southwest.southwestapp.fragments.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
 import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
+import com.southwest.southwestapp.fragments.information.BigPagerHomeFragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -42,6 +43,13 @@ public class ScreenManager {
     public void showMainScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
         HomePageFragment homePageFragment = new HomePageFragment();
+        ft.replace(R.id.container, homePageFragment);
+        ft.commit();
+    }
+
+    public void showInformationScreen(FragmentActivity origin) {
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        BigPagerHomeFragment homePageFragment = new BigPagerHomeFragment();
         ft.replace(R.id.container, homePageFragment);
         ft.commit();
     }
