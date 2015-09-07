@@ -24,8 +24,7 @@ public class ThirdPageFragment extends BaseFragment {
     private boolean isValidIntro = true;
 
     public static ThirdPageFragment newInstance(Context context) {
-        ThirdPageFragment fragment = new ThirdPageFragment();
-        return fragment;
+        return new ThirdPageFragment();
     }
 
     @Override

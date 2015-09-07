@@ -30,8 +30,7 @@ public class SecondPageFragment extends BaseFragment {
     private boolean isValidIntro = true;
 
     public static SecondPageFragment newInstance(Context context) {
-        SecondPageFragment fragment = new SecondPageFragment();
-        return fragment;
+        return new SecondPageFragment();
     }
 
     @Override
