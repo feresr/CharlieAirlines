@@ -1,8 +1,5 @@
 package com.southwest.southwestapp.widgets;
 
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,8 +9,10 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
 /**
@@ -56,7 +55,7 @@ public class BookingTabTitleWidget extends LinearLayout {
         initializeViews(context);
     }
 
-    private void parseAttr(Context context, AttributeSet attrs){
+    private void parseAttr(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BookingTabTitleWidget, 0, 0);
         mainTitle = typedArray.getString(R.styleable.BookingTabTitleWidget_bookingTitle);
         animationTime = typedArray.getInteger(R.styleable.BookingTabTitleWidget_animationTime, 500);
@@ -65,23 +64,23 @@ public class BookingTabTitleWidget extends LinearLayout {
         typedArray.recycle();
     }
 
-    private void initializeViews(Context context){
+    private void initializeViews(Context context) {
         inflate(context, R.layout.booking_tab_title, this);
         mTitle = (TextView) findViewById(R.id.booking_tab_main_title);
         mTitle.setText(mainTitle);
-        icon      = (ImageView) findViewById(R.id.booking_tab);
-        if(hasValue) {
+        icon = (ImageView) findViewById(R.id.booking_tab);
+        if (hasValue) {
             icon.setBackgroundResource(iconResource.resourceId);
         }
     }
 
 
-    public void setSelected(){
-        AnimationGenericUtils.blinkColorAnimation(mTitle, 10 ,mTitle.getCurrentTextColor(), Color.BLACK);
+    public void setSelected() {
+        AnimationGenericUtils.blinkColorAnimation(mTitle, 10, mTitle.getCurrentTextColor(), Color.BLACK);
         icon.setBackgroundResource(android.R.drawable.ic_menu_agenda);
     }
 
-    public void setDeselected(){
+    public void setDeselected() {
         icon.setBackgroundResource(R.drawable.ic_launcher);
     }
 
