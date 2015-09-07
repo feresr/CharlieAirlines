@@ -54,7 +54,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         introAnimation();
 
         getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentPagerContainer, new HomeViewPager()).commit();
+                .add(R.id.fragmentPagerContainer, new TripActionsFragment()).commit();
 
     }
 

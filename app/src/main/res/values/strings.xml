@@ -25,8 +25,8 @@
     <string name="homepage_main_title_symbol">$</string>
     <string name="homepage_sub_title">--- one-way fares ---</string>
 
-    <string name="homeview_pager_booktrip_text">Book Trips</string>
-    <string name="homeview_pager_manage_text">Manage Trips</string>
+    <string name="book_trips">Book Trips</string>
+    <string name="manage_trips">Manage Trips</string>
 
     <string name="homepage_list_preferred">A-List Preferred</string>
     <string name="homepage_list_preferred_code">RR 1234567890</string>

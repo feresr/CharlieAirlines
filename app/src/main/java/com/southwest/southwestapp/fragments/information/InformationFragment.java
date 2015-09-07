@@ -1,10 +1,9 @@
 package com.southwest.southwestapp.fragments.information;
 
-import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.InformationAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.fragments.homepage.HomeViewPager;
+import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import android.os.Bundle;
@@ -72,7 +71,7 @@ public class InformationFragment extends BaseFragment implements View.OnClickLis
         firstBtn.setPressed(true);
 
         getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.bookinMenuContainer, new HomeViewPager()).commit();
+                .add(R.id.bookinMenuContainer, new TripActionsFragment()).commit();
 
     }
 
