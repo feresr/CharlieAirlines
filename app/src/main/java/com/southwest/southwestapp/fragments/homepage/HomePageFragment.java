@@ -2,7 +2,6 @@ package com.southwest.southwestapp.fragments.homepage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +22,9 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
     private boolean isValidOutro = true;
 
-    private View mRoot;
     private View mDiscountContainer;
     private RelativeLayout mPreferredContainer;
     private FrameLayout mFragmentPagerContainer;
-    private ViewPager mViewPromoPager;
 
     public HomePageFragment() {
     }
@@ -35,17 +32,14 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_homepage, container, false);
+        View mRootView = inflater.inflate(R.layout.fragment_homepage, container, false);
 
-        mDiscountContainer = mRoot.findViewById(R.id.homepageDiscountContainer);
-        mPreferredContainer = (RelativeLayout) mRoot.findViewById(R.id.homepagePreferredContainer);
-        mFragmentPagerContainer = (FrameLayout) mRoot.findViewById(R.id.fragmentPagerContainer);
-        mViewPromoPager = (ViewPager) mRoot.findViewById(R.id.homepageManagePromoPager);
-
+        mDiscountContainer = mRootView.findViewById(R.id.homepageDiscountContainer);
+        mPreferredContainer = (RelativeLayout) mRootView.findViewById(R.id.homepagePreferredContainer);
+        mFragmentPagerContainer = (FrameLayout) mRootView.findViewById(R.id.fragmentPagerContainer);
         mDiscountContainer.setOnClickListener(this);
 
-        return mRoot;
-
+        return mRootView;
     }
 
     @Override
@@ -58,7 +52,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
     }
 
-    private void introAnimation(){
+    private void introAnimation() {
 
         Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
@@ -77,7 +71,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         };
 
         AnimationGenericUtils.fadeInBottom(mFragmentPagerContainer, listener, getContext());
-        AnimationGenericUtils.slideRightToLeft(mDiscountContainer,0, getContext());
+        AnimationGenericUtils.slideRightToLeft(mDiscountContainer, 0, getContext());
 
     }
 
@@ -102,7 +96,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             }
         };
 
-        AnimationGenericUtils.slideOutBottomWithFadeOut(mPreferredContainer, listener ,getContext());
+        AnimationGenericUtils.slideOutBottomWithFadeOut(mPreferredContainer, listener, getContext());
 
         isValidOutro = false;
 
