@@ -73,8 +73,8 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 //
             }
         });*/
-        mToolbar.setTitle("Check In");
+        mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
         mToolbar.setTitleTextColor(getResources().getColor(R.color.neutral_white));
-        mToolbar.setBackgroundColor(getResources().getColor(R.color.dark_blue));
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.primary_blue));
     }
 }

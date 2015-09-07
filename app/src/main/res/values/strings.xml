@@ -37,6 +37,7 @@
 
 
     <!-- Layout Check In -->
+    <string name="check_in_tool_bar_title">Check In</string>
     <string name="check_in_success">You\'re checked in!</string>
     <!-- Layout Check In Search-->
     <string name="search_confirmation_number">Confirmation #</string>

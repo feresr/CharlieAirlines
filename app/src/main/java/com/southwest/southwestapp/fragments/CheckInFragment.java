@@ -1,22 +1,24 @@
 package com.southwest.southwestapp.fragments;
 
+import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.R;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.R;
-
 
 /**
  * Created by emiliano.gudino on 02/09/2015.
  */
-public class CheckInFragment extends BaseFragment implements View.OnClickListener{
+public class CheckInFragment extends BaseFragment implements View.OnClickListener {
 
-    private Button buttonConfirmation;
+    private Button mBtConfirmation;
+    private Toolbar mToolbar;
 
     public CheckInFragment() {
     }
@@ -25,11 +27,14 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        setHasOptionsMenu(true);
         View checkInView = inflater.inflate(R.layout.fragment_checkin, container, false);
 
-        buttonConfirmation = (Button) checkInView.findViewById(R.id.confirmationButton);
+        mBtConfirmation = (Button)checkInView.findViewById(R.id.confirmationButton);
+        mToolbar = (Toolbar)checkInView.findViewById(R.id.toolbar);
+        setUpToolBar();
 
-        buttonConfirmation.setOnClickListener(this);
+        mBtConfirmation.setOnClickListener(this);
 
         return checkInView;
     }
@@ -48,4 +53,11 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
 
         }
     }
+
+    private void setUpToolBar() {
+        mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.neutral_white));
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.primary_blue));
+    }
+    
 }
