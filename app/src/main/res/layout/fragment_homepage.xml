@@ -172,7 +172,7 @@
             android:drawableLeft="@drawable/abc_btn_check_material"
             android:text="New Button" />
 
-        
+
 
         <Button
             android:id="@+id/homepageManageTrips"
