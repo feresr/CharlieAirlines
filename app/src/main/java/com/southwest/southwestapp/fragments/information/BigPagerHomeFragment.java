@@ -1,11 +1,5 @@
 package com.southwest.southwestapp.fragments.information;
 
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.adapters.InformationAdapter;
-import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -17,11 +11,17 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.adapters.InformationAdapter;
+import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
+
 
 /**
  * Created by luisalfonsobejaranosanchez on 9/5/15.
  */
-public class InformationFragment extends BaseFragment implements View.OnClickListener {
+public class BigPagerHomeFragment extends BaseFragment implements View.OnClickListener {
 
     private static final float ZOOM_FACTOR = 1.03f;
 
@@ -38,20 +38,21 @@ public class InformationFragment extends BaseFragment implements View.OnClickLis
 
     private ImageButton mMenuAction;
 
-    public InformationFragment(){}
+    public BigPagerHomeFragment() {
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_pager_information, container, false);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPagerAdapter = new InformationAdapter(getContext(),getActivity().getSupportFragmentManager());
+        viewPagerAdapter = new InformationAdapter(getContext(), getActivity().getSupportFragmentManager());
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setCurrentItem(0);
 
-        firstBtn  =(Button)rootView.findViewById(R.id.footer_information_btn1);
-        secondBtn =(Button)rootView. findViewById(R.id.footer_information_btn2);
-        thirdButton = (Button)rootView. findViewById(R.id.footer_information_btn3);
+        firstBtn = (Button) rootView.findViewById(R.id.footer_information_btn1);
+        secondBtn = (Button) rootView.findViewById(R.id.footer_information_btn2);
+        thirdButton = (Button) rootView.findViewById(R.id.footer_information_btn3);
 
         bookinMenuContainer = (FrameLayout) rootView.findViewById(R.id.bookinMenuContainer);
 
@@ -75,7 +76,7 @@ public class InformationFragment extends BaseFragment implements View.OnClickLis
 
     }
 
-    private void setTab(){
+    private void setTab() {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -95,13 +96,13 @@ public class InformationFragment extends BaseFragment implements View.OnClickLis
 
     }
 
-    private void introAnimation(){
+    private void introAnimation() {
         AnimationGenericUtils.zoomOut(rootView, null, ZOOM_FACTOR);
     }
 
-    private void btnAction(int action){
+    private void btnAction(int action) {
 
-        switch(action){
+        switch (action) {
             case 0:
                 firstBtn.setPressed(true);
                 thirdButton.setPressed(false);
@@ -126,9 +127,9 @@ public class InformationFragment extends BaseFragment implements View.OnClickLis
 
     }
 
-    public void showMenuAnimation(){
+    public void showMenuAnimation() {
 
-        AnimationGenericUtils.fadeOutAnimation(mFooter,null,getContext());
+        AnimationGenericUtils.fadeOutAnimation(mFooter, null, getContext());
 
         Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
@@ -147,13 +148,13 @@ public class InformationFragment extends BaseFragment implements View.OnClickLis
             }
         };
 
-        AnimationGenericUtils.fadeOutAnimation(mMenuAction,listener, getContext());
+        AnimationGenericUtils.fadeOutAnimation(mMenuAction, listener, getContext());
 
     }
 
-    public void hideMenuAnimation(){
+    public void hideMenuAnimation() {
 
-        if(bookinMenuContainer.getVisibility() == View.VISIBLE) {
+        if (bookinMenuContainer.getVisibility() == View.VISIBLE) {
             Animation.AnimationListener listener = new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation arg0) {
@@ -178,7 +179,7 @@ public class InformationFragment extends BaseFragment implements View.OnClickLis
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.menuActionInformation:
                 showMenuAnimation();
                 break;
