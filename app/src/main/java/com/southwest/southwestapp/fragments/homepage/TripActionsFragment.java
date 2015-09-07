@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.BookingViewPagerAdapter;
@@ -17,27 +16,27 @@ import com.southwest.southwestapp.widgets.BookingTabTitleWidget;
 /**
  * Created by luisalfonsobejaranosanchez on 9/2/15.
  */
-public class HomeViewPager extends BaseFragment {
+public class TripActionsFragment extends BaseFragment {
 
     private final String WIDGET_TAG = "TabTitleHomeViewPager";
 
     private ViewPager mViewPager;
     private BookingTabTitleWidget mBookingTrips;
     private BookingTabTitleWidget mManageTrips;
-    private LinearLayout mTabTitleHolder;
     private BookingViewPagerAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_home_view_pager, container, false);
-        mTabTitleHolder = (LinearLayout) rootView.findViewById(R.id.viwTabTitleHolder);
+        View rootView = inflater.inflate(R.layout.fragment_trips_actions, container, false);
+
+        //Initialize views
         mViewPager = (ViewPager) rootView.findViewById(R.id.homepageManagePager);
 
-        mBookingTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.booking_trips);
+        mBookingTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.book_trips);
         mManageTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.manage_trips);
 
-
+        //Create/set viewpager adapter
         mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
         mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
         mViewPager.setAdapter(mAdapter);
@@ -68,7 +67,7 @@ public class HomeViewPager extends BaseFragment {
         }
 
         private void selectedTab(int tabIndex) {
-            switch (tabIndex){
+            switch (tabIndex) {
                 case 0:
                     mBookingTrips.setSelected();
                     mManageTrips.setDeselected();

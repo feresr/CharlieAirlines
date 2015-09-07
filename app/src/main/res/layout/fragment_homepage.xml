@@ -85,15 +85,14 @@
             android:visibility="invisible">
 
             <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/carat_right"
-                    android:layout_marginLeft="8dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/ptsArrow"
-            />
+                android:id="@+id/ptsArrow"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/carat_right" />
 
 
             <TextView
@@ -126,7 +125,6 @@
                 android:id="@+id/homepagePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/ptsSym"
                 android:layout_toLeftOf="@+id/ptsArrow"
                 android:layout_toStartOf="@+id/ptsArrow"
                 android:text="@string/homepage_list_preferred_value_pts"
@@ -137,7 +135,6 @@
 
 
             <TextView
-                android:id="@+id/ptsSym"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/homepageMainPreferredDetail"
@@ -146,8 +143,6 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />
-            android:layout_toStartOf="@+id/ptsArrow"
-
         </RelativeLayout>
 
 
@@ -193,6 +188,5 @@
         android:layout_width="match_parent"
         android:layout_height="260dp"
         android:layout_gravity="center_horizontal|bottom" />
-
 
 </FrameLayout>
