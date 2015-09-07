@@ -22,12 +22,10 @@ import com.southwest.southwestapp.utils.AnimationGenericUtils;
 public class HomePageFragment extends BaseFragment implements View.OnClickListener {
 
     private boolean isValidOutro = true;
-
-    private View mRoot;
+    
     private View mDiscountContainer;
     private RelativeLayout mPreferredContainer;
     private FrameLayout mFragmentPagerContainer;
-    private ViewPager mViewPromoPager;
 
     public HomePageFragment() {
     }
@@ -35,12 +33,11 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mRoot = inflater.inflate(R.layout.fragment_homepage, container, false);
+        View mRoot = inflater.inflate(R.layout.fragment_homepage, container, false);
 
         mDiscountContainer = mRoot.findViewById(R.id.homepageDiscountContainer);
         mPreferredContainer = (RelativeLayout) mRoot.findViewById(R.id.homepagePreferredContainer);
         mFragmentPagerContainer = (FrameLayout) mRoot.findViewById(R.id.fragmentPagerContainer);
-        mViewPromoPager = (ViewPager) mRoot.findViewById(R.id.homepageManagePromoPager);
 
         mDiscountContainer.setOnClickListener(this);
 
