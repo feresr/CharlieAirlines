@@ -94,7 +94,6 @@
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/carat_right" />
 
-
             <TextView
                 android:id="@+id/homepageMainPreferred"
                 android:layout_width="wrap_content"
@@ -133,7 +132,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +145,6 @@
 
 
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/homepageBookManageContainer"
@@ -181,7 +178,6 @@
             android:text="New Button" />
 
     </RelativeLayout>
-
 
     <FrameLayout
         android:id="@+id/fragmentPagerContainer"

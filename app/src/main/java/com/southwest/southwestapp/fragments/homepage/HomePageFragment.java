@@ -57,7 +57,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation arg0) {
-
             }
 
             @Override
