@@ -39,7 +39,7 @@ public class SplashFragment extends Fragment {
 
 
     private void proceedToMainScreen() {
-        long delay = 2500;
+        long delay = 1000;
         Timer RunSplash = new Timer();
 
         TimerTask ShowSplash = new TimerTask() {

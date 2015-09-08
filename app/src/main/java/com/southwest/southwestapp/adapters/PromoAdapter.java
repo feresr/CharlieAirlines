@@ -1,65 +1,40 @@
 package com.southwest.southwestapp.adapters;
 
-import android.content.Context;
+
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.southwest.southwestapp.fragments.information.FirstPageFragment;
-import com.southwest.southwestapp.fragments.information.SecondPageFragment;
-import com.southwest.southwestapp.fragments.information.ThirdPageFragment;
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.fragments.information.PromoPageFragment;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
+
+import java.util.ArrayList;
 
 public class PromoAdapter extends FragmentStatePagerAdapter {
 
-    private static final int TOTAL_PAGE = 3;
+    private ArrayList<PromoPageFragment> promos;
 
-    //TODO: refactor this, there should be just ONE promo fragment with different parameters
-    //(consider builder pattern)
-    private FirstPageFragment firstPage;
-    private SecondPageFragment secondPage;
-    private ThirdPageFragment thirdPage;
-
-    public PromoAdapter(Context context, FragmentManager fragmentManager) {
-        super(fragmentManager);
-        firstPage = FirstPageFragment.newInstance(context);
-        secondPage = SecondPageFragment.newInstance(context);
-        thirdPage = ThirdPageFragment.newInstance(context);
+    public PromoAdapter(FragmentActivity activity) {
+        super(activity.getSupportFragmentManager());
+        promos = new ArrayList<>();
+        promos.add(PromoPageFragment.newInstance(activity, R.layout.fragment_first_information_item, null, AnimationGenericUtils.animations.FADE_IN, true));
+        promos.add(PromoPageFragment.newInstance(activity, R.layout.fragment_second_information_item, AnimationGenericUtils.animations.SLIDE_IN_LEFT, AnimationGenericUtils.animations.SLIDE_IN_LEFT));
+        promos.add(PromoPageFragment.newInstance(activity, R.layout.fragment_third_information_item, AnimationGenericUtils.animations.FADE_IN, AnimationGenericUtils.animations.FADE_IN));
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new Fragment();
-        switch (position) {
-            case 0:
-                //TODO: refactor this as well, initializing this on the constructor is not a good idea.
-                //it could get garbage collected while the app is on the background. (null pointer)
-                return firstPage;
-            case 1:
-                return secondPage;
-            case 2:
-                return thirdPage;
-        }
-        return fragment;
+        return promos.get(position);
     }
 
-
     public void animateAtIndex(int index) {
-        switch (index) {
-            case 0:
-                firstPage.introAnimation();
-                break;
-            case 1:
-                secondPage.introAnimation();
-                break;
-            case 2:
-                thirdPage.introAnimation();
-                break;
-        }
+        promos.get(index).introAnimation();
     }
 
     @Override
     public int getCount() {
-        return TOTAL_PAGE;
+        return promos.size();
     }
 
 }

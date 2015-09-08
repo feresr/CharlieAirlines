@@ -1,89 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/homepageDiscountRoot"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:scaleType="centerCrop">
+    android:id="@+id/homepageDiscountRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scaleType="centerCrop">
 
     <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/credit_card" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/credit_card" />
 
     <RelativeLayout
-            android:id="@+id/thirdInformationTitlesContainer"
+        android:id="@+id/mainInformationContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="right"
+        android:layout_marginTop="69dp"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/informationMainTitleMiddle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="69dp"
-            android:clickable="true"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
+            android:layout_below="@+id/mainTitleTop"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true" >
+            android:layout_gravity="center_vertical"
+            android:text="@string/thirdpage_main_title_middle"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/neutral_white"
+            android:textSize="45sp"
+            android:textStyle="bold" />
 
         <TextView
-                android:id="@+id/informationMainTitleMiddle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/thirdpage_main_title_middle"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/neutral_white"
-                android:textSize="45sp"
-                android:layout_below="@+id/mainTitleTop"
-                android:layout_centerHorizontal="true"
-                android:textStyle="bold" />
+            android:id="@+id/mainTitleTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/thirdInformationBottomTitle"
+            android:layout_toStartOf="@+id/thirdInformationBottomTitle"
+            android:gravity="center"
+            android:text="@string/thirdpage_main_title_top"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/neutral_white" />
 
         <TextView
-                android:id="@+id/mainTitleTop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:text="@string/thirdpage_main_title_top"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/neutral_white"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/thirdInformationBottomTitle"
-                android:layout_toStartOf="@+id/thirdInformationBottomTitle"
-                android:layout_alignParentTop="true" />
+            android:id="@+id/thirdInformationBottomTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/informationMainTitleMiddle"
+            android:layout_centerHorizontal="true"
+            android:text="@string/thirdpage_main_title_bottom"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/neutral_white" />
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/thirdpage_main_title_bottom"
-                    android:textColor="@color/neutral_white"
-                    android:layout_below="@+id/informationMainTitleMiddle"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/thirdInformationBottomTitle" />
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/thirdpage_details"
-                android:textStyle="bold"
-                android:textColor="@color/information_book_text"
-                android:layout_marginTop="28dp"
-                android:id="@+id/thirdInformationDetail"
-                android:layout_below="@+id/thirdInformationBottomTitle"
-                android:layout_centerHorizontal="true"/>
+            android:id="@+id/thirdInformationDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thirdInformationBottomTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:text="@string/thirdpage_details"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/information_book_text"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <LinearLayout
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@+id/thirdInformationTitlesContainer"
-            android:layout_alignLeft="@+id/thirdInformationTitlesContainer"
-            android:layout_alignStart="@+id/thirdInformationTitlesContainer"
-            android:layout_marginTop="20dp"
-            android:id="@+id/secondInformationfoContainer"
-            android:layout_alignParentRight="true" >
+        android:id="@+id/secondaryInformationContainer"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainInformationContainer"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/mainInformationContainer"
+        android:layout_below="@+id/mainInformationContainer"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
     </LinearLayout>
 

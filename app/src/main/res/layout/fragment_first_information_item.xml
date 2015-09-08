@@ -1,107 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/homepageDiscountRoot"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:orientation="vertical"
-             android:scaleType="centerCrop">
+    android:id="@+id/homepageDiscountRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scaleType="centerCrop">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/home_page_background_image" />
+
+    <RelativeLayout
+        android:id="@+id/mainInformationContainer"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="right"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="105dp"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/informationMainTitleMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical"
+            android:text="@string/homepage_main_title"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/homepage_main_title"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mainTitleTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/informationMainTitleMiddle"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="@string/homepage_sub_title"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/homepage_sub_title" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/secondaryInformationContainer"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainInformationContainer"
+        android:layout_alignStart="@+id/mainInformationContainer"
+        android:layout_below="@+id/mainInformationContainer"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/firstInformationMainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/firstpage_main_title"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/firstInformationSubTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/home_page_background_image" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/firstpage_sub_title"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white"
+            android:textSize="15sp" />
 
-        <RelativeLayout
-                android:id="@+id/thirdInformationTitlesContainer"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="right"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="105dp"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/firstInformationBooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/firstpage_book_now"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/information_book_text"
+            android:textStyle="bold" />
 
-
-
-            <TextView
-                    android:id="@+id/informationMainTitleMiddle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/homepage_main_title"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/homepage_main_title"
-                    android:textSize="45sp"
-                    android:textStyle="bold" />
-
-            <TextView
-                    android:id="@+id/mainTitleTop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/informationMainTitleMiddle"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="center"
-                    android:text="@string/homepage_sub_title"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/homepage_sub_title" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-                android:layout_width="380dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="15dp"
-                android:layout_below="@+id/thirdInformationTitlesContainer"
-                android:layout_alignStart="@+id/thirdInformationTitlesContainer"
-                android:layout_alignLeft="@+id/thirdInformationTitlesContainer"
-                android:id="@+id/informationContainer"
-                >
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/firstpage_main_title"
-                    android:textStyle="bold"
-                    android:textColor="@color/neutral_white"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/firstInformationMainTitle"
-                    />
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/firstpage_sub_title"
-                    android:textColor="@color/neutral_white"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:textSize="15sp"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/firstInformationSubTitle" />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/firstpage_book_now"
-                    android:textStyle="bold"
-                    android:textColor="@color/information_book_text"
-                    android:layout_marginTop="8dp"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/firstInformationBooking" />
-
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
