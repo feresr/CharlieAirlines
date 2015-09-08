@@ -2,13 +2,11 @@ package com.southwest.southwestapp.utils;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
 import com.southwest.southwestapp.R;
 
@@ -113,27 +111,30 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void fadeOutScreenBottom(final View view, Context context) {
-
+    public static void fadeOutScreenBottom(final View view, Animation.AnimationListener listener ,Context context) {
 
         Animation fadeOutBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out_screen_bottom);
 
-        fadeOutBottomAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation arg0) {
+        if(listener != null){
+            fadeOutBottomAnimation.setAnimationListener(listener);
+        }else{
+            fadeOutBottomAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation arg0) {
 
-            }
+                }
 
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-            }
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
 
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                if (view.isShown())
-                    view.setVisibility(View.INVISIBLE);
-            }
-        });
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    if (view.isShown())
+                        view.setVisibility(View.INVISIBLE);
+                }
+            });
+        }
 
         view.startAnimation(fadeOutBottomAnimation);
 
