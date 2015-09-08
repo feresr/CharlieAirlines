@@ -40,7 +40,7 @@ public class SplashFragment extends Fragment {
 
 
     private void proceedToMainScreen() {
-        long delay = 2000;
+        long delay = 1000;
 
         TimerTask showSplash = new TimerTask() {
             @Override
