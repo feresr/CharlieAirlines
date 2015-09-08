@@ -71,7 +71,7 @@ public class BookingTabTitleWidget extends LinearLayout {
         mTitle.setText(mainTitle);
         icon = (ImageView) findViewById(R.id.booking_tab);
         if (hasValue) {
-            icon.setBackgroundResource(iconResource.resourceId);
+            icon.setImageResource(iconResource.resourceId);
         }
     }
 
