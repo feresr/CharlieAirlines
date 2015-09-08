@@ -13,6 +13,11 @@ import com.southwest.southwestapp.R;
 
 public class AnimationGenericUtils {
 
+    public static enum animations {
+        FADE_IN,
+        FADE_OUT,
+        SLIDE_IN_LEFT
+    }
 
     public static void fadeInAnimation(final View view, Context context) {
 

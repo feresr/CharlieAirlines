@@ -3,7 +3,6 @@ package com.southwest.southwestapp.widgets;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -13,8 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-
 
 
 public class BookingTabTitleWidget extends LinearLayout {
