@@ -52,6 +52,7 @@ public class TripActionsFragment extends BaseFragment {
 
         mManageTrips.setOnClickListener(tabClickListener);
         mBookingTrips.setOnClickListener(tabClickListener);
+        mBookingTrips.setSelected();
 
         return rootView;
     }
