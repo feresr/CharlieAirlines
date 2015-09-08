@@ -1,14 +1,9 @@
 package com.southwest.southwestapp.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 
-import android.renderscript.Allocation;
-import android.renderscript.Element;
-import android.renderscript.RenderScript;
-import android.renderscript.ScriptIntrinsicBlur;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -39,13 +34,18 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         super(fragmentManager);
         this.context = context;
 
-        int ae[] = new int[3];
-        ae[0] = android.R.drawable.ic_lock_idle_alarm;
-        ae[1] = android.R.drawable.ic_lock_idle_alarm;
-        ae[2] = android.R.drawable.ic_lock_idle_alarm;
+        int bookIcons[] = new int[3];
+        bookIcons[0] = R.drawable.home_book_flight_icon;
+        bookIcons[1] = R.drawable.home_car_icon;
+        bookIcons[2] = R.drawable.home_checkin_icon;
 
-        bookTrips   =  BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), ae  );
-        manageTrips =  ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), ae  );
+        int manageIcons[] = new int[3];
+        manageIcons[0] = R.drawable.home_checkin_icon;
+        manageIcons[1] = R.drawable.home_flight_status_icon;
+        manageIcons[2] = R.drawable.home_book_flight_icon;
+
+        bookTrips   =  BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), bookIcons  );
+        manageTrips =  ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), manageIcons  );
 
     }
 
