@@ -21,6 +21,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:padding="5dp"
         android:id="@+id/labelWrapper">
 
@@ -28,6 +29,7 @@
             android:id="@+id/successText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/check_mark_circle"
             android:drawableLeft="@drawable/check_mark_circle"
             android:layout_gravity="center_vertical"
             style="@style/textWhiteTitle"
@@ -124,6 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
+                        android:layout_gravity="center_vertical"
                         android:text="boarding group" />
 
                     <TextView
@@ -137,6 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
+                        android:layout_gravity="center_vertical"
                         android:text="position" />
 
                     <TextView
@@ -162,7 +166,8 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -175,7 +180,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 </LinearLayout>
