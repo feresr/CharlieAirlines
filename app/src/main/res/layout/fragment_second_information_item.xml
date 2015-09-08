@@ -1,90 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/homepageDiscountRoot"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+    android:id="@+id/homepageDiscountRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/rsz_nfl_image" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rsz_nfl_image" />
 
     <RelativeLayout
-            android:id="@+id/thirdInformationTitlesContainer"
+        android:id="@+id/mainInformationContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="right"
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="101dp"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/informationMainTitleMiddle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="101dp"
-            android:clickable="true"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:layout_marginLeft="46dp"
-            android:layout_marginStart="46dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" >
+            android:layout_below="@+id/mainTitleTop"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical"
+            android:text="@string/secondpage_main_title_second"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/homepage_main_title"
+            android:textSize="45sp"
+            android:textStyle="bold" />
 
         <TextView
-                android:id="@+id/informationMainTitleMiddle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/secondpage_main_title_second"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/homepage_main_title"
-                android:textSize="45sp"
-                android:layout_below="@+id/mainTitleTop"
-                android:layout_centerHorizontal="true"
-                android:textStyle="bold" />
-
-        <TextView
-                android:id="@+id/mainTitleTop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:text="@string/secondpage_main_title_first"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/neutral_white"
-                android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/informationMainTitleMiddle"
-                android:layout_alignStart="@+id/informationMainTitleMiddle"/>
+            android:id="@+id/mainTitleTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/informationMainTitleMiddle"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/informationMainTitleMiddle"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="@string/secondpage_main_title_first"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/neutral_white" />
 
     </RelativeLayout>
 
     <LinearLayout
-            android:layout_width="380dp"
+        android:id="@+id/secondaryInformationContainer"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainInformationContainer"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/mainInformationContainer"
+        android:layout_below="@+id/mainInformationContainer"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/secondInformation"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@+id/thirdInformationTitlesContainer"
-            android:layout_alignLeft="@+id/thirdInformationTitlesContainer"
-            android:layout_alignStart="@+id/thirdInformationTitlesContainer"
-            android:layout_marginTop="20dp"
-            android:id="@+id/secondInformationfoContainer"
-            android:layout_alignParentRight="true" >
-
+            android:text="@string/firstpage_main_title"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/firstpage_main_title"
-                android:textColor="@color/neutral_white"
-                android:id="@+id/secondInformation"
-                />
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/firstpage_book_now"
-                android:textStyle="bold"
-                android:textColor="@color/information_book_blue_text"
-                android:layout_marginTop="10dp"
-                android:id="@+id/secondInformationBooking" />
+            android:id="@+id/secondInformationBooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/firstpage_book_now"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/information_book_blue_text"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
