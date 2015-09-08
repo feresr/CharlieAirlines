@@ -78,8 +78,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
     private void outroAnimation() {
 
-        AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, getContext());
-
         Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation arg0) {
@@ -96,9 +94,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             }
         };
 
-        AppHelper.screenManager.showInformationScreen(getActivity());
-
-        //AnimationGenericUtils.slideOutBottomWithFadeOut(mPreferredContainer, listener, getContext());
+        AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, listener,getContext());
 
         isValidOutro = false;
 
