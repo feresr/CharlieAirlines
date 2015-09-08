@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +27,8 @@ public class BookingTabTitleWidget extends LinearLayout {
 
     private TypedValue iconResource;
     private boolean hasValue;
+
+    private View mRoot;
 
 
     public BookingTabTitleWidget(Context context) {
@@ -63,7 +66,7 @@ public class BookingTabTitleWidget extends LinearLayout {
     }
 
     private void initializeViews(Context context) {
-        inflate(context, R.layout.booking_tab_title, this);
+        mRoot = (LinearLayout) inflate(context, R.layout.booking_tab_title, this);
         mTitle = (TextView) findViewById(R.id.booking_tab_main_title);
         mTitle.setText(mainTitle);
         icon = (ImageView) findViewById(R.id.booking_tab);
@@ -74,11 +77,11 @@ public class BookingTabTitleWidget extends LinearLayout {
 
 
     public void setSelected() {
-        icon.setBackgroundResource(android.R.drawable.ic_menu_agenda);
+        mRoot.setBackgroundResource(R.drawable.sel_selected_booking_tab_title);
     }
 
     public void setDeselected() {
-        icon.setBackgroundResource(R.drawable.ic_launcher);
+        mRoot.setBackgroundResource(android.R.color.transparent);
     }
 
     @Override

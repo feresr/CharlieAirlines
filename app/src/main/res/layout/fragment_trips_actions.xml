@@ -8,8 +8,8 @@
     <LinearLayout
         android:id="@+id/viwTabTitleHolder"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:layout_height="65dp"
+        android:background="@color/transparent_gray_3"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -19,7 +19,10 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:bookingIcon="@drawable/ic_launcher"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center_vertical"
+
+            app:bookingIcon="@drawable/nav_drawer_profile_icon"
             app:bookingTitle="@string/book_trips">
 
         </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
@@ -28,9 +31,11 @@
             android:id="@+id/manage_trips"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginRight="5dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:clickable="true"
-            app:bookingIcon="@drawable/ic_launcher"
+            app:bookingIcon="@drawable/nav_drawer_profile_icon"
             app:bookingTitle="@string/manage_trips">
 
         </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
@@ -41,6 +46,7 @@
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/homepageManagePager"
         android:layout_width="match_parent"
+        android:background="@color/transparent_gray"
         android:layout_height="match_parent" />
 
 </LinearLayout>

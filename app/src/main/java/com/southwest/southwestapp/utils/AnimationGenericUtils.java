@@ -2,13 +2,11 @@ package com.southwest.southwestapp.utils;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
 import com.southwest.southwestapp.R;
 
