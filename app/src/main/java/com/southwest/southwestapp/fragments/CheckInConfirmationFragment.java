@@ -3,6 +3,7 @@ package com.southwest.southwestapp.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
     private TextView successText;
     private Button mBtBoardingPass;
     private CardView cardContent;
+    private Toolbar mToolbar;
     
     public CheckInConfirmationFragment() {
     }
@@ -32,6 +34,9 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View confirmationView = inflater.inflate(R.layout.fragment_confirmation, container, false);
+
+        mToolbar = (Toolbar)confirmationView.findViewById(R.id.toolbar);
+        setUpToolBar();
 
         successText = (TextView) confirmationView.findViewById(R.id.successText);
         cardContent = (CardView) confirmationView.findViewById(R.id.card_view);
@@ -59,5 +64,11 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
             default:
                 break;
         }
+    }
+
+    private void setUpToolBar() {
+        mToolbar.setTitle("Confirmation");
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.neutral_white));
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.primary_blue));
     }
 }

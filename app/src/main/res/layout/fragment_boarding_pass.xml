@@ -45,9 +45,9 @@
 
                         <ImageView
                                 android:id="@+id/imageView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/common_signin_btn_text_focus_dark"/>
+                                android:layout_width="130dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/southwest_logo"/>
 
                         <TextView
                                 android:layout_width="wrap_content"
