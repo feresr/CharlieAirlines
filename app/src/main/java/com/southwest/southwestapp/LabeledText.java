@@ -3,8 +3,10 @@ package com.southwest.southwestapp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,6 +18,8 @@ public class LabeledText extends RelativeLayout {
     private String mainText;
     private String upperText;
     private String bottomText;
+    private Drawable imgRight;
+    private Drawable imgLeft;
 
     public LabeledText(Context context) {
         super(context);
@@ -47,18 +51,30 @@ public class LabeledText extends RelativeLayout {
         mainText = typedArray.getString(R.styleable.LabeledText_mainText);
         upperText = typedArray.getString(R.styleable.LabeledText_upperText);
         bottomText = typedArray.getString(R.styleable.LabeledText_bottomText);
+        imgRight = typedArray.getDrawable(R.styleable.LabeledText_rightImage);
+        imgLeft = typedArray.getDrawable(R.styleable.LabeledText_leftImage);
         typedArray.recycle();
     }
 
 
     private void initializeViews(Context context) {
         inflate(context, R.layout.labeled_text, this);
-        ((TextView) findViewById(R.id.main)).setText(mainText);
+        ((TextView) findViewById(R.id.main_text)).setText(mainText);
         ((TextView) findViewById(R.id.above)).setText(upperText);
         if (bottomText != null && !bottomText.isEmpty()) {
             ((TextView) findViewById(R.id.below)).setText(bottomText);
         } else {
             (findViewById(R.id.below)).setVisibility(GONE);
+        }
+        if (imgRight != null) {
+            ((ImageView) findViewById(R.id.img_right)).setImageDrawable(imgRight);
+        } else {
+            (findViewById(R.id.img_right)).setVisibility(GONE);
+        }
+        if (imgLeft != null) {
+            ((ImageView) findViewById(R.id.img_left)).setImageDrawable(imgLeft);
+        } else {
+            (findViewById(R.id.img_left)).setVisibility(GONE);
         }
     }
 
