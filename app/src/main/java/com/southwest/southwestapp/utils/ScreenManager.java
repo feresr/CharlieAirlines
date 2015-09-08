@@ -56,6 +56,8 @@ public class ScreenManager {
 
     public void showBoardingPassScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        setDefaultAnim(ft);
+        ft.addToBackStack("boardingPassScreen");
         BoardingPassFragment boardingPassFragment = new BoardingPassFragment();
         ft.replace(R.id.container, boardingPassFragment);
         ft.commit();

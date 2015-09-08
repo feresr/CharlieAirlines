@@ -56,10 +56,10 @@
 
     <style name="textGreen" parent="@android:style/TextAppearance" >
         <item name="android:textColor">@color/green</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">15dp</item>
-        <item name="android:gravity">bottom</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="checkInLayout">

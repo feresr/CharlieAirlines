@@ -41,7 +41,8 @@ public class BoardingPassFragment extends BaseFragment{
     }
 
     private void setUpToolBar() {
-        mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+        mToolbar.setTitle(getResources().getString(R.string.boarding_pass_title));
+        mToolbar.setSubtitle(getResources().getString(R.string.boarding_pass_subtitle));
         mToolbar.setTitleTextColor(getResources().getColor(R.color.neutral_white));
         mToolbar.setBackgroundColor(getResources().getColor(R.color.primary_blue));
     }
