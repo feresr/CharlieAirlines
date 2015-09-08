@@ -67,4 +67,15 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
+    <style name="toolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@color/primary_blue</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="fragmentsCheckInBackground">
+        <item name="android:background">@color/dark_blue</item>
+    </style>
+
 </resources>

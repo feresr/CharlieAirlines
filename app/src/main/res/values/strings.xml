@@ -88,4 +88,9 @@
     <string name="thirdpage_main_title_bottom">cover your next trip</string>
     <string name="thirdpage_details">Get details</string>
 
+    <!--menu-->
+    <string name="menu_title_cancel">Cancel</string>
+    <string name="menu_title_done">Done</string>
+    <string name="menu_title_close">Close</string>
+
 </resources>
