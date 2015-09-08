@@ -96,7 +96,7 @@
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
 
-            app:bookingIcon="@drawable/nav_drawer_profile_icon"
+            app:bookingIcon="@drawable/ic_place_white"
             app:bookingTitle="@string/book_trips">
 
         </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            app:bookingIcon="@drawable/nav_drawer_profile_icon"
+            app:bookingIcon="@drawable/ic_today_white"
             app:bookingTitle="@string/manage_trips">
 
         </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
