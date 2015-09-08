@@ -3,7 +3,7 @@
     android:id="@+id/booking_tab_container"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="#3222"
+    android:background="@android:color/transparent"
     android:gravity="center"
     android:orientation="horizontal">
 
@@ -18,7 +18,6 @@
         android:id="@+id/booking_tab_main_title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/booking_tab"
