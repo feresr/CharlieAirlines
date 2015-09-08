@@ -47,7 +47,6 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         mEtConfirmationNumber = (EditText)view.findViewById(R.id.edt_confirmation);
         mEtFirstName = (EditText)view.findViewById(R.id.edt_first_name);
         mEtLastName = (EditText)view.findViewById(R.id.edt_last_name);
-        mTvEligibleTrips = (TextView)view.findViewById(R.id.tv_eligible_trips);
 
         mBtRetrieve.setOnClickListener(this);
         mToolbar.setNavigationOnClickListener(this);

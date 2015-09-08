@@ -77,6 +77,12 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        return false;
+        switch(item.getItemId()){
+            case R.id.confirmationMenu:
+                getActivity().finish();
+                return true;
+            default:
+                return false;
+        }
     }
 }
