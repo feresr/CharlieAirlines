@@ -35,14 +35,14 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         this.context = context;
 
         int bookIcons[] = new int[3];
-        bookIcons[0] = R.drawable.home_book_flight_icon;
-        bookIcons[1] = R.drawable.home_car_icon;
-        bookIcons[2] = R.drawable.home_checkin_icon;
+        bookIcons[0] = R.drawable.nav_drawer_flight_icon;
+        bookIcons[1] = R.drawable.nav_drawer_car_icon;
+        bookIcons[2] = R.drawable.ic_local_offer_black_48dp;
 
         int manageIcons[] = new int[3];
-        manageIcons[0] = R.drawable.home_checkin_icon;
-        manageIcons[1] = R.drawable.home_flight_status_icon;
-        manageIcons[2] = R.drawable.home_book_flight_icon;
+        manageIcons[0] = R.drawable.ic_check_black_48dp;
+        manageIcons[1] = R.drawable.ic_access_time_black_48dp;
+        manageIcons[2] = R.drawable.ic_swap_horiz_black_48dp;
 
         bookTrips   =  BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), bookIcons  );
         manageTrips =  ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), manageIcons  );
@@ -141,7 +141,7 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
             for(int b=0; b<childCount; b++){
                 mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
                 ( (TextView)mItems[b].findViewById(R.id.item_homepage_first_title)).setText(titles[b]);
-                ( (ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setBackgroundResource(drawables[b]);
+                ( (ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setImageResource(drawables[b]);
             }
         }
 

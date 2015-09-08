@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
 
-
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
@@ -94,7 +93,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             }
         };
 
-        AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, listener,getContext());
+        AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, listener, getContext());
 
         isValidOutro = false;
 
