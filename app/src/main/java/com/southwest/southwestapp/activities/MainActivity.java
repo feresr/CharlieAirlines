@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle(null);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.checkIn:
                         AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this);
                         mCurrentSelectedPosition = 0;
+                        return true;
+
+                    case R.id.home:
+                        AppHelper.screenManager.showMainScreen(MainActivity.this);
                         return true;
                     default:
                         //Event not handled: return false.

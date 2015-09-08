@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/viwTabTitleHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.southwest.southwestapp.widgets.BookingTabTitleWidget
+            android:id="@+id/book_trips"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:bookingIcon="@drawable/ic_launcher"
+            app:bookingTitle="@string/book_trips">
+
+        </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
+
+        <com.southwest.southwestapp.widgets.BookingTabTitleWidget
+            android:id="@+id/manage_trips"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:bookingIcon="@drawable/ic_launcher"
+            app:bookingTitle="@string/manage_trips">
+
+        </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
+
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/homepageManagePager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

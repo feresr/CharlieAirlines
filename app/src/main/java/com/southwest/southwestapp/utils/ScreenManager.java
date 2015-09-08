@@ -3,11 +3,14 @@ package com.southwest.southwestapp.utils;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
 import com.southwest.southwestapp.fragments.BoardingPassFragment;
+import com.southwest.southwestapp.activities.MainActivity;
 import com.southwest.southwestapp.fragments.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.CheckInFragment;
 import com.southwest.southwestapp.fragments.CheckInSearchFragment;
 import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
+import com.southwest.southwestapp.fragments.information.BigPagerHomeFragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -63,4 +66,15 @@ public class ScreenManager {
         ft.commit();
     }
 
+    public void showInformationScreen(FragmentActivity origin) {
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        BigPagerHomeFragment homePageFragment = new BigPagerHomeFragment();
+        ft.replace(R.id.container, homePageFragment);
+        ft.commit();
+    }
+
+    public void showMainScreenFromSplash(Activity origin) {
+        Intent intent = new Intent(origin, MainActivity.class);
+        origin.startActivity(intent);
+    }
 }

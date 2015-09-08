@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BookingTabTitleWidget">
+        <attr name="bookingTitle" format="string"/>
+        <attr name="animationTime" format="integer"/>
+        <attr name="bookingIcon" format="reference" />
+    </declare-styleable>
+</resources>
