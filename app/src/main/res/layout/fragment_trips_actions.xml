@@ -5,21 +5,92 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/homepagePreferredContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/ptsArrow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/carat_right" />
+
+        <TextView
+            android:id="@+id/homepageMainPreferred"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/homepage_list_preferred"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/homepageMainPreferredDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/homepageMainPreferred"
+            android:text="@string/homepage_list_preferred_code"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/homepagePoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/ptsArrow"
+            android:layout_toStartOf="@+id/ptsArrow"
+            android:text="@string/homepage_list_preferred_value_pts"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/homepageMainPreferredDetail"
+            android:layout_toLeftOf="@+id/ptsArrow"
+            android:text="@string/homepage_list_preferred_pts"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
     <LinearLayout
         android:id="@+id/viwTabTitleHolder"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:layout_height="65dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/transparent_gray_3"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <com.southwest.southwestapp.widgets.BookingTabTitleWidget
             android:id="@+id/book_trips"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:clickable="true"
-            app:bookingIcon="@drawable/ic_launcher"
+            app:bookingIcon="@drawable/ic_place_white"
             app:bookingTitle="@string/book_trips">
 
         </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
@@ -27,20 +98,22 @@
         <com.southwest.southwestapp.widgets.BookingTabTitleWidget
             android:id="@+id/manage_trips"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:clickable="true"
-            app:bookingIcon="@drawable/ic_launcher"
+            app:bookingIcon="@drawable/ic_today_white"
             app:bookingTitle="@string/manage_trips">
 
         </com.southwest.southwestapp.widgets.BookingTabTitleWidget>
-
 
     </LinearLayout>
 
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/homepageManagePager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/transparent_gray" />
 
 </LinearLayout>

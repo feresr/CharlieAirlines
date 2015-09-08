@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
@@ -23,7 +22,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
     private boolean isValidOutro = true;
 
     private View mDiscountContainer;
-    private RelativeLayout mPreferredContainer;
+    private TripActionsFragment mTripFragment;
     private FrameLayout mFragmentPagerContainer;
 
     public HomePageFragment() {
@@ -35,7 +34,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         View mRootView = inflater.inflate(R.layout.fragment_homepage, container, false);
 
         mDiscountContainer = mRootView.findViewById(R.id.homepageDiscountContainer);
-        mPreferredContainer = (RelativeLayout) mRootView.findViewById(R.id.homepagePreferredContainer);
         mFragmentPagerContainer = (FrameLayout) mRootView.findViewById(R.id.fragmentPagerContainer);
         mDiscountContainer.setOnClickListener(this);
 
@@ -47,8 +45,10 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
         super.onActivityCreated(savedInstanceState);
         introAnimation();
 
+        mTripFragment = new TripActionsFragment();
+
         getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentPagerContainer, new TripActionsFragment()).commit();
+                .add(R.id.fragmentPagerContainer, mTripFragment).commit();
 
     }
 
@@ -65,7 +65,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
             @Override
             public void onAnimationEnd(Animation arg0) {
-                AnimationGenericUtils.fadeInAnimation(mPreferredContainer, getContext());
+                mTripFragment.showPreferredInfo();
             }
         };
 
@@ -76,8 +76,6 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
 
 
     private void outroAnimation() {
-
-        AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, getContext());
 
         Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
@@ -95,7 +93,7 @@ public class HomePageFragment extends BaseFragment implements View.OnClickListen
             }
         };
 
-        AnimationGenericUtils.slideOutBottomWithFadeOut(mPreferredContainer, listener, getContext());
+        AnimationGenericUtils.fadeOutScreenBottom(mFragmentPagerContainer, listener, getContext());
 
         isValidOutro = false;
 

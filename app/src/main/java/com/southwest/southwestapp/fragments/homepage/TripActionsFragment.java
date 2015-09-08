@@ -6,10 +6,12 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.BookingViewPagerAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 import com.southwest.southwestapp.widgets.BookingTabTitleWidget;
 
 
@@ -24,6 +26,7 @@ public class TripActionsFragment extends BaseFragment {
     private BookingTabTitleWidget mBookingTrips;
     private BookingTabTitleWidget mManageTrips;
     private BookingViewPagerAdapter mAdapter;
+    private RelativeLayout mPreferredContainer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class TripActionsFragment extends BaseFragment {
 
         //Initialize views
         mViewPager = (ViewPager) rootView.findViewById(R.id.homepageManagePager);
+        mPreferredContainer = (RelativeLayout) rootView.findViewById(R.id.homepagePreferredContainer);
 
         mBookingTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.book_trips);
         mManageTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.manage_trips);
@@ -48,10 +52,14 @@ public class TripActionsFragment extends BaseFragment {
 
         mManageTrips.setOnClickListener(tabClickListener);
         mBookingTrips.setOnClickListener(tabClickListener);
+        mBookingTrips.setSelected();
 
         return rootView;
     }
 
+    public void showPreferredInfo(){
+        AnimationGenericUtils.fadeInAnimation(mPreferredContainer, getContext());
+    }
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
 

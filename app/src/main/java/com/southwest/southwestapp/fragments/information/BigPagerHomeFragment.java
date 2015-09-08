@@ -17,10 +17,6 @@ import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
-
-/**
- * Created by luisalfonsobejaranosanchez on 9/5/15.
- */
 public class BigPagerHomeFragment extends BaseFragment implements View.OnClickListener {
 
     private static final float ZOOM_FACTOR = 1.03f;
@@ -46,7 +42,8 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
         rootView = inflater.inflate(R.layout.fragment_pager_information, container, false);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPagerAdapter = new PromoAdapter(getContext(), getActivity().getSupportFragmentManager());
+
+        viewPagerAdapter = new PromoAdapter(getActivity());
         mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.setCurrentItem(0);
 
@@ -77,54 +74,36 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
     }
 
     private void setTab() {
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageScrollStateChanged(int position) {
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                btnAction(position);
-            }
+                viewPagerAdapter.animateAtIndex(position);
+                hideMenuAnimation();
 
+                switch (position) {
+                    case 0:
+                        firstBtn.setPressed(true);
+                        thirdButton.setPressed(false);
+                        secondBtn.setPressed(false);
+                        break;
+                    case 1:
+                        secondBtn.setPressed(true);
+                        firstBtn.setPressed(false);
+                        thirdButton.setPressed(false);
+                        break;
+                    case 2:
+                        thirdButton.setPressed(true);
+                        secondBtn.setPressed(false);
+                        firstBtn.setPressed(false);
+                        break;
+                }
+            }
         });
 
     }
 
     private void introAnimation() {
         AnimationGenericUtils.zoomOut(rootView, null, ZOOM_FACTOR);
-    }
-
-    private void btnAction(int action) {
-
-        switch (action) {
-            case 0:
-                firstBtn.setPressed(true);
-                thirdButton.setPressed(false);
-                secondBtn.setPressed(false);
-                hideMenuAnimation();
-                break;
-            case 1:
-                secondBtn.setPressed(true);
-                firstBtn.setPressed(false);
-                thirdButton.setPressed(false);
-                viewPagerAdapter.animateAtIndex(1);
-                hideMenuAnimation();
-                break;
-            case 2:
-                thirdButton.setPressed(true);
-                secondBtn.setPressed(false);
-                firstBtn.setPressed(false);
-                viewPagerAdapter.animateAtIndex(2);
-                hideMenuAnimation();
-                break;
-        }
-
     }
 
     public void showMenuAnimation() {

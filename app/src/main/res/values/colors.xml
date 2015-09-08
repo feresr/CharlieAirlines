@@ -23,5 +23,9 @@
     <color name="primary_red">#d5152e</color>
     <color name="primary_yellow">#ffbf27</color>
 
+    <color name="transparent_gray">#308f8f8f</color>
+    <color name="transparent_gray_2">#608f8f8f</color>
+    <color name="transparent_gray_3">#35000000</color>
+
 
 </resources>

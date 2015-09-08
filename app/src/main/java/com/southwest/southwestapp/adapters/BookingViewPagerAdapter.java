@@ -1,14 +1,9 @@
 package com.southwest.southwestapp.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 
-import android.renderscript.Allocation;
-import android.renderscript.Element;
-import android.renderscript.RenderScript;
-import android.renderscript.ScriptIntrinsicBlur;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -39,13 +34,18 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         super(fragmentManager);
         this.context = context;
 
-        int ae[] = new int[3];
-        ae[0] = android.R.drawable.ic_lock_idle_alarm;
-        ae[1] = android.R.drawable.ic_lock_idle_alarm;
-        ae[2] = android.R.drawable.ic_lock_idle_alarm;
+        int bookIcons[] = new int[3];
+        bookIcons[0] = R.drawable.nav_drawer_flight_icon;
+        bookIcons[1] = R.drawable.nav_drawer_car_icon;
+        bookIcons[2] = R.drawable.ic_local_offer_black_48dp;
 
-        bookTrips   =  BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), ae  );
-        manageTrips =  ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), ae  );
+        int manageIcons[] = new int[3];
+        manageIcons[0] = R.drawable.ic_check_black_48dp;
+        manageIcons[1] = R.drawable.ic_access_time_black_48dp;
+        manageIcons[2] = R.drawable.ic_swap_horiz_black_48dp;
+
+        bookTrips   =  BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), bookIcons  );
+        manageTrips =  ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), manageIcons  );
 
     }
 
@@ -141,7 +141,7 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
             for(int b=0; b<childCount; b++){
                 mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
                 ( (TextView)mItems[b].findViewById(R.id.item_homepage_first_title)).setText(titles[b]);
-                ( (ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setBackgroundResource(drawables[b]);
+                ( (ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setImageResource(drawables[b]);
             }
         }
 
