@@ -71,6 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        app:rightImage="@drawable/wifi_available"
                         app:mainText="1977"
                         app:upperText="FLIGHT" />
 
@@ -79,6 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        app:leftImage="@drawable/time_icon"
                         app:mainText="1h 35m"
                         app:upperText="TRAVEL TIME" />
 
