@@ -18,6 +18,7 @@ import java.util.TimerTask;
  */
 public class SplashFragment extends Fragment {
 
+    private Timer runSplash = new Timer();
 
     public SplashFragment() {
         // Required empty public constructor
@@ -39,10 +40,9 @@ public class SplashFragment extends Fragment {
 
 
     private void proceedToMainScreen() {
-        long delay = 1000;
-        Timer RunSplash = new Timer();
+        long delay = 2000;
 
-        TimerTask ShowSplash = new TimerTask() {
+        TimerTask showSplash = new TimerTask() {
             @Override
             public void run() {
                 AppHelper.screenManager.showMainScreenFromSplash(getActivity());
@@ -50,6 +50,12 @@ public class SplashFragment extends Fragment {
         };
 
         // Start the timer
-        RunSplash.schedule(ShowSplash, delay);
+        runSplash.schedule(showSplash, delay);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        runSplash.cancel();
     }
 }
