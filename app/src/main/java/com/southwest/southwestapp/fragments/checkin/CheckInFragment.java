@@ -19,6 +19,7 @@ import android.widget.Button;
  * Created by emiliano.gudino on 02/09/2015.
  */
 public class CheckInFragment extends BaseFragment implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
+    
     private static final String TAG = CheckInFragment.class.getSimpleName();
 
     private Button mBtConfirmation;

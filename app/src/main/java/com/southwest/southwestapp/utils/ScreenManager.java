@@ -4,9 +4,9 @@ import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
 import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.activities.MainActivity;
-import com.southwest.southwestapp.fragments.CheckInConfirmationFragment;
-import com.southwest.southwestapp.fragments.CheckInFragment;
-import com.southwest.southwestapp.fragments.CheckInSearchFragment;
+import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
+import com.southwest.southwestapp.fragments.checkin.CheckInFragment;
+import com.southwest.southwestapp.fragments.checkin.CheckInSearchFragment;
 import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
 import com.southwest.southwestapp.fragments.information.BigPagerHomeFragment;
 
