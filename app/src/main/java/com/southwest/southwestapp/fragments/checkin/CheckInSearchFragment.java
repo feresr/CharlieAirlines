@@ -45,9 +45,9 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
         mBtRetrieve = (Button)view.findViewById(R.id.btn_retrieve_reservation);
         mEtConfirmationNumber = (EditText)view.findViewById(R.id.edt_confirmation);
-      /*  mEtFirstName = (EditText)view.findViewById(R.id.edt_first_name);
+        mEtFirstName = (EditText)view.findViewById(R.id.edt_first_name);
         mEtLastName = (EditText)view.findViewById(R.id.edt_last_name);
-        mTvEligibleTrips = (TextView)view.findViewById(R.id.tv_eligible_trips);*/
+        mTvEligibleTrips = (TextView)view.findViewById(R.id.tv_eligible_trips);
 
         mBtRetrieve.setOnClickListener(this);
         mToolbar.setNavigationOnClickListener(this);
@@ -73,6 +73,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 break;
             default:
                 Log.d(TAG,"ESTE ES EL ID ["+view.getId()+"]");
+                getActivity().finish();
                 break;
 
         }
