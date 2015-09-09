@@ -13,13 +13,13 @@ import android.view.MenuItem;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TripActionsFragment.Slideable {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
-    private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                         //Event not handled: return false.
                         return false;
                 }
-
             }
         });
     }
@@ -127,5 +126,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void slideTripPanelUp() {
+
+    }
+
+    @Override
+    public void slideTripPanelDown() {
+
     }
 }

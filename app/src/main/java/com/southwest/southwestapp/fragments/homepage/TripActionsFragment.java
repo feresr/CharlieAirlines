@@ -108,7 +108,12 @@ public class TripActionsFragment extends BaseFragment {
 
 
     public interface OnTabSelectedListener {
-        public void onTabSelected(int position);
+        void onTabSelected(int position);
+    }
+
+    public interface Slideable {
+        void slideTripPanelUp();
+        void slideTripPanelDown();
     }
 
 }
