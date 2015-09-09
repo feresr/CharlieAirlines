@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +22,7 @@ import com.southwest.southwestapp.utils.AnimationGenericUtils;
 /**
  * Created by luisalfonsobejaranosanchez on 9/2/15.
  */
-public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
+public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
     private String[] mPageTitles;
@@ -88,6 +88,8 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         }
 
     }
+
+
 
     @Override
     public int getCount() {
