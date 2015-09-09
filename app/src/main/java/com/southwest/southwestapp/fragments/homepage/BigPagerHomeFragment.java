@@ -18,7 +18,7 @@ import com.southwest.southwestapp.views.BigPageViewPager;
 
 public class BigPagerHomeFragment extends BaseFragment implements View.OnClickListener {
 
-    private static final float ZOOM_FACTOR = 1.03f;
+    private static final float ZOOM_FACTOR = 1.04f;
 
     private View rootView;
     private View mFooter;

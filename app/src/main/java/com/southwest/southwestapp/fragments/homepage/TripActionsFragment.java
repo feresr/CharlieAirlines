@@ -70,7 +70,7 @@ public class TripActionsFragment extends BaseFragment {
         @Override
         public void onPageSelected(int position) {
             if (mAdapter != null) {
-                android.support.v4.app.Fragment f = (android.support.v4.app.Fragment) mAdapter.getItem(position);
+                android.support.v4.app.Fragment f = mAdapter.getItem(position);
                 if (f != null && f instanceof OnTabSelectedListener) {
                     ((OnTabSelectedListener) f).onTabSelected(position);
                 }
