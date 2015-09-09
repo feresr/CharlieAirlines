@@ -35,8 +35,7 @@
             android:layout_marginBottom="120dp"
             android:background="@null"
             android:padding="30dp"
-            android:src="@drawable/abc_ic_clear_mtrl_alpha"
-            android:visibility="invisible" />
+            android:src="@drawable/abc_ic_clear_mtrl_alpha" />
     </FrameLayout>
 
     <android.support.design.widget.NavigationView

@@ -18,6 +18,7 @@ import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
 public class MainActivity extends AppCompatActivity implements TripActionsFragment.Slideable {
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
             public void onClick(View v) {
                 homeFragment.enablePaging();
                 slideTripPanelDown();
-                findViewById(R.id.close_panel_button).setVisibility(View.VISIBLE);
             }
         });
 
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
             @Override
             public void onClick(View v) {
                 homeFragment.disablePaging();
-                findViewById(R.id.close_panel_button).setVisibility(View.INVISIBLE);
                 slideTripPanelUp();
             }
         });
@@ -168,12 +167,14 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
         }
     }
 
+
     @Override
     public void slideTripPanelUp() {
         if (tripFragment != null) {
+            findViewById(R.id.close_panel_button).setVisibility(View.GONE);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
-            ft.add(R.id.panel_container, tripFragment, null);
+            ft.replace(R.id.panel_container, tripFragment, null);
             ft.commit();
         }
     }
@@ -181,6 +182,8 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
     @Override
     public void slideTripPanelDown() {
         if (tripFragment != null) {
+            findViewById(R.id.close_panel_button).setVisibility(View.VISIBLE);
+            AnimationGenericUtils.fadeInAnimation(findViewById(R.id.close_panel_button), this);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
             ft.remove(tripFragment);
