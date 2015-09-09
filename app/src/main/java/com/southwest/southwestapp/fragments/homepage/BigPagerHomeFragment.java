@@ -1,4 +1,4 @@
-package com.southwest.southwestapp.fragments.information;
+package com.southwest.southwestapp.fragments.homepage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,8 +14,9 @@ import android.widget.ImageButton;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.PromoAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
+import com.southwest.southwestapp.views.BigPageViewPager;
+
 
 public class BigPagerHomeFragment extends BaseFragment implements View.OnClickListener {
 
@@ -24,7 +25,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
     private View rootView;
     private View mFooter;
 
-    private ViewPager mViewPager;
+    private BigPageViewPager mViewPager;
     private PromoAdapter viewPagerAdapter;
     private FrameLayout bookinMenuContainer;
 
@@ -34,6 +35,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
     private ImageButton mMenuAction;
 
+
     public BigPagerHomeFragment() {
     }
 
@@ -41,7 +43,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
         rootView = inflater.inflate(R.layout.fragment_pager_information, container, false);
 
-        mViewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
+        mViewPager = (BigPageViewPager) rootView.findViewById(R.id.viewPager);
 
         viewPagerAdapter = new PromoAdapter(getActivity());
         mViewPager.setAdapter(viewPagerAdapter);
@@ -58,6 +60,8 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
         mMenuAction = (ImageButton) rootView.findViewById(R.id.menuActionInformation);
         mMenuAction.setOnClickListener(this);
 
+        mViewPager.setPagingEnabled(false);
+
         return rootView;
 
     }
@@ -65,9 +69,8 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setTab();
-        introAnimation();
         firstBtn.setPressed(true);
-
+        introAnimation();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .add(R.id.bookinMenuContainer, new TripActionsFragment()).commit();
 
@@ -103,7 +106,12 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
     }
 
     private void introAnimation() {
+
+    }
+
+    private void showInformationAnimation() {
         AnimationGenericUtils.zoomOut(rootView, null, ZOOM_FACTOR);
+        mViewPager.setPagingEnabled(true);
     }
 
     public void showMenuAnimation() {

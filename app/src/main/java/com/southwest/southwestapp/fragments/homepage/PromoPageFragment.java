@@ -1,4 +1,4 @@
-package com.southwest.southwestapp.fragments.information;
+package com.southwest.southwestapp.fragments.homepage;
 
 import android.content.Context;
 import android.os.Bundle;
