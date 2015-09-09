@@ -178,12 +178,14 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
         public void introAnimate(){
 
-            int childCount = mLinearContainer.getChildCount();
-            mItems = new RelativeLayout[childCount];
+            if(mLinearContainer != null) {
+                int childCount = mLinearContainer.getChildCount();
+                mItems = new RelativeLayout[childCount];
 
-            for(int b=0; b<childCount; b++){
-                mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
-                AnimationGenericUtils.slideRightToLeft(mItems[b],getAnimationDelay(b) , getContext());
+                for (int b = 0; b < childCount; b++) {
+                    mItems[b] = (RelativeLayout)mLinearContainer.getChildAt(b);
+                    AnimationGenericUtils.slideRightToLeft(mItems[b], getAnimationDelay(b), getContext());
+                }
             }
 
         }
