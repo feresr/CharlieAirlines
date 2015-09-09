@@ -1,5 +1,6 @@
 package com.southwest.southwestapp.fragments.homepage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.BookingViewPagerAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
@@ -41,9 +43,10 @@ public class TripActionsFragment extends BaseFragment {
         mManageTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.manage_trips);
 
         //Create/set viewpager adapter
-        //mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
-        //mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
-        //mViewPager.setAdapter(mAdapter);
+        Context context = AppHelper.getInstance().getApplicationContext();
+        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(),
+                                               context.getResources().getStringArray(R.array.homepage_booking_tabs),context);
+        mViewPager.setAdapter(mAdapter);
 
         mViewPager.addOnPageChangeListener(onPageChangeListener);
 
