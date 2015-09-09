@@ -97,8 +97,6 @@ public class TripActionsFragment extends BaseFragment {
 
     };
 
-
-
     private View.OnClickListener tabClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
