@@ -39,11 +39,12 @@ public class ScreenManager {
         origin.startActivity(i);
     }
 
-    public void showMainScreen(FragmentActivity origin) {
+    public BigPagerHomeFragment showMainScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
         BigPagerHomeFragment bigPagerHomeFragment = new BigPagerHomeFragment();
         ft.replace(R.id.container, bigPagerHomeFragment);
         ft.commit();
+        return bigPagerHomeFragment;
     }
 
     public void showMainScreenFromSplash(Activity origin) {

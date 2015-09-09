@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import com.southwest.southwestapp.R;
@@ -26,7 +25,6 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
     private BigPageViewPager mViewPager;
     private PromoAdapter viewPagerAdapter;
-    private FrameLayout bookinMenuContainer;
 
     private Button firstBtn;
     private Button secondBtn;
@@ -52,8 +50,6 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
         secondBtn = (Button) rootView.findViewById(R.id.footer_information_btn2);
         thirdButton = (Button) rootView.findViewById(R.id.footer_information_btn3);
 
-        bookinMenuContainer = (FrameLayout) rootView.findViewById(R.id.bookinMenuContainer);
-
         mFooter = rootView.findViewById(R.id.footerInformation);
 
         mMenuAction = (ImageButton) rootView.findViewById(R.id.menuActionInformation);
@@ -70,9 +66,6 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
         setTab();
         firstBtn.setPressed(true);
         introAnimation();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.bookinMenuContainer, new TripActionsFragment()).commit();
-
     }
 
     private void setTab() {
@@ -80,7 +73,6 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
             @Override
             public void onPageSelected(int position) {
                 viewPagerAdapter.animateAtIndex(position);
-                hideMenuAnimation();
 
                 switch (position) {
                     case 0:
@@ -108,9 +100,14 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-    private void showInformationAnimation() {
-        AnimationGenericUtils.zoomOut(rootView, null, ZOOM_FACTOR);
+    public void enablePaging() {
+        AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
         mViewPager.setPagingEnabled(true);
+    }
+
+    public void disablePaging() {
+        AnimationGenericUtils.zoom(rootView, null, 1);
+        mViewPager.setPagingEnabled(false);
     }
 
     public void showMenuAnimation() {
@@ -128,9 +125,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
             @Override
             public void onAnimationEnd(Animation arg0) {
-                bookinMenuContainer.setVisibility(View.VISIBLE);
                 mMenuAction.setVisibility(View.INVISIBLE);
-                AnimationGenericUtils.fadeInBottom(bookinMenuContainer, null, getContext());
             }
         };
 
@@ -138,7 +133,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-    public void hideMenuAnimation() {
+/*    public void hideMenuAnimation() {
 
         if (bookinMenuContainer.getVisibility() == View.VISIBLE) {
             Animation.AnimationListener listener = new Animation.AnimationListener() {
@@ -160,7 +155,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
             };
             AnimationGenericUtils.slideOutBottomWithFadeOut(bookinMenuContainer, listener, getContext());
         }
-    }
+    }*/
 
     @Override
     public void onClick(View view) {

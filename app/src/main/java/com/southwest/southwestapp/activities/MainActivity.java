@@ -2,7 +2,9 @@ package com.southwest.southwestapp.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,40 +12,72 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
+import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TripActionsFragment.Slideable {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
-    private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
+    private TripActionsFragment tripFragment;
+    private BigPagerHomeFragment homeFragment;
     private int mCurrentSelectedPosition;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("");
-        setSupportActionBar(mToolbar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
-
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        setUpToolBar();
+        setUpNavDrawer();
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
         } else {
-            AppHelper.screenManager.showMainScreen(this);
+            homeFragment = AppHelper.screenManager.showMainScreen(this);
         }
 
+        tripFragment = new TripActionsFragment();
+
+        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeFragment.enablePaging();
+                slideTripPanelDown();
+                findViewById(R.id.close_panel_button).setVisibility(View.VISIBLE);
+            }
+        });
+
+        findViewById(R.id.close_panel_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeFragment.disablePaging();
+                findViewById(R.id.close_panel_button).setVisibility(View.INVISIBLE);
+                slideTripPanelUp();
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        slideTripPanelUp();
+    }
+
+    private void setUpNavDrawer() {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -65,9 +99,14 @@ public class MainActivity extends AppCompatActivity {
                         //Event not handled: return false.
                         return false;
                 }
-
             }
         });
+    }
+
+    private void setUpToolBar() {
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);
     }
 
     @Override
@@ -107,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION, 0);
         Menu menu = mNavigationView.getMenu();
@@ -126,6 +165,26 @@ public class MainActivity extends AppCompatActivity {
             mDrawerLayout.closeDrawer(Gravity.LEFT);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void slideTripPanelUp() {
+        if (tripFragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
+            ft.add(R.id.panel_container, tripFragment, null);
+            ft.commit();
+        }
+    }
+
+    @Override
+    public void slideTripPanelDown() {
+        if (tripFragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
+            ft.remove(tripFragment);
+            ft.commit();
         }
     }
 }

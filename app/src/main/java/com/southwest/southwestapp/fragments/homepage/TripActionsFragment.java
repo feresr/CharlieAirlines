@@ -41,9 +41,9 @@ public class TripActionsFragment extends BaseFragment {
         mManageTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.manage_trips);
 
         //Create/set viewpager adapter
-        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
-        mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
-        mViewPager.setAdapter(mAdapter);
+        //mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
+        //mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
+        //mViewPager.setAdapter(mAdapter);
 
         mViewPager.addOnPageChangeListener(onPageChangeListener);
 
@@ -108,7 +108,12 @@ public class TripActionsFragment extends BaseFragment {
 
 
     public interface OnTabSelectedListener {
-        public void onTabSelected(int position);
+        void onTabSelected(int position);
+    }
+
+    public interface Slideable {
+        void slideTripPanelUp();
+        void slideTripPanelDown();
     }
 
 }
