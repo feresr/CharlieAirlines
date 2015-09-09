@@ -46,6 +46,7 @@ public class TripActionsFragment extends BaseFragment {
         Context context = AppHelper.getInstance().getApplicationContext();
         mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(),
                                                context.getResources().getStringArray(R.array.homepage_booking_tabs),context);
+
         mViewPager.setAdapter(mAdapter);
 
         mViewPager.addOnPageChangeListener(onPageChangeListener);
@@ -69,7 +70,7 @@ public class TripActionsFragment extends BaseFragment {
         @Override
         public void onPageSelected(int position) {
             if (mAdapter != null) {
-                android.support.v4.app.Fragment f = (android.support.v4.app.Fragment) mAdapter.instantiateItem(null, position);
+                android.support.v4.app.Fragment f = (android.support.v4.app.Fragment) mAdapter.getItem(position);
                 if (f != null && f instanceof OnTabSelectedListener) {
                     ((OnTabSelectedListener) f).onTabSelected(position);
                 }
@@ -95,6 +96,8 @@ public class TripActionsFragment extends BaseFragment {
         }
 
     };
+
+
 
     private View.OnClickListener tabClickListener = new View.OnClickListener() {
         @Override
