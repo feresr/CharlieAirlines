@@ -1,15 +1,19 @@
 package com.southwest.southwestapp;
 
+import com.southwest.southwestapp.utils.DialogManager;
+import com.southwest.southwestapp.utils.ScreenManager;
+
 import android.app.Application;
 
-import com.southwest.southwestapp.utils.ScreenManager;
 
 /**
  * Created by Fernando on 31/8/2015.
  */
 public class AppHelper extends Application {
+
     private static AppHelper instance;
     public static final ScreenManager screenManager = new ScreenManager();
+    public static final DialogManager dialogManager = new DialogManager();
 
     public static AppHelper getInstance() {
         return instance;
