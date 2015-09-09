@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.PromoAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
@@ -87,14 +88,20 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     }
 
+    public void onResume(){
+        super.onResume();
+    }
+
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
+        AnimationGenericUtils.fadeInAnimation(mFooter,AppHelper.getInstance().getApplicationContext());
         mViewPager.setPagingEnabled(true);
     }
 
     public void disablePaging() {
         AnimationGenericUtils.zoom(rootView, null, 1);
+        AnimationGenericUtils.fadeOutAnimation(mFooter, null, AppHelper.getInstance().getApplicationContext());
         mViewPager.setPagingEnabled(false);
     }
 
