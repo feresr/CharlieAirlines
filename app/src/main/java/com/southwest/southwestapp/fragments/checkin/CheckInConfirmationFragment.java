@@ -24,10 +24,10 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
 
     private static final String TAG = CheckInConfirmationFragment.class.getSimpleName();
 
-    private TextView successText;
+    private TextView mSuccessText;
     private Button mBtBoardingPass;
-    private CardView cardContent;
-    private Toolbar confToolBar;
+    private CardView mCardContent;
+    private Toolbar mConfToolBar;
 
     public CheckInConfirmationFragment() {
     }
@@ -37,26 +37,26 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View confirmationView = inflater.inflate(R.layout.fragment_confirmation, container, false);
 
-        successText = (TextView)confirmationView.findViewById(R.id.successText);
-        cardContent = (CardView)confirmationView.findViewById(R.id.card_view);
-        mBtBoardingPass = (Button)confirmationView.findViewById(R.id.btn_boarding_pass);
-        confToolBar = (Toolbar)confirmationView.findViewById(R.id.toolbarConfirmation);
+        mSuccessText = (TextView) confirmationView.findViewById(R.id.successText);
+        mCardContent = (CardView) confirmationView.findViewById(R.id.card_view);
+        mBtBoardingPass = (Button) confirmationView.findViewById(R.id.btn_boarding_pass);
+        mConfToolBar = (Toolbar) confirmationView.findViewById(R.id.toolbarConfirmation);
 
         setUpToolBar();
 
         mBtBoardingPass.setOnClickListener(this);
 
-        successText.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right));
-        cardContent.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        mSuccessText.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right));
+        mCardContent.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
-        confToolBar.setOnMenuItemClickListener(this);
+        mConfToolBar.setOnMenuItemClickListener(this);
 
-        confToolBar.inflateMenu(R.menu.menu_confirmation);
+        mConfToolBar.inflateMenu(R.menu.menu_confirmation);
         return confirmationView;
     }
 
     private void setUpToolBar() {
-        confToolBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+        mConfToolBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
     }
 
     @Override

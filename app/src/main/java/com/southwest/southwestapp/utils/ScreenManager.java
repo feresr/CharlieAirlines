@@ -23,7 +23,7 @@ public class ScreenManager {
 
     protected void setDefaultAnim(FragmentTransaction ft) {
         ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, android.R.anim.slide_in_left,
-                               android.R.anim.slide_out_right);
+                android.R.anim.slide_out_right);
     }
 
     public void showCheckInConfirmationScreen(FragmentActivity origin) {

@@ -38,9 +38,9 @@ public class BaseActivity extends AppCompatActivity {
                     ft.replace(R.id.container, f, f.getClass().getName());
                     ft.commit();
                 } catch (InstantiationException e) {
-                    Log.e(TAG,"ERROR NAVIGATION ["+e+"]");
+                    Log.e(TAG, "ERROR NAVIGATION [" + e + "]");
                 } catch (IllegalAccessException e) {
-                    Log.e(TAG,"ERROR NAVIGATION ["+e+"]");
+                    Log.e(TAG, "ERROR NAVIGATION [" + e + "]");
                 }
             }
         }

@@ -34,8 +34,8 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
         setHasOptionsMenu(true);
         View checkInView = inflater.inflate(R.layout.fragment_checkin, container, false);
 
-        mBtConfirmation = (Button)checkInView.findViewById(R.id.confirmationButton);
-        mToolbar = (Toolbar)checkInView.findViewById(R.id.toolbar);
+        mBtConfirmation = (Button) checkInView.findViewById(R.id.confirmationButton);
+        mToolbar = (Toolbar) checkInView.findViewById(R.id.toolbar);
         setUpToolBar();
 
         mBtConfirmation.setOnClickListener(this);

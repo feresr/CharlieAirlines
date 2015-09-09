@@ -38,13 +38,13 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
         View view = inflater.inflate(R.layout.fragment_checkin_search, container, false);
 
-        mToolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         setUpToolBar();
 
-        mBtRetrieve = (Button)view.findViewById(R.id.btn_retrieve_reservation);
-        mEtConfirmationNumber = (EditText)view.findViewById(R.id.edt_confirmation);
-        mEtFirstName = (EditText)view.findViewById(R.id.edt_first_name);
-        mEtLastName = (EditText)view.findViewById(R.id.edt_last_name);
+        mBtRetrieve = (Button) view.findViewById(R.id.btn_retrieve_reservation);
+        mEtConfirmationNumber = (EditText) view.findViewById(R.id.edt_confirmation);
+        mEtFirstName = (EditText) view.findViewById(R.id.edt_first_name);
+        mEtLastName = (EditText) view.findViewById(R.id.edt_last_name);
 
         mBtRetrieve.setOnClickListener(this);
         mToolbar.setNavigationOnClickListener(this);
