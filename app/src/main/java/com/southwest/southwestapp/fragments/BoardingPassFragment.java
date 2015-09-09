@@ -3,6 +3,7 @@ package com.southwest.southwestapp.fragments;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -31,7 +32,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_boarding_pass, container, false);
 
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        mToolbar = (Toolbar)view.findViewById(R.id.toolbar);
         setUpToolBar();
 
         mToolbar.setOnMenuItemClickListener(this);
@@ -62,9 +63,31 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
             case R.id.optionSend:
                 return true;
             case R.id.optionSave:
+                showAlertSaveToPhotos();
                 return true;
             default:
                 return false;
         }
+    }
+
+    private void showAlertSaveToPhotos() {
+
+        AppHelper.dialogManager.showDialog(getActivity(),
+                                           getResources().getString(R.string.boarding_pass_save_dialog_title),
+                                           getResources().getString(R.string.boarding_pass_save_dialog_message),
+                                           getResources().getString(R.string.boarding_pass_save_dialog_yes),
+                                           new DialogInterface.OnClickListener() {
+                                               @Override
+                                               public void onClick(DialogInterface dialog, int which) {
+                                                   AppHelper.screenManager.showMainScreen(getActivity());
+                                               }
+                                           },
+                                           getResources().getString(R.string.boarding_pass_save_dialog_no),
+                                           new DialogInterface.OnClickListener() {
+                                               @Override
+                                               public void onClick(DialogInterface dialog, int which) {
+                                                   //Complete flow
+                                               }
+                                           }, false);
     }
 }

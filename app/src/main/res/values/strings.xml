@@ -17,6 +17,12 @@
     <string name="boarding_pass_subtitle">DAL - MDW</string>
     <string name="boarding_pass_business_select">Business select</string>
     <string name="boarding_pass_conf_num">Conf#</string>
+    
+    <!-- Dialogs Boarding Pass -->
+    <string name="boarding_pass_save_dialog_title">Woohoo!</string>
+    <string name="boarding_pass_save_dialog_message">Your boarding pass has been saved to Photos</string>
+    <string name="boarding_pass_save_dialog_yes">Return home</string>
+    <string name="boarding_pass_save_dialog_no">Close</string>
 
     <!-- Layout Send Boarding Pass -->
     <string name="boarding_send_pass_main_info">Enter your email or phone number you would \n like to send your boarding pass to</string>
