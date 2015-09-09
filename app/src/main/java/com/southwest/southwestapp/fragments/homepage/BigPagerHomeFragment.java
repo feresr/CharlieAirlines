@@ -111,6 +111,7 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
     private void showInformationAnimation() {
         AnimationGenericUtils.zoomOut(rootView, null, ZOOM_FACTOR);
+        mViewPager.setPagingEnabled(true);
     }
 
     public void showMenuAnimation() {
