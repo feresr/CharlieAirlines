@@ -47,18 +47,24 @@
                                 android:id="@+id/imageView"
                                 android:layout_width="130dp"
                                 android:layout_height="60dp"
+                                android:layout_weight="1"
+                                android:padding="5dp"
                                 android:src="@drawable/southwest_logo"/>
 
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                        <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
                                 android:layout_gravity="center_vertical"
-                                android:text="Small Text ✓"
+                                android:src="@drawable/tsa_pre_check"
+                                android:layout_weight="1"
+                                android:padding="5dp"
                                 android:textAppearance="?android:attr/textAppearanceSmall"/>
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:padding="5dp"
                                 android:text="A-List Preferred"/>
 
                 </LinearLayout>

@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,7 +16,7 @@ import android.view.ViewGroup;
 /**
  * Created by emiliano.gudino on 07/09/2015.
  */
-public class BoardingPassFragment extends BaseFragment{
+public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener {
 
     private Toolbar mToolbar;
 
@@ -32,6 +33,10 @@ public class BoardingPassFragment extends BaseFragment{
         mToolbar = (Toolbar)view.findViewById(R.id.toolbar);
         setUpToolBar();
 
+        mToolbar.setOnMenuItemClickListener(this);
+
+        mToolbar.inflateMenu(R.menu.menu_boarding_pass);
+
         return view;
     }
 
@@ -47,4 +52,8 @@ public class BoardingPassFragment extends BaseFragment{
         mToolbar.setBackgroundColor(getResources().getColor(R.color.primary_blue));
     }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return false;
+    }
 }
