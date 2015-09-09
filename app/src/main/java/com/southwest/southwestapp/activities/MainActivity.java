@@ -41,13 +41,14 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
         setUpToolBar();
         setUpNavDrawer();
 
+        tripFragment = new TripActionsFragment();
+
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
         } else {
             homeFragment = AppHelper.screenManager.showMainScreen(this);
+            slideTripPanelUp();
         }
-
-        tripFragment = new TripActionsFragment();
 
         findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,11 +67,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        slideTripPanelUp();
-    }
 
     private void setUpNavDrawer() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
