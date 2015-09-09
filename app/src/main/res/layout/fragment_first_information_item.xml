@@ -76,7 +76,7 @@
         android:layout_alignStart="@+id/mainInformationContainer"
         android:layout_below="@+id/mainInformationContainer"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <TextView
@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:gravity="center_horizontal"
             android:text="@string/firstpage_sub_title"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="2dp"
             android:text="@string/firstpage_book_now"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/information_book_text"

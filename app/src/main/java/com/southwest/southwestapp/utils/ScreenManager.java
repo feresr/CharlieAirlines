@@ -7,11 +7,6 @@ import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInSearchFragment;
-import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
-import com.southwest.southwestapp.fragments.information.BigPagerHomeFragment;
-import com.southwest.southwestapp.fragments.CheckInConfirmationFragment;
-import com.southwest.southwestapp.fragments.CheckInFragment;
-import com.southwest.southwestapp.fragments.CheckInSearchFragment;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 
 import android.app.Activity;
@@ -82,5 +77,4 @@ public class ScreenManager {
         Intent intent = new Intent(origin, MainActivity.class);
         origin.startActivity(intent);
     }
-
 }
