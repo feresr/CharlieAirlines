@@ -42,6 +42,19 @@
             android:textStyle="bold" />
 
         <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/homepage_main_title_symbol"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/homepage_main_title"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/informationMainTitleMiddle"
+                android:layout_toStartOf="@+id/informationMainTitleMiddle"/>
+
+
+        <TextView
             android:id="@+id/mainTitleTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,6 +76,7 @@
         android:layout_alignStart="@+id/mainInformationContainer"
         android:layout_below="@+id/mainInformationContainer"
         android:layout_marginRight="15dp"
+        android:visibility="invisible"
         android:layout_marginTop="50dp"
         android:orientation="vertical">
 

@@ -1,4 +1,4 @@
-package com.southwest.southwestapp.fragments.information;
+package com.southwest.southwestapp.fragments.homepage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

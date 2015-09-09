@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.fragments.information.PromoPageFragment;
+import com.southwest.southwestapp.fragments.homepage.PromoPageFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import java.util.ArrayList;
