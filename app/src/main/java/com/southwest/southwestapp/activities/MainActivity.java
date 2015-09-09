@@ -61,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         AppHelper.screenManager.showMainScreen(MainActivity.this);
                         return true;
+
+                    case R.id.logout:
+                        AppHelper.screenManager.showLoginScreen(MainActivity.this);
+                        return true;
+
                     default:
                         //Event not handled: return false.
                         return false;

@@ -67,6 +67,7 @@
             android:checkable="true"
             android:title="Visit Southwest.com" />
         <item
+            android:id="@+id/logout"
             android:checkable="true"
             android:title="Log out" />
     </group>
