@@ -5,10 +5,19 @@
 
         <!-- colorPrimaryDark is used for the status bar -->
 
+        <item name="colorPrimaryDark">@color/dark_blue</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:checkboxStyle">@style/checkboxStyle</item>
+    </style>
+
+    <style name="AppTheme.Translucent" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- colorPrimaryDark is used for the status bar -->
+
         <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimaryDark">@color/color_accent_dark</item>
         <item name="colorAccent">@android:color/white</item>
-        <item name="android:editTextStyle">@style/editTextStyle</item>
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
     </style>
+
 </resources>

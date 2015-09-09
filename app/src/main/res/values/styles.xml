@@ -5,17 +5,12 @@
 
         <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/color_accent_dark</item>
-
         <item name="colorAccent">@android:color/white</item>
-        <item name="android:editTextStyle">@style/editTextStyle</item>
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
-    </style>
 
-    <style name="toolBarStyle">
-        <item name="android:background">@color/primary_blue</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
-        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
     </style>
 
     <style name="bigButton">
@@ -25,14 +20,7 @@
         <item name="android:padding">0dp</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textStyle">italic</item>
-    </style>
-
-    <style name="editTextStyle" parent="@android:style/Widget.EditText">
-        <item name="android:textColorHint">@android:color/white</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="colorControlActivated">@android:color/white</item>
-        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="android:textSize">20dp</item>
     </style>
 
     <style name="checkboxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
@@ -68,22 +56,26 @@
 
     <style name="textGreen" parent="@android:style/TextAppearance" >
         <item name="android:textColor">@color/green</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">15dp</item>
-        <item name="android:gravity">bottom</item>
-    </style>
-    
-    <style name="fragmentsCheckInBackground">
-        <item name="android:background">@color/dark_blue</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="checkInLayout">
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@android:color/white</item>
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="toolBarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@color/primary_blue</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="fragmentsCheckInBackground">
+        <item name="android:background">@color/dark_blue</item>
     </style>
 
 </resources>

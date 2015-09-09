@@ -20,6 +20,8 @@
     <color name="neutral_gray_4">#8f8f8f</color>
     <color name="neutral_gray_2">#e6e7e8</color>
     <color name="neutral_gray_6">#D8D8D8</color>
+    <color name="primary_red">#d5152e</color>
+    <color name="primary_yellow">#ffbf27</color>
 
     <color name="transparent_gray">#308f8f8f</color>
     <color name="transparent_gray_2">#608f8f8f</color>

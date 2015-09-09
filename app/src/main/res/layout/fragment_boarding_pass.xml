@@ -1,290 +1,329 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/boardingPassDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Feb 18- 19"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/boardingPassCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Denver"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="@color/bright_foreground_material_light" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/common_signin_btn_text_focus_dark" />
+            android:minHeight="?attr/actionBarSize">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </android.support.v7.widget.Toolbar>
 
-        <ImageView
-            android:id="@+id/boardingPassChecked"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/abc_btn_check_to_on_mtrl_015" />
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            <com.southwest.southwestapp.LabeledText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:upperText="Feb 18- 19"
+                    app:mainText="Denver">
 
-        <TextView
-            android:id="@+id/boardingPassGroupTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/boarding_pass_group" />
+            </com.southwest.southwestapp.LabeledText>
 
-        <TextView
-            android:id="@+id/boardingPassGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/boardingPassGroupTitle"
-            android:text="A65"
-            android:textStyle="bold" />
+            <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
 
-        <TextView
-            android:id="@+id/boardingPassPosition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/boardingPassGroup"
-            android:text="@string/boarding_pass_position" />
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/boardingPassQrCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/common_ic_googleplayservices" />
+                <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="130dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:src="@drawable/southwest_logo"/>
 
-    </RelativeLayout>
+                <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/tsa_pre_check"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="A-List Preferred"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.05"
+                        android:background="@drawable/rectangle_white_rounded"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/boarding_pass_group"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/textGreen"
+                            android:text="A"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/textGreen"
+                            android:text="38"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/boarding_pass_position"/>
+
+                </LinearLayout>
+
+                <ImageView
+                        android:id="@+id/boardingPassQrCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:src="@drawable/qr_code_example"/>
+
+            </LinearLayout>
+
+            <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="10dp">
+
+                <TextView
+                        android:id="@+id/boardingPassPassenger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/boarding_pass_passenger"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <TextView
+                        android:id="@+id/boardingPassPassengerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/boardingPassPassenger"
+                        android:layout_toRightOf="@+id/boardingPassPassenger"
+                        android:text="Kelly / Gary"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:id="@+id/boardingPassBoardingTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/boardingPassPassenger"
+                        android:text="@string/boarding_pass_time"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/primary_blue"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:id="@+id/boardingPassTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/boardingPassBoardingTime"
+                        android:layout_toEndOf="@+id/boardingPassBoardingTime"
+                        android:layout_toRightOf="@+id/boardingPassBoardingTime"
+                        android:text=" 12:04 PM"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/primary_blue"
+                        android:textStyle="bold"/>
+
+                <View
+                        android:id="@+id/view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/boardingPassTime"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@android:color/darker_gray"/>
+
+                <TextView
+                        android:id="@+id/boardingPassFlight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/view"
+                        android:text="Flight 3041"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+                <TextView
+                        android:id="@+id/boardingPassFlightDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/boardingPassFlight"
+                        android:text="Dallas TX (DAL) - Denver, CO (DEN)"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+                <TextView
+                        android:id="@+id/boardingPassInfoDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/boardingPassFlightDetail"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignRight="@+id/boardingPassFlightDetail"
+                        android:layout_below="@+id/boardingPassFlightDetail"
+                        android:text="@string/boarding_pass_info_date"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="@color/bright_foreground_material_light" />
+                <TextView
+                        android:id="@+id/boardingPassDetailDatetextView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/boardingPassFlightDetail"
+                        android:layout_toEndOf="@+id/boardingPassFlightDetail"
+                        android:layout_toRightOf="@+id/boardingPassFlightDetail"
+                        android:text="Saturday, 2015"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textStyle="bold"/>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/boardingPassInfoDeparts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/boardingPassInfoDate"
+                        android:layout_toLeftOf="@+id/boardingPassDetailDatetextView5"
+                        android:text="@string/boarding_pass_info_departs"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
+                <TextView
+                        android:id="@+id/boardingPassDepartDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/boardingPassInfoDate"
+                        android:layout_toEndOf="@+id/boardingPassInfoDate"
+                        android:layout_toRightOf="@+id/boardingPassInfoDate"
+                        android:text="12:34"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/boardingPassPassanger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/boarding_pass_passenger"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+                <TextView
+                        android:id="@+id/boardingPassInfoGate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/boardingPassInfoDeparts"
+                        android:layout_toLeftOf="@+id/boardingPassDepartDetail"
+                        android:text="@string/boarding_pass_info_gate"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-        <TextView
-            android:id="@+id/boardingPassPassangerName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/boardingPassPassanger"
-            android:layout_toRightOf="@+id/boardingPassPassanger"
-            android:text="Kelly / Gary"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+                <TextView
+                        android:id="@+id/boardingPassInfoGateDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/boardingPassInfoGate"
+                        android:layout_toEndOf="@+id/boardingPassInfoDeparts"
+                        android:layout_toRightOf="@+id/boardingPassInfoDeparts"
+                        android:text="10"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/boardingPassBoardingTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/boardingPassPassanger"
-            android:text="@string/boarding_pass_time"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+                <TextView
+                        android:id="@+id/boardingPassBottomInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/boardingPassInfoGate"
+                        android:text="Time, gate and terminal might change - check monitors"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-        <TextView
-            android:id="@+id/boardingPassTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/boardingPassBoardingTime"
-            android:layout_toEndOf="@+id/boardingPassBoardingTime"
-            android:layout_toRightOf="@+id/boardingPassBoardingTime"
-            android:text="12:04 PM"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+                <View
+                        android:id="@+id/BottomView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/boardingPassBottomInfo"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/darker_gray"/>
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="2dp"
-            android:layout_below="@+id/boardingPassTime"
-            android:background="@color/bright_foreground_material_light" />
+                <TextView
+                        android:id="@+id/boardingPassBusiness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignTop="@+id/BottomView"
+                        android:text="Business select"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/boardingPassFlight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/view"
-            android:text="Flight 3041"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                        android:id="@+id/boardingPassBusinessCodeInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/BottomView"
+                        android:text="Conf# AB254L"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/boardingPassFlightDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/boardingPassFlight"
-            android:text="Dallas TX (DAL) - Denver, CO (DEN)"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+                <TextView
+                        android:id="@+id/boardingPassBusinessDetailInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/boardingPassBusiness"
+                        android:text="Rapid rewards# 123456"
+                        android:textAppearance="?android:attr/textAppearanceSmall"/>
 
-        <TextView
-            android:id="@+id/boardingPassInfoDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/boardingPassFlightDetail"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/boardingPassFlightDetail"
-            android:layout_below="@+id/boardingPassFlightDetail"
-            android:text="@string/boarding_pass_info_date"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            </RelativeLayout>
 
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/boardingPassDetailDatetextView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/boardingPassFlightDetail"
-            android:layout_toEndOf="@+id/boardingPassFlightDetail"
-            android:layout_toRightOf="@+id/boardingPassFlightDetail"
-            android:text="Saturday, 2015"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/boardingPassInfoDeparts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/boardingPassInfoDate"
-            android:layout_toLeftOf="@+id/boardingPassDetailDatetextView5"
-            android:text="@string/boarding_pass_info_departs"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/boardingPassDepartDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/boardingPassInfoDate"
-            android:layout_toEndOf="@+id/boardingPassInfoDate"
-            android:layout_toRightOf="@+id/boardingPassInfoDate"
-            android:text="12:34"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/boardingPassInfoGate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/boardingPassInfoDeparts"
-            android:layout_toLeftOf="@+id/boardingPassDepartDetail"
-            android:text="@string/boarding_pass_info_gate"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/boardingPassInfoGateDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/boardingPassInfoGate"
-            android:layout_toEndOf="@+id/boardingPassInfoDeparts"
-            android:layout_toRightOf="@+id/boardingPassInfoDeparts"
-            android:text="10"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/boardingPassBottomInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/boardingPassInfoGate"
-            android:text="Time, gate and terminal might change - check monitors"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <View
-            android:id="@+id/BottomView"
-            android:layout_width="wrap_content"
-            android:layout_height="2dp"
-            android:layout_below="@+id/boardingPassBottomInfo"
-            android:background="@color/bright_foreground_material_light" />
-
-        <TextView
-            android:id="@+id/boardingPassBusiness"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/BottomView"
-            android:text="Business select"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/boardingPassBusinessCodeInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/BottomView"
-            android:text="Conf# AB254L"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/boardingPassBusinessDetailInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/boardingPassBusiness"
-            android:text="Rapid rewards# 123456"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    </RelativeLayout>
-
+    </ScrollView>
 
 </LinearLayout>

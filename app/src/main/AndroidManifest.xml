@@ -17,13 +17,15 @@
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.Translucent">
 
         </activity>
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"
-            android:label="@string/title_activity_splash">
+            android:label="@string/title_activity_splash"
+            android:theme="@style/AppTheme.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
