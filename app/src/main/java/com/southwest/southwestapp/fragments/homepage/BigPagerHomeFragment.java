@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.PromoAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 import com.southwest.southwestapp.views.BigPageViewPager;
 
