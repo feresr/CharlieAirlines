@@ -7,8 +7,7 @@ import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInSearchFragment;
-import com.southwest.southwestapp.fragments.homepage.HomePageFragment;
-import com.southwest.southwestapp.fragments.information.BigPagerHomeFragment;
+import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -50,11 +49,12 @@ public class ScreenManager {
         origin.startActivity(i);
     }
 
-    public void showMainScreen(FragmentActivity origin) {
+    public BigPagerHomeFragment showMainScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
-        HomePageFragment homePageFragment = new HomePageFragment();
-        ft.replace(R.id.container, homePageFragment);
+        BigPagerHomeFragment bigPagerHomeFragment = new BigPagerHomeFragment();
+        ft.replace(R.id.container, bigPagerHomeFragment);
         ft.commit();
+        return bigPagerHomeFragment;
     }
 
     public void showBoardingPassScreen(FragmentActivity origin) {
@@ -77,5 +77,4 @@ public class ScreenManager {
         Intent intent = new Intent(origin, MainActivity.class);
         origin.startActivity(intent);
     }
-
 }

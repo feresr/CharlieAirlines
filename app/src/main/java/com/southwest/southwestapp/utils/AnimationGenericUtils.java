@@ -170,7 +170,7 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void zoomOut(final View expandedImageView, Animator.AnimatorListener listener, float zoom) {
+    public static void zoom(final View expandedImageView, Animator.AnimatorListener listener, float zoom) {
 
         ViewPropertyAnimator animator = expandedImageView.animate();
 

@@ -1,4 +1,4 @@
-package com.southwest.southwestapp.fragments.information;
+package com.southwest.southwestapp.fragments.homepage;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -41,8 +41,9 @@ public class PromoPageFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(layoutId, null);
         mainInformationContainer = (ViewGroup) rootView.findViewById(R.id.mainInformationContainer);
+        mainInformationContainer.setClickable(false);
         secondaryInformationContainer = (ViewGroup) rootView.findViewById(R.id.secondaryInformationContainer);
-
+        mainInformationContainer.setClickable(false);
         return rootView;
     }
 
