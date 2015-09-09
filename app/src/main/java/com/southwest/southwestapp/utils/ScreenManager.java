@@ -2,8 +2,8 @@ package com.southwest.southwestapp.utils;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
-import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.activities.MainActivity;
+import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInSearchFragment;

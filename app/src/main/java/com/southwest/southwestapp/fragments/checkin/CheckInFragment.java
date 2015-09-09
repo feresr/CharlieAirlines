@@ -7,7 +7,6 @@ import com.southwest.southwestapp.fragments.BaseFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +18,7 @@ import android.widget.Button;
  * Created by emiliano.gudino on 02/09/2015.
  */
 public class CheckInFragment extends BaseFragment implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
-    
+
     private static final String TAG = CheckInFragment.class.getSimpleName();
 
     private Button mBtConfirmation;
@@ -69,14 +68,12 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.optionCancel:
-                Log.d(TAG,"OPCION CANCEL...");
                 AppHelper.screenManager.showCheckInSearchScreen(getActivity());
                 return true;
             default:
                 return false;
         }
-
     }
 }

@@ -1,5 +1,6 @@
 package com.southwest.southwestapp.fragments;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 
 import android.os.Bundle;
@@ -54,6 +55,16 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        return false;
+        switch (item.getItemId()) {
+            case R.id.optionCancel:
+                AppHelper.screenManager.showCheckInSearchScreen(getActivity());
+                return true;
+            case R.id.optionSend:
+                return true;
+            case R.id.optionSave:
+                return true;
+            default:
+                return false;
+        }
     }
 }
