@@ -30,9 +30,11 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
     private BookTripsItemsFragment bookTrips;
     private ManageTripsItemsFragment manageTrips;
 
-    public BookingViewPagerAdapter(FragmentManager fragmentManager, Context context) {
+    public BookingViewPagerAdapter(FragmentManager fragmentManager,String[] mPageTitles ,Context context) {
         super(fragmentManager);
         this.context = context;
+
+        this.mPageTitles = mPageTitles;
 
         int bookIcons[] = new int[3];
         bookIcons[0] = R.drawable.nav_drawer_flight_icon;
