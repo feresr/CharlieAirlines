@@ -16,7 +16,6 @@ public class BigPageViewPager extends ViewPager {
     public BigPageViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.enabled = true;
-        this.setOffscreenPageLimit(2);
     }
 
     @Override
