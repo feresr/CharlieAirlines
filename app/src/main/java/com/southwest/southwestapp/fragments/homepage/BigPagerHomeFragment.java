@@ -6,17 +6,16 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
-import android.widget.ImageButton;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.PromoAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 import com.southwest.southwestapp.views.BigPageViewPager;
 
-public class BigPagerHomeFragment extends BaseFragment implements View.OnClickListener {
+public class BigPagerHomeFragment extends BaseFragment {
 
     private static final float ZOOM_FACTOR = 1.04f;
 
@@ -29,9 +28,6 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
     private Button firstBtn;
     private Button secondBtn;
     private Button thirdButton;
-
-    private ImageButton mMenuAction;
-
 
     public BigPagerHomeFragment() {
     }
@@ -52,9 +48,6 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
         mFooter = rootView.findViewById(R.id.footerInformation);
 
-        mMenuAction = (ImageButton) rootView.findViewById(R.id.menuActionInformation);
-        mMenuAction.setOnClickListener(this);
-
         mViewPager.setPagingEnabled(false);
 
         return rootView;
@@ -65,7 +58,6 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
         super.onActivityCreated(savedInstanceState);
         setTab();
         firstBtn.setPressed(true);
-        introAnimation();
     }
 
     private void setTab() {
@@ -96,76 +88,22 @@ public class BigPagerHomeFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-    private void introAnimation() {
-
+    public void onResume(){
+        super.onResume();
     }
+
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
+        AnimationGenericUtils.fadeInAnimation(mFooter,AppHelper.getInstance().getApplicationContext());
         mViewPager.setPagingEnabled(true);
     }
 
     public void disablePaging() {
         AnimationGenericUtils.zoom(rootView, null, 1);
+        AnimationGenericUtils.fadeOutAnimation(mFooter, null, AppHelper.getInstance().getApplicationContext());
         mViewPager.setPagingEnabled(false);
     }
 
-    public void showMenuAnimation() {
-
-        AnimationGenericUtils.fadeOutAnimation(mFooter, null, getContext());
-
-        Animation.AnimationListener listener = new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation arg0) {
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                mMenuAction.setVisibility(View.INVISIBLE);
-            }
-        };
-
-        AnimationGenericUtils.fadeOutAnimation(mMenuAction, listener, getContext());
-
-    }
-
-/*    public void hideMenuAnimation() {
-
-        if (bookinMenuContainer.getVisibility() == View.VISIBLE) {
-            Animation.AnimationListener listener = new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation arg0) {
-
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation arg0) {
-                }
-
-                @Override
-                public void onAnimationEnd(Animation arg0) {
-                    AnimationGenericUtils.fadeInAnimation(mFooter, getContext());
-                    AnimationGenericUtils.fadeInAnimation(mMenuAction, getContext());
-                    bookinMenuContainer.setVisibility(View.GONE);
-                }
-            };
-            AnimationGenericUtils.slideOutBottomWithFadeOut(bookinMenuContainer, listener, getContext());
-        }
-    }*/
-
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()) {
-            case R.id.menuActionInformation:
-                showMenuAnimation();
-                break;
-        }
-
-    }
 
 }
