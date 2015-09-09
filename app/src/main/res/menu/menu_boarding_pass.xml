@@ -9,12 +9,12 @@
 
     <item android:id="@+id/optionSend"
           android:title="@string/menu_title_send"
-          android:icon="@drawable/ic_send_white_48dp"
+          android:icon="@drawable/ic_send_white_24dp"
           app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/optionSave"
           android:title="@string/menu_title_save"
-          android:icon="@drawable/ic_save_white_48dp"
+          android:icon="@drawable/ic_save_white_24dp"
           app:showAsAction="ifRoom"/>
 
 </menu>
