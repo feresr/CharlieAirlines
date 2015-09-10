@@ -15,7 +15,7 @@
 
     <style name="bigButton">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/button_background</item>
         <item name="android:padding">0dp</item>
         <item name="android:textColor">@color/button_text</item>
@@ -76,6 +76,18 @@
 
     <style name="fragmentsCheckInBackground">
         <item name="android:background">@color/dark_blue</item>
+    </style>
+
+    <style name="editReservationInput" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:textColorHint">@color/dark_blue</item>
+        <item name="android:padding">10dp</item>
+
+    </style>
+
+    <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:textColorHint">@color/dark_blue</item>
     </style>
 
 </resources>

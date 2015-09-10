@@ -6,10 +6,19 @@ import com.southwest.southwestapp.fragments.BaseFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,6 +37,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     private EditText mEtLastName;
     private TextView mTvEligibleTrips;
     private Toolbar mToolbar;
+    private CardView cardReservation;
 
     public CheckInSearchFragment() {
     }
@@ -38,23 +48,29 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
         View view = inflater.inflate(R.layout.fragment_checkin_search, container, false);
 
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         setUpToolBar();
 
         mBtRetrieve = (Button) view.findViewById(R.id.btn_retrieve_reservation);
         mEtConfirmationNumber = (EditText) view.findViewById(R.id.edt_confirmation);
         mEtFirstName = (EditText) view.findViewById(R.id.edt_first_name);
         mEtLastName = (EditText) view.findViewById(R.id.edt_last_name);
+        cardReservation = (CardView) view.findViewById(R.id.card_reservation);
+
+        cardReservation.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         mBtRetrieve.setOnClickListener(this);
-        mToolbar.setNavigationOnClickListener(this);
 
         return view;
     }
 
     private void setUpToolBar() {
-        mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
-        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if(mActionBar != null){
+            setHasOptionsMenu(true);
+            mActionBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+            mActionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
+        }
     }
 
     @Override
@@ -69,9 +85,25 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 AppHelper.screenManager.showCheckInScreen(getActivity());
                 break;
             default:
-                getActivity().finish();
                 break;
 
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                Log.d(TAG,"HOME CLICKED...");
+                getActivity().finish();
+                return true;
+            default:
+                return false;
         }
     }
 }

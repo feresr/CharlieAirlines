@@ -1,131 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/checkInSearchWrapper"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/checkInSearchWrapper"
-        android:orientation="vertical">
+        android:id="@+id/bodyWrapper">
 
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/airplane_check_in_background_blurred"
-            android:scaleType="centerCrop"
-            android:tint="#7992"/>
-
-    <LinearLayout
-            android:orientation="vertical"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_reservation"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bodyWrapper">
+            card_view:cardElevation="15dp"
+            card_view:contentPadding="15dp"
+            card_view:cardCornerRadius="4dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp">
 
-        <ScrollView android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-            <RelativeLayout style="@style/checkInLayout">
-
-                <TextView
-                        android:id="@+id/tv_eligible_trips"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/search_eligible_tickets"
-                        android:visibility="gone"/>
-
-                <LinearLayout
-                        android:id="@+id/lnr_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_eligible_trips"
-                        android:layout_marginTop="100dp"
-                        android:padding="10dp"
-                        android:orientation="vertical">
-
-                    <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
-                            android:padding="10dp"
-                            android:textColorHint="@android:color/white">
-                        <EditText
-                                android:id="@+id/edt_confirmation"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/search_confirmation_number"
-                                android:layout_marginTop="30dp"
-                                android:padding="10dp"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white"/>
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
-                            android:padding="10dp"
-                            android:textColorHint="@android:color/white">
-
-                        <EditText
-                                android:id="@+id/edt_first_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="30dp"
-                                android:hint="@string/search_first_name"
-                                android:padding="10dp"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
-                            android:padding="10dp"
-                            android:textColorHint="@android:color/white">
-                        <EditText
-                                android:id="@+id/edt_last_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="30dp"
-                                android:hint="@string/search_last_name"
-                                android:padding="10dp"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <Button
-                        android:id="@+id/btn_retrieve_reservation"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginBottom="20dp"
-                        style="@style/bigButton"
-                        android:text="@string/search_retrieve_reservation"
-                        android:layout_below="@+id/lnr_container"/>
-
-            </RelativeLayout>
-
-        </ScrollView>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/toolbarWrapper">
-
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+            <LinearLayout
+                android:id="@+id/cardContentWrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"
-                android:elevation="20dp"
-                app:theme="@style/toolBarStyle"/>
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputLayoutConfirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout" >
 
-</FrameLayout>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edt_confirmation"
+                        android:hint="@string/search_confirmation_number"
+                        style="@style/editReservationInput"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputLayoutName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColorHint="@color/dark_blue">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edt_first_name"
+                        android:hint="@string/search_first_name"
+                        style="@style/editReservationInput"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputLayoutLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColorHint="@color/dark_blue">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edt_last_name"
+                        android:hint="@string/search_last_name"
+                        style="@style/editReservationInput"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    style="@style/bigButton"
+                    android:text="@string/search_retrieve_reservation"
+                    android:id="@+id/btn_retrieve_reservation" />
+
+
+            </LinearLayout><!--CardContentWrapper-->
+
+        </android.support.v7.widget.CardView><!--CardView-->
+    </LinearLayout><!--bodyWrapper-->
+
+
+</LinearLayout><!--mainWrapper-->
