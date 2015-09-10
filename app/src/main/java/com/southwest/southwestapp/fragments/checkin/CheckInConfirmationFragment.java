@@ -64,6 +64,9 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         if(mActionBar != null){
             setHasOptionsMenu(true);
             mActionBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+            if(mActionBar.getSubtitle() != null){
+                mActionBar.setSubtitle(null);
+            }
             mActionBar.setDisplayHomeAsUpEnabled(false);
         }
     }

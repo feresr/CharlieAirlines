@@ -68,6 +68,9 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         if(mActionBar != null){
             setHasOptionsMenu(true);
             mActionBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+            if(mActionBar.getSubtitle() != null){
+                mActionBar.setSubtitle(null);
+            }
             mActionBar.setDisplayHomeAsUpEnabled(true);
             mActionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
         }
