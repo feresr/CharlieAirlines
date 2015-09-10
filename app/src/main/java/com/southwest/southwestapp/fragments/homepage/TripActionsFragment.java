@@ -1,5 +1,6 @@
 package com.southwest.southwestapp.fragments.homepage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.BookingViewPagerAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
@@ -41,8 +43,10 @@ public class TripActionsFragment extends BaseFragment {
         mManageTrips = (BookingTabTitleWidget) rootView.findViewById(R.id.manage_trips);
 
         //Create/set viewpager adapter
-        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(), getContext());
-        mAdapter.setPageTitles(getResources().getStringArray(R.array.homepage_booking_tabs));
+        Context context = AppHelper.getInstance().getApplicationContext();
+        mAdapter = new BookingViewPagerAdapter(getChildFragmentManager(),
+                                               context.getResources().getStringArray(R.array.homepage_booking_tabs),context);
+
         mViewPager.setAdapter(mAdapter);
 
         mViewPager.addOnPageChangeListener(onPageChangeListener);
@@ -66,7 +70,7 @@ public class TripActionsFragment extends BaseFragment {
         @Override
         public void onPageSelected(int position) {
             if (mAdapter != null) {
-                android.support.v4.app.Fragment f = (android.support.v4.app.Fragment) mAdapter.instantiateItem(null, position);
+                android.support.v4.app.Fragment f = mAdapter.getItem(position);
                 if (f != null && f instanceof OnTabSelectedListener) {
                     ((OnTabSelectedListener) f).onTabSelected(position);
                 }
@@ -108,7 +112,12 @@ public class TripActionsFragment extends BaseFragment {
 
 
     public interface OnTabSelectedListener {
-        public void onTabSelected(int position);
+        void onTabSelected(int position);
+    }
+
+    public interface Slideable {
+        void slideTripPanelUp();
+        void slideTripPanelDown();
     }
 
 }

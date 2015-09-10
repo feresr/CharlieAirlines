@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +22,7 @@ import com.southwest.southwestapp.utils.AnimationGenericUtils;
 /**
  * Created by luisalfonsobejaranosanchez on 9/2/15.
  */
-public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
+public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
     private String[] mPageTitles;
@@ -30,9 +30,11 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
     private BookTripsItemsFragment bookTrips;
     private ManageTripsItemsFragment manageTrips;
 
-    public BookingViewPagerAdapter(FragmentManager fragmentManager, Context context) {
+    public BookingViewPagerAdapter(FragmentManager fragmentManager,String[] mPageTitles ,Context context) {
         super(fragmentManager);
         this.context = context;
+
+        this.mPageTitles = mPageTitles;
 
         int bookIcons[] = new int[3];
         bookIcons[0] = R.drawable.nav_drawer_flight_icon;
@@ -86,6 +88,8 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
         }
 
     }
+
+
 
     @Override
     public int getCount() {
@@ -174,12 +178,14 @@ public class BookingViewPagerAdapter extends FragmentStatePagerAdapter {
 
         public void introAnimate(){
 
-            int childCount = mLinearContainer.getChildCount();
-            mItems = new RelativeLayout[childCount];
+            if(mLinearContainer != null) {
+                int childCount = mLinearContainer.getChildCount();
+                mItems = new RelativeLayout[childCount];
 
-            for(int b=0; b<childCount; b++){
-                mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
-                AnimationGenericUtils.slideRightToLeft(mItems[b],getAnimationDelay(b) , getContext());
+                for (int b = 0; b < childCount; b++) {
+                    mItems[b] = (RelativeLayout)mLinearContainer.getChildAt(b);
+                    AnimationGenericUtils.slideRightToLeft(mItems[b], getAnimationDelay(b), getContext());
+                }
             }
 
         }
