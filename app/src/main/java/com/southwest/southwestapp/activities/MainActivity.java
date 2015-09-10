@@ -32,9 +32,7 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
     private BigPagerHomeFragment homeFragment;
     private int mCurrentSelectedPosition;
     private Toolbar mToolbar;
-
-    private boolean ftt = true;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
