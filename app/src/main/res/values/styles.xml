@@ -78,4 +78,10 @@
         <item name="android:background">@color/dark_blue</item>
     </style>
 
+    <style name="dialogFullScreen" parent="android:Theme" >
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
 </resources>

@@ -3,6 +3,7 @@ package com.southwest.southwestapp.fragments.checkin;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.utils.CustomAsyncTask;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -68,7 +69,7 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_boarding_pass:
-                AppHelper.screenManager.showBoardingPassScreen(getActivity());
+                new CustomAsyncTask(getActivity()).execute();
                 break;
             default:
                 break;
