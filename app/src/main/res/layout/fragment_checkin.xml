@@ -189,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:text="View more details"
                         android:layout_marginBottom="5dp"
-                        android:textStyle="bold"/>
+                        style="@style/textLink"/>
 
                     <View
                         android:layout_width="fill_parent"
@@ -201,7 +201,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Baggage weight, size &amp; limits apply."
-                        android:textStyle="bold"/>
+                        style="@style/textLink"/>
                 </LinearLayout>
             </RelativeLayout>
 

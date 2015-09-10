@@ -62,7 +62,8 @@ public class BoardingPassFragment extends BaseFragment {
                                            new DialogInterface.OnClickListener() {
                                                @Override
                                                public void onClick(DialogInterface dialog, int which) {
-                                                   AppHelper.screenManager.showMainScreen(getActivity());
+                                                   //AppHelper.screenManager.showMainScreen(getActivity());
+                                                   getActivity().finish();
                                                }
                                            },
                                            getResources().getString(R.string.boarding_pass_save_dialog_no),
