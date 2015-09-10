@@ -11,7 +11,7 @@
     <string name="log_in_password_hint">Password</string>
     <string name="log_in_checkbox_title">Remember me</string>
     <string name="log_in_help">Login help?</string>
-    <string name="log_in_button_title">Login in</string>
+    <string name="log_in_button_title">Log in</string>
     <string name="log_in_enroll_now">Enroll now</string>
     <string name="log_in_continue_as_guest">Continue as guest</string>
 
