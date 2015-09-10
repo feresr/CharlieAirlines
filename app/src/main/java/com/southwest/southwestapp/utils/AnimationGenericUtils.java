@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 
 import com.southwest.southwestapp.R;
 
@@ -94,6 +95,7 @@ public class AnimationGenericUtils {
             }
         });
 
+        slideRightToLeftAnimation.setInterpolator(new BounceInterpolator());
         slideRightToLeftAnimation.setStartOffset(delay);
         view.startAnimation(slideRightToLeftAnimation);
 
