@@ -4,6 +4,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Layout Log in-->
+    <string name="log_in_southwest">Southwest</string>
+    <string name="log_in_welcome">Welcome</string>
+    <string name="log_in_username_hint">Username or Account number</string>
+    <string name="log_in_password_hint">Password</string>
+    <string name="log_in_checkbox_title">Remember me</string>
+    <string name="log_in_help">Login help?</string>
+    <string name="log_in_button_title">Log in</string>
+    <string name="log_in_enroll_now">Enroll now</string>
+    <string name="log_in_continue_as_guest">Continue as guest</string>
 
     <!-- Layout Boarding Pass -->
     <string name="boarding_pass_group">Boarding \n Group</string>
@@ -31,7 +41,7 @@
     <string name="drawer_close">Close</string>
 
     <!-- Home Page -->
-    <string name="homepage_main_title">69 Sale</string>
+    <string name="homepage_main_title">69 sale</string>
     <string name="homepage_main_title_symbol">$</string>
     <string name="homepage_sub_title">--- one-way fares ---</string>
 

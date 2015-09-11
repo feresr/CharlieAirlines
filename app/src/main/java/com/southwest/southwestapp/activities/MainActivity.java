@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
     private BigPagerHomeFragment homeFragment;
     private int mCurrentSelectedPosition;
     private Toolbar mToolbar;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
 
         setUpToolBar();
         setUpNavDrawer();
-
-        tripFragment = new TripActionsFragment();
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -90,6 +88,11 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
                     case R.id.home:
                         AppHelper.screenManager.showMainScreen(MainActivity.this);
                         return true;
+
+                    case R.id.logout:
+                        AppHelper.screenManager.showLoginScreen(MainActivity.this);
+                        return true;
+
                     default:
                         //Event not handled: return false.
                         return false;
@@ -166,13 +169,12 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
 
     @Override
     public void slideTripPanelUp() {
-        if (tripFragment != null) {
-            findViewById(R.id.close_panel_button).setVisibility(View.GONE);
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
-            ft.replace(R.id.panel_container, tripFragment, null);
-            ft.commit();
-        }
+        tripFragment = TripActionsFragment.newInstance(true);
+        findViewById(R.id.close_panel_button).setVisibility(View.GONE);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
+        ft.replace(R.id.panel_container, tripFragment);
+        ft.commit();
     }
 
     @Override

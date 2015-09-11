@@ -1,82 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Southwest"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Welcome" />
-
-    <EditText
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username or Account number"
-        android:inputType="textEmailAddress" />
+        android:layout_height="match_parent"
+        android:id="@+id/checkInSearchWrapper"
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Remember me" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="Login help?" />
-
-    </LinearLayout>
-
-    <Button
-        style="@style/bigButton"
-        android:text="Log in" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="Enroll now" />
-
-        <View
-            android:layout_width="1dp"
+    <ImageView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray"></View>
+            android:src="@drawable/login_fragment_background"
+            android:scaleType="centerCrop"
+            android:tint="#7759"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="Continue as guest" />
+    <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
-    </LinearLayout>
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-</LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/log_in_southwest"
+                        android:textColor="@android:color/white"
+                        android:textSize="40sp"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:id="@+id/tv_welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/log_in_welcome"
+                        android:textColor="@android:color/white"
+                        android:textSize="30sp"
+                        android:textStyle="italic"/>
+
+                <EditText
+                        android:id="@+id/et_user"
+                        style="@style/editTextLogIn"
+                        android:hint="@string/log_in_username_hint"
+                        android:inputType="textEmailAddress"/>
+
+                <EditText
+                        android:id="@+id/et_pass"
+                        style="@style/editTextLogIn"
+                        android:hint="@string/log_in_password_hint"
+                        android:inputType="textPassword"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                    <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/circle_checkbox"
+                            android:layout_weight="1"
+                            android:paddingLeft="7dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@android:color/white"
+                            android:text="@string/log_in_checkbox_title"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/log_in_help"
+                            android:textColor="@android:color/white"/>
+
+                </LinearLayout>
+
+                <Button
+                        style="@style/bigButton"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/log_in_button_title"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="5dp"
+                            android:text="@string/log_in_enroll_now"
+                            android:textColor="@android:color/white"/>
+
+                    <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="5dp"
+                            android:text="@string/log_in_continue_as_guest"
+                            android:textColor="@android:color/white"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </ScrollView>
+
+</FrameLayout>
