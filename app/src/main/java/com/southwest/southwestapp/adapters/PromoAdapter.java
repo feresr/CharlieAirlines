@@ -13,12 +13,13 @@ import java.util.ArrayList;
 
 public class PromoAdapter extends FragmentStatePagerAdapter {
 
+
     private ArrayList<PromoPageFragment> promos;
 
     public PromoAdapter(FragmentActivity activity) {
         super(activity.getSupportFragmentManager());
         promos = new ArrayList<>();
-        promos.add(PromoPageFragment.newInstance(activity, R.layout.fragment_first_information_item, AnimationGenericUtils.animations.SLIDE_IN_LEFT, AnimationGenericUtils.animations.FADE_IN, true));
+        promos.add(PromoPageFragment.newInstance(activity, R.layout.fragment_first_information_item, AnimationGenericUtils.animations.SLIDE_IN_LEFT, null, true));
         promos.add(PromoPageFragment.newInstance(activity, R.layout.fragment_second_information_item, AnimationGenericUtils.animations.SLIDE_IN_LEFT, AnimationGenericUtils.animations.SLIDE_IN_LEFT));
         promos.add(PromoPageFragment.newInstance(activity, R.layout.fragment_third_information_item, AnimationGenericUtils.animations.FADE_IN, AnimationGenericUtils.animations.FADE_IN));
     }
@@ -31,6 +32,7 @@ public class PromoAdapter extends FragmentStatePagerAdapter {
     public void animateAtIndex(int index) {
         promos.get(index).introAnimation();
     }
+
 
     @Override
     public int getCount() {

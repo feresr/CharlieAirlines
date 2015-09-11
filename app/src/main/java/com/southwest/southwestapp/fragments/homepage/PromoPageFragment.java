@@ -57,22 +57,36 @@ public class PromoPageFragment extends BaseFragment {
 
     public void introAnimation() {
         if (mainAnimation != null) {
-            switch (mainAnimation) {
-                case FADE_IN:
-                    AnimationGenericUtils.fadeInAnimation(mainInformationContainer, context);
-                    break;
-                case SLIDE_IN_LEFT:
-                    AnimationGenericUtils.slideRightToLeft(mainInformationContainer, 0, context);
-            }
+            animateFirstContainer(mainAnimation);
         }
         if (secondaryAnimation != null) {
-            switch (secondaryAnimation) {
-                case FADE_IN:
-                    AnimationGenericUtils.fadeInAnimation(secondaryInformationContainer, context);
-                    break;
-                case SLIDE_IN_LEFT:
-                    AnimationGenericUtils.slideRightToLeft(secondaryInformationContainer, 100, context);
-            }
+            animateSecondContainer(secondaryAnimation);
         }
     }
+
+    public void animateFirstContainer(AnimationGenericUtils.animations animation){
+        switch (animation) {
+            case FADE_IN:
+                AnimationGenericUtils.fadeInAnimation(mainInformationContainer, context);
+                break;
+            case SLIDE_IN_LEFT:
+                AnimationGenericUtils.slideRightToLeft(mainInformationContainer, 0, context);
+        }
+        this.mainAnimation = animation;
+    }
+
+    public void animateSecondContainer(AnimationGenericUtils.animations animation){
+        switch (animation) {
+            case FADE_IN:
+                AnimationGenericUtils.fadeInAnimation(secondaryInformationContainer, context);
+                break;
+            case SLIDE_IN_LEFT:
+                AnimationGenericUtils.slideRightToLeft(secondaryInformationContainer, 100, context);
+                break;
+            case FADE_OUT:
+                AnimationGenericUtils.fadeOutAnimation(secondaryInformationContainer, null,context);
+        }
+        this.secondaryAnimation = animation;
+    }
+
 }
