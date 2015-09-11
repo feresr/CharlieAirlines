@@ -60,7 +60,8 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
             if(mActionBar.getSubtitle() != null){
                 mActionBar.setSubtitle(null);
             }
-            mActionBar.setDisplayHomeAsUpEnabled(false);
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+            mActionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
         }
     }
 
@@ -81,15 +82,14 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_checkin,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
-            case R.id.optionCancel:
-                AppHelper.screenManager.showCheckInSearchScreen(getActivity());
+            case android.R.id.home:
+                getActivity().onBackPressed();
                 return true;
             default:
                 break;
