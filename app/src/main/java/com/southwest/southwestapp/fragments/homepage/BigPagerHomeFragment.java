@@ -95,13 +95,15 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
-        AnimationGenericUtils.fadeInAnimation(mFooter,AppHelper.getInstance().getApplicationContext());
+        AnimationGenericUtils.fadeInAnimation(mFooter, AppHelper.getInstance().getApplicationContext());
+        ((PromoPageFragment)viewPagerAdapter.getItem(0)).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);
     }
 
     public void disablePaging() {
         AnimationGenericUtils.zoom(rootView, null, 1);
         AnimationGenericUtils.fadeOutAnimation(mFooter, null, AppHelper.getInstance().getApplicationContext());
+        ((PromoPageFragment)viewPagerAdapter.getItem(0)).animateSecondContainer(AnimationGenericUtils.animations.FADE_OUT);
         mViewPager.setPagingEnabled(false);
     }
 

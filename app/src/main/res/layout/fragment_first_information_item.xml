@@ -76,8 +76,9 @@
         android:layout_alignLeft="@+id/mainInformationContainer"
         android:layout_alignStart="@+id/mainInformationContainer"
         android:layout_below="@+id/mainInformationContainer"
+        android:visibility="invisible"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="85dp"
         android:orientation="vertical">
 
         <TextView

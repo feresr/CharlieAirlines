@@ -23,12 +23,34 @@ import com.southwest.southwestapp.widgets.BookingTabTitleWidget;
 public class TripActionsFragment extends BaseFragment {
 
     private final String WIDGET_TAG = "TabTitleHomeViewPager";
+    private static final String INFO_TAG = "ShowInfoTag";
 
     private ViewPager mViewPager;
     private BookingTabTitleWidget mBookingTrips;
     private BookingTabTitleWidget mManageTrips;
     private BookingViewPagerAdapter mAdapter;
     private RelativeLayout mPreferredContainer;
+
+    private boolean showPreferredInfo;
+
+
+    public static TripActionsFragment newInstance(boolean showPreferredInfo) {
+        TripActionsFragment tripFragment = new TripActionsFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(INFO_TAG, showPreferredInfo);
+        tripFragment.setArguments(args);
+        return tripFragment;
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if(bundle!=null){
+            showPreferredInfo = bundle.getBoolean(INFO_TAG);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,6 +79,10 @@ public class TripActionsFragment extends BaseFragment {
         mManageTrips.setOnClickListener(tabClickListener);
         mBookingTrips.setOnClickListener(tabClickListener);
         mBookingTrips.setSelected();
+
+        if(showPreferredInfo){
+            showPreferredInfo();
+        }
 
         return rootView;
     }

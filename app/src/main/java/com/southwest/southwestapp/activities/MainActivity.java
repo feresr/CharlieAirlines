@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
 
     @Override
     public void slideTripPanelUp() {
-        tripFragment = new TripActionsFragment();
+        tripFragment = TripActionsFragment.newInstance(true);
         findViewById(R.id.close_panel_button).setVisibility(View.GONE);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
