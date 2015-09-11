@@ -20,10 +20,15 @@ public class BaseActivity extends AppCompatActivity {
     public static final String FRAGMENT = "fragment";
     public static final String FRAGMENT_PARAMS = "fragment_params";
 
+    protected Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_base);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbarGeneral);
+        setSupportActionBar(mToolbar);
 
         if (getIntent().getExtras() != null) {
             Class<?> fragment = (Class<?>) getIntent().getExtras().getSerializable(FRAGMENT);

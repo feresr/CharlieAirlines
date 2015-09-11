@@ -7,7 +7,7 @@
         android:orientation="vertical"
         android:id="@+id/mainWrapper">
 
-    <android.support.v7.widget.Toolbar
+    <!--<android.support.v7.widget.Toolbar
             android:id="@+id/toolbarConfirmation"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -15,7 +15,7 @@
             android:minHeight="?attr/actionBarSize"
             app:theme="@style/toolBarStyle">
 
-    </android.support.v7.widget.Toolbar>
+    </android.support.v7.widget.Toolbar>-->
 
     <LinearLayout
             android:orientation="vertical"
@@ -169,7 +169,8 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp">
+                android:layout_margin="15dp"
+                android:id="@+id/faqWrapper">
 
             <TextView
                     android:layout_width="wrap_content"

@@ -6,28 +6,33 @@ import com.southwest.southwestapp.fragments.BaseFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 /**
  * Created by armando.dominguez on 03/09/2015.
  */
-public class CheckInConfirmationFragment extends BaseFragment implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
+public class CheckInConfirmationFragment extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = CheckInConfirmationFragment.class.getSimpleName();
 
     private TextView mSuccessText;
     private Button mBtBoardingPass;
     private CardView mCardContent;
-    private Toolbar mConfToolBar;
+    private LinearLayout faqContainer;
 
     public CheckInConfirmationFragment() {
     }
@@ -40,7 +45,7 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         mSuccessText = (TextView) confirmationView.findViewById(R.id.successText);
         mCardContent = (CardView) confirmationView.findViewById(R.id.card_view);
         mBtBoardingPass = (Button) confirmationView.findViewById(R.id.btn_boarding_pass);
-        mConfToolBar = (Toolbar) confirmationView.findViewById(R.id.toolbarConfirmation);
+        faqContainer = (LinearLayout) confirmationView.findViewById(R.id.faqWrapper);
 
         setUpToolBar();
 
@@ -48,15 +53,22 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
 
         mSuccessText.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right));
         mCardContent.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        faqContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
-        mConfToolBar.setOnMenuItemClickListener(this);
 
-        mConfToolBar.inflateMenu(R.menu.menu_confirmation);
         return confirmationView;
     }
 
     private void setUpToolBar() {
-        mConfToolBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+        ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if(mActionBar != null){
+            setHasOptionsMenu(true);
+            mActionBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+            if(mActionBar.getSubtitle() != null){
+                mActionBar.setSubtitle(null);
+            }
+            mActionBar.setDisplayHomeAsUpEnabled(false);
+        }
     }
 
     @Override
@@ -76,13 +88,20 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
     }
 
     @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_confirmation,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
             case R.id.confirmationMenu:
                 getActivity().finish();
                 return true;
             default:
-                return false;
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 }
