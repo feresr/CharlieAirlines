@@ -43,7 +43,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:padding="10dp"
-                        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout" >
+                        android:theme="@style/TextLabel" >
 
                         <EditText
                             android:layout_width="match_parent"
@@ -59,12 +59,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+                        android:theme="@style/TextLabel">
 
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_first_name"
+                            android:drawableBottom="@drawable/line_gray"
                             android:hint="@string/search_first_name"
                             style="@style/editReservationInput"/>
 
@@ -75,12 +76,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+                        android:theme="@style/TextLabel">
 
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_last_name"
+                            android:drawableBottom="@drawable/line_gray"
                             android:hint="@string/search_last_name"
                             style="@style/editReservationInput"/>
 
