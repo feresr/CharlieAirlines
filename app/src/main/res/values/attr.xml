@@ -2,6 +2,8 @@
 <resources>
     <declare-styleable name="LabeledText">
         <attr name="mainText" format="string"/>
+        <attr name="mainTextSize" format="integer"/>
+        <attr name="mainTextStyle" format="string"/>
         <attr name="upperText" format="string"/>
         <attr name="bottomText" format="string"/>
         <attr name="leftImage" format="integer"/>

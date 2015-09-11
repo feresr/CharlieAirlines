@@ -3,9 +3,11 @@ package com.southwest.southwestapp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +22,10 @@ public class LabeledText extends RelativeLayout {
     private String bottomText;
     private Drawable imgRight;
     private Drawable imgLeft;
+    private int mainTextSize;
+    private String mainTextStyle;
+
+    private TextView mTvMain;
 
     public LabeledText(Context context) {
         super(context);
@@ -49,6 +55,8 @@ public class LabeledText extends RelativeLayout {
         TypedArray typedArray = context
                 .obtainStyledAttributes(attrs, R.styleable.LabeledText);
         mainText = typedArray.getString(R.styleable.LabeledText_mainText);
+        mainTextSize = typedArray.getInteger(R.styleable.LabeledText_mainTextSize, 20);
+        mainTextStyle = typedArray.getString(R.styleable.LabeledText_mainTextStyle);
         upperText = typedArray.getString(R.styleable.LabeledText_upperText);
         bottomText = typedArray.getString(R.styleable.LabeledText_bottomText);
         imgRight = typedArray.getDrawable(R.styleable.LabeledText_rightImage);
@@ -59,7 +67,17 @@ public class LabeledText extends RelativeLayout {
 
     private void initializeViews(Context context) {
         inflate(context, R.layout.labeled_text, this);
-        ((TextView) findViewById(R.id.main_text)).setText(mainText);
+        mTvMain = ((TextView) findViewById(R.id.main_text));
+
+        mTvMain.setText(mainText);
+        mTvMain.setTextSize(TypedValue.COMPLEX_UNIT_SP, mainTextSize);
+
+        if(mainTextStyle != null){
+            mTvMain.setTypeface(Typeface.DEFAULT);
+        } else {
+            mTvMain.setTypeface(Typeface.DEFAULT_BOLD);
+        }
+
         ((TextView) findViewById(R.id.above)).setText(upperText);
         if (bottomText != null && !bottomText.isEmpty()) {
             ((TextView) findViewById(R.id.below)).setText(bottomText);

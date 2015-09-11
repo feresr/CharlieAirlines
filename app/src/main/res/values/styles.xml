@@ -40,8 +40,6 @@
 
     <style name="textLabeledMain" parent="@android:style/TextAppearance" >
         <item name="android:textColor">@color/dark_blue</item>
-        <item name="android:textSize">25sp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:gravity">bottom</item>
     </style>
 
