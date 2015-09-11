@@ -62,6 +62,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
+            android:textStyle="italic"
             android:text="@string/homepage_sub_title"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/homepage_sub_title" />
