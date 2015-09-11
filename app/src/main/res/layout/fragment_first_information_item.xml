@@ -69,6 +69,8 @@
 
     </RelativeLayout>
 
+
+
     <LinearLayout
         android:id="@+id/secondaryInformationContainer"
         android:layout_width="380dp"
