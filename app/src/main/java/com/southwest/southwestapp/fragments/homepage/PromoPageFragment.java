@@ -72,7 +72,6 @@ public class PromoPageFragment extends BaseFragment {
             case SLIDE_IN_LEFT:
                 AnimationGenericUtils.slideRightToLeft(mainInformationContainer, 0, context);
         }
-        this.mainAnimation = animation;
     }
 
     public void animateSecondContainer(AnimationGenericUtils.animations animation){
@@ -86,7 +85,12 @@ public class PromoPageFragment extends BaseFragment {
             case FADE_OUT:
                 AnimationGenericUtils.fadeOutAnimation(secondaryInformationContainer, null,context);
         }
-        this.secondaryAnimation = animation;
+
+        //for the first fragment, we don't show the secondary promo info the first time show it.
+        //but we do on consecutive instances.
+        if (isFirstFragment) {
+            this.secondaryAnimation = animation;
+        }
     }
 
 }
