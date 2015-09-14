@@ -18,6 +18,7 @@ import com.southwest.southwestapp.views.BigPageViewPager;
 public class BigPagerHomeFragment extends BaseFragment {
 
     private static final float ZOOM_FACTOR = 1.04f;
+    private static final int FADE_OUT_FOOTER_TIME = 1500;
 
     private View rootView;
     private View mFooter;
@@ -68,7 +69,7 @@ public class BigPagerHomeFragment extends BaseFragment {
             public void onPageSelected(int position) {
                 viewPagerAdapter.animateAtIndex(position);
                 footerTimer.cancel();
-                footerTransition(1500);
+                footerTransition(FADE_OUT_FOOTER_TIME);
 
                 switch (position) {
                     case 0:
@@ -110,8 +111,7 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
-
-        footerTransition(2000);
+        footerTransition(FADE_OUT_FOOTER_TIME);
         ((PromoPageFragment)viewPagerAdapter.getItem(0)).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);
     }
