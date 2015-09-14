@@ -93,18 +93,24 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     }
 
-    private void footerTransition(int timeToOut){
+    private void footerTransition(int timeToOut) {
 
         mFooter.setVisibility(View.VISIBLE);
         footerTimer = new CountDownTimer(timeToOut, 1000) {
-            public void onTick(long millisUntilFinished) {}
-            public void onFinish() { AnimationGenericUtils.fadeOutAnimation(mFooter, null, getContext());}
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                if (mFooter != null && getContext() != null) {
+                    AnimationGenericUtils.fadeOutAnimation(mFooter, null, getContext());
+                }
+            }
 
         }.start();
 
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
     }
 
@@ -112,13 +118,13 @@ public class BigPagerHomeFragment extends BaseFragment {
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
         footerTransition(FADE_OUT_FOOTER_TIME);
-        ((PromoPageFragment)viewPagerAdapter.getItem(mViewPager.getCurrentItem())).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
+        ((PromoPageFragment) viewPagerAdapter.getItem(mViewPager.getCurrentItem())).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);
     }
 
     public void disablePaging() {
         AnimationGenericUtils.zoom(rootView, null, 1);
-        ((PromoPageFragment)viewPagerAdapter.getItem(mViewPager.getCurrentItem())).animateSecondContainer(AnimationGenericUtils.animations.FADE_OUT);
+        ((PromoPageFragment) viewPagerAdapter.getItem(mViewPager.getCurrentItem())).animateSecondContainer(AnimationGenericUtils.animations.FADE_OUT);
         mViewPager.setPagingEnabled(false);
     }
 
