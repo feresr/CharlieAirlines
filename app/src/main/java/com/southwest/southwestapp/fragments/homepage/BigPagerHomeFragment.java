@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.PromoAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
@@ -65,7 +64,7 @@ public class BigPagerHomeFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 viewPagerAdapter.animateAtIndex(position);
-
+                footerTransition();
                 switch (position) {
                     case 0:
                         firstBtn.setPressed(true);
@@ -88,6 +87,12 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     }
 
+    private void footerTransition(){
+        if(mFooter.getVisibility() == View.INVISIBLE) {
+            AnimationGenericUtils.transitionFadeInFadeOut(mFooter, 2000, getContext());
+        }
+    }
+
     public void onResume(){
         super.onResume();
     }
@@ -95,14 +100,13 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
-        AnimationGenericUtils.fadeInAnimation(mFooter, AppHelper.getInstance().getApplicationContext());
+        footerTransition();
         ((PromoPageFragment)viewPagerAdapter.getItem(0)).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);
     }
 
     public void disablePaging() {
         AnimationGenericUtils.zoom(rootView, null, 1);
-        AnimationGenericUtils.fadeOutAnimation(mFooter, null, AppHelper.getInstance().getApplicationContext());
         ((PromoPageFragment)viewPagerAdapter.getItem(0)).animateSecondContainer(AnimationGenericUtils.animations.FADE_OUT);
         mViewPager.setPagingEnabled(false);
     }

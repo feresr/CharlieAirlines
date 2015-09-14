@@ -49,7 +49,8 @@
             android:gravity="center"
             android:text="@string/thirdpage_main_title_top"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/neutral_white" />
+            android:textColor="@color/neutral_white"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/thirdInformationBottomTitle"
@@ -59,7 +60,8 @@
             android:layout_centerHorizontal="true"
             android:text="@string/thirdpage_main_title_bottom"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/neutral_white" />
+            android:textColor="@color/neutral_white"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/thirdInformationDetail"

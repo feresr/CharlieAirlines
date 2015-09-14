@@ -50,16 +50,16 @@
             android:gravity="center"
             android:text="@string/secondpage_main_title_first"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/neutral_white" />
+            android:textColor="@color/neutral_white"
+            android:textStyle="italic" />
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/secondaryInformationContainer"
-        android:layout_width="380dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/mainInformationContainer"
-        android:layout_alignParentRight="true"
         android:layout_alignStart="@+id/mainInformationContainer"
         android:layout_below="@+id/mainInformationContainer"
         android:layout_marginTop="20dp"
@@ -70,20 +70,48 @@
             android:id="@+id/secondInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/firstpage_main_title"
+            android:text="@string/secondpage_sub_title_top"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/neutral_white" />
+            android:textColor="@color/neutral_white"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/secondInformationBooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/secondPageSubTitleMiddle"
             android:layout_marginTop="10dp"
             android:text="@string/firstpage_book_now"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/information_book_blue_text"
             android:textStyle="bold" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/secondPageSubTitleMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/secondInformation"
+            android:text="@string/secondpage_sub_title_middle"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/secondPageSubTitleMiddle"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/secondPageSubTitleMiddle"
+            android:layout_toRightOf="@+id/secondPageSubTitleMiddle"
+            android:text="@string/secondpage_sub_title_end"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/neutral_white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -103,6 +103,9 @@
     <string name="secondpage_main_title_first">Fly to the</string>
     <string name="secondpage_main_title_second">Big Game</string>
     <string name="secondpage_information"> <![CDATA[  <b>  Road to Arizona </b>  <br> One-way fares from <b> $169 </b>   ]]></string>
+    <string name="secondpage_sub_title_top">Road to Arizona</string>
+    <string name="secondpage_sub_title_middle">One-way fares from</string>
+    <string name="secondpage_sub_title_end">$169</string>
 
     <!-- Third Fragment Information -->
     <string name="thirdpage_main_title_second">Big Game</string>
