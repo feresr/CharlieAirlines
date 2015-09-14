@@ -2,6 +2,7 @@ package com.southwest.southwestapp.utils;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
@@ -183,4 +184,20 @@ public class AnimationGenericUtils {
         animator.start();
 
     }
+
+
+    public static void transitionFadeInFadeOut(final View view , int timeToOut,final Context context){
+
+        fadeInAnimation(view, context);
+
+        new CountDownTimer(timeToOut, 1000) {
+
+            public void onTick(long millisUntilFinished) {}
+
+            public void onFinish() { fadeOutAnimation(view, null ,context ); }
+
+        }.start();
+
+    }
+
 }

@@ -32,10 +32,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="120dp"
+            android:layout_marginBottom="50dp"
             android:background="@null"
             android:padding="30dp"
-            android:src="@drawable/abc_ic_clear_mtrl_alpha" />
+            android:src="@drawable/cancelled_icon" />
     </FrameLayout>
 
     <android.support.design.widget.NavigationView
@@ -45,4 +45,5 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/main_drawer" />
+
 </android.support.v4.widget.DrawerLayout>

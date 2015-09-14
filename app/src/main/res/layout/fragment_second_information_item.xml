@@ -48,18 +48,18 @@
             android:layout_alignStart="@+id/informationMainTitleMiddle"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
+            android:textStyle="italic"
             android:text="@string/secondpage_main_title_first"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/neutral_white" />
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/secondaryInformationContainer"
-        android:layout_width="380dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/mainInformationContainer"
-        android:layout_alignParentRight="true"
         android:layout_alignStart="@+id/mainInformationContainer"
         android:layout_below="@+id/mainInformationContainer"
         android:layout_marginTop="20dp"
@@ -70,7 +70,8 @@
             android:id="@+id/secondInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/firstpage_main_title"
+            android:text="@string/secondpage_sub_title_top"
+            android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/neutral_white" />
 
@@ -78,12 +79,39 @@
             android:id="@+id/secondInformationBooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="@string/firstpage_book_now"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/information_book_blue_text"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/secondPageSubTitleMiddle" />
 
-    </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/neutral_white"
+                android:text="@string/secondpage_sub_title_middle"
+                android:id="@+id/secondPageSubTitleMiddle"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/secondInformation" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/secondpage_sub_title_end"
+                android:textColor="@color/neutral_white"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:layout_alignTop="@+id/secondPageSubTitleMiddle"
+                android:layout_toRightOf="@+id/secondPageSubTitleMiddle"
+                android:layout_toEndOf="@+id/secondPageSubTitleMiddle"
+                android:id="@+id/textView2" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

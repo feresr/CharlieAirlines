@@ -47,6 +47,7 @@
             android:layout_toLeftOf="@+id/thirdInformationBottomTitle"
             android:layout_toStartOf="@+id/thirdInformationBottomTitle"
             android:gravity="center"
+            android:textStyle="italic"
             android:text="@string/thirdpage_main_title_top"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/neutral_white" />
@@ -58,6 +59,7 @@
             android:layout_below="@+id/informationMainTitleMiddle"
             android:layout_centerHorizontal="true"
             android:text="@string/thirdpage_main_title_bottom"
+            android:textStyle="italic"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/neutral_white" />
 
