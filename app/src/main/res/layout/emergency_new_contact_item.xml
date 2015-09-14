@@ -35,16 +35,16 @@
                         android:id="@+id/emergencyItemPhone"
                         android:layout_below="@+id/emergencyItemName"
                         android:layout_toRightOf="@+id/emergencyItemArea"
-                        android:layout_toLeftOf="@+id/checkBox"
-                        android:layout_toStartOf="@+id/checkBox"/>
+                        android:layout_toLeftOf="@+id/emergencyItemChecked"
+                        android:layout_toStartOf="@+id/emergencyItemChecked"/>
 
                 <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/checkBox"
+                        android:id="@+id/emergencyItemChecked"
                         android:layout_alignRight="@+id/emergencyItemName"
                         android:layout_alignEnd="@+id/emergencyItemName"
-                        android:layout_alignBottom="@+id/emergencyItemPhone" />
+                        android:layout_alignBottom="@+id/emergencyItemPhone" android:checked="false"/>
 
 
 </RelativeLayout>

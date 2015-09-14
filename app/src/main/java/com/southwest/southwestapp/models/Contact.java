@@ -9,7 +9,7 @@ public class Contact {
     private String area;
     private String phone;
 
-    public Contact(String name, String area, String phone) {
+    public Contact(String name, String phone, String area) {
         this.name = name;
         this.area = area;
         this.phone = phone;
