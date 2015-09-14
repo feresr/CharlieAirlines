@@ -78,12 +78,18 @@ public class LabeledText extends RelativeLayout {
             mTvMain.setTypeface(Typeface.DEFAULT_BOLD);
         }
 
-        ((TextView) findViewById(R.id.above)).setText(upperText);
         if (bottomText != null && !bottomText.isEmpty()) {
             ((TextView) findViewById(R.id.below)).setText(bottomText);
         } else {
             (findViewById(R.id.below)).setVisibility(GONE);
         }
+
+        if (upperText != null && !upperText.isEmpty()) {
+            ((TextView) findViewById(R.id.above)).setText(upperText);
+        } else {
+            (findViewById(R.id.above)).setVisibility(GONE);
+        }
+
         if (imgRight != null) {
             ((ImageView) findViewById(R.id.img_right)).setImageDrawable(imgRight);
         } else {
