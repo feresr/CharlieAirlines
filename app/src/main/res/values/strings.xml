@@ -121,4 +121,16 @@
     <string name="menu_title_send">Send</string>
     <string name="menu_title_save">Save</string>
 
+    <!-- Emergency Contact -->
+    <string name="emergency_contact_passanger">PASSANGER</string>
+    <string name="emergency_contact_optional">EMERGENCY CONTACT (OPTIONAL)</string>
+    <string name="emergency_contact_hint_name">Name</string>
+    <string name="emergency_contact_hint_number">Phone Number</string>
+    <string name="emergency_contact_hint_area">+1</string>
+    <string name="emergency_contact_add">Add Contact</string>
+    <string name="emergency_contact_for_all_passangers">Use this emergency contact \nfor all passangers</string>
+    <string name="emergency_contact_info">If you need to make changes to your passport \ninformation. you will need to visit southwest.com</string>
+    <string name="emergency_contact_continue">Continue</string>
+
+
 </resources>
