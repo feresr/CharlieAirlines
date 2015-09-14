@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:padding="10dp"
+        >
 
-    <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:layout_marginTop="8dp"
-            android:background="@color/neutral_white"
-            android:paddingLeft="15dp"
-            android:hint="@string/emergency_contact_hint_name"
-            android:ems="10"
-            android:id="@+id/emergencyContactName"/>
 
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-        <EditText
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:inputType="number"
-                android:layout_marginTop="2dp"
-                android:background="@color/neutral_white"
-                android:textColor="@color/dark_blue"
-                android:textColorHint="@color/dark_blue"
-                android:paddingLeft="15dp"
-                android:hint="@string/emergency_contact_hint_area"
-                android:ems="10"
-                android:id="@+id/emergencyContactArea"/>
-
-        <EditText
+        <TextView
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:inputType="number"
-                android:layout_marginTop="2dp"
-                android:background="@color/neutral_white"
-                android:paddingLeft="15dp"
-                android:layout_marginLeft="2dp"
-                android:hint="@string/emergency_contact_hint_number"
-                android:ems="10"
-                android:id="@+id/emergencyContactNumber"/>
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Luis Bejarano"
+                android:textColor="@color/dark_blue"
+                android:id="@+id/emergencyItemName"/>
 
 
-    </LinearLayout>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="+1"
+                        android:id="@+id/emergencyItemArea"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/emergencyItemName" />
 
-</LinearLayout>
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="3136064315"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/emergencyItemPhone"
+                        android:layout_below="@+id/emergencyItemName"
+                        android:layout_toRightOf="@+id/emergencyItemArea"
+                        android:layout_toLeftOf="@+id/checkBox"
+                        android:layout_toStartOf="@+id/checkBox"/>
+
+                <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBox"
+                        android:layout_alignRight="@+id/emergencyItemName"
+                        android:layout_alignEnd="@+id/emergencyItemName"
+                        android:layout_alignBottom="@+id/emergencyItemPhone" />
+
+
+</RelativeLayout>
