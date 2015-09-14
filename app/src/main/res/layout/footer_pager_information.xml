@@ -15,26 +15,20 @@
             android:id="@+id/footer_information_btn1"
             android:layout_width="@dimen/footer_page_information_circle_size"
             android:layout_height="@dimen/footer_page_information_circle_size"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:background="@drawable/sel_circle_pager_information" />
 
         <Button
             android:id="@+id/footer_information_btn2"
             android:layout_width="@dimen/footer_page_information_circle_size"
             android:layout_height="@dimen/footer_page_information_circle_size"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/sel_circle_pager_information" />
 
         <Button
             android:id="@+id/footer_information_btn3"
             android:layout_width="@dimen/footer_page_information_circle_size"
             android:layout_height="@dimen/footer_page_information_circle_size"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
             android:background="@drawable/sel_circle_pager_information" />
 
     </LinearLayout>

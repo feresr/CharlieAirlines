@@ -63,31 +63,27 @@
             android:textColor="@color/neutral_white"
             android:textStyle="italic" />
 
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/secondaryInformationContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainInformationContainer"
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/thirdInformationDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/thirdInformationBottomTitle"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="28dp"
             android:text="@string/thirdpage_details"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/information_book_text"
             android:textStyle="bold" />
-
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/secondaryInformationContainer"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mainInformationContainer"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/mainInformationContainer"
-        android:layout_below="@+id/mainInformationContainer"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-    </LinearLayout>
 
 </RelativeLayout>
