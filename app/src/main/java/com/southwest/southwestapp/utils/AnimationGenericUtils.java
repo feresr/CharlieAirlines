@@ -184,20 +184,6 @@ public class AnimationGenericUtils {
         animator.start();
 
     }
-
-
-    public static void transitionFadeInFadeOut(final View view , int timeToOut,final Context context){
-
-        fadeInAnimation(view, context);
-
-        new CountDownTimer(timeToOut, 1000) {
-
-            public void onTick(long millisUntilFinished) {}
-
-            public void onFinish() { fadeOutAnimation(view, null ,context ); }
-
-        }.start();
-
-    }
+    
 
 }
