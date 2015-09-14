@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.PromoAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
@@ -65,7 +64,7 @@ public class BigPagerHomeFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 viewPagerAdapter.animateAtIndex(position);
-                footerTranssition();
+                footerTransition();
                 switch (position) {
                     case 0:
                         firstBtn.setPressed(true);
@@ -88,7 +87,7 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     }
 
-    private void footerTranssition(){
+    private void footerTransition(){
         if(mFooter.getVisibility() == View.INVISIBLE) {
             AnimationGenericUtils.transitionFadeInFadeOut(mFooter, 2000, getContext());
         }
@@ -101,7 +100,7 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
-        footerTranssition();
+        footerTransition();
         ((PromoPageFragment)viewPagerAdapter.getItem(0)).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);
     }
