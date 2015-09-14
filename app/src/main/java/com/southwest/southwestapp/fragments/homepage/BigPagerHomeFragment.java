@@ -1,6 +1,7 @@
 package com.southwest.southwestapp.fragments.homepage;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.southwest.southwestapp.views.BigPageViewPager;
 public class BigPagerHomeFragment extends BaseFragment {
 
     private static final float ZOOM_FACTOR = 1.04f;
+    private static final int FADE_OUT_FOOTER_TIME = 1500;
 
     private View rootView;
     private View mFooter;
@@ -27,6 +29,8 @@ public class BigPagerHomeFragment extends BaseFragment {
     private Button firstBtn;
     private Button secondBtn;
     private Button thirdButton;
+
+    private CountDownTimer footerTimer;
 
     public BigPagerHomeFragment() {
     }
@@ -64,7 +68,9 @@ public class BigPagerHomeFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 viewPagerAdapter.animateAtIndex(position);
-                footerTransition();
+                footerTimer.cancel();
+                footerTransition(FADE_OUT_FOOTER_TIME);
+
                 switch (position) {
                     case 0:
                         firstBtn.setPressed(true);
@@ -87,10 +93,15 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     }
 
-    private void footerTransition(){
-        if(mFooter.getVisibility() == View.INVISIBLE) {
-            AnimationGenericUtils.transitionFadeInFadeOut(mFooter, 2000, getContext());
-        }
+    private void footerTransition(int timeToOut){
+
+        mFooter.setVisibility(View.VISIBLE);
+        footerTimer = new CountDownTimer(timeToOut, 1000) {
+            public void onTick(long millisUntilFinished) {}
+            public void onFinish() { AnimationGenericUtils.fadeOutAnimation(mFooter, null, getContext());}
+
+        }.start();
+
     }
 
     public void onResume(){
@@ -100,7 +111,7 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
-        footerTransition();
+        footerTransition(FADE_OUT_FOOTER_TIME);
         ((PromoPageFragment)viewPagerAdapter.getItem(0)).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);
     }
