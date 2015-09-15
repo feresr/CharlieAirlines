@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/neutral_gray_8">
+
+    <include android:layout_width="match_parent"
+             android:layout_height="70dp"
+             layout="@layout/emergency_header"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/neutroal_gray_10"
+            android:text="@string/emergency_contact_optional"
+            />
+
+
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/neutral_white"
+            android:id="@+id/emergencyContacts"
+            />
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/neutral_white"
+            android:text="@string/emergency_contact_use_new"
+            android:textColor="@color/dark_blue"
+            android:id="@+id/emergencyContactAdd"/>
+
+    <include android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="30dp"
+             android:layout_gravity="center_horizontal"
+             layout="@layout/emergency_contact_switch"/>
+
+    <include android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="20dp"
+             android:layout_gravity="center_horizontal"
+             layout="@layout/emergency_footer"/>
+
+</LinearLayout>

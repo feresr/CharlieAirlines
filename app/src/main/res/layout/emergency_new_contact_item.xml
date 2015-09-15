@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:padding="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingTop="5dp"
         >
 
 
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Luis Bejarano"
-                android:textColor="@color/dark_blue"
-                android:id="@+id/emergencyItemName"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="10dp"
+            android:text="Luis Bejarano"
+            android:textColor="@color/dark_blue"
+            android:layout_toLeftOf="@+id/emergencyItemChecked"
+            android:layout_toStartOf="@+id/emergencyItemChecked"
+            android:id="@+id/emergencyItemName"/>
 
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="+1"
-                        android:id="@+id/emergencyItemArea"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/emergencyItemName" />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
 
-                <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="3136064315"
-                        android:layout_marginLeft="5dp"
-                        android:id="@+id/emergencyItemPhone"
-                        android:layout_below="@+id/emergencyItemName"
-                        android:layout_toRightOf="@+id/emergencyItemArea"
-                        android:layout_toLeftOf="@+id/emergencyItemChecked"
-                        android:layout_toStartOf="@+id/emergencyItemChecked"/>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="+1"
+            android:id="@+id/emergencyItemArea"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/emergencyItemName"/>
 
-                <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/emergencyItemChecked"
-                        android:layout_alignRight="@+id/emergencyItemName"
-                        android:layout_alignEnd="@+id/emergencyItemName"
-                        android:layout_alignBottom="@+id/emergencyItemPhone" android:checked="false"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="3136064315"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/emergencyItemPhone"
+            android:layout_below="@+id/emergencyItemName"
+            android:layout_toRightOf="@+id/emergencyItemArea"
+            android:layout_toLeftOf="@+id/emergencyItemChecked"
+            android:layout_toStartOf="@+id/emergencyItemChecked"
+            />
+
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emergencyItemChecked"
+            android:checked="false"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"/>
+
+    <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/emergencyItemPhone"
+            android:background="@color/neutral_gray_8" android:id="@+id/view2"/>
 
 
 </RelativeLayout>
