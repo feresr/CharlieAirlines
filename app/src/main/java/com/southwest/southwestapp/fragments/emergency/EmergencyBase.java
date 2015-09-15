@@ -31,7 +31,6 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
         mConfirmationButton = (Button)rootView.findViewById(R.id.confirmationButton);
         mBtnContactAdd = (Button)rootView.findViewById(R.id.emergencyContactAdd);
         mSwitch = (Switch)rootView.findViewById(R.id.emergencyContactSwitch);
-        mSwitch.setEnabled(false);
         mBtnContactAdd.setOnClickListener(this);
         mConfirmationButton.setOnClickListener(this);
     }

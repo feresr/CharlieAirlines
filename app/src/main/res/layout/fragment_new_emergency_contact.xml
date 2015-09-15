@@ -30,16 +30,26 @@
             android:layout_marginTop="8dp"
             >
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="textPersonName"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="8dp"
                 android:background="@color/neutral_white"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:hint="@string/emergency_contact_hint_name"
-                android:ems="10"
-                android:id="@+id/emergencyContactName"/>
+                android:theme="@style/TextLabel">
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:background="@null"
+                    android:hint="@string/emergency_contact_hint_name"
+                    android:ems="10"
+                    android:id="@+id/emergencyContactName"/>
+
+        </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
                 android:layout_width="fill_parent"
@@ -47,32 +57,51 @@
                 android:orientation="horizontal"
                 >
 
-            <EditText
+            <android.support.design.widget.TextInputLayout
                     android:layout_width="55dp"
                     android:layout_height="55dp"
-                    android:inputType="number"
                     android:layout_marginTop="2dp"
-                    android:background="@color/neutral_white"
-                    android:textColor="@color/dark_blue"
-                    android:textColorHint="@color/dark_blue"
                     android:paddingLeft="15dp"
                     android:paddingRight="5dp"
-                    android:hint="@string/emergency_contact_hint_area"
-                    android:ems="10"
-                    android:id="@+id/emergencyContactArea"/>
-
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:inputType="number"
-                    android:layout_marginTop="2dp"
+                    android:paddingTop="8dp"
                     android:background="@color/neutral_white"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
+                    android:theme="@style/TextLabel"
+                    >
+
+                <EditText
+                        android:inputType="number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_blue"
+                        android:textColorHint="@color/dark_blue"
+                        android:background="@null"
+                        android:hint="@string/emergency_contact_hint_area"
+                        android:ems="10"
+                        android:id="@+id/emergencyContactArea"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:layout_height="55dp"
                     android:layout_marginLeft="2dp"
-                    android:hint="@string/emergency_contact_hint_number"
-                    android:ems="10"
-                    android:id="@+id/emergencyContactNumber"/>
+                    android:paddingTop="8dp"
+                    android:background="@color/neutral_white"
+                    android:theme="@style/TextLabel">
+
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:background="@null"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:hint="@string/emergency_contact_hint_number"
+                        android:ems="10"
+                        android:id="@+id/emergencyContactNumber"/>
+
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 

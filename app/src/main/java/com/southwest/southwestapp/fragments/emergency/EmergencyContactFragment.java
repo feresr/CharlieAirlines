@@ -6,7 +6,8 @@ import com.southwest.southwestapp.models.Contact;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +17,14 @@ import android.widget.EditText;
 /**
  * Created by luisalfonsobejaranosanchez on 9/14/15.
  */
-public class EmergencyContactFragment extends EmergencyBase {
+public class EmergencyContactFragment extends EmergencyBase implements TextWatcher {
 
     private EditText mEditNewContactName;
     private EditText mEditNewContactPhone;
     private EditText mEditContactArea;
 
-    public EmergencyContactFragment() {
-    }
+    private boolean validAddNewContact = false;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,29 +38,42 @@ public class EmergencyContactFragment extends EmergencyBase {
         mEditContactArea = (EditText)rootView.findViewById(R.id.emergencyContactArea);
         mEditNewContactPhone = (EditText)rootView.findViewById(R.id.emergencyContactNumber);
         init(rootView);
+        mBtnContactAdd.setEnabled(false);
+
+        mEditNewContactName.addTextChangedListener(this);
+        mEditContactArea.addTextChangedListener(this);
+        mEditNewContactPhone.addTextChangedListener(this);
 
         return rootView;
+
     }
 
     @Override
     protected void addContactAction() {
 
-        String name  = mEditNewContactName.getText().toString();
-        String phone = mEditNewContactPhone.getText().toString();
-        String area  = mEditContactArea.getText().toString();
-
-        if(!TextUtils.isEmpty(name)
-           && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(area) ){
-            AppHelper.contacts.add(new Contact(name, phone, area));
+        if (validAddNewContact) {
+            AppHelper.contacts.add(new Contact(mEditNewContactName.getText().toString(),
+                                               mEditNewContactPhone.getText().toString(),
+                                               mEditContactArea.getText().toString()));
             AppHelper.dialogManager.showToast(getContext(), getResources().getString(R.string.emergency_contact_new_contact_success));
             clearUI();
-        }else{
+        } else {
             AppHelper.dialogManager.showToast(getContext(), getResources().getString(R.string.emergency_contact_new_contact_error));
         }
 
     }
 
-    private void clearUI(){
+    private boolean validateField() {
+
+        if (mEditNewContactName.getText().toString().length() > 0 && mEditNewContactPhone.getText().toString().length() > 0
+                && mEditContactArea.getText().toString().length() > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void clearUI() {
         mEditNewContactName.setText("");
         mEditNewContactPhone.setText("");
         mEditContactArea.setText("");
@@ -68,6 +82,22 @@ public class EmergencyContactFragment extends EmergencyBase {
 
     @Override
     protected void continueAction() {
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        validAddNewContact = validateField();
+        mBtnContactAdd.setEnabled(validAddNewContact);
     }
 
 }
