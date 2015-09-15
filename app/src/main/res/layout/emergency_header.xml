@@ -23,7 +23,7 @@
             android:layout_marginRight="15dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/dark_blue"
-            android:text="Kevind Bejarano"
+            android:text="@string/emergency_contact_temp_name"
             android:id="@+id/emergencyContactNamePass"/>
 
 

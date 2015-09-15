@@ -1,9 +1,12 @@
 package com.southwest.southwestapp.fragments.emergency;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.models.Contact;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +43,26 @@ public class EmergencyContactFragment extends EmergencyBase {
 
     @Override
     protected void addContactAction() {
+
+        String name  = mEditNewContactName.getText().toString();
+        String phone = mEditNewContactPhone.getText().toString();
+        String area  = mEditContactArea.getText().toString();
+
+        if(!TextUtils.isEmpty(name)
+           && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(area) ){
+            AppHelper.contacts.add(new Contact(name, phone, area));
+            AppHelper.dialogManager.showToast(getContext(), getResources().getString(R.string.emergency_contact_new_contact_success));
+            clearUI();
+        }else{
+            AppHelper.dialogManager.showToast(getContext(), getResources().getString(R.string.emergency_contact_new_contact_error));
+        }
+
+    }
+
+    private void clearUI(){
+        mEditNewContactName.setText("");
+        mEditNewContactPhone.setText("");
+        mEditContactArea.setText("");
     }
 
     @Override

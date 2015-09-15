@@ -26,7 +26,6 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
         super.onCreate(savedInstanceState);
     }
 
-
     protected void init(View rootView) {
         mPassName = (TextView)rootView.findViewById(R.id.emergencyContactNamePass);
         mConfirmationButton = (Button)rootView.findViewById(R.id.confirmationButton);
@@ -36,7 +35,6 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
         mBtnContactAdd.setOnClickListener(this);
         mConfirmationButton.setOnClickListener(this);
     }
-
 
     protected abstract void addContactAction();
 

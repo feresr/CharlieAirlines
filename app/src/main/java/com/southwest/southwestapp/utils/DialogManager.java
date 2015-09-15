@@ -1,10 +1,14 @@
 package com.southwest.southwestapp.utils;
 
+import com.southwest.southwestapp.R;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.view.Gravity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -35,6 +39,13 @@ public class DialogManager {
             }
 
         });
+    }
+
+    public void showToast(Context context, String message) {
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
+        int marginBottom = context.getResources().getDimensionPixelOffset(R.dimen.image_toast_margin_bottom);
+        toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, marginBottom);
+        toast.show();
     }
 
     private AlertDialog.Builder getBuilder(Activity origin) {
