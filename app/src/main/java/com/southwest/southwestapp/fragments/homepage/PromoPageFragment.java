@@ -1,12 +1,16 @@
 package com.southwest.southwestapp.fragments.homepage;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.enrique.stackblur.StackBlurManager;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
@@ -44,6 +48,10 @@ public class PromoPageFragment extends BaseFragment {
         mainInformationContainer.setClickable(false);
         secondaryInformationContainer = (ViewGroup) rootView.findViewById(R.id.secondaryInformationContainer);
         mainInformationContainer.setClickable(false);
+
+        StackBlurManager _stackBlurManager = new StackBlurManager(BitmapFactory.decodeResource(getResources(), R.drawable.home_page_background_image));
+        _stackBlurManager.process(50);
+        ((ImageView) rootView.findViewById(R.id.promoImage)).setImageBitmap(_stackBlurManager.returnBlurredImage());
         return rootView;
     }
 
