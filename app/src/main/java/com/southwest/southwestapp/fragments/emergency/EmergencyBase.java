@@ -5,6 +5,7 @@ import com.southwest.southwestapp.fragments.BaseFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -19,6 +20,7 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
     protected Button mBtnContactAdd;
     protected Button mConfirmationButton;
     protected TextView mPassName;
+    protected TextView mFooterInformation;
     protected Switch mSwitch;
 
     @Override
@@ -28,11 +30,14 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
 
     protected void init(View rootView) {
         mPassName = (TextView)rootView.findViewById(R.id.emergencyContactNamePass);
+        mFooterInformation = (TextView)rootView.findViewById(R.id.confirmationFooterInformation);
         mConfirmationButton = (Button)rootView.findViewById(R.id.confirmationButton);
         mBtnContactAdd = (Button)rootView.findViewById(R.id.emergencyContactAdd);
         mSwitch = (Switch)rootView.findViewById(R.id.emergencyContactSwitch);
         mBtnContactAdd.setOnClickListener(this);
         mConfirmationButton.setOnClickListener(this);
+
+        mFooterInformation.setText(Html.fromHtml(getResources().getString(R.string.emergency_contact_info)));
     }
 
     protected abstract void addContactAction();

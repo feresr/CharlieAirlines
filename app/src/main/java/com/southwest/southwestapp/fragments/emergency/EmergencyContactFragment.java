@@ -49,6 +49,11 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
     }
 
     @Override
+    protected void continueAction() {
+        AppHelper.screenManager.showEmergencyContactList(getActivity());
+    }
+
+    @Override
     protected void addContactAction() {
 
         if (validAddNewContact) {
@@ -80,9 +85,6 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
         AppHelper.screenManager.hideSoftKeyboard(getActivity());
     }
 
-    @Override
-    protected void continueAction() {
-    }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

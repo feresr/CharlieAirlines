@@ -13,14 +13,13 @@
             />
 
     <TextView
+            android:id="@+id/confirmationFooterInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/emergency_contact_info"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             />
-
 
 </LinearLayout>

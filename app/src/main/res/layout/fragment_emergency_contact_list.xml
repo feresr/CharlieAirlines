@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="fill_parent"
-              android:background="@color/neutral_gray_8">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/neutral_gray_8"
+        >
 
     <include android:layout_width="match_parent"
              android:layout_height="70dp"
@@ -16,13 +18,13 @@
             android:layout_marginTop="35dp"
             android:layout_marginLeft="15dp"
             android:textColor="@color/neutroal_gray_10"
-            android:text="@string/emergency_contact_optional"
+            android:text="@string/emergency_contact_existing"
             />
 
 
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="130dp"
             android:layout_marginTop="8dp"
             android:background="@color/neutral_white"
             android:id="@+id/emergencyContacts"
