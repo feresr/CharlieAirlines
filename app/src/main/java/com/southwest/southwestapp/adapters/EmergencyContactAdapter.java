@@ -21,7 +21,7 @@ public class EmergencyContactAdapter extends RecyclerView.Adapter<EmergencyConta
 
     private List<Contact> mContacts;
 
-    public EmergencyContactAdapter(){
+    public EmergencyContactAdapter() {
         mContacts = new ArrayList<Contact>();
     }
 
@@ -51,7 +51,7 @@ public class EmergencyContactAdapter extends RecyclerView.Adapter<EmergencyConta
         notifyItemInserted(mContacts.size() - 1);
     }
 
-    private void remove(int position){
+    private void remove(int position) {
         mContacts.remove(position);
         notifyItemRemoved(position);
         notifyDataSetChanged();

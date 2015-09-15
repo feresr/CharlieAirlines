@@ -8,6 +8,7 @@ import com.southwest.southwestapp.fragments.LoginFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInSearchFragment;
+import com.southwest.southwestapp.fragments.emergency.EmergencyContactFragment;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 
 import android.app.Activity;
@@ -47,6 +48,12 @@ public class ScreenManager {
     public void showCheckInSearchScreen(FragmentActivity origin) {
         Intent i = new Intent(origin, BaseActivity.class);
         i.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
+        origin.startActivity(i);
+    }
+
+    public void showEmergencyContact(FragmentActivity origin){
+        Intent i = new Intent(origin, BaseActivity.class);
+        i.putExtra(BaseActivity.FRAGMENT, EmergencyContactFragment.class);
         origin.startActivity(i);
     }
 
