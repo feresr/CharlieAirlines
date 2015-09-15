@@ -14,6 +14,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.transition.TransitionInflater;
+import android.view.View;
 
 
 /**
@@ -28,7 +30,6 @@ public class ScreenManager {
 
     public void showCheckInConfirmationScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
-        setDefaultAnim(ft);
         ft.addToBackStack("checkInConfScreen");
         CheckInConfirmationFragment checkinConfirmationFragment = new CheckInConfirmationFragment();
         ft.replace(R.id.container, checkinConfirmationFragment);
@@ -37,7 +38,6 @@ public class ScreenManager {
 
     public void showCheckInScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
-        setDefaultAnim(ft);
         ft.addToBackStack("checkInScreen");
         CheckInFragment checkinFragment = new CheckInFragment();
         ft.replace(R.id.container, checkinFragment);
@@ -66,10 +66,10 @@ public class ScreenManager {
 
     public void showBoardingPassScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
-        setDefaultAnim(ft);
         ft.addToBackStack("boardingPassScreen");
         BoardingPassFragment boardingPassFragment = new BoardingPassFragment();
         ft.replace(R.id.container, boardingPassFragment);
+
         ft.commit();
     }
 
