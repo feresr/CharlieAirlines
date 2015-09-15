@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent"
@@ -7,181 +7,200 @@
         android:orientation="vertical"
         android:id="@+id/mainWrapper">
 
-    <!--<android.support.v7.widget.Toolbar
-            android:id="@+id/toolbarConfirmation"
+    <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:elevation="20dp"
-            android:minHeight="?attr/actionBarSize"
-            app:theme="@style/toolBarStyle">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </android.support.v7.widget.Toolbar>-->
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:padding="5dp"
-            android:id="@+id/labelWrapper">
-
-        <TextView
-                android:id="@+id/successText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/check_mark_circle"
-                android:drawableLeft="@drawable/check_mark_circle"
-                android:layout_gravity="center_vertical"
-                style="@style/textWhiteTitle"
-                android:text="@string/check_in_success"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <android.support.v7.widget.CardView
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view"
-                android:layout_gravity="center"
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardElevation="15dp"
-                card_view:contentPadding="15dp"
-                card_view:cardCornerRadius="4dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_below="@+id/success_frame">
+                android:orientation="vertical">
 
             <LinearLayout
-                    android:id="@+id/data_layout"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_margin="15dp"
+                    android:padding="5dp"
+                    android:id="@+id/labelWrapper">
 
-                <LinearLayout
-                        android:layout_width="match_parent"
+                <TextView
+                        android:id="@+id/successText"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                    <com.southwest.southwestapp.LabeledText
-                            android:id="@+id/flight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:rightImage="@drawable/wifi_available"
-                            app:mainText="1977"
-                            app:upperText="FLIGHT"/>
-
-                    <com.southwest.southwestapp.LabeledText
-                            android:id="@+id/travel_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:leftImage="@drawable/time_icon"
-                            app:mainText="1h 35m"
-                            app:upperText="TRAVEL TIME"/>
-
-                    <com.southwest.southwestapp.LabeledText
-                            android:id="@+id/gate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:mainText="A7"
-                            app:upperText="GATE"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                    <com.southwest.southwestapp.LabeledText
-                            android:id="@+id/passenger"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:bottomText="TSA Pre✓"
-                            app:mainText="Kevin Thompson"
-                            app:upperText="PASSENGER(S)"/>
-
-                    <com.southwest.southwestapp.LabeledText
-                            android:id="@+id/confirmation"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:mainText="MVWGL4"
-                            app:upperText="CONFIRMATION #"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle_white_rounded"
-                        android:orientation="horizontal">
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:layout_gravity="center_vertical"
-                            android:text="boarding group"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.25"
-                            style="@style/textGreen"
-                            android:text="A"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:layout_gravity="center_vertical"
-                            android:text="position"/>
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.25"
-                            style="@style/textGreen"
-                            android:text="38"/>
-
-                </LinearLayout>
-
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/btn_boarding_pass"
-                        style="@style/bigButton"
-                        android:text="View boarding pass"/>
+                        android:drawableStart="@drawable/check_mark_circle"
+                        android:drawableLeft="@drawable/check_mark_circle"
+                        android:layout_gravity="center_vertical"
+                        style="@style/textWhiteTitle"
+                        android:text="@string/check_in_success"/>
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:id="@+id/faqWrapper">
+                <android.support.v7.widget.CardView
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/card_view"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card_view:cardElevation="15dp"
+                        card_view:contentPadding="15dp"
+                        card_view:cardCornerRadius="4dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_below="@+id/success_frame">
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_view"
-                    android:layout_marginTop="10dp"
-                    style="@style/textLink"
-                    android:text="Mobile boarding pass FAQ"/>
+                    <LinearLayout
+                            android:id="@+id/data_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                            <com.southwest.southwestapp.LabeledText
+                                    android:id="@+id/flight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:rightImage="@drawable/wifi_available"
+                                    app:mainText="1977"
+                                    app:upperText="FLIGHT"/>
+
+                            <com.southwest.southwestapp.LabeledText
+                                    android:id="@+id/travel_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:leftImage="@drawable/time_icon"
+                                    app:mainText="1h 35m"
+                                    app:upperText="TRAVEL TIME"/>
+
+                            <com.southwest.southwestapp.LabeledText
+                                    android:id="@+id/gate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:mainText="A7"
+                                    app:upperText="GATE"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                            <com.southwest.southwestapp.LabeledText
+                                    android:id="@+id/passenger"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:bottomText="TSA Pre✓"
+                                    app:mainText="Kevin Thompson"
+                                    app:upperText="PASSENGER(S)"/>
+
+                            <com.southwest.southwestapp.LabeledText
+                                    android:id="@+id/confirmation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:mainText="MVWGL4"
+                                    app:upperText="CONFIRMATION #"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rectangle_white_rounded"
+                                android:orientation="horizontal">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="boarding group"/>
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    style="@style/textGreen"
+                                    android:text="A"/>
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="position"/>
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.25"
+                                    style="@style/textGreen"
+                                    android:text="38"/>
+
+                        </LinearLayout>
+
+                        <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/btn_boarding_pass"
+                                style="@style/bigButton"
+                                android:text="View boarding pass"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:id="@+id/faqWrapper">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/card_view"
+                            android:layout_marginTop="10dp"
+                            style="@style/textLink"
+                            android:text="Mobile boarding pass FAQ"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-</LinearLayout>
+    <android.support.design.widget.AppBarLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+        <android.support.v7.widget.Toolbar
+                android:transitionName="MyTransition"
+                android:id="@+id/toolbarGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:minHeight="?attr/actionBarSize"
+                app:theme="@style/toolBarStyle"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+</android.support.design.widget.CoordinatorLayout>
