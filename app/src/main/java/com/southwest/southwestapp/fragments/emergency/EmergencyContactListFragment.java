@@ -1,5 +1,6 @@
 package com.southwest.southwestapp.fragments.emergency;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.EmergencyContactAdapter;
 
@@ -20,7 +21,6 @@ public class EmergencyContactListFragment extends EmergencyBase {
     private RecyclerView mContactList;
     private EmergencyContactAdapter mContactListAdapter;
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,7 @@ public class EmergencyContactListFragment extends EmergencyBase {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mContactList.setLayoutManager(layoutManager);
         mContactList.setHasFixedSize(true);
-        mContactListAdapter = new EmergencyContactAdapter();
+        mContactListAdapter = new EmergencyContactAdapter(AppHelper.contacts);
         mContactList.setAdapter(mContactListAdapter);
         init(rootView);
 

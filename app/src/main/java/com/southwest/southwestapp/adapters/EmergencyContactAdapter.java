@@ -21,6 +21,10 @@ public class EmergencyContactAdapter extends RecyclerView.Adapter<EmergencyConta
 
     private List<Contact> mContacts;
 
+    public EmergencyContactAdapter(List<Contact> mContacts){
+        this.mContacts = mContacts;
+    }
+
     public EmergencyContactAdapter() {
         mContacts = new ArrayList<Contact>();
     }
