@@ -63,6 +63,7 @@ public class EmergencyContactFragment extends EmergencyBase {
         mEditNewContactName.setText("");
         mEditNewContactPhone.setText("");
         mEditContactArea.setText("");
+        AppHelper.screenManager.hideSoftKeyboard(getActivity());
     }
 
     @Override

@@ -36,6 +36,7 @@
                 android:inputType="textPersonName"
                 android:background="@color/neutral_white"
                 android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:hint="@string/emergency_contact_hint_name"
                 android:ems="10"
                 android:id="@+id/emergencyContactName"/>
@@ -55,6 +56,7 @@
                     android:textColor="@color/dark_blue"
                     android:textColorHint="@color/dark_blue"
                     android:paddingLeft="15dp"
+                    android:paddingRight="5dp"
                     android:hint="@string/emergency_contact_hint_area"
                     android:ems="10"
                     android:id="@+id/emergencyContactArea"/>
@@ -66,6 +68,7 @@
                     android:layout_marginTop="2dp"
                     android:background="@color/neutral_white"
                     android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
                     android:layout_marginLeft="2dp"
                     android:hint="@string/emergency_contact_hint_number"
                     android:ems="10"
