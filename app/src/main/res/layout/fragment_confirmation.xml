@@ -33,6 +33,7 @@
                         android:drawableLeft="@drawable/check_mark_circle"
                         android:layout_gravity="center_vertical"
                         android:textSize="25sp"
+                        android:drawablePadding="6dp"
                         android:gravity="center_vertical"
                         android:textStyle="bold"
                         android:text="@string/check_in_success"/>
