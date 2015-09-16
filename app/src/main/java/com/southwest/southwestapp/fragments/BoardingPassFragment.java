@@ -6,22 +6,23 @@ import com.southwest.southwestapp.R;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 
 /**
  * Created by emiliano.gudino on 07/09/2015.
  */
-public class BoardingPassFragment extends BaseFragment {
+public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenuItemClickListener {
 
+    private Toolbar mToolbar;
+    private View boardingPassView;
+    private NestedScrollView mContainer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,24 +32,34 @@ public class BoardingPassFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_boarding_pass, container, false);
+        boardingPassView = inflater.inflate(R.layout.fragment_boarding_pass, container, false);
 
+        mContainer = (NestedScrollView) boardingPassView.findViewById(R.id.container);
+        mContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         setUpToolBar();
 
-
-        return view;
+        return boardingPassView;
     }
 
-
-
     private void setUpToolBar() {
-        ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if(mActionBar != null){
-            setHasOptionsMenu(true);
-            mActionBar.setTitle(getResources().getString(R.string.boarding_pass_title));
-            mActionBar.setSubtitle(getResources().getString(R.string.boarding_pass_subtitle));
-            mActionBar.setDisplayHomeAsUpEnabled(false);
+        mToolbar = (Toolbar)boardingPassView.findViewById(R.id.toolbarGeneral);
+        if (mToolbar != null) {
+            mToolbar.setTitle(getResources().getString(R.string.boarding_pass_title));
+            mToolbar.setSubtitle(getResources().getString(R.string.boarding_pass_subtitle));
+
+            mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getActivity().finish();
+                }
+            });
+            // Set an OnMenuItemClickListener to handle menu item clicks
+            mToolbar.setOnMenuItemClickListener(this);
+
+            // Inflate a menu to be displayed in the toolbar
+            mToolbar.inflateMenu(R.menu.menu_boarding_pass);
         }
     }
 
@@ -74,15 +85,10 @@ public class BoardingPassFragment extends BaseFragment {
                                                }
                                            }, false);
     }
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_boarding_pass,menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.optionCancel:
                 AppHelper.screenManager.showCheckInSearchScreen(getActivity());
                 return true;
@@ -94,6 +100,6 @@ public class BoardingPassFragment extends BaseFragment {
             default:
                 break;
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 }
