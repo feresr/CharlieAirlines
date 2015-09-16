@@ -1,9 +1,5 @@
 package com.southwest.southwestapp.fragments.emergency;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.adapters.EmergencyContactAdapter;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.adapters.EmergencyContactAdapter;
 
 
 /**
@@ -31,7 +31,7 @@ public class EmergencyContactListFragment extends EmergencyBase {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_emergency_contact_list, container, false);
 
-        mContactList = (RecyclerView)rootView.findViewById(R.id.emergencyContacts);
+        mContactList = (RecyclerView) rootView.findViewById(R.id.emergencyContacts);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mContactList.setLayoutManager(layoutManager);
         mContactList.setHasFixedSize(true);

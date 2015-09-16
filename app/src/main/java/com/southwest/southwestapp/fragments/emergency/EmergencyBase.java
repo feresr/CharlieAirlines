@@ -1,9 +1,5 @@
 package com.southwest.southwestapp.fragments.emergency;
 
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.views.URLSpanNoUnderline;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +11,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.views.URLSpanNoUnderline;
 
 
 /**
@@ -38,15 +38,15 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
 
     protected void init(View rootView) {
         contactContainer = rootView.findViewById(R.id.emergencyContactContainer);
-        mToolbar = (Toolbar)rootView.findViewById(R.id.toolbarGeneral);
-        mPassName = (TextView)rootView.findViewById(R.id.emergencyContactNamePass);
-        mFooterInformation = (TextView)rootView.findViewById(R.id.confirmationFooterInformation);
-        mConfirmationButton = (Button)rootView.findViewById(R.id.confirmationButton);
-        mBtnContactAdd = (Button)rootView.findViewById(R.id.emergencyContactAdd);
-        mSwitch = (Switch)rootView.findViewById(R.id.emergencyContactSwitch);
+        mToolbar = (Toolbar) rootView.findViewById(R.id.toolbarGeneral);
+        mPassName = (TextView) rootView.findViewById(R.id.emergencyContactNamePass);
+        mFooterInformation = (TextView) rootView.findViewById(R.id.confirmationFooterInformation);
+        mConfirmationButton = (Button) rootView.findViewById(R.id.confirmationButton);
+        mBtnContactAdd = (Button) rootView.findViewById(R.id.emergencyContactAdd);
+        mSwitch = (Switch) rootView.findViewById(R.id.emergencyContactSwitch);
 
         mFooterInformation.setText(Html.fromHtml(getResources().getString(R.string.emergency_contact_info)));
-        removeUnderlines((Spannable)mFooterInformation.getText());
+        removeUnderlines((Spannable) mFooterInformation.getText());
 
         contactContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
         setUpToolBar();
