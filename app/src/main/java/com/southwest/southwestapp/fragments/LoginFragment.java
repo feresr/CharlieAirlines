@@ -22,6 +22,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     private EditText mEtUser;
     private EditText mEtPass;
     private TextView mTvWelcome;
+    private TextView mTvEnroll;
+    private TextView mTvContinueAsGuest;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,16 +34,17 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        mBtLogIn = (Button) view.findViewById(R.id.btn_login);
+        mBtLogIn = (Button)view.findViewById(R.id.btn_login);
         mBtLogIn.setOnClickListener(this);
 
         mEtUser = (EditText)view.findViewById(R.id.et_user);
-        mEtUser.setOnClickListener(this);
-
         mEtPass = (EditText)view.findViewById(R.id.et_pass);
-        mEtPass.setOnClickListener(this);
 
         mTvWelcome = (TextView)view.findViewById(R.id.tv_welcome);
+        mTvEnroll = (TextView)view.findViewById(R.id.tv_enroll_now);
+        mTvEnroll.setOnClickListener(this);
+        mTvContinueAsGuest = (TextView)view.findViewById(R.id.tv_continue_as_guest);
+        mTvContinueAsGuest.setOnClickListener(this);
 
         return view;
     }
@@ -50,11 +53,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                AppHelper.screenManager.showMainScreen(getActivity());
+                AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
                 break;
-            case R.id.et_user:
-                break;
-            case R.id.et_pass:
+            case R.id.tv_continue_as_guest:
+                AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
                 break;
             default:
                 break;

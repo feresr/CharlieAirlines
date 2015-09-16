@@ -80,8 +80,9 @@ public class ScreenManager {
         ft.commit();
     }
 
-    public void showMainScreenFromSplash(Activity origin) {
+    public void showMainScreenFromLogIn(Activity origin) {
         Intent intent = new Intent(origin, MainActivity.class);
         origin.startActivity(intent);
+        origin.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
