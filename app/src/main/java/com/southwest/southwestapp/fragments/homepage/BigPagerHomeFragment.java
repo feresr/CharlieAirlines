@@ -1,5 +1,6 @@
 package com.southwest.southwestapp.fragments.homepage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -29,6 +30,7 @@ public class BigPagerHomeFragment extends BaseFragment {
     private Button firstBtn;
     private Button secondBtn;
     private Button thirdButton;
+    private SlidePanelListener slideListener;
 
     private CountDownTimer footerTimer;
 
@@ -52,6 +54,23 @@ public class BigPagerHomeFragment extends BaseFragment {
         mFooter = rootView.findViewById(R.id.footerInformation);
 
         mViewPager.setPagingEnabled(false);
+
+
+        rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enablePaging();
+                slideListener.slideTripPanelDown();
+            }
+        });
+
+        rootView.findViewById(R.id.close_panel_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                disablePaging();
+                slideListener.slideTripPanelUp();
+            }
+        });
 
         return rootView;
 
@@ -117,6 +136,8 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     public void enablePaging() {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
+        rootView.findViewById(R.id.close_panel_button).setVisibility(View.VISIBLE);
+        AnimationGenericUtils.fadeInAnimation(rootView.findViewById(R.id.close_panel_button), getActivity());
         footerTransition(FADE_OUT_FOOTER_TIME);
         ((PromoPageFragment) viewPagerAdapter.getItem(mViewPager.getCurrentItem())).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);
@@ -124,9 +145,23 @@ public class BigPagerHomeFragment extends BaseFragment {
 
     public void disablePaging() {
         AnimationGenericUtils.zoom(rootView, null, 1);
+        rootView.findViewById(R.id.close_panel_button).setVisibility(View.GONE);
         ((PromoPageFragment) viewPagerAdapter.getItem(mViewPager.getCurrentItem())).animateSecondContainer(AnimationGenericUtils.animations.FADE_OUT);
         mViewPager.setPagingEnabled(false);
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            slideListener = (SlidePanelListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.getClass().getSimpleName() + " must implement SlidePanelListener interface");
+        }
+    }
 
+    public interface SlidePanelListener {
+        void slideTripPanelUp();
+        void slideTripPanelDown();
+    }
 }
