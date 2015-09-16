@@ -130,7 +130,7 @@
     <string name="emergency_contact_hint_area">+1</string>
     <string name="emergency_contact_add">Add Contact</string>
     <string name="emergency_contact_for_all_passangers">Use this emergency contact \nfor all passangers</string>
-    <string name="emergency_contact_info"><![CDATA[ If you need to make changes to your passport \ninformation. you will need to visit <a href=""> southwest.com </a> ]]></string>
+    <string name="emergency_contact_info"><![CDATA[ If you need to make changes to your passport \ninformation. you will need to visit <a href="www.southwest.com" style="text-decoration: none"> southwest.com </a> ]]></string>
     <string name="emergency_contact_use_new">Use new emergency contact</string>
     <string name="emergency_contact_continue">Continue</string>
     <string name="emergency_contact_temp_name">Kevin Thompson</string>

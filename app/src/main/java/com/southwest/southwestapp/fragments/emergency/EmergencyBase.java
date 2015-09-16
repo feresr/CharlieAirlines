@@ -2,11 +2,14 @@ package com.southwest.southwestapp.fragments.emergency;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.views.URLSpanNoUnderline;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.style.URLSpan;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -43,6 +46,8 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
         mSwitch = (Switch)rootView.findViewById(R.id.emergencyContactSwitch);
 
         mFooterInformation.setText(Html.fromHtml(getResources().getString(R.string.emergency_contact_info)));
+        removeUnderlines((Spannable)mFooterInformation.getText());
+
         contactContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
         setUpToolBar();
 
@@ -80,6 +85,19 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
                 continueAction();
                 break;
 
+        }
+    }
+
+
+    private void removeUnderlines(Spannable spannable) {
+        URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
+
+        for(URLSpan span:spans) {
+            int start = spannable.getSpanStart(span);
+            int end = spannable.getSpanEnd(span);
+            spannable.removeSpan(span);
+            span = new URLSpanNoUnderline(span.getURL());
+            spannable.setSpan(span, start, end, 0);
         }
     }
 

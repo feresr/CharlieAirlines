@@ -67,7 +67,6 @@
                             <android.support.design.widget.TextInputLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="55dp"
-
                                     android:paddingTop="8dp"
                                     android:background="@color/neutral_white"
                                     android:theme="@style/TextLabel">
@@ -185,6 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:autoLink="web"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="10dp"
