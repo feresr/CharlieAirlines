@@ -12,24 +12,29 @@
         android:scaleType="centerCrop"
         android:src="@drawable/credit_card" />
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/mainInformationContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="right"
-        android:layout_marginTop="69dp"
-        android:clickable="true"
-        android:gravity="center_vertical"
+        android:layout_marginTop="95dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/informationMainTitleMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:paddingLeft="30dp"
+            android:layout_marginBottom="-18dp"
+            android:text="@string/thirdpage_main_title_top"
+            android:textColor="@color/neutral_white"
+            android:textStyle="italic" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mainTitleTop"
-            android:layout_centerHorizontal="true"
+            android:lineSpacingMultiplier=".80"
             android:layout_gravity="center_vertical"
             android:text="@string/thirdpage_main_title_middle"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -38,33 +43,20 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/mainTitleTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/thirdInformationBottomTitle"
-            android:layout_toStartOf="@+id/thirdInformationBottomTitle"
-            android:gravity="center"
-            android:text="@string/thirdpage_main_title_top"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/neutral_white"
-            android:textStyle="italic" />
-
-        <TextView
             android:id="@+id/thirdInformationBottomTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/informationMainTitleMiddle"
-            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-8dp"
+            android:layout_marginRight="10dp"
             android:text="@string/thirdpage_main_title_bottom"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/neutral_white"
             android:textStyle="italic" />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/secondaryInformationContainer"
@@ -79,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             android:text="@string/thirdpage_details"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/information_book_text"
