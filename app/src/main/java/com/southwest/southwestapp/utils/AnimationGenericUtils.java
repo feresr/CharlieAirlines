@@ -141,6 +141,18 @@ public class AnimationGenericUtils {
 
     }
 
+    public static void fadeInBottomLogInContainer(final View view, @Nullable Animation.AnimationListener listener, Context context) {
+
+        Animation fadeInBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in_bottom_login);
+
+        if (listener != null) {
+            fadeInBottomAnimation.setAnimationListener(listener);
+        }
+
+        view.startAnimation(fadeInBottomAnimation);
+
+    }
+
     public static void fadeOutScreenBottom(final View view, Animation.AnimationListener listener ,Context context) {
 
         Animation fadeOutBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out_screen_bottom);

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -22,6 +23,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     private Button mBtLogIn;
     private EditText mEtUser;
     private EditText mEtPass;
+    private LinearLayout mLnrContainer;
     private TextView mTvWelcome;
     private TextView mTvEnroll;
     private TextView mTvContinueAsGuest;
@@ -43,6 +45,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
         mEtPass = (EditText)view.findViewById(R.id.et_pass);
         mEtPass.setOnFocusChangeListener(this);
+
+        mLnrContainer = (LinearLayout)view.findViewById(R.id.lnr_container);
 
         mTvWelcome = (TextView)view.findViewById(R.id.tv_welcome);
 
@@ -75,6 +79,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                 if (hasFocus) {
                     if (mTvWelcome.isShown()) {
                         AnimationGenericUtils.fadeOutAnimationGone(mTvWelcome, null, getActivity());
+                        AnimationGenericUtils.fadeInBottomLogInContainer(mLnrContainer, null, getActivity());
                     }
                 }
                 break;
@@ -82,6 +87,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                 if (hasFocus) {
                     if (mTvWelcome.isShown()) {
                         AnimationGenericUtils.fadeOutAnimationGone(mTvWelcome, null, getActivity());
+                        AnimationGenericUtils.fadeInBottomLogInContainer(mLnrContainer, null, getActivity());
                     }
                 }
                 break;
