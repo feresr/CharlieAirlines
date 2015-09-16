@@ -2,6 +2,7 @@ package com.southwest.southwestapp.fragments;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 /**
  * Created by emiliano.gudino on 09/09/2015.
  */
-public class LoginFragment extends BaseFragment implements View.OnClickListener {
+public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener {
 
     private Button mBtLogIn;
     private EditText mEtUser;
@@ -38,9 +39,13 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         mBtLogIn.setOnClickListener(this);
 
         mEtUser = (EditText)view.findViewById(R.id.et_user);
+        mEtUser.setOnFocusChangeListener(this);
+
         mEtPass = (EditText)view.findViewById(R.id.et_pass);
+        mEtPass.setOnFocusChangeListener(this);
 
         mTvWelcome = (TextView)view.findViewById(R.id.tv_welcome);
+
         mTvEnroll = (TextView)view.findViewById(R.id.tv_enroll_now);
         mTvEnroll.setOnClickListener(this);
         mTvContinueAsGuest = (TextView)view.findViewById(R.id.tv_continue_as_guest);
@@ -57,6 +62,28 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 break;
             case R.id.tv_continue_as_guest:
                 AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        switch (v.getId()) {
+            case R.id.et_user:
+                if (hasFocus) {
+                    if (mTvWelcome.isShown()) {
+                        AnimationGenericUtils.fadeOutAnimation(mTvWelcome, null, getActivity());
+                    }
+                }
+                break;
+            case R.id.et_pass:
+                if (hasFocus) {
+                    if (mTvWelcome.isShown()) {
+                        AnimationGenericUtils.fadeOutAnimation(mTvWelcome, null, getActivity());
+                    }
+                }
                 break;
             default:
                 break;
