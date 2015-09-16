@@ -16,11 +16,7 @@ import com.southwest.southwestapp.R;
 
 public class BookingTabTitleWidget extends LinearLayout {
 
-    private int animationTime;
     private String mainTitle;
-
-    private TextView mTitle;
-    private ImageView icon;
 
     private TypedValue iconResource;
     private boolean hasValue;
@@ -56,17 +52,16 @@ public class BookingTabTitleWidget extends LinearLayout {
     private void parseAttr(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BookingTabTitleWidget, 0, 0);
         mainTitle = typedArray.getString(R.styleable.BookingTabTitleWidget_bookingTitle);
-        animationTime = typedArray.getInteger(R.styleable.BookingTabTitleWidget_animationTime, 500);
         iconResource = new TypedValue();
         hasValue = typedArray.getValue(R.styleable.BookingTabTitleWidget_bookingIcon, iconResource);
         typedArray.recycle();
     }
 
     private void initializeViews(Context context) {
-        mRoot = (LinearLayout) inflate(context, R.layout.booking_tab_title, this);
-        mTitle = (TextView) findViewById(R.id.booking_tab_main_title);
+        mRoot = inflate(context, R.layout.booking_tab_title, this);
+        TextView mTitle = (TextView) findViewById(R.id.booking_tab_main_title);
         mTitle.setText(mainTitle);
-        icon = (ImageView) findViewById(R.id.booking_tab);
+        ImageView icon = (ImageView) findViewById(R.id.booking_tab);
         if (hasValue) {
             icon.setImageResource(iconResource.resourceId);
         }

@@ -12,16 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 
-public class MainActivity extends AppCompatActivity implements TripActionsFragment.Slideable {
+public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
@@ -47,22 +45,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
             homeFragment = AppHelper.screenManager.showMainScreen(this);
             slideTripPanelUp();
         }
-
-        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                homeFragment.enablePaging();
-                slideTripPanelDown();
-            }
-        });
-
-        findViewById(R.id.close_panel_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                homeFragment.disablePaging();
-                slideTripPanelUp();
-            }
-        });
     }
 
 
@@ -86,7 +68,8 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
                         return true;
 
                     case R.id.home:
-                        AppHelper.screenManager.showMainScreen(MainActivity.this);
+                        homeFragment = AppHelper.screenManager.showMainScreen(MainActivity.this);
+                        slideTripPanelUp();
                         return true;
 
                     case R.id.logout:
@@ -170,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
     @Override
     public void slideTripPanelUp() {
         tripFragment = TripActionsFragment.newInstance(true);
-        findViewById(R.id.close_panel_button).setVisibility(View.GONE);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
         ft.replace(R.id.panel_container, tripFragment);
@@ -180,8 +162,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
     @Override
     public void slideTripPanelDown() {
         if (tripFragment != null) {
-            findViewById(R.id.close_panel_button).setVisibility(View.VISIBLE);
-            AnimationGenericUtils.fadeInAnimation(findViewById(R.id.close_panel_button), this);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.setCustomAnimations(R.anim.fade_in_bottom, R.anim.slide_out_bottom_with_fade_out);
             ft.remove(tripFragment);
