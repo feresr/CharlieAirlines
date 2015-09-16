@@ -9,17 +9,19 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
-
     <ImageButton
-        android:id="@+id/menuActionInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/footerInformation"
+        android:id="@+id/close_panel_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="30dp"
-        android:visibility="invisible"
-        android:background="@drawable/abc_ic_clear_mtrl_alpha" />
+        android:layout_marginBottom="80dp"
+        android:background="@null"
+        android:visibility="gone"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/cancelled_icon"
+        android:tint="#fff" />
 
     <include
         android:id="@+id/footerInformation"
