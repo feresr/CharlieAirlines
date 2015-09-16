@@ -54,6 +54,7 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
         mBtnContactAdd.setOnClickListener(this);
         mConfirmationButton.setOnClickListener(this);
 
+        
     }
 
     private void setUpToolBar() {
