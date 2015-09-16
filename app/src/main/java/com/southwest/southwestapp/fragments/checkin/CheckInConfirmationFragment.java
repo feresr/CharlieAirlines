@@ -1,14 +1,20 @@
 package com.southwest.southwestapp.fragments.checkin;
 
 import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.LabeledText;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.adapters.CheckInRecyclerAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.vo.CheckInVO;
+import com.southwest.southwestapp.vo.PassengerVO;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,9 +36,10 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
     private static final String TAG = CheckInConfirmationFragment.class.getSimpleName();
 
     private TextView mSuccessText;
-    private Button mBtBoardingPass;
-    private CardView mCardContent;
+    //private Button mBtBoardingPass;
+    //private CardView mCardContent;
     private LinearLayout faqContainer;
+    private RecyclerView mRecycler;
 
     public CheckInConfirmationFragment() {
     }
@@ -43,17 +50,29 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         View confirmationView = inflater.inflate(R.layout.fragment_confirmation, container, false);
 
         mSuccessText = (TextView) confirmationView.findViewById(R.id.successText);
-        mCardContent = (CardView) confirmationView.findViewById(R.id.card_view);
-        mBtBoardingPass = (Button) confirmationView.findViewById(R.id.btn_boarding_pass);
+        //mCardContent = (CardView) confirmationView.findViewById(R.id.card_view);
+        //mBtBoardingPass = (Button) confirmationView.findViewById(R.id.btn_boarding_pass);
         faqContainer = (LinearLayout) confirmationView.findViewById(R.id.faqWrapper);
+        mRecycler = (RecyclerView) confirmationView.findViewById(R.id.recycler_flights);
+
 
         setUpToolBar();
 
-        mBtBoardingPass.setOnClickListener(this);
+       // mBtBoardingPass.setOnClickListener(this);
 
         mSuccessText.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right));
-        mCardContent.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        //mCardContent.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        mRecycler.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
         faqContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        PassengerVO[] arrayPass = {new PassengerVO("Homer Thompson", "A", 11),
+                //new PassengerVO("Marge Thompson","B",19),
+                //new PassengerVO("Lisa Thompson","B",31), };
+        };
+        CheckInVO[] arrayCheck = {new CheckInVO("666","1h 10m","A1","MCX456Q1",arrayPass),
+                new CheckInVO("999","1h 35m","B1","MXC4576F",arrayPass)};
+        mRecycler.setLayoutManager(llm);
+        mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck));
 
 
         return confirmationView;

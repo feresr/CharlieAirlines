@@ -27,7 +27,7 @@
     </style>
 
     <style name="textWhiteTitle" parent="@android:style/TextAppearance" >
-        <item name="android:textColor">@color/neutral_white</item>
+        <item name="android:textColor">@color/dark_blue</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>
     </style>
