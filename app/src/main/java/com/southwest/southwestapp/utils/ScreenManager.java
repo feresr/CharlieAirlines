@@ -50,7 +50,7 @@ public class ScreenManager {
         origin.startActivity(i);
     }
 
-    public void showLoginScreen(FragmentActivity origin) {
+    public void showLoginScreen(Activity origin) {
         Intent i = new Intent(origin, BaseActivity.class);
         i.putExtra(BaseActivity.FRAGMENT, LoginFragment.class);
         origin.startActivity(i);

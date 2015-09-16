@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
                         return true;
 
                     case R.id.logout:
-                        AppHelper.screenManager.showLoginScreen(MainActivity.this);
                         return true;
 
                     default:
