@@ -4,6 +4,7 @@ import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.models.Contact;
 
 import android.support.v7.widget.RecyclerView;
+import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,6 @@ public class EmergencyContactAdapter extends RecyclerView.Adapter<EmergencyConta
         this.mContacts = mContacts;
     }
 
-    public EmergencyContactAdapter() {
-        mContacts = new ArrayList<Contact>();
-    }
-
 
     @Override
     public ContactViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -40,9 +37,10 @@ public class EmergencyContactAdapter extends RecyclerView.Adapter<EmergencyConta
     @Override
     public void onBindViewHolder(ContactViewHolder contactViewHolder, int index) {
         contactViewHolder.contactName.setText(mContacts.get(index).getName());
-        contactViewHolder.contactArea.setText(mContacts.get(index).getArea());
+        contactViewHolder.contactArea.setText("("+mContacts.get(index).getArea()+")");
         contactViewHolder.contactPhone.setText(mContacts.get(index).getPhone());
         contactViewHolder.contactChecked.setChecked(false);
+
     }
 
     @Override
