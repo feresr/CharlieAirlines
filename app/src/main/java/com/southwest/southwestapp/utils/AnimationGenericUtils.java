@@ -75,6 +75,35 @@ public class AnimationGenericUtils {
 
     }
 
+    public static void fadeOutAnimationGone(final View view, Animation.AnimationListener listener, Context context) {
+
+        Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+        if (listener != null) {
+            fadeOutAnimation.setAnimationListener(listener);
+        } else {
+
+            fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation arg0) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    if (view.isShown())
+                        view.setVisibility(View.GONE);
+
+                }
+            });
+        }
+
+        view.startAnimation(fadeOutAnimation);
+
+    }
+
     public static void slideRightToLeft(final View view, int delay, Context context) {
 
         Animation slideRightToLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_right_to_left);
