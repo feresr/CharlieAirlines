@@ -5,8 +5,10 @@ import com.southwest.southwestapp.fragments.BaseFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -16,6 +18,9 @@ import android.widget.TextView;
  * Created by luisalfonsobejaranosanchez on 9/15/15.
  */
 public abstract class EmergencyBase extends BaseFragment implements View.OnClickListener {
+
+    protected View contactContainer;
+    protected Toolbar mToolbar;
 
     protected Button mBtnContactAdd;
     protected Button mConfirmationButton;
@@ -29,20 +34,39 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
     }
 
     protected void init(View rootView) {
+        contactContainer = rootView.findViewById(R.id.emergencyContactContainer);
+        mToolbar = (Toolbar)rootView.findViewById(R.id.toolbarGeneral);
         mPassName = (TextView)rootView.findViewById(R.id.emergencyContactNamePass);
         mFooterInformation = (TextView)rootView.findViewById(R.id.confirmationFooterInformation);
         mConfirmationButton = (Button)rootView.findViewById(R.id.confirmationButton);
         mBtnContactAdd = (Button)rootView.findViewById(R.id.emergencyContactAdd);
         mSwitch = (Switch)rootView.findViewById(R.id.emergencyContactSwitch);
+
+        mFooterInformation.setText(Html.fromHtml(getResources().getString(R.string.emergency_contact_info)));
+        contactContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        setUpToolBar();
+
         mBtnContactAdd.setOnClickListener(this);
         mConfirmationButton.setOnClickListener(this);
 
-        mFooterInformation.setText(Html.fromHtml(getResources().getString(R.string.emergency_contact_info)));
     }
 
-    protected abstract void addContactAction();
+    private void setUpToolBar() {
+        if (mToolbar != null) {
+            mToolbar.setTitle(getToolBarTitle());
+            if (mToolbar.getSubtitle() != null) {
+                mToolbar.setSubtitle(null);
+            }
+            mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-    protected abstract void continueAction();
+                }
+            });
+        }
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -58,5 +82,11 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
 
         }
     }
+
+    protected abstract String getToolBarTitle();
+
+    protected abstract void addContactAction();
+
+    protected abstract void continueAction();
 
 }

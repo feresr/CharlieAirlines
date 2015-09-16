@@ -54,15 +54,20 @@ public class ScreenManager {
     }
 
     public void showEmergencyContact(FragmentActivity origin) {
-        Intent i = new Intent(origin, BaseActivity.class);
-        i.putExtra(BaseActivity.FRAGMENT, EmergencyContactFragment.class);
-        origin.startActivity(i);
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        ft.addToBackStack("emergencyContact");
+        EmergencyContactFragment emergencyContactFragment = new EmergencyContactFragment();
+        ft.replace(R.id.container, emergencyContactFragment);
+        ft.commit();
     }
 
+
     public void showEmergencyContactList(FragmentActivity origin) {
-        Intent i = new Intent(origin, BaseActivity.class);
-        i.putExtra(BaseActivity.FRAGMENT, EmergencyContactListFragment.class);
-        origin.startActivity(i);
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        ft.addToBackStack("emergencyContactList");
+        EmergencyContactListFragment emergencyContactListFragment = new EmergencyContactListFragment();
+        ft.replace(R.id.container, emergencyContactListFragment);
+        ft.commit();
     }
 
     public void hideSoftKeyboard(Activity activity) {

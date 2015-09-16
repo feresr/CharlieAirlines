@@ -38,11 +38,11 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
         mEditContactArea = (EditText)rootView.findViewById(R.id.emergencyContactArea);
         mEditNewContactPhone = (EditText)rootView.findViewById(R.id.emergencyContactNumber);
         init(rootView);
-        mBtnContactAdd.setEnabled(false);
 
         mEditNewContactName.addTextChangedListener(this);
         mEditContactArea.addTextChangedListener(this);
         mEditNewContactPhone.addTextChangedListener(this);
+        mBtnContactAdd.setEnabled(false);
 
         return rootView;
 
@@ -50,7 +50,11 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
 
     @Override
     protected void continueAction() {
-        AppHelper.screenManager.showEmergencyContactList(getActivity());
+        if (AppHelper.contacts.size() > 0) {
+            AppHelper.screenManager.showEmergencyContactList(getActivity());
+        } else {
+            AppHelper.screenManager.showCheckInConfirmationScreen(getActivity());
+        }
     }
 
     @Override
@@ -66,6 +70,10 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
             AppHelper.dialogManager.showToast(getContext(), getResources().getString(R.string.emergency_contact_new_contact_error));
         }
 
+    }
+
+    public String getToolBarTitle() {
+        return getResources().getString(R.string.emergency_contact_new_toolbar_title);
     }
 
     private boolean validateField() {

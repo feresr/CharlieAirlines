@@ -136,7 +136,8 @@
     <string name="emergency_contact_temp_name">Kevin Thompson</string>
     <string name="emergency_contact_new_contact_success">New contact successfully created</string>
     <string name="emergency_contact_new_contact_error">Please check the fields</string>
-
+    <string name="emergency_contact_new_toolbar_title">Emergency Contact</string>
+    <string name="emergency_contact_select_toolbar_title">Emergency Contact</string>
 
 
 </resources>

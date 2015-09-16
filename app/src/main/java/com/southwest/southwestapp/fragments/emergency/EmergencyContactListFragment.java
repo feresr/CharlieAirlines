@@ -43,13 +43,18 @@ public class EmergencyContactListFragment extends EmergencyBase {
 
     }
 
-
     @Override
     protected void addContactAction() {
+        AppHelper.screenManager.showEmergencyContact(getActivity());
     }
 
     @Override
     protected void continueAction() {
+        AppHelper.screenManager.showCheckInConfirmationScreen(getActivity());
+    }
+
+    public String getToolBarTitle() {
+        return getResources().getString(R.string.emergency_contact_select_toolbar_title);
     }
 
 }

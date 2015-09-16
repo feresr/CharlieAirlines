@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
     private BigPagerHomeFragment homeFragment;
     private int mCurrentSelectedPosition;
     private Toolbar mToolbar;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +67,11 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
 
 
     private void setUpNavDrawer() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.nav_drawer);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView = (NavigationView)findViewById(R.id.nav_view);
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements TripActionsFragme
     }
 
     private void setUpToolBar() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = (Toolbar)findViewById(R.id.toolbar);
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
     }
