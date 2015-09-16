@@ -74,7 +74,7 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.confirmationButton:
-                AppHelper.screenManager.showCheckInConfirmationScreen(getActivity());
+                AppHelper.screenManager.showEmergencyContact(getActivity());
                 break;
 
         }

@@ -6,7 +6,7 @@
         <!-- colorPrimaryDark is used for the status bar -->
 
         <item name="colorPrimaryDark">@color/dark_blue</item>
-        <item name="colorAccent">@android:color/white</item>
+        <item name="colorAccent">@color/dark_blue</item>
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
     </style>
 

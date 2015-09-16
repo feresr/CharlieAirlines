@@ -8,14 +8,17 @@ import com.southwest.southwestapp.fragments.LoginFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInSearchFragment;
+import com.southwest.southwestapp.fragments.emergency.EmergencyContactFragment;
+import com.southwest.southwestapp.fragments.emergency.EmergencyContactListFragment;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.transition.TransitionInflater;
-import android.view.View;
+
+import android.view.inputmethod.InputMethodManager;
+
 
 
 /**
@@ -48,6 +51,33 @@ public class ScreenManager {
         Intent i = new Intent(origin, BaseActivity.class);
         i.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
         origin.startActivity(i);
+    }
+
+    public void showEmergencyContact(FragmentActivity origin) {
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        ft.addToBackStack("emergencyContact");
+        EmergencyContactFragment emergencyContactFragment = new EmergencyContactFragment();
+        ft.replace(R.id.container, emergencyContactFragment);
+        ft.commit();
+    }
+
+
+    public void showEmergencyContactList(FragmentActivity origin) {
+        FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
+        ft.addToBackStack("emergencyContactList");
+        EmergencyContactListFragment emergencyContactListFragment = new EmergencyContactListFragment();
+        ft.replace(R.id.container, emergencyContactListFragment);
+        ft.commit();
+    }
+
+    public void hideSoftKeyboard(Activity activity) {
+
+        if (activity != null && !activity.isFinishing()) {
+            InputMethodManager inputMethodManager = (InputMethodManager)activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null && activity.getCurrentFocus() != null && activity.getCurrentFocus().getWindowToken() != null) {
+                inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+            }
+        }
     }
 
     public void showLoginScreen(FragmentActivity origin) {

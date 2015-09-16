@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/neutral_gray_8"
+        >
+
+    <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/emergencyContactContainer">
+
+            <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_reservation"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardElevation="15dp"
+                    card_view:cardCornerRadius="4dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    >
+
+                    <LinearLayout
+                            android:id="@+id/cardContentWrapper"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        <include android:layout_width="match_parent"
+                                 android:layout_height="70dp"
+                                 layout="@layout/emergency_header"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:layout_marginTop="25dp"
+                                android:layout_marginLeft="15dp"
+                                android:textColor="@color/neutroal_gray_10"
+                                android:text="@string/emergency_contact_existing"
+                                />
+
+                        <android.support.v7.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@color/neutral_white"
+                                android:id="@+id/emergencyContacts"
+                                />
+
+                        <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/neutral_white"
+                                android:text="@string/emergency_contact_use_new"
+                                android:textColor="@color/dark_blue"
+                                android:layout_marginBottom="0dp"
+                                android:id="@+id/emergencyContactAdd"/>
+
+                        <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="@color/neutral_white"
+                                android:layout_marginTop="30dp"
+                                android:orientation="vertical">
+
+                            <include android:layout_width="fill_parent"
+                                     android:layout_height="wrap_content"
+                                     android:layout_gravity="center_horizontal"
+                                     layout="@layout/emergency_contact_switch"/>
+
+                            <Button
+                                    android:text="@string/emergency_contact_continue"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginRight="15dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:id="@+id/confirmationButton"
+                                    style="@style/bigButton"
+                                    />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                    android:id="@+id/confirmationFooterInformation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:autoLink="web"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.AppBarLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+        <android.support.v7.widget.Toolbar
+                android:transitionName="MyTransition"
+                android:id="@+id/toolbarGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:minHeight="?attr/actionBarSize"
+                app:theme="@style/toolBarStyle"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+
