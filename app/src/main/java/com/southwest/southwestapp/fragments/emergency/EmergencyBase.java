@@ -66,7 +66,7 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    upToolBar();
                 }
             });
         }
@@ -105,5 +105,7 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
     protected abstract void addContactAction();
 
     protected abstract void continueAction();
+
+    protected abstract void upToolBar();
 
 }

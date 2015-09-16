@@ -43,6 +43,10 @@ public class EmergencyContactListFragment extends EmergencyBase {
 
     }
 
+    public void upToolBar() {
+        AppHelper.screenManager.showEmergencyContact(getActivity());
+    }
+
     @Override
     protected void addContactAction() {
         AppHelper.screenManager.showEmergencyContact(getActivity());

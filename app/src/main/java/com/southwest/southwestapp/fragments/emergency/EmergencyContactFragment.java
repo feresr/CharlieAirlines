@@ -72,8 +72,8 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
 
     }
 
-    public String getToolBarTitle() {
-        return getResources().getString(R.string.emergency_contact_new_toolbar_title);
+    public void upToolBar() {
+        AppHelper.screenManager.showCheckInScreen(getActivity());
     }
 
     private boolean validateField() {
@@ -93,6 +93,9 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
         AppHelper.screenManager.hideSoftKeyboard(getActivity());
     }
 
+    public String getToolBarTitle() {
+        return getResources().getString(R.string.emergency_contact_new_toolbar_title);
+    }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
