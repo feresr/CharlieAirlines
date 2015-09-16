@@ -54,7 +54,6 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
         mBtnContactAdd.setOnClickListener(this);
         mConfirmationButton.setOnClickListener(this);
 
-        
     }
 
     private void setUpToolBar() {
@@ -92,8 +91,7 @@ public abstract class EmergencyBase extends BaseFragment implements View.OnClick
 
     private void removeUnderlines(Spannable spannable) {
         URLSpan[] spans = spannable.getSpans(0, spannable.length(), URLSpan.class);
-
-        for(URLSpan span:spans) {
+        for (URLSpan span : spans) {
             int start = spannable.getSpanStart(span);
             int end = spannable.getSpanEnd(span);
             spannable.removeSpan(span);
