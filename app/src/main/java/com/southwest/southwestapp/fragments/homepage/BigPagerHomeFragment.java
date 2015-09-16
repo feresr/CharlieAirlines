@@ -18,7 +18,7 @@ import com.southwest.southwestapp.views.BigPageViewPager;
 
 public class BigPagerHomeFragment extends BaseFragment {
 
-    private static final float ZOOM_FACTOR = 1.04f;
+    private static final float ZOOM_FACTOR = 1.08f;
     private static final int FADE_OUT_FOOTER_TIME = 1500;
 
     private View rootView;
@@ -135,6 +135,7 @@ public class BigPagerHomeFragment extends BaseFragment {
 
 
     public void enablePaging() {
+        AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
         rootView.findViewById(R.id.close_panel_button).setVisibility(View.VISIBLE);
         AnimationGenericUtils.fadeInAnimation(rootView.findViewById(R.id.close_panel_button), getActivity());

@@ -64,11 +64,12 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
                 switch (menuItem.getItemId()) {
                     case R.id.checkIn:
                         AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this);
-                        mCurrentSelectedPosition = 0;
+                        mCurrentSelectedPosition = 2;
                         return true;
 
                     case R.id.home:
                         homeFragment = AppHelper.screenManager.showMainScreen(MainActivity.this);
+                        mCurrentSelectedPosition = 0;
                         slideTripPanelUp();
                         return true;
 

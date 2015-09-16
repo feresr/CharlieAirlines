@@ -3,7 +3,7 @@
     <group>
         <item
             android:id="@+id/home"
-            android:checkable="false"
+            android:checkable="true"
             android:icon="@drawable/nav_drawer_home_icon"
             android:title="Home" />
     </group>
