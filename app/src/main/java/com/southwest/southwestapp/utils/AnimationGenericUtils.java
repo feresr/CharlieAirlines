@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 
 import com.southwest.southwestapp.R;
 
@@ -181,6 +182,8 @@ public class AnimationGenericUtils {
 
         animator.scaleY(zoom);
         animator.scaleX(zoom);
+        animator.setDuration(400);
+        animator.setInterpolator(new DecelerateInterpolator());
         animator.start();
 
     }
