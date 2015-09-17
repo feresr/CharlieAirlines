@@ -1,6 +1,5 @@
 package com.southwest.southwestapp.models;
 
-import com.southwest.southwestapp.controllers.UserController;
 
 /**
  * Created by luisalfonsobejaranosanchez on 9/17/15.
