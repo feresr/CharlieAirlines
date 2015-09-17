@@ -23,8 +23,7 @@
             android:layout_centerVertical="true"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-
-            >
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/splashLogoText"
@@ -62,7 +61,7 @@
             android:orientation="vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            >
+            android:visibility="invisible">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,11 +71,10 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
                 android:text="@string/sw_slogan"
-                android:textStyle="italic"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/dark_blue"
                 android:textSize="12sp"
-            />
+                android:textStyle="italic" />
 
         </LinearLayout>
 
