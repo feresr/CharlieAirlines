@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
@@ -20,6 +21,7 @@ public class EmergencyContactListFragment extends EmergencyBase {
 
     private RecyclerView mContactList;
     private EmergencyContactAdapter mContactListAdapter;
+    private TextView mEmergencyHeaderName;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +40,12 @@ public class EmergencyContactListFragment extends EmergencyBase {
         mContactListAdapter = new EmergencyContactAdapter(AppHelper.contacts);
         mContactList.setAdapter(mContactListAdapter);
         init(rootView);
+
+        mEmergencyHeaderName = (TextView) rootView.findViewById(R.id.emergencyHeaderName);
+
+        if (AppHelper.userCheckInController.getCheckin() != null) {
+            mEmergencyHeaderName.setText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
+        }
 
         return rootView;
 

@@ -14,7 +14,6 @@ public class UserController {
     }
 
 
-
     public String getUserName() {
 
         if (mUserProfile != null) {
@@ -25,7 +24,7 @@ public class UserController {
 
     }
 
-    public UserProfile getUserProfile(){
+    public UserProfile getUserProfile() {
         return this.mUserProfile;
     }
 

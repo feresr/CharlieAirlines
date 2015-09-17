@@ -42,18 +42,14 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
 
         checkInView = inflater.inflate(R.layout.fragment_checkin, container, false);
 
-        mBtConfirmation = (Button)checkInView.findViewById(R.id.confirmationButton);
-        linearBody = (LinearLayout)checkInView.findViewById(R.id.checkInBodyWrapper);
+        mBtConfirmation = (Button) checkInView.findViewById(R.id.confirmationButton);
+        linearBody = (LinearLayout) checkInView.findViewById(R.id.checkInBodyWrapper);
         passengerName = (LabeledText) checkInView.findViewById(R.id.passenger);
-        confirmation  = (LabeledText) checkInView.findViewById(R.id.confirmation_one);
+        confirmation = (LabeledText) checkInView.findViewById(R.id.confirmation_one);
 
-        if(AppHelper.checkInVO != null){
-            Log.d(TAG,"NO SOY NULO...");
-            Log.d(TAG,"pasajero #["+AppHelper.checkInVO.getConfirmationNumber()+"]");
-            Log.d(TAG, "pasajero [" + AppHelper.checkInVO.getPassengers()[0].getName() + "]");
-            passengerName.setMainText(AppHelper.checkInVO.getPassengers()[0].getName());
-            confirmation.setMainText(AppHelper.checkInVO.getConfirmationNumber());
-
+        if (AppHelper.userCheckInController.getCheckin() != null) {
+            passengerName.setMainText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
+            confirmation.setMainText(AppHelper.userCheckInController.getCheckin().getConfirmationNumber());
         }
 
         linearBody.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
@@ -66,7 +62,7 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void setUpToolBar() {
-        mToolbar = (Toolbar)checkInView.findViewById(R.id.toolbarGeneral);
+        mToolbar = (Toolbar) checkInView.findViewById(R.id.toolbarGeneral);
         if (mToolbar != null) {
             mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
             if (mToolbar.getSubtitle() != null) {

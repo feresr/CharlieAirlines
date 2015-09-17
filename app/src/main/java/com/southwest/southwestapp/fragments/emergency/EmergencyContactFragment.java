@@ -43,8 +43,8 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
         mEditNewContactPhone = (EditText) rootView.findViewById(R.id.emergencyContactNumber);
         emergencyContactNamePass = (TextView) rootView.findViewById(R.id.emergencyContactNamePass);
 
-        if(AppHelper.checkInVO != null){
-            emergencyContactNamePass.setText(AppHelper.checkInVO.getPassengers()[0].getName());
+        if(AppHelper.userCheckInController.getCheckin() != null){
+            emergencyContactNamePass.setText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
         }
         init(rootView);
 

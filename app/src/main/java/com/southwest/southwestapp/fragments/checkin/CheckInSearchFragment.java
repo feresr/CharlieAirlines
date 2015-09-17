@@ -49,11 +49,11 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
         setUpToolBar();
 
-        mBtRetrieve = (Button)searchView.findViewById(R.id.btn_retrieve_reservation);
-        mEtConfirmationNumber = (EditText)searchView.findViewById(R.id.edt_confirmation);
-        mEtFirstName = (EditText)searchView.findViewById(R.id.edt_first_name);
-        mEtLastName = (EditText)searchView.findViewById(R.id.edt_last_name);
-        cardReservation = (CardView)searchView.findViewById(R.id.card_reservation);
+        mBtRetrieve = (Button) searchView.findViewById(R.id.btn_retrieve_reservation);
+        mEtConfirmationNumber = (EditText) searchView.findViewById(R.id.edt_confirmation);
+        mEtFirstName = (EditText) searchView.findViewById(R.id.edt_first_name);
+        mEtLastName = (EditText) searchView.findViewById(R.id.edt_last_name);
+        cardReservation = (CardView) searchView.findViewById(R.id.card_reservation);
 
         cardReservation.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
@@ -63,7 +63,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     }
 
     private void setUpToolBar() {
-        mToolbar = (Toolbar)searchView.findViewById(R.id.toolbarGeneral);
+        mToolbar = (Toolbar) searchView.findViewById(R.id.toolbarGeneral);
         if (mToolbar != null) {
             mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
             if (mToolbar.getSubtitle() != null) {
@@ -91,16 +91,16 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 String number = mEtConfirmationNumber.getText().toString();
                 String name = mEtFirstName.getText().toString() + mEtLastName.getText().toString();
 
-                if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)){
+                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)) {
 
-                    PassengerVO[] param ={ new PassengerVO(mEtFirstName.getText().toString()+" "+mEtLastName.getText().toString(),"",0)};
-                    AppHelper.checkInVO.setConfirmationNumber(number);
-                    AppHelper.checkInVO.setPassengers(param);
+                    PassengerVO[] param = {new PassengerVO(mEtFirstName.getText().toString() + " " + mEtLastName.getText().toString(), "", 0)};
 
+                    AppHelper.userCheckInController.setConfirmationNumer(number);
+                    AppHelper.userCheckInController.setPassangers(param);
                     AppHelper.screenManager.showCheckInScreen(getActivity());
 
-                }else{
-                    Toast.makeText(getContext(),"No data",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), "No data", Toast.LENGTH_LONG).show();
                 }
 
                 break;

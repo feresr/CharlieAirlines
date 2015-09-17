@@ -1,10 +1,11 @@
 package com.southwest.southwestapp;
 
+import com.southwest.southwestapp.controllers.CheckInController;
 import com.southwest.southwestapp.controllers.UserController;
 import com.southwest.southwestapp.models.Contact;
 import com.southwest.southwestapp.utils.DialogManager;
 import com.southwest.southwestapp.utils.ScreenManager;
-import com.southwest.southwestapp.vo.CheckInVO;
+
 
 import android.app.Application;
 
@@ -21,7 +22,8 @@ public class AppHelper extends Application {
     public static final ScreenManager screenManager = new ScreenManager();
     public static final DialogManager dialogManager = new DialogManager();
     public static final UserController userController = new UserController();
-    public static final CheckInVO checkInVO = new CheckInVO();
+    public static final CheckInController userCheckInController = new CheckInController();
+
     // TODO: get this data through web service
     public static List<Contact> contacts = new ArrayList<Contact>();
 

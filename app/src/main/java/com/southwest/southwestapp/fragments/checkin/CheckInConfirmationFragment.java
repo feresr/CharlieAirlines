@@ -35,11 +35,11 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
 
     private static final String TAG = CheckInConfirmationFragment.class.getSimpleName();
 
-    private TextView     mSuccessText;
+    private TextView mSuccessText;
     private LinearLayout faqContainer;
     private RecyclerView mRecycler;
-    private Toolbar      mToolbar;
-    private View         confirmationView;
+    private Toolbar mToolbar;
+    private View confirmationView;
 
     public CheckInConfirmationFragment() {
     }
@@ -50,9 +50,9 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
 
         confirmationView = inflater.inflate(R.layout.fragment_confirmation, container, false);
 
-        mSuccessText     = (TextView)     confirmationView.findViewById(R.id.successText);
-        faqContainer     = (LinearLayout) confirmationView.findViewById(R.id.faqWrapper);
-        mRecycler        = (RecyclerView) confirmationView.findViewById(R.id.recycler_flights);
+        mSuccessText = (TextView) confirmationView.findViewById(R.id.successText);
+        faqContainer = (LinearLayout) confirmationView.findViewById(R.id.faqWrapper);
+        mRecycler = (RecyclerView) confirmationView.findViewById(R.id.recycler_flights);
 
 
         setUpToolBar();
@@ -65,31 +65,31 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         mRecycler.setLayoutManager(llm);
 
 
-        if(AppHelper.checkInVO != null && AppHelper.checkInVO.getPassengers().length != 0){
-            AppHelper.checkInVO.getPassengers()[0].setGroup("A");
-            AppHelper.checkInVO.getPassengers()[0].setPosition(22);
-            AppHelper.checkInVO.setFlightNumber("4852");
-            AppHelper.checkInVO.setGate("F5");
-            AppHelper.checkInVO.setTravelTime("3h 23m");
-            CheckInVO[] arrayCheck = {AppHelper.checkInVO};
-            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck,getActivity()));
-        }else{
+        if (AppHelper.userCheckInController.getCheckin() != null && AppHelper.userCheckInController.getCheckin().getPassengers().length != 0) {
+            AppHelper.userCheckInController.getCheckin().getPassengers()[0].setGroup("A");
+            AppHelper.userCheckInController.getCheckin().getPassengers()[0].setPosition(22);
+            AppHelper.userCheckInController.getCheckin().setFlightNumber("4852");
+            AppHelper.userCheckInController.getCheckin().setGate("F5");
+            AppHelper.userCheckInController.getCheckin().setTravelTime("3h 23m");
+            CheckInVO[] arrayCheck = {AppHelper.userCheckInController.getCheckin()};
+            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck, getActivity()));
+        } else {
             PassengerVO[] arrayPass = {new PassengerVO("Homer Thompson", "A", 11),
-                    new PassengerVO("Marge Thompson","B",19),
-                    new PassengerVO("Lisa Thompson","B",31), };
+                    new PassengerVO("Marge Thompson", "B", 19),
+                    new PassengerVO("Lisa Thompson", "B", 31),};
 
 
             CheckInVO[] arrayCheck = {new CheckInVO("666", "1h 10m", "A1", "MCX456Q1", arrayPass),
-                    new CheckInVO("999","1h 35m","B1","MXC4576F",arrayPass)};
+                    new CheckInVO("999", "1h 35m", "B1", "MXC4576F", arrayPass)};
 
-            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck,getActivity()));
+            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck, getActivity()));
         }
 
         return confirmationView;
     }
 
     private void setUpToolBar() {
-        mToolbar = (Toolbar)confirmationView.findViewById(R.id.toolbarGeneral);
+        mToolbar = (Toolbar) confirmationView.findViewById(R.id.toolbarGeneral);
         if (mToolbar != null) {
             mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
             if (mToolbar.getSubtitle() != null) {
@@ -122,7 +122,7 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.confirmationMenu:
                 getActivity().finish();
                 return true;
