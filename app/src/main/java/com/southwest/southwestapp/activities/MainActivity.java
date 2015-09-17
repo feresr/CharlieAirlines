@@ -1,6 +1,7 @@
 package com.southwest.southwestapp.activities;
 
 import android.content.res.Configuration;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,8 @@ import android.widget.ImageView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.PlacePhotoMetadata;
 import com.google.android.gms.location.places.PlacePhotoMetadataBuffer;
 import com.google.android.gms.location.places.PlacePhotoMetadataResult;
@@ -203,8 +206,27 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     //Google places API callbacks
     @Override
     public void onConnected(Bundle bundle) {
+        Places.PlaceDetectionApi.getCurrentPlace(mGoogleApiClient, null).setResultCallback(new ResultCallback<PlaceLikelihoodBuffer>() {
+            @Override
+            public void onResult(PlaceLikelihoodBuffer likelyPlaces) {
+                //for (PlaceLikelihood placeLikelihood : likelyPlaces) {
+                if (likelyPlaces.getCount() > 0) {
+
+
+                } else {
+                    getPhoto("ChIJD7fiBh9u5kcRYJSMaMOCCwQ");
+                }
+                //}
+                likelyPlaces.release();
+            }
+        });
+
+
+    }
+
+    private void getPhoto(String placeId) {
         // Get a PlacePhotoMetadataResult containing metadata for the first 10 photos.
-        Places.GeoDataApi.getPlacePhotos(mGoogleApiClient, "ChIJrTLr-GyuEmsRBfy61i59si0").setResultCallback(new ResultCallback<PlacePhotoMetadataResult>() {
+        Places.GeoDataApi.getPlacePhotos(mGoogleApiClient, placeId).setResultCallback(new ResultCallback<PlacePhotoMetadataResult>() {
             @Override
             public void onResult(PlacePhotoMetadataResult result) {
                 if (result != null && result.getStatus().isSuccess()) {
