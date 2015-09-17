@@ -106,4 +106,12 @@ public class LabeledText extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
     }
+
+
+
+    public void setMainText(String mainText) {
+        if(mainText != null){
+          mTvMain.setText(mainText);
+        }
+    }
 }
