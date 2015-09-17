@@ -88,7 +88,7 @@ public class TripActionsFragment extends BaseFragment {
     }
 
     public void showPreferredInfo(){
-        AnimationGenericUtils.fadeInAnimation(mPreferredContainer, getContext());
+        AnimationGenericUtils.fadeInAnimation(mPreferredContainer, null ,getContext());
     }
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {

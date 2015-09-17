@@ -67,7 +67,7 @@ public class PromoPageFragment extends BaseFragment {
     public void animateFirstContainer(AnimationGenericUtils.animations animation){
         switch (animation) {
             case FADE_IN:
-                AnimationGenericUtils.fadeInAnimation(mainInformationContainer, context);
+                AnimationGenericUtils.fadeInAnimation(mainInformationContainer, null ,context);
                 break;
             case SLIDE_IN_LEFT:
                 AnimationGenericUtils.slideRightToLeft(mainInformationContainer, 0, context);
@@ -77,7 +77,7 @@ public class PromoPageFragment extends BaseFragment {
     public void animateSecondContainer(AnimationGenericUtils.animations animation){
         switch (animation) {
             case FADE_IN:
-                AnimationGenericUtils.fadeInAnimation(secondaryInformationContainer, context);
+                AnimationGenericUtils.fadeInAnimation(secondaryInformationContainer,null ,context);
                 break;
             case SLIDE_IN_LEFT:
                 AnimationGenericUtils.slideRightToLeft(secondaryInformationContainer, 100, context);

@@ -138,7 +138,7 @@ public class BigPagerHomeFragment extends BaseFragment {
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
         AnimationGenericUtils.zoom(rootView, null, ZOOM_FACTOR);
         rootView.findViewById(R.id.close_panel_button).setVisibility(View.VISIBLE);
-        AnimationGenericUtils.fadeInAnimation(rootView.findViewById(R.id.close_panel_button), getActivity());
+        AnimationGenericUtils.fadeInAnimation(rootView.findViewById(R.id.close_panel_button), null ,getActivity());
         footerTransition(FADE_OUT_FOOTER_TIME);
         ((PromoPageFragment) viewPagerAdapter.getItem(mViewPager.getCurrentItem())).animateSecondContainer(AnimationGenericUtils.animations.FADE_IN);
         mViewPager.setPagingEnabled(true);

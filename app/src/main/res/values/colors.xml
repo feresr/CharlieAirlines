@@ -14,6 +14,7 @@
 
     <color name="color_accent_dark">#6000</color>
     <color name="dark_blue">#111b40</color>
+    <color name="soft_blue">#ff000099</color>
     <color name="green">#008522</color>
     <color name="neutral_white">#ffffff</color>
     <color name="link_blue">#a4baf2</color>
@@ -29,6 +30,8 @@
     <color name="transparent_gray_2">#608f8f8f</color>
     <color name="transparent_gray_3">#35000000</color>
 
-
+    <color name="progress_start">#ff9d9e9d</color>
+    <color name="progress_end">#ff747674</color>
+    <color name="progress_center">#ff5a5d5a</color>
 
 </resources>

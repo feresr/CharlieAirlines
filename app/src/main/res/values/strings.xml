@@ -4,6 +4,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="sw_slogan">Without a heart, it\'s just a machine.</string>
+
     <!-- Layout Log in-->
     <string name="log_in_southwest">Southwest</string>
     <string name="log_in_welcome">Welcome</string>
@@ -142,6 +144,7 @@
     <string name="emergency_contact_new_contact_error">Please check the fields</string>
     <string name="emergency_contact_new_toolbar_title">Emergency Contact</string>
     <string name="emergency_contact_select_toolbar_title">Emergency Contact</string>
+
 
 
 </resources>
