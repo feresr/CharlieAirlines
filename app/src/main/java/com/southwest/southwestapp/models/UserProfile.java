@@ -1,5 +1,7 @@
 package com.southwest.southwestapp.models;
 
+import com.southwest.southwestapp.controllers.UserController;
+
 /**
  * Created by luisalfonsobejaranosanchez on 9/17/15.
  */
@@ -7,6 +9,10 @@ public class UserProfile {
 
     private String userName;
     private boolean isLogged;
+
+    public UserProfile() {
+
+    }
 
     public UserProfile(String userName) {
         this.userName = userName;

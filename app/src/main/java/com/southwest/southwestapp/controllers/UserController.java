@@ -9,7 +9,11 @@ public class UserController {
 
     private UserProfile mUserProfile;
 
-    public String getProfile() {
+    public UserController() {
+        mUserProfile = new UserProfile();
+    }
+
+    public String getUserName() {
 
         if (mUserProfile != null) {
             mUserProfile.getUserName();
@@ -17,6 +21,14 @@ public class UserController {
 
         return "";
 
+    }
+
+    public UserProfile getUserProfile(){
+        return this.mUserProfile;
+    }
+
+    public void setUserProfile(UserProfile mUserProfile) {
+        this.mUserProfile = mUserProfile;
     }
 
     public boolean isLogged() {

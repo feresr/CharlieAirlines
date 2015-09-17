@@ -2,6 +2,7 @@ package com.southwest.southwestapp.fragments;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.models.UserProfile;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import android.os.Bundle;
@@ -38,22 +39,22 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        mBtLogIn = (Button)view.findViewById(R.id.btn_login);
+        mBtLogIn = (Button) view.findViewById(R.id.btn_login);
         mBtLogIn.setOnClickListener(this);
 
-        mEtUser = (EditText)view.findViewById(R.id.et_user);
+        mEtUser = (EditText) view.findViewById(R.id.et_user);
         mEtUser.setOnFocusChangeListener(this);
 
-        mEtPass = (EditText)view.findViewById(R.id.et_pass);
+        mEtPass = (EditText) view.findViewById(R.id.et_pass);
         mEtPass.setOnFocusChangeListener(this);
 
-        mLnrContainer = (LinearLayout)view.findViewById(R.id.lnr_container);
+        mLnrContainer = (LinearLayout) view.findViewById(R.id.lnr_container);
 
-        mTvWelcome = (TextView)view.findViewById(R.id.tv_welcome);
+        mTvWelcome = (TextView) view.findViewById(R.id.tv_welcome);
 
-        mTvEnroll = (TextView)view.findViewById(R.id.tv_enroll_now);
+        mTvEnroll = (TextView) view.findViewById(R.id.tv_enroll_now);
         mTvEnroll.setOnClickListener(this);
-        mTvContinueAsGuest = (TextView)view.findViewById(R.id.tv_continue_as_guest);
+        mTvContinueAsGuest = (TextView) view.findViewById(R.id.tv_continue_as_guest);
         mTvContinueAsGuest.setOnClickListener(this);
 
         return view;
@@ -65,11 +66,12 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
             case R.id.btn_login:
                 String userName = mEtUser.getText().toString();
                 String userPass = mEtPass.getText().toString();
-                
-                if(!TextUtils.isEmpty(userName)){
 
+                if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(userPass)) {
+                    AppHelper.userController.setUserProfile(new UserProfile(userName));
+                    AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
                 }
-                //AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+
                 break;
             case R.id.tv_continue_as_guest:
                 AppHelper.screenManager.showMainScreenFromLogIn(getActivity());

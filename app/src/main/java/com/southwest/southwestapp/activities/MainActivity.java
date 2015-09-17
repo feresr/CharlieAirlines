@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
@@ -49,12 +50,13 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
 
 
     private void setUpNavDrawer() {
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.nav_drawer);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mNavigationView = (NavigationView)findViewById(R.id.nav_view);
-
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        TextView text = (TextView) findViewById(R.id.passenger_name);
+        text.setText(AppHelper.userController.getUserProfile().getUserName());
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     }
 
     private void setUpToolBar() {
-        mToolbar = (Toolbar)findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
     }
