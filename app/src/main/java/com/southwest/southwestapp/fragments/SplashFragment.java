@@ -55,7 +55,7 @@ public class SplashFragment extends Fragment {
         TimerTask showSplash = new TimerTask() {
             @Override
             public void run() {
-                AppHelper.screenManager.showMainScreenFromSplash(getActivity());
+                AppHelper.screenManager.showLoginScreen(getActivity());
             }
         };
 

@@ -19,7 +19,7 @@
         <item name="android:background">@drawable/button_background</item>
         <item name="android:padding">0dp</item>
         <item name="android:textColor">@color/button_text</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">17dp</item>
     </style>
 
     <style name="checkboxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
@@ -27,7 +27,7 @@
     </style>
 
     <style name="textWhiteTitle" parent="@android:style/TextAppearance" >
-        <item name="android:textColor">@color/neutral_white</item>
+        <item name="android:textColor">@color/dark_blue</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -88,6 +88,15 @@
         <item name="colorAccent">@color/dark_blue</item>
         <item name="colorControlNormal">@color/transparent_gray_3</item>
         <item name="colorControlActivated">@color/transparent_gray_3</item>
+    </style>
+
+    <style name="TextLabelLogIn" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">@color/neutral_white</item>
+        <item name="colorAccent">@color/dark_blue</item>
+        <item name="colorControlNormal">@color/neutral_white</item>
+        <item name="colorControlActivated">@color/neutral_white</item>
     </style>
 
 </resources>

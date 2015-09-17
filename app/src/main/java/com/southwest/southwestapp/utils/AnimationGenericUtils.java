@@ -76,6 +76,35 @@ public class AnimationGenericUtils {
 
     }
 
+    public static void fadeOutAnimationLogIn(final View view, Animation.AnimationListener listener, Context context) {
+
+        Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out_log_in);
+        if (listener != null) {
+            fadeOutAnimation.setAnimationListener(listener);
+        } else {
+
+            fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation arg0) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    if (view.isShown())
+                        view.setVisibility(View.INVISIBLE);
+
+                }
+            });
+        }
+
+        view.startAnimation(fadeOutAnimation);
+
+    }
+
     public static void slideRightToLeft(final View view, int delay, Context context) {
 
         Animation slideRightToLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_right_to_left);
@@ -104,6 +133,18 @@ public class AnimationGenericUtils {
     public static void fadeInBottom(final View view, @Nullable Animation.AnimationListener listener, Context context) {
 
         Animation fadeInBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in_bottom);
+
+        if (listener != null) {
+            fadeInBottomAnimation.setAnimationListener(listener);
+        }
+
+        view.startAnimation(fadeInBottomAnimation);
+
+    }
+
+    public static void fadeInBottomLogInContainer(final View view, @Nullable Animation.AnimationListener listener, Context context) {
+
+        Animation fadeInBottomAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in_bottom_login);
 
         if (listener != null) {
             fadeInBottomAnimation.setAnimationListener(listener);

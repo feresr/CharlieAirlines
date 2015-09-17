@@ -80,7 +80,7 @@ public class ScreenManager {
         }
     }
 
-    public void showLoginScreen(FragmentActivity origin) {
+    public void showLoginScreen(Activity origin) {
         Intent i = new Intent(origin, BaseActivity.class);
         i.putExtra(BaseActivity.FRAGMENT, LoginFragment.class);
         origin.startActivity(i);
@@ -110,8 +110,9 @@ public class ScreenManager {
         ft.commit();
     }
 
-    public void showMainScreenFromSplash(Activity origin) {
+    public void showMainScreenFromLogIn(Activity origin) {
         Intent intent = new Intent(origin, MainActivity.class);
         origin.startActivity(intent);
+        origin.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
