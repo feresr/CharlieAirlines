@@ -12,7 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
@@ -31,7 +30,6 @@ public class SplashFragment extends Fragment {
     private LinearLayout mLogoContainer;
 
     private ImageView mSwLogo;
-    private ProgressBar mProgres;
     private Timer runSplash = new Timer();
     private TimerTask showSplash;
 
@@ -49,9 +47,7 @@ public class SplashFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_splash, container, false);
         mLogoContainer = (LinearLayout) rootView.findViewById(R.id.logoContainer);
         mProgressContainer = (LinearLayout) rootView.findViewById(R.id.progressContainer);
-        mProgres = (ProgressBar) rootView.findViewById(R.id.progressBar);
         mSwLogo = (ImageView) rootView.findViewById(R.id.splashLogo);
-        mProgres.setMax(100);
         introAnimate();
         return rootView;
     }
@@ -110,9 +106,6 @@ public class SplashFragment extends Fragment {
         showSplash = new TimerTask() {
             @Override
             public void run() {
-                for (int i = 0; i < 100; i++) {
-                    mProgres.setProgress(i);
-                }
                 AppHelper.screenManager.showLoginScreen(getActivity());
             }
         };
