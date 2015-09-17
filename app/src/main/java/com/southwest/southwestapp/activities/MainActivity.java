@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
                         return true;
 
                     case R.id.logout:
-                        AppHelper.screenManager.showLoginScreen(MainActivity.this);
                         return true;
 
                     default:
