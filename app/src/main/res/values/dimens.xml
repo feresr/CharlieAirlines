@@ -7,4 +7,6 @@
     <dimen name="divider_booking">1dp</dimen>
     <dimen name="height_items_homepage">67dp</dimen>
     <dimen name="footer_page_information_circle_size">12dp</dimen>
+    <dimen name="image_toast_margin_bottom">20dp</dimen>
+
 </resources>

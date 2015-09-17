@@ -5,7 +5,7 @@
 
         <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/color_accent_dark</item>
-        <item name="colorAccent">@android:color/white</item>
+        <item name="colorAccent">@color/dark_blue</item>
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
 
         <item name="colorControlNormal">@android:color/white</item>
@@ -19,7 +19,7 @@
         <item name="android:background">@drawable/button_background</item>
         <item name="android:padding">0dp</item>
         <item name="android:textColor">@color/button_text</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">17dp</item>
     </style>
 
     <style name="checkboxStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
@@ -27,7 +27,7 @@
     </style>
 
     <style name="textWhiteTitle" parent="@android:style/TextAppearance" >
-        <item name="android:textColor">@color/neutral_white</item>
+        <item name="android:textColor">@color/dark_blue</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>
     </style>
