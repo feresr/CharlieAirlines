@@ -21,27 +21,32 @@ public class AnimationGenericUtils {
         SLIDE_IN_LEFT
     }
 
-    public static void fadeInAnimation(final View view, Context context) {
+    public static void fadeInAnimation(final View view,Animation.AnimationListener listener ,Context context) {
 
         Animation fadeInAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_in);
 
-        fadeInAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation arg0) {
-                if (!view.isShown())
-                    view.setVisibility(View.VISIBLE);
+        if(listener == null) {
 
-            }
+            fadeInAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation arg0) {
+                    if (!view.isShown())
+                        view.setVisibility(View.VISIBLE);
 
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-            }
+                }
 
-            @Override
-            public void onAnimationEnd(Animation arg0) {
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
 
-            }
-        });
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+
+                }
+            });
+        }else{
+            fadeInAnimation.setAnimationListener(listener);
+        }
 
         view.startAnimation(fadeInAnimation);
 

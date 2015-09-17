@@ -8,66 +8,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:tint="#8fff"
-        android:src="@drawable/splash_background" />
+        android:src="@drawable/splash_background"
+        android:tint="#8fff" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        >
+        android:layout_height="fill_parent">
 
         <LinearLayout
+            android:id="@+id/logoContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/linearLayout">
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <ImageView
+                android:id="@+id/splashLogoText"
                 android:layout_width="190dp"
                 android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:src="@drawable/southwest_text_logo"
-                android:id="@+id/splashLogoText"
+                android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_gravity="center"
+                android:src="@drawable/southwest_text_logo" />
 
 
             <ImageView
+                android:id="@+id/splashLogo"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/splashLogo"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:layout_gravity="right|center_vertical"
-                android:src="@drawable/sw_logo"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="3dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                />
+                android:src="@drawable/sw_logo" />
 
         </LinearLayout>
 
-        <ProgressBar
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:indeterminate="true"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_below="@+id/linearLayout"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/progressContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/sw_slogan"
-            android:gravity="center_horizontal"
-            android:textSize="8sp"
-            android:layout_below="@+id/progressBar"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignEnd="@+id/logoContainer"
+            android:layout_alignLeft="@+id/logoContainer"
+            android:layout_alignRight="@+id/logoContainer"
+            android:layout_alignStart="@+id/logoContainer"
+            android:layout_below="@+id/logoContainer"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:indeterminate="false"
+                android:progress="50"
+                android:progressDrawable="@drawable/horizon_progres_bar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBar"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:text="@string/sw_slogan"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/dark_blue"
+                android:textSize="8sp" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
