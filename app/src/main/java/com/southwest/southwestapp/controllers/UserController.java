@@ -13,6 +13,8 @@ public class UserController {
         mUserProfile = new UserProfile();
     }
 
+
+
     public String getUserName() {
 
         if (mUserProfile != null) {
