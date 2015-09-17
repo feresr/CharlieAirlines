@@ -62,6 +62,7 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         faqContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
+
         PassengerVO[] arrayPass = {new PassengerVO("Homer Thompson", "A", 11),
                 new PassengerVO("Marge Thompson","B",19),
                 new PassengerVO("Lisa Thompson","B",31), };
@@ -69,6 +70,7 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
 
         CheckInVO[] arrayCheck = {new CheckInVO("666", "1h 10m", "A1", "MCX456Q1", arrayPass),
         new CheckInVO("999","1h 35m","B1","MXC4576F",arrayPass)};
+
         mRecycler.setLayoutManager(llm);
         mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck,getActivity()));
 
