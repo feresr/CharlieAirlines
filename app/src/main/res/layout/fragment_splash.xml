@@ -23,7 +23,8 @@
             android:layout_centerVertical="true"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/splashLogoText"
@@ -61,7 +62,8 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:visibility="invisible">
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -69,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:indeterminate="false"
-                android:progress="50"
+                android:progress="0"
                 android:progressDrawable="@drawable/horizon_progres_bar" />
 
             <TextView

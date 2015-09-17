@@ -3,6 +3,7 @@ package com.southwest.southwestapp.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,12 +26,14 @@ import java.util.TimerTask;
  */
 public class SplashFragment extends Fragment {
 
+
     private LinearLayout mProgressContainer;
     private LinearLayout mLogoContainer;
 
     private ImageView mSwLogo;
     private ProgressBar mProgres;
     private Timer runSplash = new Timer();
+    private TimerTask showSplash;
 
     public SplashFragment() {
         // Required empty public constructor
@@ -51,7 +54,6 @@ public class SplashFragment extends Fragment {
         mProgres.setMax(100);
         introAnimate();
         return rootView;
-
     }
 
 
@@ -88,7 +90,7 @@ public class SplashFragment extends Fragment {
             @Override
             public void onAnimationEnd(Animation arg0) {
                 AnimationGenericUtils.fadeInAnimation(mProgressContainer, progresListener, AppHelper.getInstance().getBaseContext());
-                progressSimulate();
+                proceedToMainScreen();
             }
         };
 
@@ -96,39 +98,21 @@ public class SplashFragment extends Fragment {
 
     }
 
-    private void progressSimulate() {
-
-        new Thread(new Runnable() {
-            public void run(){
-
-                int progres = 0;
-
-                while(true){
-                    if(progres == 100){
-                        progres = 0;
-                    }
-                    mProgres.setProgress(progres);
-                    progres++;
-
-                }
-
-            }
-        }).start();
-    }
 
     @Override
     public void onResume() {
         super.onResume();
-        proceedToMainScreen();
     }
 
-
     private void proceedToMainScreen() {
-        long delay = 9000;
+        long delay = 5000;
 
-        TimerTask showSplash = new TimerTask() {
+        showSplash = new TimerTask() {
             @Override
             public void run() {
+                for (int i = 0; i < 100; i++) {
+                    mProgres.setProgress(i);
+                }
                 AppHelper.screenManager.showLoginScreen(getActivity());
             }
         };
@@ -140,6 +124,7 @@ public class SplashFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        runSplash.cancel();
+        if (runSplash != null)
+            runSplash.cancel();
     }
 }
