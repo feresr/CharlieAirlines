@@ -13,6 +13,9 @@ public class CheckInVO {
     private String confirmationNumber;
     private PassengerVO[] passengers;
 
+    public CheckInVO() {
+    }
+
     public CheckInVO(String flightNumber, String travelTime, String gate, String confirmationNumber, PassengerVO[] passengers) {
         this.flightNumber = flightNumber;
         this.travelTime = travelTime;

@@ -62,18 +62,28 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         faqContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
-
-        PassengerVO[] arrayPass = {new PassengerVO("Homer Thompson", "A", 11),
-                new PassengerVO("Marge Thompson","B",19),
-                new PassengerVO("Lisa Thompson","B",31), };
-
-
-        CheckInVO[] arrayCheck = {new CheckInVO("666", "1h 10m", "A1", "MCX456Q1", arrayPass),
-        new CheckInVO("999","1h 35m","B1","MXC4576F",arrayPass)};
-
         mRecycler.setLayoutManager(llm);
-        mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck,getActivity()));
 
+
+        if(AppHelper.checkInVO != null && AppHelper.checkInVO.getPassengers().length != 0){
+            AppHelper.checkInVO.getPassengers()[0].setGroup("A");
+            AppHelper.checkInVO.getPassengers()[0].setPosition(22);
+            AppHelper.checkInVO.setFlightNumber("4852");
+            AppHelper.checkInVO.setGate("F5");
+            AppHelper.checkInVO.setTravelTime("3h 23m");
+            CheckInVO[] arrayCheck = {AppHelper.checkInVO};
+            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck,getActivity()));
+        }else{
+            PassengerVO[] arrayPass = {new PassengerVO("Homer Thompson", "A", 11),
+                    new PassengerVO("Marge Thompson","B",19),
+                    new PassengerVO("Lisa Thompson","B",31), };
+
+
+            CheckInVO[] arrayCheck = {new CheckInVO("666", "1h 10m", "A1", "MCX456Q1", arrayPass),
+                    new CheckInVO("999","1h 35m","B1","MXC4576F",arrayPass)};
+
+            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck,getActivity()));
+        }
 
         return confirmationView;
     }

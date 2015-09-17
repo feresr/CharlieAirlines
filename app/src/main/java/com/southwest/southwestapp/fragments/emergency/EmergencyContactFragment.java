@@ -8,10 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.models.Contact;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -22,6 +25,7 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
     private EditText mEditNewContactName;
     private EditText mEditNewContactPhone;
     private EditText mEditContactArea;
+    private TextView emergencyContactNamePass;
 
     private boolean validAddNewContact = false;
 
@@ -37,6 +41,11 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
         mEditNewContactName = (EditText) rootView.findViewById(R.id.emergencyContactName);
         mEditContactArea = (EditText) rootView.findViewById(R.id.emergencyContactArea);
         mEditNewContactPhone = (EditText) rootView.findViewById(R.id.emergencyContactNumber);
+        emergencyContactNamePass = (TextView) rootView.findViewById(R.id.emergencyContactNamePass);
+
+        if(AppHelper.checkInVO != null){
+            emergencyContactNamePass.setText(AppHelper.checkInVO.getPassengers()[0].getName());
+        }
         init(rootView);
 
         mEditNewContactName.addTextChangedListener(this);

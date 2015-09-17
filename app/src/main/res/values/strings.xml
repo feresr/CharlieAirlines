@@ -146,5 +146,9 @@
     <string name="emergency_contact_select_toolbar_title">Emergency Contact</string>
 
 
+    <!--VALIDATION SEARCH-->
+    <string name="search_validation">The information is incorrect or fields are empty.</string>
+
+
 
 </resources>

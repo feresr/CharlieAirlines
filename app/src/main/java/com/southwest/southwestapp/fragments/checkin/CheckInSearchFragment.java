@@ -3,11 +3,13 @@ package com.southwest.southwestapp.fragments.checkin;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.vo.PassengerVO;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -83,7 +88,21 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_retrieve_reservation:
-                AppHelper.screenManager.showCheckInScreen(getActivity());
+                String number = mEtConfirmationNumber.getText().toString();
+                String name = mEtFirstName.getText().toString() + mEtLastName.getText().toString();
+
+                if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)){
+
+                    PassengerVO[] param ={ new PassengerVO(mEtFirstName.getText().toString()+" "+mEtLastName.getText().toString(),"",0)};
+                    AppHelper.checkInVO.setConfirmationNumber(number);
+                    AppHelper.checkInVO.setPassengers(param);
+
+                    AppHelper.screenManager.showCheckInScreen(getActivity());
+
+                }else{
+                    Toast.makeText(getContext(),"No data",Toast.LENGTH_LONG).show();
+                }
+
                 break;
             default:
                 break;

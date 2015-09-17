@@ -33,15 +33,6 @@
                         app:mainTextStyle="normal"
                         app:upperText="PASSENGER(S)"/>
 
-                <com.southwest.southwestapp.LabeledText
-                        android:id="@+id/passenger_two"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/passenger"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginLeft="20dp"
-                        app:mainText="Janet Janet"
-                        app:mainTextStyle="normal"/>
 
                 <com.southwest.southwestapp.LabeledText
                         android:id="@+id/confirmation_one"
@@ -55,17 +46,7 @@
                         app:mainTextStyle="normal"
                         app:upperText="CONFIRMATION #"/>
 
-                <com.southwest.southwestapp.LabeledText
-                        android:id="@+id/confirmation_two"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_below="@+id/confirmation_one"
-                        android:layout_marginRight="60dp"
-                        app:mainText="RFGTDE"
-                        app:mainTextStyle="normal"/>
+
 
                 <android.support.v7.widget.CardView
                         xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -78,13 +59,14 @@
                         card_view:cardCornerRadius="4dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_below="@+id/passenger_two">
+                        android:layout_marginTop="15dp"
+                        android:layout_below="@+id/passenger">
 
                     <RelativeLayout
                             android:id="@+id/flight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/passenger_two">
+                            android:layout_below="@id/passenger">
 
                         <com.southwest.southwestapp.LabeledText
                                 android:id="@+id/city"

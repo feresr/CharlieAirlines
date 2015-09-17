@@ -1,12 +1,16 @@
 package com.southwest.southwestapp.fragments.checkin;
 
 import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.LabeledText;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.vo.CheckInVO;
+import com.southwest.southwestapp.vo.PassengerVO;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +29,8 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     private Button mBtConfirmation;
     private LinearLayout linearBody;
     private Toolbar mToolbar;
+    private LabeledText passengerName;
+    private LabeledText confirmation;
     private View checkInView;
 
     public CheckInFragment() {
@@ -38,6 +44,17 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
 
         mBtConfirmation = (Button)checkInView.findViewById(R.id.confirmationButton);
         linearBody = (LinearLayout)checkInView.findViewById(R.id.checkInBodyWrapper);
+        passengerName = (LabeledText) checkInView.findViewById(R.id.passenger);
+        confirmation  = (LabeledText) checkInView.findViewById(R.id.confirmation_one);
+
+        if(AppHelper.checkInVO != null){
+            Log.d(TAG,"NO SOY NULO...");
+            Log.d(TAG,"pasajero #["+AppHelper.checkInVO.getConfirmationNumber()+"]");
+            Log.d(TAG, "pasajero [" + AppHelper.checkInVO.getPassengers()[0].getName() + "]");
+            passengerName.setMainText(AppHelper.checkInVO.getPassengers()[0].getName());
+            confirmation.setMainText(AppHelper.checkInVO.getConfirmationNumber());
+
+        }
 
         linearBody.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
@@ -59,7 +76,7 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //getActivity().finish();
+                    getActivity().finish();
                 }
             });
         }
