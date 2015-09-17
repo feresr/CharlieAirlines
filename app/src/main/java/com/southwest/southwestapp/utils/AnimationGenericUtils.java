@@ -77,7 +77,7 @@ public class AnimationGenericUtils {
 
     public static void fadeOutAnimationGone(final View view, Animation.AnimationListener listener, Context context) {
 
-        Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+        Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out_log_in);
         if (listener != null) {
             fadeOutAnimation.setAnimationListener(listener);
         } else {
