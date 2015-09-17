@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/mainWrapper">
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:transitionName="MyTransition"
+            android:id="@+id/toolbarGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/toolBarStyle"/>
+
+    </android.support.design.widget.AppBarLayout><!--Toolbar-->
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -15,23 +34,21 @@
             android:padding="5dp"
             android:id="@+id/labelWrapper">
 
-        <TextView
+            <TextView
                 android:id="@+id/successText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/check_mark_circle"
                 android:drawableLeft="@drawable/check_mark_circle"
+                android:drawablePadding="10dp"
                 android:layout_gravity="center_vertical"
                 style="@style/textWhiteTitle"
                 android:text="@string/check_in_success"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="vertical"
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
             <!--List of flights-->
             <android.support.v7.widget.RecyclerView
@@ -41,23 +58,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+        </LinearLayout>
         <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:id="@+id/faqWrapper">
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:id="@+id/faqWrapper">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_view"
-                    android:layout_marginTop="10dp"
-                    style="@style/textLink"
-                    android:text="Mobile boarding pass FAQ"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_view"
+                android:layout_marginTop="10dp"
+                style="@style/textLink"
+                android:text="Mobile boarding pass FAQ"/>
 
         </LinearLayout>
-
     </LinearLayout>
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout><!--Coordinator-->

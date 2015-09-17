@@ -31,15 +31,15 @@ import android.widget.TextView;
 /**
  * Created by armando.dominguez on 03/09/2015.
  */
-public class CheckInConfirmationFragment extends BaseFragment implements View.OnClickListener {
+public class CheckInConfirmationFragment extends BaseFragment implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
 
     private static final String TAG = CheckInConfirmationFragment.class.getSimpleName();
 
-    private TextView mSuccessText;
-    //private Button mBtBoardingPass;
-    //private CardView mCardContent;
+    private TextView     mSuccessText;
     private LinearLayout faqContainer;
     private RecyclerView mRecycler;
+    private Toolbar      mToolbar;
+    private View         confirmationView;
 
     public CheckInConfirmationFragment() {
     }
@@ -47,46 +47,47 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View confirmationView = inflater.inflate(R.layout.fragment_confirmation, container, false);
 
-        mSuccessText = (TextView) confirmationView.findViewById(R.id.successText);
-        //mCardContent = (CardView) confirmationView.findViewById(R.id.card_view);
-        //mBtBoardingPass = (Button) confirmationView.findViewById(R.id.btn_boarding_pass);
-        faqContainer = (LinearLayout) confirmationView.findViewById(R.id.faqWrapper);
-        mRecycler = (RecyclerView) confirmationView.findViewById(R.id.recycler_flights);
+        confirmationView = inflater.inflate(R.layout.fragment_confirmation, container, false);
+
+        mSuccessText     = (TextView)     confirmationView.findViewById(R.id.successText);
+        faqContainer     = (LinearLayout) confirmationView.findViewById(R.id.faqWrapper);
+        mRecycler        = (RecyclerView) confirmationView.findViewById(R.id.recycler_flights);
 
 
         setUpToolBar();
 
-       // mBtBoardingPass.setOnClickListener(this);
-
         mSuccessText.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right));
-        //mCardContent.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
         mRecycler.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
         faqContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         PassengerVO[] arrayPass = {new PassengerVO("Homer Thompson", "A", 11),
-                //new PassengerVO("Marge Thompson","B",19),
-                //new PassengerVO("Lisa Thompson","B",31), };
-        };
-        CheckInVO[] arrayCheck = {new CheckInVO("666","1h 10m","A1","MCX456Q1",arrayPass),
-                new CheckInVO("999","1h 35m","B1","MXC4576F",arrayPass)};
+                new PassengerVO("Marge Thompson","B",19),
+                new PassengerVO("Lisa Thompson","B",31), };
+
+
+        CheckInVO[] arrayCheck = {new CheckInVO("666", "1h 10m", "A1", "MCX456Q1", arrayPass),
+        new CheckInVO("999","1h 35m","B1","MXC4576F",arrayPass)};
         mRecycler.setLayoutManager(llm);
-        mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck));
+        mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck,getActivity()));
 
 
         return confirmationView;
     }
 
     private void setUpToolBar() {
-        ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if(mActionBar != null){
-            setHasOptionsMenu(true);
-            mActionBar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
-            if(mActionBar.getSubtitle() != null){
-                mActionBar.setSubtitle(null);
+        mToolbar = (Toolbar)confirmationView.findViewById(R.id.toolbarGeneral);
+        if (mToolbar != null) {
+            mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
+            if (mToolbar.getSubtitle() != null) {
+                mToolbar.setSubtitle(null);
             }
-            mActionBar.setDisplayHomeAsUpEnabled(false);
+            mToolbar.inflateMenu(R.menu.menu_confirmation);
+
+            mToolbar.setOnMenuItemClickListener(this);
+
+
         }
     }
 
@@ -106,21 +107,15 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         }
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_confirmation,menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
             case R.id.confirmationMenu:
                 getActivity().finish();
                 return true;
             default:
-                break;
+                return false;
         }
-        return super.onOptionsItemSelected(item);
     }
 }

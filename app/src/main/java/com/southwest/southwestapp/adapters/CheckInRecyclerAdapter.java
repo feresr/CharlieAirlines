@@ -1,7 +1,9 @@
 package com.southwest.southwestapp.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.LabeledText;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.utils.CheckInViewHolder;
@@ -26,9 +29,11 @@ import java.util.List;
 public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHolder> {
 
     private CheckInVO[] mDataSet;
+    private FragmentActivity activity;
 
-    public CheckInRecyclerAdapter(CheckInVO[] mDataSet) {
+    public CheckInRecyclerAdapter(CheckInVO[] mDataSet, FragmentActivity mActivity) {
         this.mDataSet = mDataSet;
+        this.activity = mActivity;
     }
 
     @Override
@@ -42,11 +47,19 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
     @Override
     public void onBindViewHolder(CheckInViewHolder holder, int position) {
         Context cardContext = holder.mLinearWrapper.getContext();
+
         holder.mLabeledFlight.setMainText(mDataSet[position].getFlightNumber());
         holder.mLabeledTime.setMainText(mDataSet[position].getTravelTime());
         holder.mLabeledGate.setMainText(mDataSet[position].getGate());
         holder.mLabeledPassenger.setMainText(mDataSet[position].getPassengers()[0].getName());
         holder.mLabeledConfirmation.setMainText(mDataSet[position].getConfirmationNumber());
+
+        holder.mButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                AppHelper.screenManager.showBoardingPassScreen(activity);
+            }
+        });
 
 
 
@@ -56,7 +69,7 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
             LinearLayout mLinearPassenger = new LinearLayout(cardContext);
             LinearLayout borderGray = new LinearLayout(cardContext);
 
-            TextView pasajero = new TextView(cardContext);
+            TextView passenger = new TextView(cardContext);
             TextView labelBoarding = new TextView(cardContext);
             TextView boardingGroup = new TextView(cardContext);
             TextView labelPos = new TextView(cardContext);
@@ -72,15 +85,17 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
             borderGray.setBackgroundDrawable((cardContext.getResources().getDrawable(R.drawable.rectangle_white_rounded, null)));
 
 
-            if( i >= 1 || mDataSet.length > 1 ){
-                pasajero.setTextColor(cardContext.getResources().getColor(R.color.dark_blue));
-                pasajero.setTextSize(TypedValue.COMPLEX_UNIT_SP, 19);
-                pasajero.setTypeface(null, Typeface.BOLD);
-                pasajero.setText(mDataSet[position].getPassengers()[i].getName());
+            if( i >= 1 ){
+                passenger.setTextColor(cardContext.getResources().getColor(R.color.dark_blue));
+                passenger.setTextSize(TypedValue.COMPLEX_UNIT_SP, 19);
+                passenger.setTypeface(null, Typeface.BOLD);
+                passenger.setText(mDataSet[position].getPassengers()[i].getName());
 
+            }
+
+            if(mDataSet.length > 1 || mDataSet[position].getPassengers().length > 1){
                 holder.mButton.setVisibility(Button.GONE);
                 holder.linearText.setVisibility(LinearLayout.VISIBLE);
-
             }
 
             if(position >= 1){
@@ -117,7 +132,7 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
             pos.setText(""+mDataSet[position].getPassengers()[i].getPosition());
 
 
-            mLinearPassenger.addView(pasajero);
+            mLinearPassenger.addView(passenger);
             borderGray.addView(labelBoarding);
             borderGray.addView(boardingGroup);
             borderGray.addView(labelPos);
