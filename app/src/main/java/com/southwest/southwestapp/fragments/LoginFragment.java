@@ -78,16 +78,18 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
             case R.id.et_user:
                 if (hasFocus) {
                     if (mTvWelcome.isShown()) {
-                        AnimationGenericUtils.fadeOutAnimationGone(mTvWelcome, null, getActivity());
+                        AnimationGenericUtils.fadeOutAnimationLogIn(mTvWelcome, null, getActivity());
                         AnimationGenericUtils.fadeInBottomLogInContainer(mLnrContainer, null, getActivity());
+                        mTvWelcome.setVisibility(View.GONE);
                     }
                 }
                 break;
             case R.id.et_pass:
                 if (hasFocus) {
                     if (mTvWelcome.isShown()) {
-                        AnimationGenericUtils.fadeOutAnimationGone(mTvWelcome, null, getActivity());
+                        AnimationGenericUtils.fadeOutAnimationLogIn(mTvWelcome, null, getActivity());
                         AnimationGenericUtils.fadeInBottomLogInContainer(mLnrContainer, null, getActivity());
+                        mTvWelcome.setVisibility(View.GONE);
                     }
                 }
                 break;

@@ -75,7 +75,7 @@ public class AnimationGenericUtils {
 
     }
 
-    public static void fadeOutAnimationGone(final View view, Animation.AnimationListener listener, Context context) {
+    public static void fadeOutAnimationLogIn(final View view, Animation.AnimationListener listener, Context context) {
 
         Animation fadeOutAnimation = AnimationUtils.loadAnimation(context, R.anim.fade_out_log_in);
         if (listener != null) {
@@ -94,7 +94,7 @@ public class AnimationGenericUtils {
                 @Override
                 public void onAnimationEnd(Animation arg0) {
                     if (view.isShown())
-                        view.setVisibility(View.GONE);
+                        view.setVisibility(View.INVISIBLE);
 
                 }
             });
