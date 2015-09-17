@@ -11,10 +11,15 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -29,6 +34,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     private TextView mTvWelcome;
     private TextView mTvEnroll;
     private TextView mTvContinueAsGuest;
+    private ImageView mProgresSwLogo;
+
+    private Timer runSplash = new Timer();
+    private TimerTask showSplash;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +61,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
         mTvWelcome = (TextView) view.findViewById(R.id.tv_welcome);
 
+        mProgresSwLogo = (ImageView) view.findViewById(R.id.progresSwLogo);
+
         mTvEnroll = (TextView) view.findViewById(R.id.tv_enroll_now);
         mTvEnroll.setOnClickListener(this);
         mTvContinueAsGuest = (TextView) view.findViewById(R.id.tv_continue_as_guest);
@@ -68,8 +79,13 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                 String userPass = mEtPass.getText().toString();
 
                 if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(userPass)) {
+
+                    AppHelper.screenManager.hideSoftKeyboard(getActivity());
+                    AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
+                    mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
                     AppHelper.userController.setUserProfile(new UserProfile(userName));
-                    AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+                    delay();
+
                 }
 
                 break;
@@ -79,6 +95,20 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
             default:
                 break;
         }
+    }
+
+    private void delay() {
+        long delay = 4000;
+
+        showSplash = new TimerTask() {
+            @Override
+            public void run() {
+                AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+            }
+        };
+
+        // Start the timer
+        runSplash.schedule(showSplash, delay);
     }
 
     @Override
