@@ -75,6 +75,10 @@
     <!-- Layout Check In Confirmation-->
     <string name="check_in_tool_bar_title">Check In</string>
     <string name="check_in_success">You\'re checked in!</string>
+    <string name="check_in_boarding">boarding group</string>
+    <string name="check_in_position">position</string>
+    <string name="check_in_no_boarding">Please visit a kiosk or ticket counter for your boarding passes</string>
+    <string name="check_in_change_planes">Change planes</string>
 
     <!-- Layout Check In Search-->
     <string name="search_confirmation_number">Confirmation #</string>
