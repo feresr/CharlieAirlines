@@ -19,7 +19,7 @@
         android:pivotY="50%"
         android:repeatCount="infinite"
         android:repeatMode="reverse"
-        android:toXScale="1.25"
-        android:toYScale="1.25"
+        android:toXScale="1.30"
+        android:toYScale="1.30"
         android:interpolator="@android:interpolator/bounce" />
 </set>
