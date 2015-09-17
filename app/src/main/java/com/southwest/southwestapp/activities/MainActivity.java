@@ -12,14 +12,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.PlacePhotoMetadata;
+import com.google.android.gms.location.places.PlacePhotoMetadataBuffer;
+import com.google.android.gms.location.places.PlacePhotoMetadataResult;
+import com.google.android.gms.location.places.PlacePhotoResult;
+import com.google.android.gms.location.places.Places;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 
+import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener {
+
+public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
@@ -27,9 +38,9 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
     private TripActionsFragment tripFragment;
-    private BigPagerHomeFragment homeFragment;
     private int mCurrentSelectedPosition;
     private Toolbar mToolbar;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +53,37 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
         } else {
-            homeFragment = AppHelper.screenManager.showMainScreen(this);
+            AppHelper.screenManager.showMainScreen(this);
             slideTripPanelUp();
         }
+
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
 
     private void setUpNavDrawer() {
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.nav_drawer);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mNavigationView = (NavigationView)findViewById(R.id.nav_view);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -68,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
                         return true;
 
                     case R.id.home:
-                        homeFragment = AppHelper.screenManager.showMainScreen(MainActivity.this);
+                        AppHelper.screenManager.showMainScreen(MainActivity.this);
                         mCurrentSelectedPosition = 0;
                         slideTripPanelUp();
                         return true;
@@ -86,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     }
 
     private void setUpToolBar() {
-        mToolbar = (Toolbar)findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
     }
@@ -168,5 +198,45 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
             ft.remove(tripFragment);
             ft.commit();
         }
+    }
+
+    //Google places API callbacks
+    @Override
+    public void onConnected(Bundle bundle) {
+        // Get a PlacePhotoMetadataResult containing metadata for the first 10 photos.
+        Places.GeoDataApi.getPlacePhotos(mGoogleApiClient, "ChIJrTLr-GyuEmsRBfy61i59si0").setResultCallback(new ResultCallback<PlacePhotoMetadataResult>() {
+            @Override
+            public void onResult(PlacePhotoMetadataResult result) {
+                if (result != null && result.getStatus().isSuccess()) {
+                    PlacePhotoMetadataBuffer photoMetadataBuffer = result.getPhotoMetadata();
+
+                    Random r = new Random();
+
+                    // Get the first photo in the list.
+                    PlacePhotoMetadata photo = photoMetadataBuffer.get(r.nextInt(photoMetadataBuffer.getCount()));
+                    // Get a full-size bitmap for the photo.
+                    photo.getPhoto(mGoogleApiClient).setResultCallback(new ResultCallback<PlacePhotoResult>() {
+                        @Override
+                        public void onResult(PlacePhotoResult placePhotoResult) {
+
+                            ((ImageView) mNavigationView.findViewById(R.id.header_image)).setImageBitmap(
+                                    placePhotoResult.getBitmap());
+                        }
+                    });
+
+                    photoMetadataBuffer.release();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
     }
 }
