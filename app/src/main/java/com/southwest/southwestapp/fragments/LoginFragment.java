@@ -6,6 +6,7 @@ import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +63,13 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+                String userName = mEtUser.getText().toString();
+                String userPass = mEtPass.getText().toString();
+                
+                if(!TextUtils.isEmpty(userName)){
+
+                }
+                //AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
                 break;
             case R.id.tv_continue_as_guest:
                 AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
