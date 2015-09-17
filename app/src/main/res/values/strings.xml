@@ -9,7 +9,7 @@
     <!-- Layout Log in-->
     <string name="log_in_southwest">Southwest</string>
     <string name="log_in_welcome">Welcome</string>
-    <string name="log_in_username_hint">Username or Account number</string>
+    <string name="log_in_username_hint">Username</string>
     <string name="log_in_password_hint">Password</string>
     <string name="log_in_checkbox_title">Remember me</string>
     <string name="log_in_help">Login help?</string>
