@@ -21,7 +21,6 @@ public class EmergencyContactListFragment extends EmergencyBase {
 
     private RecyclerView mContactList;
     private EmergencyContactAdapter mContactListAdapter;
-    private TextView mEmergencyHeaderName;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,10 +40,9 @@ public class EmergencyContactListFragment extends EmergencyBase {
         mContactList.setAdapter(mContactListAdapter);
         init(rootView);
 
-        mEmergencyHeaderName = (TextView) rootView.findViewById(R.id.emergencyHeaderName);
 
         if (AppHelper.userCheckInController.getCheckin() != null) {
-            mEmergencyHeaderName.setText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
+            mPassName.setText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
         }
 
         return rootView;
