@@ -68,7 +68,6 @@ public class SplashFragment extends Fragment {
 
             @Override
             public void onAnimationEnd(Animation arg0) {
-                mSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
             }
         };
 
@@ -91,6 +90,8 @@ public class SplashFragment extends Fragment {
         };
 
         AnimationGenericUtils.fadeInAnimation(mLogoContainer, logoListener, AppHelper.getInstance().getBaseContext());
+
+        mSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
 
     }
 
