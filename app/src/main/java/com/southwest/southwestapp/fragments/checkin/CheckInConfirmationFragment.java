@@ -1,29 +1,22 @@
 package com.southwest.southwestapp.fragments.checkin;
 
 import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.LabeledText;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.adapters.CheckInRecyclerAdapter;
 import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.vo.CheckInVO;
-import com.southwest.southwestapp.vo.PassengerVO;
+import com.southwest.southwestapp.models.CheckInVO;
+import com.southwest.southwestapp.models.PassengerVO;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 

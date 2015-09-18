@@ -1,7 +1,8 @@
 package com.southwest.southwestapp.controllers;
 
-import com.southwest.southwestapp.vo.CheckInVO;
-import com.southwest.southwestapp.vo.PassengerVO;
+
+import com.southwest.southwestapp.models.CheckInVO;
+import com.southwest.southwestapp.models.PassengerVO;
 
 /**
  * Created by luisalfonsobejaranosanchez on 9/17/15.
