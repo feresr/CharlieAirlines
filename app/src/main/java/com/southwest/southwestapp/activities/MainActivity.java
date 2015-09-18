@@ -1,6 +1,7 @@
 package com.southwest.southwestapp.activities;
 
 import android.content.res.Configuration;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,6 +17,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.apis.FlickrApi;
@@ -30,7 +34,7 @@ import retrofit.Response;
 
 
 public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener,
-        Callback<FlickrApi.SearchPhotoResponse> {
+        Callback<FlickrApi.SearchPhotoResponse>, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private static final int FLICK_PHOTOS = 6;
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
     private TripActionsFragment tripFragment;
+    private GoogleApiClient mGoogleApiClient;
 
     private int mCurrentSelectedPosition;
     private Toolbar mToolbar;
@@ -56,10 +61,16 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
             AppHelper.screenManager.showMainScreen(this);
             slideTripPanelUp();
         }
-
-        AppHelper.flickrApi.searchPhotosByKeyword("paris", FLICK_PHOTOS).enqueue(this);
+        buildGoogleApiClient();
     }
 
+    private void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+    }
 
     private void setUpNavDrawer() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
@@ -117,6 +128,18 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         super.onConfigurationChanged(newConfig);
         //This method should always be called by your Activity's onConfigurationChanged method.
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
     }
 
     @Override
@@ -186,13 +209,37 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     @Override
     public void onResponse(Response<FlickrApi.SearchPhotoResponse> response) {
         Log.e(this.getClass().getSimpleName(), response.toString());
-        Random r = new Random();
-        FlickrApi.FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(FLICK_PHOTOS));
-        Picasso.with(this).load(photo.getUrl("z")).into(((ImageView) findViewById(R.id.drawer_background)));
+        if (response.body().photos.photo.size() > 0) {
+            Random r = new Random();
+            FlickrApi.FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(FLICK_PHOTOS));
+            Picasso.with(this).load(photo.getUrl("z")).into(((ImageView) findViewById(R.id.drawer_background)));
+        }
     }
 
     @Override
     public void onFailure(Throwable t) {
         Log.e(this.getClass().getSimpleName(), t.toString());
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+            AppHelper.flickrApi.searchPhotosByPlace(String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude()), FLICK_PHOTOS).enqueue(this);
+
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.e(this.getClass().getSimpleName(), "onConnectionSuspended: " + i);
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.e(this.getClass().getSimpleName(), connectionResult.toString());
+
     }
 }
