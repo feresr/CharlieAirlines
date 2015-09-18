@@ -1,6 +1,5 @@
 package com.southwest.southwestapp.activities;
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,19 +23,22 @@ import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
 import com.squareup.picasso.Picasso;
 
+import java.util.Random;
+
 import retrofit.Callback;
 import retrofit.Response;
 
 
-public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener {
+public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener,
+        Callback<FlickrApi.SearchPhotoResponse> {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-
+    private static final int FLICK_PHOTOS = 6;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
     private TripActionsFragment tripFragment;
-    private BigPagerHomeFragment homeFragment;
+
     private int mCurrentSelectedPosition;
     private Toolbar mToolbar;
 
@@ -51,28 +53,11 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
         } else {
-            homeFragment = AppHelper.screenManager.showMainScreen(this);
+            AppHelper.screenManager.showMainScreen(this);
             slideTripPanelUp();
         }
-        final Context context = this;
-        final FlickrApi flickrApi = new FlickrApi();
-        flickrApi.getInterface().searchPhotos("paris").enqueue(new Callback<FlickrApi.SearchPhotoResponse>() {
-            @Override
-            public void onResponse(Response<FlickrApi.SearchPhotoResponse> response) {
-                Log.e(this.getClass().getSimpleName(), response.toString());
-                String photoid = response.body().photos.photo.get(1).id;
-                String farmid = response.body().photos.photo.get(1).farm;
-                String serverid = response.body().photos.photo.get(1).server;
-                String secret = response.body().photos.photo.get(1).secret;
-                String url = "https://farm" + farmid +".staticflickr.com/"+ serverid +"/"+photoid+"_"+ secret+"_c.jpg";
-                Picasso.with(context).load(url).into(((ImageView) findViewById(R.id.drawer_background)));
-            }
 
-            @Override
-            public void onFailure(Throwable t) {
-                Log.e(this.getClass().getSimpleName(), t.toString());
-            }
-        });
+        AppHelper.flickrApi.searchPhotosByKeyword("paris", FLICK_PHOTOS).enqueue(this);
     }
 
 
@@ -97,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
                         return true;
 
                     case R.id.home:
-                        homeFragment = AppHelper.screenManager.showMainScreen(MainActivity.this);
+                        AppHelper.screenManager.showMainScreen(MainActivity.this);
                         mCurrentSelectedPosition = 0;
                         slideTripPanelUp();
                         return true;
@@ -196,5 +181,18 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
             ft.remove(tripFragment);
             ft.commit();
         }
+    }
+
+    @Override
+    public void onResponse(Response<FlickrApi.SearchPhotoResponse> response) {
+        Log.e(this.getClass().getSimpleName(), response.toString());
+        Random r = new Random();
+        FlickrApi.FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(FLICK_PHOTOS));
+        Picasso.with(this).load(photo.getUrl("z")).into(((ImageView) findViewById(R.id.drawer_background)));
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+        Log.e(this.getClass().getSimpleName(), t.toString());
     }
 }

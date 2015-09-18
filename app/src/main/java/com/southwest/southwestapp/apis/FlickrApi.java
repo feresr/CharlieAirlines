@@ -12,15 +12,21 @@ import retrofit.http.Query;
 
 /**
  * Created by fernando.raviola on 18/09/2015.
+ * <p/>
+ * Documentation:
+ * https://www.flickr.com/services/api/flickr.photos.search.html
+ * https://www.flickr.com/services/api/misc.urls.html
  */
 public class FlickrApi {
 
-    FlickrEndpointsInterface service;
+    private FlickrEndpointsInterface service;
     private static final String API_KEY = "043651e39a2497fdacf5ca9e653dde2a";
+    private static final String BASE_URL = "https://api.flickr.com";
+
     public FlickrApi() {
         super();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.flickr.com")
+                .baseUrl(BASE_URL)
                 .client(new OkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -32,13 +38,13 @@ public class FlickrApi {
         return service;
     }
 
-    /**
-     * Created by fernando.raviola on 18/09/2015.
-     */
+
     public interface FlickrEndpointsInterface {
-        @GET("services/rest/?method=flickr.photos.search&api_key=" + API_KEY + "&sort=relevance&content_type=7&geo_context=2&format=json&nojsoncallback=1&per_page=5&page=1")
-        Call<SearchPhotoResponse> searchPhotos(@Query("text") String query);
+        @GET("services/rest/?method=flickr.photos.search&api_key=" + API_KEY + "&sort=relevance&content_type=7&geo_context=2&format=json&nojsoncallback=1&page=1")
+        Call<SearchPhotoResponse> searchPhotosByKeyword(@Query("text") String query, @Query("per_page") int amount);
     }
+
+    //FLICKR MODELS
 
     public class SearchPhotoResponse {
         private String stat;
@@ -46,20 +52,34 @@ public class FlickrApi {
     }
 
     public class Photos {
-        private int page;
-        private int pages;
-        private int perpage;
-        private int total;
-        public ArrayList<Photo> photo;
+        public ArrayList<FlickrPhoto> photo;
     }
 
-    public class Photo {
-        public String id;
-        public String owner;
-        public String secret;
-        public String server;
-        public String farm;
-        public String title;
+    public class FlickrPhoto {
+        private String id;
+        private String secret;
+        private String server;
+        private String farm;
+
+        /*
+        Size Suffixes
+        The letter suffixes are as follows:
+
+        s	small square 75x75
+        q	large square 150x150
+        t	thumbnail, 100 on longest side
+        m	small, 240 on longest side
+        n	small, 320 on longest side
+        -	medium, 500 on longest side
+        z	medium 640, 640 on longest side
+        c	medium 800, 800 on longest side†
+        b	large, 1024 on longest side*
+        h	large 1600, 1600 on longest side†
+        k	large 2048, 2048 on longest side† */
+
+        public String getUrl(String size) {
+            return "https://farm" + this.farm + ".staticflickr.com/" + server + "/" + id + "_" + secret + "_" + size + ".jpg";
+        }
     }
 
 }
