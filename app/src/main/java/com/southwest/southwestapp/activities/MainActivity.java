@@ -1,5 +1,6 @@
 package com.southwest.southwestapp.activities;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.southwest.southwestapp.AppHelper;
@@ -20,6 +22,7 @@ import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.apis.FlickrApi;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
+import com.squareup.picasso.Picasso;
 
 import retrofit.Callback;
 import retrofit.Response;
@@ -51,12 +54,18 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
             homeFragment = AppHelper.screenManager.showMainScreen(this);
             slideTripPanelUp();
         }
-
-        FlickrApi flickrApi = new FlickrApi();
+        final Context context = this;
+        final FlickrApi flickrApi = new FlickrApi();
         flickrApi.getInterface().searchPhotos("paris").enqueue(new Callback<FlickrApi.SearchPhotoResponse>() {
             @Override
             public void onResponse(Response<FlickrApi.SearchPhotoResponse> response) {
                 Log.e(this.getClass().getSimpleName(), response.toString());
+                String photoid = response.body().photos.photo.get(1).id;
+                String farmid = response.body().photos.photo.get(1).farm;
+                String serverid = response.body().photos.photo.get(1).server;
+                String secret = response.body().photos.photo.get(1).secret;
+                String url = "https://farm" + farmid +".staticflickr.com/"+ serverid +"/"+photoid+"_"+ secret+"_c.jpg";
+                Picasso.with(context).load(url).into(((ImageView) findViewById(R.id.drawer_background)));
             }
 
             @Override
