@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,8 +17,12 @@ import android.widget.TextView;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.apis.FlickrApi;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
+
+import retrofit.Callback;
+import retrofit.Response;
 
 
 public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener {
@@ -46,6 +51,19 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
             homeFragment = AppHelper.screenManager.showMainScreen(this);
             slideTripPanelUp();
         }
+
+        FlickrApi flickrApi = new FlickrApi();
+        flickrApi.getInterface().searchPhotos("paris").enqueue(new Callback<FlickrApi.SearchPhotoResponse>() {
+            @Override
+            public void onResponse(Response<FlickrApi.SearchPhotoResponse> response) {
+                Log.e(this.getClass().getSimpleName(), response.toString());
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e(this.getClass().getSimpleName(), t.toString());
+            }
+        });
     }
 
 
