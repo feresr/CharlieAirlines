@@ -1,7 +1,6 @@
 package com.southwest.southwestapp.activities;
 
 import android.content.res.Configuration;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -18,7 +17,6 @@ import android.widget.ImageView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.PlacePhotoMetadata;
 import com.google.android.gms.location.places.PlacePhotoMetadataBuffer;
@@ -210,12 +208,9 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
             @Override
             public void onResult(PlaceLikelihoodBuffer likelyPlaces) {
                 //for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-                if (likelyPlaces.getCount() > 0) {
 
-
-                } else {
                     getPhoto("ChIJD7fiBh9u5kcRYJSMaMOCCwQ");
-                }
+
                 //}
                 likelyPlaces.release();
             }
@@ -225,26 +220,28 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     }
 
     private void getPhoto(String placeId) {
+
         // Get a PlacePhotoMetadataResult containing metadata for the first 10 photos.
         Places.GeoDataApi.getPlacePhotos(mGoogleApiClient, placeId).setResultCallback(new ResultCallback<PlacePhotoMetadataResult>() {
             @Override
             public void onResult(PlacePhotoMetadataResult result) {
                 if (result != null && result.getStatus().isSuccess()) {
                     PlacePhotoMetadataBuffer photoMetadataBuffer = result.getPhotoMetadata();
+                    if (photoMetadataBuffer.getCount() > 0) {
 
-                    Random r = new Random();
+                        Random r = new Random();
 
-                    // Get the first photo in the list.
-                    PlacePhotoMetadata photo = photoMetadataBuffer.get(r.nextInt(photoMetadataBuffer.getCount()));
-                    // Get a full-size bitmap for the photo.
-                    photo.getPhoto(mGoogleApiClient).setResultCallback(new ResultCallback<PlacePhotoResult>() {
-                        @Override
-                        public void onResult(PlacePhotoResult placePhotoResult) {
-
-                            ((ImageView) mNavigationView.findViewById(R.id.header_image)).setImageBitmap(
-                                    placePhotoResult.getBitmap());
-                        }
-                    });
+                        // Get the first photo in the list.
+                        PlacePhotoMetadata photo = photoMetadataBuffer.get(r.nextInt(photoMetadataBuffer.getCount()));
+                        // Get a full-size bitmap for the photo.
+                        photo.getPhoto(mGoogleApiClient).setResultCallback(new ResultCallback<PlacePhotoResult>() {
+                            @Override
+                            public void onResult(PlacePhotoResult placePhotoResult) {
+                                ((ImageView) mNavigationView.findViewById(R.id.header_image)).setImageBitmap(
+                                        placePhotoResult.getBitmap());
+                            }
+                        });
+                    }
 
                     photoMetadataBuffer.release();
                 }
