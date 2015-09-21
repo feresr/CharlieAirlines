@@ -1,11 +1,16 @@
 package com.southwest.southwestapp.activities;
 
+import android.content.Intent;
+import android.content.IntentSender;
 import android.content.res.Configuration;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,12 +24,21 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.apis.FlickrApi;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
+import com.southwest.southwestapp.services.FetchAddressIntentService;
 import com.squareup.picasso.Picasso;
 
 import java.util.Random;
@@ -37,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         Callback<FlickrApi.SearchPhotoResponse>, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-    private static final int FLICK_PHOTOS = 6;
+    private static final int FLICK_PHOTOS = 6; //Amount of photos_id retrieved from flickr
+    private static final int ENABLE_LOCATION_KEY = 1;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -72,9 +87,80 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
                 .build();
     }
 
+    //GOOGLE API CLIENT CONNECTED
+    @Override
+    public void onConnected(Bundle bundle) {
+        Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+
+        if (mLastLocation != null) {
+            startGeoCodingService(mLastLocation);
+        } else {
+            LocationRequest mLocationRequest = new LocationRequest();
+            mLocationRequest.setNumUpdates(1);
+            mLocationRequest.setInterval(0);
+            mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+            LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                    .addLocationRequest(mLocationRequest);
+            builder.setAlwaysShow(true);
+
+            //Start listening for location updates
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    startGeoCodingService(location);
+                    LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+                }
+            });
+
+            //Check if LOCATION is enabled and show dialog if it isn't.
+            PendingResult<LocationSettingsResult> result =
+                    LocationServices.SettingsApi.checkLocationSettings(mGoogleApiClient, builder.build());
+            result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+                @Override
+                public void onResult(LocationSettingsResult result) {
+                    final Status status = result.getStatus();
+                    //final LocationSettingsStates = result.getLocationSettingsStates();
+                    switch (status.getStatusCode()) {
+                        case LocationSettingsStatusCodes.SUCCESS:
+                            // All location settings are satisfied. The client can initialize location
+                            // requests here.
+                            break;
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            // Location settings are not satisfied. But could be fixed by showing the user
+                            // a dialog.
+                            try {
+                                // Show the dialog by calling startResolutionForResult(),
+                                // and check the result in onActivityResult().
+                                status.startResolutionForResult(
+                                        MainActivity.this,
+                                        ENABLE_LOCATION_KEY); //--> OnActivityResult
+                            } catch (IntentSender.SendIntentException e) {
+                                // Ignore the error.
+                            }
+                            break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            // Location settings are not satisfied. However, we have no way to fix the
+                            // settings so we won't show the dialog.
+                            break;
+                    }
+                }
+            });
+
+        }
+    }
+
+    protected void startGeoCodingService(Location location) {
+        Intent intent = new Intent(this, FetchAddressIntentService.class);
+        AddressResultReceiver mResultReceiver = new AddressResultReceiver(new Handler());
+        intent.putExtra(FetchAddressIntentService.RECEIVER, mResultReceiver);
+        intent.putExtra(FetchAddressIntentService.LOCATION_DATA_EXTRA, location);
+        startService(intent);
+    }
+
     private void setUpNavDrawer() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
-
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -186,7 +272,6 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         }
     }
 
-
     @Override
     public void slideTripPanelUp() {
         tripFragment = TripActionsFragment.newInstance(true);
@@ -211,8 +296,8 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         Log.e(this.getClass().getSimpleName(), response.toString());
         if (response.body().photos.photo.size() > 0) {
             Random r = new Random();
-            FlickrApi.FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(FLICK_PHOTOS));
-            Picasso.with(this).load(photo.getUrl("z")).into(((ImageView) findViewById(R.id.drawer_background)));
+            FlickrApi.FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(response.body().photos.photo.size()));
+            Picasso.with(this).load(photo.getUrl("z")).placeholder(ContextCompat.getDrawable(this, R.drawable.bw_drawable_header)).into(((ImageView) findViewById(R.id.drawer_background)));
         }
     }
 
@@ -221,14 +306,9 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         Log.e(this.getClass().getSimpleName(), t.toString());
     }
 
-    @Override
-    public void onConnected(Bundle bundle) {
-        Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        if (mLastLocation != null) {
-            AppHelper.flickrApi.searchPhotosByPlace(String.valueOf(mLastLocation.getLongitude()), String.valueOf(mLastLocation.getLatitude()), FLICK_PHOTOS).enqueue(this);
 
-        }
+    private void searchPhotos(String key) {
+        AppHelper.flickrApi.searchPhotosByKeyword(key, FLICK_PHOTOS).enqueue(this);
     }
 
     @Override
@@ -240,6 +320,24 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         Log.e(this.getClass().getSimpleName(), connectionResult.toString());
+    }
 
+
+    class AddressResultReceiver extends ResultReceiver {
+        public AddressResultReceiver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
+
+            // Show a toast message if an address was found.
+            if (resultCode == FetchAddressIntentService.SUCCESS_RESULT) {
+                String country = resultData.getString(FetchAddressIntentService.RESULT_DATA_KEY_COUNTRY);
+                String city = resultData.getString(FetchAddressIntentService.RESULT_DATA_KEY_CITY);
+                searchPhotos(country + " " + city + " skyline");
+            }
+
+        }
     }
 }

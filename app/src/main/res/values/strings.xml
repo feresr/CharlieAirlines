@@ -148,7 +148,10 @@
 
     <!--VALIDATION SEARCH-->
     <string name="search_validation">The information is incorrect or fields are empty.</string>
-
+    <string name="service_not_available">Location service not available</string>
+    <string name="invalid_lat_long_used">Invalid Latitue/Longitude</string>
+    <string name="no_address_found">Address not found</string>
+    <string name="address_found">Address found</string>
 
 
 </resources>

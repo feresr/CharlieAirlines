@@ -40,10 +40,10 @@ public class FlickrApi {
 
 
     public interface FlickrEndpointsInterface {
-        @GET("services/rest/?method=flickr.photos.search&api_key=" + API_KEY + "&meadia=photos&sort=relevance&content_type=7&geo_context=2&format=json&nojsoncallback=1&page=1")
+        @GET("services/rest/?method=flickr.photos.search&api_key=" + API_KEY + "&meadia=photos&sort=relevance&format=json&nojsoncallback=1&page=1")
         Call<SearchPhotoResponse> searchPhotosByKeyword(@Query("text") String query, @Query("per_page") int amount);
 
-        @GET("services/rest/?method=flickr.photos.search&api_key=" + API_KEY + "&meadia=photos&sort=relevance&accuracy=3&content_type=7&geo_context=2&format=json&nojsoncallback=1&page=1")
+        @GET("services/rest/?method=flickr.photos.search&api_key=" + API_KEY + "&meadia=photos&sort=relevance&accuracy=3&content_type=7&radius=32&format=json&nojsoncallback=1&page=1&content_type=6")
         Call<SearchPhotoResponse> searchPhotosByPlace(@Query("lon") String lon, @Query("lat") String lat, @Query("per_page") int amount);
     }
 
