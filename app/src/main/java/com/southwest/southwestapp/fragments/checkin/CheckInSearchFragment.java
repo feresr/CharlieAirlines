@@ -3,6 +3,7 @@ package com.southwest.southwestapp.fragments.checkin;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 import com.southwest.southwestapp.vo.PassengerVO;
 
 import android.os.Bundle;
@@ -16,10 +17,14 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -37,6 +42,10 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     private Toolbar mToolbar;
     private CardView cardReservation;
     private View searchView;
+    private ImageView mProgresSwLogo;
+
+    private Timer runTimer = new Timer();
+    private TimerTask showTimerTask;
 
     public CheckInSearchFragment() {
     }
@@ -64,6 +73,8 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
     private void setUpToolBar() {
         mToolbar = (Toolbar) searchView.findViewById(R.id.toolbarGeneral);
+        mProgresSwLogo = (ImageView) mToolbar.findViewById(R.id.progresSwLogo);
+
         if (mToolbar != null) {
             mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
             if (mToolbar.getSubtitle() != null) {
@@ -94,10 +105,13 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)) {
 
                     PassengerVO[] param = {new PassengerVO(mEtFirstName.getText().toString() + " " + mEtLastName.getText().toString(), "", 0)};
-
                     AppHelper.userCheckInController.setConfirmationNumer(number);
                     AppHelper.userCheckInController.setPassangers(param);
-                    AppHelper.screenManager.showCheckInScreen(getActivity());
+
+                    AppHelper.screenManager.hideSoftKeyboard(getActivity());
+                    AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
+                    mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
+                    delay();
 
                 } else {
                     Toast.makeText(getContext(), "No data", Toast.LENGTH_LONG).show();
@@ -109,4 +123,20 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
         }
     }
+
+
+    private void delay() {
+        long delay = 4000;
+
+        showTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                AppHelper.screenManager.showCheckInScreen(getActivity());
+            }
+        };
+
+        // Start the timer
+        runTimer.schedule(showTimerTask, delay);
+    }
+
 }

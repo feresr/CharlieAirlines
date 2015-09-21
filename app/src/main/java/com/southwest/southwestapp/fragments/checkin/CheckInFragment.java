@@ -4,6 +4,7 @@ import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.LabeledText;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 import com.southwest.southwestapp.vo.CheckInVO;
 import com.southwest.southwestapp.vo.PassengerVO;
 
@@ -16,7 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -32,6 +37,10 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     private LabeledText passengerName;
     private LabeledText confirmation;
     private View checkInView;
+    private ImageView mProgresSwLogo;
+
+    private Timer runTimer = new Timer();
+    private TimerTask showTimerTask;
 
     public CheckInFragment() {
     }
@@ -63,6 +72,7 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
 
     private void setUpToolBar() {
         mToolbar = (Toolbar) checkInView.findViewById(R.id.toolbarGeneral);
+        mProgresSwLogo = (ImageView) mToolbar.findViewById(R.id.progresSwLogo);
         if (mToolbar != null) {
             mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
             if (mToolbar.getSubtitle() != null) {
@@ -87,9 +97,27 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.confirmationButton:
-                AppHelper.screenManager.showEmergencyContact(getActivity());
+                AppHelper.screenManager.hideSoftKeyboard(getActivity());
+                AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
+                mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
+                delay();
                 break;
 
         }
     }
+
+    private void delay() {
+        long delay = 4000;
+
+        showTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                AppHelper.screenManager.showEmergencyContact(getActivity());
+            }
+        };
+
+        // Start the timer
+        runTimer.schedule(showTimerTask, delay);
+    }
+
 }
