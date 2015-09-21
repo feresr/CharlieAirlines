@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.southwest.southwestapp">
 
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+
     <application
         android:name=".AppHelper"
         android:allowBackup="true"
@@ -37,6 +39,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.southwest.southwestapp.activities.BaseActivity" />
         </activity>
+        <service android:name="com.southwest.southwestapp.utils.ServiceShakeMotion"
+                 android:exported="false"
+                />
     </application>
 
 </manifest>

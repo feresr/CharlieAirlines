@@ -2,6 +2,7 @@ package com.southwest.southwestapp.fragments;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.utils.ServiceShakeMotion;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         boardingPassView = inflater.inflate(R.layout.fragment_boarding_pass, container, false);
 
-        mContainer = (NestedScrollView) boardingPassView.findViewById(R.id.container);
+        mContainer = (NestedScrollView)boardingPassView.findViewById(R.id.container);
         mContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         setUpToolBar();
@@ -93,6 +94,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
                 AppHelper.screenManager.showCheckInSearchScreen(getActivity());
                 return true;
             case R.id.optionSend:
+                ServiceShakeMotion.start(getActivity());
                 return true;
             case R.id.optionSave:
                 showAlertSaveToPhotos();
