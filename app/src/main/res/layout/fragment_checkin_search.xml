@@ -1,104 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/checkInSearchWrapper"
-        android:orientation="vertical">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/checkInSearchWrapper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/bodyWrapper">
+            android:id="@+id/bodyWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_reservation"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    card_view:cardElevation="15dp"
-                    card_view:contentPadding="15dp"
-                    card_view:cardCornerRadius="4dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp">
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_reservation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="15dp"
+                card_view:contentPadding="15dp">
 
                 <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <LinearLayout
-                            android:id="@+id/cardContentWrapper"
+                        android:id="@+id/cardContentWrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/inputLayoutConfirmation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                        <android.support.design.widget.TextInputLayout
-                                android:id="@+id/inputLayoutConfirmation"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:padding="10dp"
-                                android:theme="@style/TextLabel">
+                            android:layout_marginTop="10dp"
+                            android:padding="10dp"
+                            android:theme="@style/TextLabel">
 
                             <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/edt_confirmation"
-                                    android:hint="@string/search_confirmation_number"
-                                    style="@style/editReservationInput"/>
+                                android:id="@+id/edt_confirmation"
+                                style="@style/editReservationInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_confirmation_number" />
 
                         </android.support.design.widget.TextInputLayout>
 
                         <android.support.design.widget.TextInputLayout
-                                android:id="@+id/inputLayoutName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="10dp"
-                                android:theme="@style/TextLabel">
+                            android:id="@+id/inputLayoutName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:theme="@style/TextLabel">
 
                             <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/edt_first_name"
-                                    android:hint="@string/search_first_name"
-                                    style="@style/editReservationInput"/>
+                                android:id="@+id/edt_first_name"
+                                style="@style/editReservationInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_first_name" />
 
                         </android.support.design.widget.TextInputLayout>
 
                         <android.support.design.widget.TextInputLayout
-                                android:id="@+id/inputLayoutLastName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="10dp"
-                                android:theme="@style/TextLabel">
+                            android:id="@+id/inputLayoutLastName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:theme="@style/TextLabel">
 
                             <EditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/edt_last_name"
-                                    android:hint="@string/search_last_name"
-                                    style="@style/editReservationInput"/>
+                                android:id="@+id/edt_last_name"
+                                style="@style/editReservationInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_last_name" />
 
                         </android.support.design.widget.TextInputLayout>
 
                         <Button
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:padding="10dp"
-                                style="@style/bigButton"
-                                android:text="@string/search_retrieve_reservation"
-                                android:id="@+id/btn_retrieve_reservation"/>
+                            android:id="@+id/btn_retrieve_reservation"
+                            style="@style/bigButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:padding="10dp"
+                            android:text="@string/search_retrieve_reservation" />
 
 
                     </LinearLayout>
@@ -117,17 +115,28 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-                android:transitionName="MyTransition"
-                android:id="@+id/toolbarGeneral"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways"
-                android:minHeight="?attr/actionBarSize"
-                app:theme="@style/toolBarStyle"/>
+            android:id="@+id/toolbarGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:transitionName="MyTransition"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/toolBarStyle">
+
+            <ImageView
+                android:id="@+id/progresSwLogo"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/sw_logo"
+                android:visibility="invisible" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:id="@+id/checkInBodyWrapper">
+            android:id="@+id/checkInBodyWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <!-- <android.support.v4.widget.NestedScrollView
                     android:layout_width="match_parent"
@@ -24,196 +23,194 @@
             <RelativeLayout style="@style/checkInLayout">
 
                 <com.southwest.southwestapp.LabeledText
-                        android:id="@+id/passenger"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        app:mainText="Kevin Thompson"
-                        app:mainTextStyle="normal"
-                        app:upperText="PASSENGER(S)"/>
+                    android:id="@+id/passenger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    app:mainText="Kevin Thompson"
+                    app:mainTextStyle="normal"
+                    app:upperText="PASSENGER(S)" />
 
 
                 <com.southwest.southwestapp.LabeledText
-                        android:id="@+id/confirmation_one"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginRight="20dp"
-                        app:mainText="MVWGL4"
-                        app:mainTextStyle="normal"
-                        app:upperText="CONFIRMATION #"/>
+                    android:id="@+id/confirmation_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    app:mainText="MVWGL4"
+                    app:mainTextStyle="normal"
+                    app:upperText="CONFIRMATION #" />
 
 
-
-                <android.support.v7.widget.CardView
-                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/card_view_container"
-                        android:layout_gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        card_view:cardElevation="15dp"
-                        card_view:contentPadding="15dp"
-                        card_view:cardCornerRadius="4dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_below="@+id/passenger">
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/passenger"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardElevation="15dp"
+                    card_view:contentPadding="15dp">
 
                     <RelativeLayout
-                            android:id="@+id/flight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/passenger">
+                        android:id="@+id/flight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/passenger">
 
                         <com.southwest.southwestapp.LabeledText
-                                android:id="@+id/city"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                app:mainText="Minneapolis/St. Paul"
-                                app:mainTextStyle="bold"
-                                app:upperText="Feb 18 - 19"/>
+                            android:id="@+id/city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            app:mainText="Minneapolis/St. Paul"
+                            app:mainTextStyle="bold"
+                            app:upperText="Feb 18 - 19" />
 
                         <LinearLayout
-                                android:id="@+id/travel_info"
-                                android:layout_width="match_parent"
+                            android:id="@+id/travel_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/city"
+                            android:orientation="horizontal">
+
+                            <com.southwest.southwestapp.LabeledText
+                                android:id="@+id/date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="left"
+                                app:bottomText="Tuesday"
+                                app:mainText="Feb 18"
+                                app:upperText="DATE" />
+
+                            <com.southwest.southwestapp.LabeledText
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/city"
-                                android:orientation="horizontal">
-
-                            <com.southwest.southwestapp.LabeledText
-                                    android:id="@+id/date"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="left"
-                                    app:bottomText="Tuesday"
-                                    app:mainText="Feb 18"
-                                    app:upperText="DATE"/>
-
-                            <com.southwest.southwestapp.LabeledText
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    app:bottomText="2:20PM"
-                                    app:mainText="DAL"
-                                    app:mainTextSize="30"
-                                    app:upperText="DEPARTS"/>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:bottomText="2:20PM"
+                                app:mainText="DAL"
+                                app:mainTextSize="30"
+                                app:upperText="DEPARTS" />
 
                             <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:src="@drawable/icon_airplane"/>
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/icon_airplane" />
 
                             <com.southwest.southwestapp.LabeledText
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    app:bottomText="4:50PM"
-                                    app:mainText="MSP"
-                                    app:mainTextSize="30"
-                                    app:upperText="ARRIVES"/>
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                app:bottomText="4:50PM"
+                                app:mainText="MSP"
+                                app:mainTextSize="30"
+                                app:upperText="ARRIVES" />
                         </LinearLayout>
 
                         <View
-                                android:id="@+id/divider"
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:layout_below="@id/travel_info"
-                                android:background="@android:color/darker_gray"/>
+                            android:id="@+id/divider"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@id/travel_info"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@android:color/darker_gray" />
 
                         <LinearLayout
-                                android:id="@+id/flight_info"
-                                android:layout_width="match_parent"
+                            android:id="@+id/flight_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/divider">
+
+                            <com.southwest.southwestapp.LabeledText
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/divider">
+                                android:layout_weight="1"
+                                app:mainText="1977"
+                                app:rightImage="@drawable/wifi_available"
+                                app:upperText="FLIGHT" />
 
                             <com.southwest.southwestapp.LabeledText
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    app:rightImage="@drawable/wifi_available"
-                                    app:mainText="1977"
-                                    app:upperText="FLIGHT"/>
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                app:mainText="588"
+                                app:rightImage="@drawable/wifi_available" />
 
                             <com.southwest.southwestapp.LabeledText
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:gravity="bottom"
-                                    android:layout_weight="1"
-                                    app:rightImage="@drawable/wifi_available"
-                                    app:mainText="588"/>
-
-                            <com.southwest.southwestapp.LabeledText
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="5"
-                                    app:leftImage="@drawable/time_icon"
-                                    app:mainText="2h 30m"
-                                    app:mainTextStyle="normal"
-                                    app:upperText="TRAVEL TIME"/>
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                app:leftImage="@drawable/time_icon"
+                                app:mainText="2h 30m"
+                                app:mainTextStyle="normal"
+                                app:upperText="TRAVEL TIME" />
                         </LinearLayout>
 
                         <TextView
-                                android:id="@+id/checkIn_warning"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:layout_below="@id/flight_info"
-                                android:text="@string/check_in_warning_message"/>
+                            android:id="@+id/checkIn_warning"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/flight_info"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/check_in_warning_message" />
 
                         <Button
-                                style="@style/bigButton"
-                                android:layout_below="@id/checkIn_warning"
-                                android:layout_marginBottom="10dp"
-                                android:text="@string/check_in_button"
-                                android:id="@+id/confirmationButton"/>
+                            android:id="@+id/confirmationButton"
+                            style="@style/bigButton"
+                            android:layout_below="@id/checkIn_warning"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/check_in_button" />
 
                     </RelativeLayout>
 
                 </android.support.v7.widget.CardView>
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_view_container"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/federal_law"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/card_view_container"
-                        android:layout_margin="20dp"
-                        android:orientation="vertical">
+                        android:text="@string/check_in_federal_law" />
 
                     <TextView
-                            android:id="@+id/federal_law"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/check_in_federal_law"/>
-
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/check_in_more_details"
-                            android:layout_marginBottom="5dp"
-                            style="@style/textLink"/>
+                        style="@style/textLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/check_in_more_details" />
 
                     <View
-                            android:layout_width="fill_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@android:color/darker_gray"/>
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@android:color/darker_gray" />
 
                     <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/check_in_limits"
-                            style="@style/textLink"/>
+                        style="@style/textLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/check_in_limits" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -224,17 +221,28 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-                android:transitionName="MyTransition"
-                android:id="@+id/toolbarGeneral"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways"
-                android:minHeight="?attr/actionBarSize"
-                app:theme="@style/toolBarStyle"/>
+            android:id="@+id/toolbarGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:transitionName="MyTransition"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/toolBarStyle">
+
+            <ImageView
+                android:id="@+id/progresSwLogo"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/sw_logo"
+                android:visibility="invisible" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
