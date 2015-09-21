@@ -1,5 +1,11 @@
 package com.southwest.southwestapp.utils;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.view.inputmethod.InputMethodManager;
+
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
 import com.southwest.southwestapp.activities.MainActivity;
@@ -12,14 +18,6 @@ import com.southwest.southwestapp.fragments.emergency.EmergencyContactFragment;
 import com.southwest.southwestapp.fragments.emergency.EmergencyContactListFragment;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-
-import android.view.inputmethod.InputMethodManager;
-
-
 
 /**
  * Created by emiliano.gudino on 02/09/2015.
@@ -28,7 +26,7 @@ public class ScreenManager {
 
     protected void setDefaultAnim(FragmentTransaction ft) {
         ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, android.R.anim.slide_in_left,
-                               android.R.anim.slide_out_right);
+                android.R.anim.slide_out_right);
     }
 
     public void showCheckInConfirmationScreen(FragmentActivity origin) {
@@ -73,7 +71,7 @@ public class ScreenManager {
     public void hideSoftKeyboard(Activity activity) {
 
         if (activity != null && !activity.isFinishing()) {
-            InputMethodManager inputMethodManager = (InputMethodManager)activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
             if (inputMethodManager != null && activity.getCurrentFocus() != null && activity.getCurrentFocus().getWindowToken() != null) {
                 inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
             }
@@ -86,12 +84,11 @@ public class ScreenManager {
         origin.startActivity(i);
     }
 
-    public BigPagerHomeFragment showMainScreen(FragmentActivity origin) {
+    public void showMainScreen(FragmentActivity origin) {
         FragmentTransaction ft = origin.getSupportFragmentManager().beginTransaction();
         BigPagerHomeFragment bigPagerHomeFragment = new BigPagerHomeFragment();
         ft.replace(R.id.container, bigPagerHomeFragment);
         ft.commit();
-        return bigPagerHomeFragment;
     }
 
     public void showBoardingPassScreen(FragmentActivity origin) {
