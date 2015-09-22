@@ -62,15 +62,6 @@ public class RestClient {
             okClient.setWriteTimeout(10, TimeUnit.SECONDS);
             okClient.setReadTimeout(30, TimeUnit.SECONDS);
 
-            // Set Interceptor
-            okClient.interceptors().add(new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                    Response response = chain.proceed(chain.request());
-                    return response;
-                }
-            });
-
             // Set headers
             okClient.networkInterceptors().add(new Interceptor() {
                 @Override
