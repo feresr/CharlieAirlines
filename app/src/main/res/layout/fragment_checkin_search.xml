@@ -55,7 +55,8 @@
                                 android:layout_height="wrap_content"
                                 android:hint="@string/search_confirmation_number"
                                 android:imeOptions="actionNext"
-                                android:singleLine="true"/>
+                                android:inputType="text"
+                                android:singleLine="true" />
 
                         </android.support.design.widget.TextInputLayout>
 
@@ -73,6 +74,7 @@
                                 android:layout_height="wrap_content"
                                 android:hint="@string/search_first_name"
                                 android:imeOptions="actionNext"
+                                android:inputType="text"
                                 android:singleLine="true" />
 
                         </android.support.design.widget.TextInputLayout>
@@ -91,6 +93,7 @@
                                 android:layout_height="wrap_content"
                                 android:hint="@string/search_last_name"
                                 android:imeOptions="actionDone"
+                                android:inputType="text"
                                 android:singleLine="true" />
 
                         </android.support.design.widget.TextInputLayout>
