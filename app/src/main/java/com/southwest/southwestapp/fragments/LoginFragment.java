@@ -1,10 +1,5 @@
 package com.southwest.southwestapp.fragments;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.models.UserProfile;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -17,15 +12,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.models.UserProfile;
+import com.southwest.southwestapp.network.models.SwaUser;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import retrofit.Callback;
+import retrofit.Response;
 
 
 /**
  * Created by emiliano.gudino on 09/09/2015.
  */
-public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener {
+public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener, Callback<SwaUser> {
 
     private Button mBtLogIn;
     private EditText mEtUser;
@@ -83,9 +88,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                     AppHelper.screenManager.hideSoftKeyboard(getActivity());
                     AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
                     mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
-                    AppHelper.userController.setUserProfile(new UserProfile(userName));
-                    delay();
 
+                    AppHelper.swaApi.doLogin(userName, userPass).enqueue(this);
                 }
 
                 break;
@@ -135,5 +139,29 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
             default:
                 break;
         }
+    }
+
+    private void showLoginError() {
+        mProgresSwLogo.clearAnimation();
+        AnimationGenericUtils.fadeOutAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
+        Toast.makeText(getContext(), getResources().getString(R.string.log_in_invalid_username_or_password), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(Response<SwaUser> response) {
+        if (!response.isSuccess()) {
+            showLoginError();
+            return;
+        }
+
+        SwaUser user = response.body();
+        AppHelper.userController.setUserProfile(new UserProfile(user.getUsername()));
+        AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+        showLoginError();
     }
 }
