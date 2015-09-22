@@ -26,8 +26,9 @@ public class AppHelper extends Application {
     public static final DialogManager dialogManager = new DialogManager();
     public static final UserController userController = new UserController();
     public static final CheckInController userCheckInController = new CheckInController();
-    public static final FlickrEndpoints flickrApi = new FlickrApi().getInterface();
-    public static final SwaEndpoints swaApi = new SwaApi().getInterface();
+
+    public static FlickrEndpoints flickrApi;
+    public static SwaEndpoints swaApi;
 
     // TODO: get this data through web service
     public static List<Contact> contacts = new ArrayList<Contact>();
@@ -40,5 +41,8 @@ public class AppHelper extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        
+        flickrApi = new FlickrApi().getInterface();
+        swaApi = new SwaApi().getInterface();
     }
 }
