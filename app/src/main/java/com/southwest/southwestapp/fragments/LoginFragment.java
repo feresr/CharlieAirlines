@@ -2,7 +2,9 @@ package com.southwest.southwestapp.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,7 @@ import retrofit.Response;
 /**
  * Created by emiliano.gudino on 09/09/2015.
  */
-public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener, Callback<SwaUser> {
+public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener, Callback<SwaUser>, TextWatcher {
 
     private Button mBtLogIn;
     private EditText mEtUser;
@@ -58,9 +60,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
         mEtUser = (EditText) view.findViewById(R.id.et_user);
         mEtUser.setOnFocusChangeListener(this);
-
+        mEtUser.addTextChangedListener(this);
         mEtPass = (EditText) view.findViewById(R.id.et_pass);
         mEtPass.setOnFocusChangeListener(this);
+        mEtPass.addTextChangedListener(this);
 
         mLnrContainer = (LinearLayout) view.findViewById(R.id.lnr_container);
 
@@ -164,4 +167,32 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     public void onFailure(Throwable t) {
         showLoginError();
     }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        validateLoginFields();
+    }
+
+    private void validateLoginFields() {
+        String user = mEtUser.getText().toString();
+        String pass = mEtPass.getText().toString();
+
+        if ((!TextUtils.isEmpty(user)) && (!TextUtils.isEmpty(pass))) {
+            mBtLogIn.setEnabled(true);
+        } else {
+            mBtLogIn.setEnabled(false);
+        }
+    }
+
+
 }
