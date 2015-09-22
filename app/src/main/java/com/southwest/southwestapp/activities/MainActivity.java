@@ -35,9 +35,10 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.apis.FlickrApi;
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 import com.southwest.southwestapp.fragments.homepage.TripActionsFragment;
+import com.southwest.southwestapp.network.models.FlickrPhoto;
+import com.southwest.southwestapp.network.models.FlickrSearchPhotoResponse;
 import com.southwest.southwestapp.services.FetchAddressIntentService;
 import com.squareup.picasso.Picasso;
 
@@ -48,7 +49,7 @@ import retrofit.Response;
 
 
 public class MainActivity extends AppCompatActivity implements BigPagerHomeFragment.SlidePanelListener,
-        Callback<FlickrApi.SearchPhotoResponse>, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+        Callback<FlickrSearchPhotoResponse>, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private static final int FLICK_PHOTOS = 6; //Amount of photos_id retrieved from flickr
@@ -295,11 +296,11 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     }
 
     @Override
-    public void onResponse(Response<FlickrApi.SearchPhotoResponse> response) {
+    public void onResponse(Response<FlickrSearchPhotoResponse> response) {
         Log.e(this.getClass().getSimpleName(), response.toString());
         if (response.body().photos.photo.size() > 0) {
             Random r = new Random();
-            FlickrApi.FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(response.body().photos.photo.size()));
+            FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(response.body().photos.photo.size()));
             Picasso.with(this).load(photo.getUrl("z")).placeholder(ContextCompat.getDrawable(this, R.drawable.bw_drawable_header)).into(((ImageView) findViewById(R.id.drawer_background)));
         }
     }
