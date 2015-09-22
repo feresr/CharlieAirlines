@@ -1,13 +1,13 @@
 package com.southwest.southwestapp;
 
+import android.app.Application;
+
+import com.southwest.southwestapp.apis.FlickrApi;
 import com.southwest.southwestapp.controllers.CheckInController;
 import com.southwest.southwestapp.controllers.UserController;
 import com.southwest.southwestapp.models.Contact;
 import com.southwest.southwestapp.utils.DialogManager;
 import com.southwest.southwestapp.utils.ScreenManager;
-
-
-import android.app.Application;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,7 @@ public class AppHelper extends Application {
     public static final DialogManager dialogManager = new DialogManager();
     public static final UserController userController = new UserController();
     public static final CheckInController userCheckInController = new CheckInController();
+    public static final FlickrApi.FlickrEndpointsInterface flickrApi = new FlickrApi().getInterface();
 
     // TODO: get this data through web service
     public static List<Contact> contacts = new ArrayList<Contact>();
