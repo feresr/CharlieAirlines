@@ -11,20 +11,15 @@ import com.squareup.okhttp.Response;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
 public class SwaApi {
 
-    private static boolean USE_CACHE = false;
+    private static boolean USE_CACHE = true;
 
     private static final String BASE_URL = "https://api.parse.com/";
-
-    private static final String X_Parse_Application_Id = "Qx2SQ0Bv4Y7WpNmU6CKBgQqO9HRSOZyIrGaQOymh";
-    private static final String X_Parse_REST_API_Key = "o5sUgO75LU6s1JxDWWEJvmbVyEu3Xm54NxHX9HM4";
-    private static final String X_Parse_Revocable_Session = "1";
 
     private static final String CACHE_NAME = "rest_client_cache";
     private static final int CACHE_SIZE = 10 * 1024 * 1024;
@@ -44,20 +39,15 @@ public class SwaApi {
             }
         }
 
-        // Set timeout
-        okClient.setConnectTimeout(10, TimeUnit.SECONDS);
-        okClient.setWriteTimeout(10, TimeUnit.SECONDS);
-        okClient.setReadTimeout(30, TimeUnit.SECONDS);
-
         // Set headers
         okClient.networkInterceptors().add(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
 
                 Request request = chain.request().newBuilder()
-                        .addHeader("X-Parse-Application-Id", X_Parse_Application_Id)
-                        .addHeader("X-Parse-REST-API-Key", X_Parse_REST_API_Key)
-                        .addHeader("X-Parse-Revocable-Session", X_Parse_Revocable_Session)
+                        .addHeader("X-Parse-Application-Id", "Qx2SQ0Bv4Y7WpNmU6CKBgQqO9HRSOZyIrGaQOymh")
+                        .addHeader("X-Parse-REST-API-Key", "o5sUgO75LU6s1JxDWWEJvmbVyEu3Xm54NxHX9HM4")
+                        .addHeader("X-Parse-Revocable-Session", "1")
                         .build();
 
                 return chain.proceed(request);
