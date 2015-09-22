@@ -17,21 +17,20 @@ import android.widget.Toast;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.models.UserProfile;
-import com.southwest.southwestapp.network.RestClient;
-import com.southwest.southwestapp.network.models.User;
+import com.southwest.southwestapp.network.models.SwaUser;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import retrofit.Call;
 import retrofit.Callback;
+import retrofit.Response;
 
 
 /**
  * Created by emiliano.gudino on 09/09/2015.
  */
-public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener {
+public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener, Callback<SwaUser> {
 
     private Button mBtLogIn;
     private EditText mEtUser;
@@ -90,7 +89,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                     AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
                     mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
 
-                    doLoginApiRequest(userName, userPass);
+                    AppHelper.swaApi.doLogin(userName, userPass).enqueue(this);
                 }
 
                 break;
@@ -142,35 +141,27 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
         }
     }
 
-    private void doLoginApiRequest(String username, String password) {
-
-        Call<User> call = RestClient.getClient().doLogin(username, password);
-
-        call.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(retrofit.Response<User> response) {
-
-                if (!response.isSuccess()) {
-                    showLoginError();
-                    return;
-                }
-
-                User user = response.body();
-                AppHelper.userController.setUserProfile(new UserProfile(user.getUsername()));
-                AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
-
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                showLoginError();
-            }
-        });
-    }
-
     private void showLoginError() {
         mProgresSwLogo.clearAnimation();
         AnimationGenericUtils.fadeOutAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
         Toast.makeText(getContext(), getResources().getString(R.string.log_in_invalid_username_or_password), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(Response<SwaUser> response) {
+        if (!response.isSuccess()) {
+            showLoginError();
+            return;
+        }
+
+        SwaUser user = response.body();
+        AppHelper.userController.setUserProfile(new UserProfile(user.getUsername()));
+        AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+        showLoginError();
     }
 }
