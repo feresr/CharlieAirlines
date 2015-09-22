@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CharlieAirlines.iml" filepath="$PROJECT_DIR$/CharlieAirlines.iml" />
       <module fileurl="file://$PROJECT_DIR$/SouthwestApp.iml" filepath="$PROJECT_DIR$/SouthwestApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/SouthwestApp.iml" filepath="$PROJECT_DIR$/SouthwestApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wear/wear.iml" filepath="$PROJECT_DIR$/wear/wear.iml" />
     </modules>
   </component>
 </project>
