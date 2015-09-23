@@ -25,6 +25,7 @@ public class Ocr {
     }
 
     public void initOcr() {
+        //TODO: put trained data in assets
         dataPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).
                 getAbsolutePath() + "/tesseract-ocr/";
 
