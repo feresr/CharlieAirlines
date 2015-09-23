@@ -2,7 +2,6 @@ package com.southwest.southwestapp.models;
 
 import android.graphics.Bitmap;
 import android.os.Environment;
-
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
