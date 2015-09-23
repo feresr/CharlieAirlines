@@ -51,14 +51,14 @@ public class ServiceShakeMotion extends Service {
         mShakeListener = new ShakeListener() {
             @Override
             public void onShake() {
-                //Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
-                //intent.putExtra(BaseActivity.FRAGMENT, BoardingPassFragment.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //getApplicationContext().startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
+                intent.putExtra(BaseActivity.FRAGMENT, BoardingPassFragment.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(intent);
 
-                //stopSelf();
-                //mSensorManager.unregisterListener(mShakeListener);
-                Toast.makeText(getApplicationContext(), "Shake!", Toast.LENGTH_SHORT).show();
+                stopSelf();
+                mSensorManager.unregisterListener(mShakeListener);
+                //Toast.makeText(getApplicationContext(), "Shake!", Toast.LENGTH_SHORT).show();
             }
         };
 
