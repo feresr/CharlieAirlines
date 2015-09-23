@@ -154,5 +154,9 @@
     <string name="no_address_found">Address not found</string>
     <string name="address_found">Address found</string>
 
+    <!-- Optical Recognition -->
+    <string name="progress_dialog_processing">Processing</string>
+    <string name="progress_dialog_scanning">scanning</string>
+
 
 </resources>

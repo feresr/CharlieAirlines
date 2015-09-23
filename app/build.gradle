@@ -11,6 +11,15 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            assets.srcDirs = ['src/main/assets', 'src/main/assets/']
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,7 +30,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
@@ -31,7 +39,6 @@ dependencies {
     compile 'com.crittercism:crittercism-android-agent:5.3.3'
     compile 'com.google.android.gms:play-services-analytics:7.8.0'
     compile 'com.google.android.gms:play-services-location:7.8.0'
-
     // Support Libraries
     compile 'com.android.support:support-v4:23.0.1'
     compile 'com.android.support:design:23.0.1'
@@ -40,4 +47,6 @@ dependencies {
     compile 'com.android.support:gridlayout-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:support-annotations:23.0.1'
+    compile files('libs/classes.jar')
+    compile project(':openCVLibrary300')
 }
