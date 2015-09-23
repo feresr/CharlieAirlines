@@ -18,6 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".CodeListenerService"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action
+                    android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+            </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="de.peterfriese.notificationwithopenactivityonwearableaction.DISMISS" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

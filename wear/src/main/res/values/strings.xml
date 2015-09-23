@@ -2,4 +2,7 @@
     <string name="app_name">Charlie Airlines</string>
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>
+    <string name="boarding_pass_placeholder">Your boarding pass code\n will be shown here</string>
+    <string name="boardingpass_notification_message">Open app to see your boarding pass code</string>
+    <string name="boardingpass_notification_title">Boarding Pass</string>
 </resources>
