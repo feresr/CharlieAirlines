@@ -66,7 +66,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                     if (event.getType() == DataEvent.TYPE_CHANGED &&
                             event.getDataItem().getUri().getPath().equals("/image")) {
                         DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
-                        Asset profileAsset = dataMapItem.getDataMap().getAsset("profileImage");
+                        Asset profileAsset = dataMapItem.getDataMap().getAsset("qrcodeImage");
 
                         final Bitmap bitmap = loadBitmapFromAsset(profileAsset, dataMapItem.getUri());
                         // Do something with the bitmap
