@@ -14,9 +14,7 @@ import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.Asset;
-import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.DataMapItem;
@@ -24,9 +22,6 @@ import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
 import java.io.InputStream;
-import java.util.concurrent.TimeUnit;
-
-import static com.google.android.gms.wearable.PutDataRequest.WEAR_URI_SCHEME;
 
 /**
  * Created by Fernando on 22/9/2015.
@@ -60,12 +55,11 @@ public class CodeListenerService extends WearableListenerService implements Goog
             if (event.getType() == DataEvent.TYPE_CHANGED &&
                     event.getDataItem().getUri().getPath().equals("/image")) {
                 DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
-                Asset profileAsset = dataMapItem.getDataMap().getAsset("profileImage");
+                Asset profileAsset = dataMapItem.getDataMap().getAsset("qrcodeImage");
 
 
-                Bitmap bitmap = loadBitmapFromAsset(profileAsset, dataMapItem.getUri());
                 // Do something with the bitmap
-                mbitmap = bitmap;
+                mbitmap = loadBitmapFromAsset(profileAsset, dataMapItem.getUri());
                 Intent resultIntent = new Intent(this, MainActivity.class);
 
                 PendingIntent resultPendingIntent =
@@ -77,7 +71,6 @@ public class CodeListenerService extends WearableListenerService implements Goog
                         );
 
                 resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                resultIntent.putExtra("bitmap", bitmap); // does not work :(
 
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(this)

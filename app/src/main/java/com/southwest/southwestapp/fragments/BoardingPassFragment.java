@@ -3,7 +3,6 @@ package com.southwest.southwestapp.fragments;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.PutDataMapRequest;
@@ -27,7 +26,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 
 import java.io.ByteArrayOutputStream;
-
 
 /**
  * Created by emiliano.gudino on 07/09/2015.
@@ -135,7 +133,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
                 Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.qr_code_example);
                 Asset asset = createAssetFromBitmap(bitmap);
                 PutDataMapRequest dataMap = PutDataMapRequest.create("/image");
-                dataMap.getDataMap().putAsset("profileImage", asset);
+                dataMap.getDataMap().putAsset("qrcodeImage", asset);
                 PutDataRequest request = dataMap.asPutDataRequest();
 
                 Wearable.DataApi.deleteDataItems(
