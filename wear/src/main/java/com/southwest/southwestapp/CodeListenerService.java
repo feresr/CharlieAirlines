@@ -82,6 +82,7 @@ public class CodeListenerService extends WearableListenerService implements Goog
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(this)
                                 .setSmallIcon(R.mipmap.ic_launcher_charlie)
+                                .setAutoCancel(true)
                                 .setContentTitle(getString(R.string.boardingpass_notification_title))
                                 .setContentText(getString(R.string.boardingpass_notification_message))
                                 .setContentIntent(resultPendingIntent);
