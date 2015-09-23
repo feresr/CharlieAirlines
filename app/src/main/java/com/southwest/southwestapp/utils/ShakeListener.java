@@ -11,7 +11,7 @@ import android.hardware.SensorManager;
  */
 public abstract class ShakeListener implements SensorEventListener {
 
-    private static final int ON_SHAKE_CONSTANT = 12;
+    private static final float ON_SHAKE_CONSTANT = 11.5f;
 
     private float mAcceleration = 0.00f; // acceleration apart from gravity
     private float mAccelerationCurrent = SensorManager.GRAVITY_EARTH; // current acceleration including gravity

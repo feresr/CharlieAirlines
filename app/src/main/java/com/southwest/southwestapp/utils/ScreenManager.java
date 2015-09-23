@@ -13,6 +13,7 @@ import com.southwest.southwestapp.fragments.emergency.EmergencyContactListFragme
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -114,5 +115,12 @@ public class ScreenManager {
         Intent intent = new Intent(origin, MainActivity.class);
         origin.startActivity(intent);
         origin.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void showBoardingAfterShaking(Context context){
+        Intent intent = new Intent(context, BaseActivity.class);
+        intent.putExtra(BaseActivity.FRAGMENT, BoardingPassFragment.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
     }
 }

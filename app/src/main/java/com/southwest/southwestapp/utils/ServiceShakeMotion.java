@@ -1,7 +1,6 @@
 package com.southwest.southwestapp.utils;
 
-import com.southwest.southwestapp.activities.BaseActivity;
-import com.southwest.southwestapp.fragments.BoardingPassFragment;
+import com.southwest.southwestapp.AppHelper;
 
 import android.app.Service;
 import android.content.Context;
@@ -14,7 +13,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
 
 
 /**
@@ -38,6 +36,7 @@ public class ServiceShakeMotion extends Service {
 
         @Override
         public void handleMessage(Message msg) {
+
             setShakeListener();
 
             // Stop the service using the startId, so that we don't stop
@@ -51,14 +50,9 @@ public class ServiceShakeMotion extends Service {
         mShakeListener = new ShakeListener() {
             @Override
             public void onShake() {
-                Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
-                intent.putExtra(BaseActivity.FRAGMENT, BoardingPassFragment.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(intent);
-
+                AppHelper.screenManager.showBoardingAfterShaking(getApplicationContext());
                 stopSelf();
                 mSensorManager.unregisterListener(mShakeListener);
-                //Toast.makeText(getApplicationContext(), "Shake!", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -84,8 +78,6 @@ public class ServiceShakeMotion extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
-
         // For each start request, send a message to start a job and deliver the
         // start ID so we know which request we're stopping when we finish the job
         Message msg = mServiceHandler.obtainMessage();
@@ -93,7 +85,7 @@ public class ServiceShakeMotion extends Service {
         mServiceHandler.sendMessage(msg);
 
         // If we get killed, after returning from here, restart
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     public static void start(Context context) {
