@@ -53,7 +53,7 @@ public class OCRActivity extends Activity implements OnClickListener, CameraView
         mRequesFocus.setOnClickListener(this);
         focusBox.setOnClickListener(this);
 
-        mCameraView.setGameCallback(this);
+        mCameraView.setOcrCallback(this);
 
     }
 
