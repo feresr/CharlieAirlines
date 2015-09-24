@@ -14,8 +14,6 @@ import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.models.Contact;
 
-import org.w3c.dom.Text;
-
 
 /**
  * Created by luisalfonsobejaranosanchez on 9/14/15.
@@ -43,8 +41,8 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
         mEditNewContactPhone = (EditText) rootView.findViewById(R.id.emergencyContactNumber);
         emergencyContactNamePass = (TextView) rootView.findViewById(R.id.emergencyContactNamePass);
 
-        if(AppHelper.userCheckInController.getCheckin() != null){
-            emergencyContactNamePass.setText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
+        if(AppHelper.userCheckInController.getCheckIn() != null){
+            emergencyContactNamePass.setText(AppHelper.userCheckInController.getCheckIn().getPassengers().get(0).getName());
         }
         init(rootView);
 
@@ -54,7 +52,6 @@ public class EmergencyContactFragment extends EmergencyBase implements TextWatch
         mBtnContactAdd.setEnabled(false);
 
         return rootView;
-
     }
 
     @Override

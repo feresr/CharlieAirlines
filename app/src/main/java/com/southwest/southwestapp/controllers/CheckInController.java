@@ -1,33 +1,35 @@
 package com.southwest.southwestapp.controllers;
 
-import com.southwest.southwestapp.vo.CheckInVO;
-import com.southwest.southwestapp.vo.PassengerVO;
+import com.southwest.southwestapp.models.CheckIn;
+import com.southwest.southwestapp.models.Passenger;
+
+import java.util.ArrayList;
 
 /**
  * Created by luisalfonsobejaranosanchez on 9/17/15.
  */
 public class CheckInController {
 
-    private CheckInVO checkInVO;
+    private CheckIn checkIn;
 
     public CheckInController() {
-        checkInVO = new CheckInVO();
+        checkIn = new CheckIn();
     }
 
-    public PassengerVO getPassanger(int index) {
-        return checkInVO.getPassengers()[index];
+    public Passenger getPassenger(int index) {
+        return checkIn.getPassengers().get(index);
     }
 
-    public void setPassangers(PassengerVO[] passangers) {
-        checkInVO.setPassengers(passangers);
+    public void setPassengers(ArrayList<Passenger> passengers) {
+        checkIn.setPassengers(passengers);
     }
 
-    public void setConfirmationNumer(String confirmationNumber) {
-        checkInVO.setConfirmationNumber(confirmationNumber);
+    public void setConfirmationNumber(String confirmationNumber) {
+        checkIn.setConfirmationNumber(confirmationNumber);
     }
 
-    public CheckInVO getCheckin() {
-        return checkInVO;
+    public CheckIn getCheckIn() {
+        return checkIn;
     }
 
 }

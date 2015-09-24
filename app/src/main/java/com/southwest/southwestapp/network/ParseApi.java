@@ -1,7 +1,7 @@
 package com.southwest.southwestapp.network;
 
 import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.network.interfaces.SwaEndpoints;
+import com.southwest.southwestapp.network.interfaces.ParseEndpoints;
 import com.southwest.southwestapp.network.utils.ToStringConverter;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.Interceptor;
@@ -15,18 +15,18 @@ import java.io.IOException;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
-public class SwaApi {
+public class ParseApi {
 
-    private static boolean USE_CACHE = true;
+    private static boolean USE_CACHE = false;
 
     private static final String BASE_URL = "https://api.parse.com/";
 
     private static final String CACHE_NAME = "rest_client_cache";
     private static final int CACHE_SIZE = 10 * 1024 * 1024;
 
-    private SwaEndpoints service;
+    private ParseEndpoints service;
 
-    public SwaApi() {
+    public ParseApi() {
 
         OkHttpClient okClient = new OkHttpClient();
 
@@ -61,10 +61,10 @@ public class SwaApi {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        service = client.create(SwaEndpoints.class);
+        service = client.create(ParseEndpoints.class);
     }
 
-    public SwaEndpoints getInterface() {
+    public ParseEndpoints getInterface() {
         return service;
     }
 }

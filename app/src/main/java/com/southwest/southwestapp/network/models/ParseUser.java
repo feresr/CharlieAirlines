@@ -1,6 +1,6 @@
 package com.southwest.southwestapp.network.models;
 
-public class SwaUser {
+public class ParseUser {
 
     String username;
     String phone;

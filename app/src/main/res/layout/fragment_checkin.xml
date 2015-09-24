@@ -15,15 +15,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- <android.support.v4.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"> -->
-
             <RelativeLayout style="@style/checkInLayout">
 
                 <com.southwest.southwestapp.LabeledText
-                    android:id="@+id/passenger"
+                    android:id="@+id/passenger_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -34,7 +29,7 @@
 
 
                 <com.southwest.southwestapp.LabeledText
-                    android:id="@+id/confirmation_one"
+                    android:id="@+id/confirmation_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -50,7 +45,7 @@
                     android:id="@+id/card_view_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/passenger"
+                    android:layout_below="@+id/passenger_name"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -63,7 +58,7 @@
                         android:id="@+id/flight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/passenger">
+                        android:layout_below="@id/passenger_name">
 
                         <com.southwest.southwestapp.LabeledText
                             android:id="@+id/city"
@@ -93,6 +88,7 @@
                                 app:upperText="DATE" />
 
                             <com.southwest.southwestapp.LabeledText
+                                android:id="@+id/depart"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -109,6 +105,7 @@
                                 android:src="@drawable/icon_airplane" />
 
                             <com.southwest.southwestapp.LabeledText
+                                android:id="@+id/arrive"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -135,6 +132,7 @@
                             android:layout_below="@id/divider">
 
                             <com.southwest.southwestapp.LabeledText
+                                android:id="@+id/flight_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -151,6 +149,7 @@
                                 app:rightImage="@drawable/wifi_available" />
 
                             <com.southwest.southwestapp.LabeledText
+                                android:id="@+id/flight_travel_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"

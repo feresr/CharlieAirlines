@@ -26,6 +26,8 @@ public class LabeledText extends RelativeLayout {
     private String mainTextStyle;
 
     private TextView mTvMain;
+    private TextView mTvUpper;
+    private TextView mTvBottom;
 
     public LabeledText(Context context) {
         super(context);
@@ -68,26 +70,28 @@ public class LabeledText extends RelativeLayout {
     private void initializeViews(Context context) {
         inflate(context, R.layout.labeled_text, this);
         mTvMain = ((TextView) findViewById(R.id.main_text));
+        mTvUpper = ((TextView) findViewById(R.id.above));
+        mTvBottom = ((TextView) findViewById(R.id.below));
 
         mTvMain.setText(mainText);
         mTvMain.setTextSize(TypedValue.COMPLEX_UNIT_SP, mainTextSize);
 
-        if(mainTextStyle != null){
+        if (mainTextStyle != null) {
             mTvMain.setTypeface(Typeface.DEFAULT);
         } else {
             mTvMain.setTypeface(Typeface.DEFAULT_BOLD);
         }
 
         if (bottomText != null && !bottomText.isEmpty()) {
-            ((TextView) findViewById(R.id.below)).setText(bottomText);
+            mTvBottom.setText(bottomText);
         } else {
-            (findViewById(R.id.below)).setVisibility(GONE);
+            mTvBottom.setVisibility(GONE);
         }
 
         if (upperText != null && !upperText.isEmpty()) {
-            ((TextView) findViewById(R.id.above)).setText(upperText);
+            mTvUpper.setText(upperText);
         } else {
-            (findViewById(R.id.above)).setVisibility(GONE);
+            mTvUpper.setVisibility(GONE);
         }
 
         if (imgRight != null) {
@@ -107,11 +111,21 @@ public class LabeledText extends RelativeLayout {
         super.onFinishInflate();
     }
 
-
-
     public void setMainText(String mainText) {
-        if(mainText != null){
-          mTvMain.setText(mainText);
+        if (mainText != null) {
+            mTvMain.setText(mainText);
+        }
+    }
+
+    public void setUpperText(String upperText) {
+        if (upperText != null) {
+            mTvUpper.setText(upperText);
+        }
+    }
+
+    public void setBottomText(String bottomText) {
+        if (bottomText != null) {
+            mTvBottom.setText(bottomText);
         }
     }
 }
