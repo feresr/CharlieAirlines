@@ -2,45 +2,45 @@ package com.southwest.southwestapp.network.models;
 
 public class ParseCheckIn {
 
-    String number_confirmation;
-    String arrives_city;
-    String arrives_time;
+    String confirmationNumber;
+    String arrivesCity;
+    String arrivesTime;
     String city;
-    String date_day;
-    String departs_city;
-    String departs_time;
-    String first_name;
-    String flight_number_1;
+    String dateDay;
+    String departsCity;
+    String departsTime;
+    String firstName;
+    String flightNumber;
     String gate;
-    String last_name;
-    String month_date;
-    String travel_time;
+    String lastName;
+    String monthDate;
+    String travelTime;
     String createdAt;
     String objectId;
     String updatedAt;
 
-    public String getNumber_confirmation() {
-        return number_confirmation;
+    public String getConfirmationNumber() {
+        return confirmationNumber;
     }
 
-    public void setNumber_confirmation(String number_confirmation) {
-        this.number_confirmation = number_confirmation;
+    public void setConfirmationNumber(String confirmationNumber) {
+        this.confirmationNumber = confirmationNumber;
     }
 
-    public String getArrives_city() {
-        return arrives_city;
+    public String getArrivesCity() {
+        return arrivesCity;
     }
 
-    public void setArrives_city(String arrives_city) {
-        this.arrives_city = arrives_city;
+    public void setArrivesCity(String arrivesCity) {
+        this.arrivesCity = arrivesCity;
     }
 
-    public String getArrives_time() {
-        return arrives_time;
+    public String getArrivesTime() {
+        return arrivesTime;
     }
 
-    public void setArrives_time(String arrives_time) {
-        this.arrives_time = arrives_time;
+    public void setArrivesTime(String arrivesTime) {
+        this.arrivesTime = arrivesTime;
     }
 
     public String getCity() {
@@ -59,44 +59,44 @@ public class ParseCheckIn {
         this.createdAt = createdAt;
     }
 
-    public String getDate_day() {
-        return date_day;
+    public String getDateDay() {
+        return dateDay;
     }
 
-    public void setDate_day(String date_day) {
-        this.date_day = date_day;
+    public void setDateDay(String dateDay) {
+        this.dateDay = dateDay;
     }
 
-    public String getDeparts_city() {
-        return departs_city;
+    public String getDepartsCity() {
+        return departsCity;
     }
 
-    public void setDeparts_city(String departs_city) {
-        this.departs_city = departs_city;
+    public void setDepartsCity(String departsCity) {
+        this.departsCity = departsCity;
     }
 
-    public String getDeparts_time() {
-        return departs_time;
+    public String getDepartsTime() {
+        return departsTime;
     }
 
-    public void setDeparts_time(String departs_time) {
-        this.departs_time = departs_time;
+    public void setDepartsTime(String departsTime) {
+        this.departsTime = departsTime;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getFlight_number_1() {
-        return flight_number_1;
+    public String getFlightNumber() {
+        return flightNumber;
     }
 
-    public void setFlight_number_1(String flight_number_1) {
-        this.flight_number_1 = flight_number_1;
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
     public String getGate() {
@@ -107,20 +107,20 @@ public class ParseCheckIn {
         this.gate = gate;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getMonth_date() {
-        return month_date;
+    public String getMonthDate() {
+        return monthDate;
     }
 
-    public void setMonth_date(String month_date) {
-        this.month_date = month_date;
+    public void setMonthDate(String monthDate) {
+        this.monthDate = monthDate;
     }
 
     public String getObjectId() {
@@ -131,12 +131,12 @@ public class ParseCheckIn {
         this.objectId = objectId;
     }
 
-    public String getTravel_time() {
-        return travel_time;
+    public String getTravelTime() {
+        return travelTime;
     }
 
-    public void setTravel_time(String travel_time) {
-        this.travel_time = travel_time;
+    public void setTravelTime(String travelTime) {
+        this.travelTime = travelTime;
     }
 
     public String getUpdatedAt() {

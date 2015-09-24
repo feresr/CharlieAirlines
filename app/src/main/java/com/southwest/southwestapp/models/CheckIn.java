@@ -14,7 +14,7 @@ public class CheckIn {
     String gate;
     String city;
     String dateDay;
-    String month_date;
+    String monthDate;
     String travelTime;
     List<Passenger> passengers = new ArrayList<Passenger>();
 
@@ -93,12 +93,12 @@ public class CheckIn {
         this.dateDay = dateDay;
     }
 
-    public String getMonth_date() {
-        return month_date;
+    public String getMonthDate() {
+        return monthDate;
     }
 
-    public void setMonth_date(String month_date) {
-        this.month_date = month_date;
+    public void setMonthDate(String monthDate) {
+        this.monthDate = monthDate;
     }
 
     public String getTravelTime() {

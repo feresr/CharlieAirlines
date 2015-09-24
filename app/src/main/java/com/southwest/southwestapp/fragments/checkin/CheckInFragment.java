@@ -78,9 +78,9 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
             confirmation.setMainText(checkIn.getConfirmationNumber());
 
             city.setMainText(checkIn.getCity());
-            city.setUpperText(checkIn.getMonth_date());
+            city.setUpperText(checkIn.getMonthDate());
 
-            date.setMainText(checkIn.getMonth_date());
+            date.setMainText(checkIn.getMonthDate());
             date.setBottomText(checkIn.getDateDay());
 
             arrive.setMainText(checkIn.getArrivesCity());

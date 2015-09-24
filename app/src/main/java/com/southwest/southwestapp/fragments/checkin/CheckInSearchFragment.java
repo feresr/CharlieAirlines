@@ -23,6 +23,11 @@ import com.southwest.southwestapp.network.models.ParseCheckIn;
 import com.southwest.southwestapp.network.models.ParseCheckInList;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import retrofit.Callback;
@@ -98,16 +103,17 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         switch (view.getId()) {
             case R.id.btn_retrieve_reservation:
 
-                String number = mEtConfirmationNumber.getText().toString();
-                String name = mEtFirstName.getText().toString() + mEtLastName.getText().toString();
+                String number = mEtConfirmationNumber.getText().toString().trim();
+                String firstName = mEtFirstName.getText().toString().trim();
+                String lastName = mEtLastName.getText().toString().trim();
 
-                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)) {
+                if (!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(number)) {
 
                     AppHelper.screenManager.hideSoftKeyboard(getActivity());
                     AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
                     mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
 
-                    AppHelper.parseApi.doRetrieveReservation().enqueue(this);
+                    AppHelper.parseApi.doRetrieveReservation(getApiRequestQuery(number, firstName, lastName)).enqueue(this);
 
                 } else {
                     Toast.makeText(getContext(), "No data", Toast.LENGTH_LONG).show();
@@ -118,6 +124,21 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 break;
 
         }
+    }
+
+    private String getApiRequestQuery(String number, String firstName, String lastName) {
+        try {
+            JSONObject json = new JSONObject();
+            json.put("confirmationNumber", number);
+            json.put("firstName", firstName);
+            json.put("lastName", lastName);
+            return URLEncoder.encode(json.toString(), "UTF-8").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @Override
@@ -142,23 +163,23 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     private void fillData(ParseCheckIn parseCheckIn) {
 
         Passenger passenger = new Passenger();
-        passenger.setFirstName(parseCheckIn.getFirst_name());
-        passenger.setLastName(parseCheckIn.getLast_name());
+        passenger.setFirstName(parseCheckIn.getFirstName());
+        passenger.setLastName(parseCheckIn.getLastName());
         passenger.setGroup("A");
         passenger.setPosition(0);
 
         CheckIn checkIn = AppHelper.userCheckInController.getCheckIn();
-        checkIn.setConfirmationNumber(parseCheckIn.getNumber_confirmation());
-        checkIn.setFlightNumber(parseCheckIn.getFlight_number_1());
+        checkIn.setConfirmationNumber(parseCheckIn.getConfirmationNumber());
+        checkIn.setFlightNumber(parseCheckIn.getFlightNumber());
         checkIn.setGate(parseCheckIn.getGate());
-        checkIn.setTravelTime(parseCheckIn.getTravel_time());
-        checkIn.setArrivesCity(parseCheckIn.getArrives_city());
-        checkIn.setArrivesTime(parseCheckIn.getArrives_time());
+        checkIn.setTravelTime(parseCheckIn.getTravelTime());
+        checkIn.setArrivesCity(parseCheckIn.getArrivesCity());
+        checkIn.setArrivesTime(parseCheckIn.getArrivesTime());
         checkIn.setCity(parseCheckIn.getCity());
-        checkIn.setDateDay(parseCheckIn.getDate_day());
-        checkIn.setDepartsCity(parseCheckIn.getDeparts_city());
-        checkIn.setDepartsTime(parseCheckIn.getDeparts_time());
-        checkIn.setMonth_date(parseCheckIn.getMonth_date());
+        checkIn.setDateDay(parseCheckIn.getDateDay());
+        checkIn.setDepartsCity(parseCheckIn.getDepartsCity());
+        checkIn.setDepartsTime(parseCheckIn.getDepartsTime());
+        checkIn.setMonthDate(parseCheckIn.getMonthDate());
 
         ArrayList arrayList = new ArrayList<Passenger>();
         arrayList.add(passenger);
