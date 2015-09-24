@@ -2,7 +2,6 @@ package com.southwest.southwestapp.activities;
 
 import android.app.Activity;
 
-
 import android.hardware.Camera;
 import android.os.Bundle;
 
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.views.CameraView;
@@ -24,12 +22,14 @@ import org.opencv.android.OpenCVLoader;
  * Created by luis.bejarano
  */
 @SuppressWarnings("deprecation")
-public class OCRActivity extends Activity implements OnClickListener {
+public class OCRActivity extends Activity implements OnClickListener, CameraView.CameraViewCallback {
 
     static {
         if (!OpenCVLoader.initDebug()) {
         } else {
         }
+
+
     }
 
     private Camera mCamera;
@@ -53,6 +53,8 @@ public class OCRActivity extends Activity implements OnClickListener {
         mRequesFocus.setOnClickListener(this);
         focusBox.setOnClickListener(this);
 
+        mCameraView.setGameCallback(this);
+
     }
 
 
@@ -65,7 +67,6 @@ public class OCRActivity extends Activity implements OnClickListener {
             if (mCamera != null) {
                 mCameraView = new CameraView(this, mCamera);
                 FrameLayout cameraView = (FrameLayout) findViewById(R.id.camera_view);
-
                 cameraView.addView(mCameraView);
             }
 
@@ -107,4 +108,9 @@ public class OCRActivity extends Activity implements OnClickListener {
         }
     }
 
+
+    @Override
+    public void onOcrResult(int i) {
+        Log.d("onOcrResult: ", i + "");
+    }
 }
