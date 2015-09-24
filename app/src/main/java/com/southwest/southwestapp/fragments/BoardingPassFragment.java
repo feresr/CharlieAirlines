@@ -10,6 +10,7 @@ import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.utils.ServiceShakeMotion;
 
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -35,11 +36,18 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     private Toolbar mToolbar;
     private View boardingPassView;
     private NestedScrollView mContainer;
+    private String mData;
     private GoogleApiClient mGoogleApiClient;
+    public static final String BOARDING_PASS_SHOWN = "BOARDING_PASS_SHOWN";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle info = getActivity().getIntent().getExtras();
+        if (info != null) {
+            mData = info.getString(BOARDING_PASS_SHOWN);
+        }
     }
 
     @Nullable
@@ -47,7 +55,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         boardingPassView = inflater.inflate(R.layout.fragment_boarding_pass, container, false);
 
-        mContainer = (NestedScrollView) boardingPassView.findViewById(R.id.container);
+        mContainer = (NestedScrollView)boardingPassView.findViewById(R.id.container);
         mContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         setUpToolBar();
@@ -74,6 +82,9 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     public void onStop() {
         super.onStop();
         mGoogleApiClient.disconnect();
+        if (mData == null) {
+            ServiceShakeMotion.start(getActivity());
+        }
     }
 
     private void sendBoardingPassToWearables() {
@@ -114,23 +125,23 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     private void showAlertSaveToPhotos() {
 
         AppHelper.dialogManager.showDialog(getActivity(),
-                getResources().getString(R.string.boarding_pass_save_dialog_title),
-                getResources().getString(R.string.boarding_pass_save_dialog_message),
-                getResources().getString(R.string.boarding_pass_save_dialog_yes),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //AppHelper.screenManager.showMainScreen(getActivity());
-                        getActivity().finish();
-                    }
-                },
-                getResources().getString(R.string.boarding_pass_save_dialog_no),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Complete flow
-                    }
-                }, false);
+                                           getResources().getString(R.string.boarding_pass_save_dialog_title),
+                                           getResources().getString(R.string.boarding_pass_save_dialog_message),
+                                           getResources().getString(R.string.boarding_pass_save_dialog_yes),
+                                           new DialogInterface.OnClickListener() {
+                                               @Override
+                                               public void onClick(DialogInterface dialog, int which) {
+                                                   //AppHelper.screenManager.showMainScreen(getActivity());
+                                                   getActivity().finish();
+                                               }
+                                           },
+                                           getResources().getString(R.string.boarding_pass_save_dialog_no),
+                                           new DialogInterface.OnClickListener() {
+                                               @Override
+                                               public void onClick(DialogInterface dialog, int which) {
+                                                   //Complete flow
+                                               }
+                                           }, false);
     }
 
     @Override
