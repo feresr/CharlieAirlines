@@ -1,6 +1,5 @@
 package com.southwest.southwestapp.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
@@ -15,23 +14,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.LabeledText;
 import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.models.CheckIn;
 import com.southwest.southwestapp.utils.CheckInViewHolder;
-import com.southwest.southwestapp.vo.CheckInVO;
-
-import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * Created by zadtanikus on 15/09/15.
  */
 public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHolder> {
 
-    private CheckInVO[] mDataSet;
+    private CheckIn[] mDataSet;
     private FragmentActivity activity;
 
-    public CheckInRecyclerAdapter(CheckInVO[] mDataSet, FragmentActivity mActivity) {
+    public CheckInRecyclerAdapter(CheckIn[] mDataSet, FragmentActivity mActivity) {
         this.mDataSet = mDataSet;
         this.activity = mActivity;
     }
@@ -39,7 +34,7 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
     @Override
     public CheckInViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View holderView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.checkin_detail,parent,false);
+                .inflate(R.layout.checkin_detail, parent, false);
         CheckInViewHolder checkInViewHolder = new CheckInViewHolder(holderView);
         return checkInViewHolder;
     }
@@ -51,10 +46,10 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
         holder.mLabeledFlight.setMainText(mDataSet[position].getFlightNumber());
         holder.mLabeledTime.setMainText(mDataSet[position].getTravelTime());
         holder.mLabeledGate.setMainText(mDataSet[position].getGate());
-        holder.mLabeledPassenger.setMainText(mDataSet[position].getPassengers()[0].getName());
+        holder.mLabeledPassenger.setMainText(mDataSet[position].getPassengers().get(0).getName());
         holder.mLabeledConfirmation.setMainText(mDataSet[position].getConfirmationNumber());
 
-        holder.mButton.setOnClickListener(new View.OnClickListener(){
+        holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AppHelper.screenManager.showBoardingPassScreen(activity);
@@ -62,9 +57,7 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
         });
 
 
-
-        for (int i = 0; i < mDataSet[position].getPassengers().length;i++){
-
+        for (int i = 0; i < mDataSet[position].getPassengers().size(); i++) {
 
             LinearLayout mLinearPassenger = new LinearLayout(cardContext);
             LinearLayout borderGray = new LinearLayout(cardContext);
@@ -82,27 +75,27 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
             LinearLayout.LayoutParams paramll = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
             paramll.setMargins(0, 0, 0, 30);
             borderGray.setLayoutParams(paramll);
-            borderGray.setBackgroundDrawable((cardContext.getResources().getDrawable(R.drawable.rectangle_white_rounded, null)));
+            borderGray.setBackgroundDrawable((cardContext.getResources().getDrawable(R.drawable.rectangle_white_rounded)));
 
 
-            if( i >= 1 ){
+            if (i >= 1) {
                 passenger.setTextColor(cardContext.getResources().getColor(R.color.dark_blue));
                 passenger.setTextSize(TypedValue.COMPLEX_UNIT_SP, 19);
                 passenger.setTypeface(null, Typeface.BOLD);
-                passenger.setText(mDataSet[position].getPassengers()[i].getName());
+                passenger.setText(mDataSet[position].getPassengers().get(i).getName());
 
             }
 
-            if(mDataSet.length > 1 || mDataSet[position].getPassengers().length > 1){
+            if (mDataSet.length > 1 || mDataSet[position].getPassengers().size() > 1) {
                 holder.mButton.setVisibility(Button.GONE);
                 holder.linearText.setVisibility(LinearLayout.VISIBLE);
             }
 
-            if(position >= 1){
+            if (position >= 1) {
                 holder.linearLabel.setVisibility(LinearLayout.VISIBLE);
             }
 
-            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,0.5f);
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0.5f);
             param.gravity = Gravity.CENTER_VERTICAL;
             labelBoarding.setLayoutParams(param);
             labelBoarding.setText(R.string.check_in_boarding);
@@ -113,8 +106,7 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
             boardingGroup.setTextColor(cardContext.getResources().getColor(R.color.green));
             boardingGroup.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
             boardingGroup.setTypeface(null, Typeface.BOLD);
-            boardingGroup.setText(mDataSet[position].getPassengers()[i].getGroup());
-
+            boardingGroup.setText(mDataSet[position].getPassengers().get(i).getGroup());
 
 
             param.gravity = Gravity.CENTER_VERTICAL;
@@ -128,8 +120,8 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
             pos.setTextColor(cardContext.getResources().getColor(R.color.green));
             pos.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
             pos.setTypeface(null, Typeface.BOLD);
-            pos.setPadding(10,0,0,0);
-            pos.setText(""+mDataSet[position].getPassengers()[i].getPosition());
+            pos.setPadding(10, 0, 0, 0);
+            pos.setText("" + mDataSet[position].getPassengers().get(i).getPosition());
 
 
             mLinearPassenger.addView(passenger);
@@ -148,9 +140,9 @@ public class CheckInRecyclerAdapter extends RecyclerView.Adapter<CheckInViewHold
 
     @Override
     public int getItemCount() {
-        if(mDataSet != null){
+        if (mDataSet != null) {
             return mDataSet.length;
-        }else{
+        } else {
             return 0;
         }
 

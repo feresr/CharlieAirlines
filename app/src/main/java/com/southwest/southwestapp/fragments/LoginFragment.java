@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.models.UserProfile;
-import com.southwest.southwestapp.network.models.SwaUser;
+import com.southwest.southwestapp.network.models.ParseUser;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import java.util.Timer;
@@ -32,7 +32,7 @@ import retrofit.Response;
 /**
  * Created by emiliano.gudino on 09/09/2015.
  */
-public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener, Callback<SwaUser>, TextWatcher {
+public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener, Callback<ParseUser>, TextWatcher {
 
     private Button mBtLogIn;
     private EditText mEtUser;
@@ -92,7 +92,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                     AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
                     mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
 
-                    AppHelper.swaApi.doLogin(userName, userPass).enqueue(this);
+                    AppHelper.parseApi.doLogin(userName, userPass).enqueue(this);
                 }
 
                 break;
@@ -151,13 +151,13 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     }
 
     @Override
-    public void onResponse(Response<SwaUser> response) {
+    public void onResponse(Response<ParseUser> response) {
         if (!response.isSuccess()) {
             showLoginError();
             return;
         }
 
-        SwaUser user = response.body();
+        ParseUser user = response.body();
         AppHelper.userController.setUserProfile(new UserProfile(user.getUsername()));
         AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
 

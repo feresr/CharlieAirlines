@@ -6,9 +6,9 @@ import com.southwest.southwestapp.network.FlickrApi;
 import com.southwest.southwestapp.controllers.CheckInController;
 import com.southwest.southwestapp.controllers.UserController;
 import com.southwest.southwestapp.models.Contact;
-import com.southwest.southwestapp.network.SwaApi;
+import com.southwest.southwestapp.network.ParseApi;
 import com.southwest.southwestapp.network.interfaces.FlickrEndpoints;
-import com.southwest.southwestapp.network.interfaces.SwaEndpoints;
+import com.southwest.southwestapp.network.interfaces.ParseEndpoints;
 import com.southwest.southwestapp.utils.DialogManager;
 import com.southwest.southwestapp.utils.ScreenManager;
 
@@ -28,7 +28,7 @@ public class AppHelper extends Application {
     public static final CheckInController userCheckInController = new CheckInController();
 
     public static FlickrEndpoints flickrApi;
-    public static SwaEndpoints swaApi;
+    public static ParseEndpoints parseApi;
 
     // TODO: get this data through web service
     public static List<Contact> contacts = new ArrayList<Contact>();
@@ -43,6 +43,6 @@ public class AppHelper extends Application {
         instance = this;
         
         flickrApi = new FlickrApi().getInterface();
-        swaApi = new SwaApi().getInterface();
+        parseApi = new ParseApi().getInterface();
     }
 }

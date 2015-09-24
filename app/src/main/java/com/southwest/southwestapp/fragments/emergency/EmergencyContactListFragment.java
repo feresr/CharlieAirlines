@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
@@ -41,8 +40,8 @@ public class EmergencyContactListFragment extends EmergencyBase {
         init(rootView);
 
 
-        if (AppHelper.userCheckInController.getCheckin() != null) {
-            mPassName.setText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
+        if (AppHelper.userCheckInController.getCheckIn() != null) {
+            mPassName.setText(AppHelper.userCheckInController.getCheckIn().getPassengers().get(0).getName());
         }
 
         return rootView;
