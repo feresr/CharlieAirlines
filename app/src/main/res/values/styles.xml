@@ -16,7 +16,7 @@
     <style name="bigButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/button_background</item>
+        <item name="android:background">@drawable/selector_btn_login</item>
         <item name="android:padding">0dp</item>
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textSize">17dp</item>
@@ -78,6 +78,7 @@
         <item name="android:textColor">@color/dark_blue</item>
         <item name="android:textColorHint">@color/transparent_gray_3</item>
         <item name="android:padding">10dp</item>
+
 
     </style>
 

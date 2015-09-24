@@ -16,6 +16,7 @@
     <string name="log_in_button_title">Log in</string>
     <string name="log_in_enroll_now">Enroll now</string>
     <string name="log_in_continue_as_guest">Continue as guest</string>
+    <string name="log_in_invalid_username_or_password">Invalid Username or Password</string>
 
     <!-- Layout Boarding Pass -->
     <string name="boarding_pass_group">Boarding \n Group</string>
@@ -148,7 +149,10 @@
 
     <!--VALIDATION SEARCH-->
     <string name="search_validation">The information is incorrect or fields are empty.</string>
-
+    <string name="service_not_available">Location service not available</string>
+    <string name="invalid_lat_long_used">Invalid Latitue/Longitude</string>
+    <string name="no_address_found">Address not found</string>
+    <string name="address_found">Address found</string>
 
 
 </resources>

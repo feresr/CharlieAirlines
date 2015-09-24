@@ -39,6 +39,12 @@ public class PromoPageFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        if (savedInstanceState != null) {
+            isFirstFragment = savedInstanceState.getBoolean("isFirstFragment");
+            layoutId = savedInstanceState.getInt("layoutId");
+        }
+
         ViewGroup rootView = (ViewGroup) inflater.inflate(layoutId, null);
         mainInformationContainer = (ViewGroup) rootView.findViewById(R.id.mainInformationContainer);
         mainInformationContainer.setClickable(false);
@@ -53,6 +59,13 @@ public class PromoPageFragment extends BaseFragment {
         if (isFirstFragment) {
             introAnimation();
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("isFirstFragment", isFirstFragment);
+        outState.putInt("layoutId", layoutId);
+        super.onSaveInstanceState(outState);
     }
 
     public void introAnimation() {

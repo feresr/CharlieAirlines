@@ -1,13 +1,10 @@
 package com.southwest.southwestapp.fragments;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.models.UserProfile;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +14,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.models.UserProfile;
+import com.southwest.southwestapp.network.models.SwaUser;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import retrofit.Callback;
+import retrofit.Response;
 
 
 /**
  * Created by emiliano.gudino on 09/09/2015.
  */
-public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener {
+public class LoginFragment extends BaseFragment implements View.OnClickListener, View.OnFocusChangeListener, Callback<SwaUser>, TextWatcher {
 
     private Button mBtLogIn;
     private EditText mEtUser;
@@ -53,9 +60,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
         mEtUser = (EditText) view.findViewById(R.id.et_user);
         mEtUser.setOnFocusChangeListener(this);
-
+        mEtUser.addTextChangedListener(this);
         mEtPass = (EditText) view.findViewById(R.id.et_pass);
         mEtPass.setOnFocusChangeListener(this);
+        mEtPass.addTextChangedListener(this);
 
         mLnrContainer = (LinearLayout) view.findViewById(R.id.lnr_container);
 
@@ -83,9 +91,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                     AppHelper.screenManager.hideSoftKeyboard(getActivity());
                     AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
                     mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
-                    AppHelper.userController.setUserProfile(new UserProfile(userName));
-                    delay();
 
+                    AppHelper.swaApi.doLogin(userName, userPass).enqueue(this);
                 }
 
                 break;
@@ -136,4 +143,56 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
                 break;
         }
     }
+
+    private void showLoginError() {
+        mProgresSwLogo.clearAnimation();
+        AnimationGenericUtils.fadeOutAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
+        Toast.makeText(getContext(), getResources().getString(R.string.log_in_invalid_username_or_password), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(Response<SwaUser> response) {
+        if (!response.isSuccess()) {
+            showLoginError();
+            return;
+        }
+
+        SwaUser user = response.body();
+        AppHelper.userController.setUserProfile(new UserProfile(user.getUsername()));
+        AppHelper.screenManager.showMainScreenFromLogIn(getActivity());
+
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+        showLoginError();
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        validateLoginFields();
+    }
+
+    private void validateLoginFields() {
+        String user = mEtUser.getText().toString();
+        String pass = mEtPass.getText().toString();
+
+        if ((!TextUtils.isEmpty(user)) && (!TextUtils.isEmpty(pass))) {
+            mBtLogIn.setEnabled(true);
+        } else {
+            mBtLogIn.setEnabled(false);
+        }
+    }
+
+
 }
