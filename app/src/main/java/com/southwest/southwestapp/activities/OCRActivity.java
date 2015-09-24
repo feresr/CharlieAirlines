@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.views.CameraView;
 import com.southwest.southwestapp.widgets.CameraBoxWidget;
@@ -28,8 +29,6 @@ public class OCRActivity extends Activity implements OnClickListener, CameraView
         if (!OpenCVLoader.initDebug()) {
         } else {
         }
-
-
     }
 
     private Camera mCamera;
@@ -104,13 +103,16 @@ public class OCRActivity extends Activity implements OnClickListener, CameraView
                 mCameraView.autoFocus();
                 break;
 
-
         }
     }
 
 
     @Override
-    public void onOcrResult(int i) {
-        Log.d("onOcrResult: ", i + "");
+    public void onOcrResult(boolean valid, String[] data) {
+        if (valid) {
+            AppHelper.screenManager.showCheckInSearchScreen(this, data);
+            finish();
+        }
     }
+
 }

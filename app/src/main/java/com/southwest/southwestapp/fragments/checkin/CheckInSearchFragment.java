@@ -4,7 +4,6 @@ import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
-import com.southwest.southwestapp.views.CameraView;
 import com.southwest.southwestapp.vo.PassengerVO;
 
 import android.os.Bundle;
@@ -29,14 +28,17 @@ import java.util.TimerTask;
 /**
  * Created by emiliano.gudino on 02/09/2015.
  */
-public class CheckInSearchFragment extends BaseFragment implements View.OnClickListener{
+public class CheckInSearchFragment extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = CheckInSearchFragment.class.getSimpleName();
+
+    public static final String TAG_AUTO_COMPLETE = "autocomplete";
 
     private Button mBtRetrieve;
     private EditText mEtConfirmationNumber;
     private EditText mEtFirstName;
     private EditText mEtLastName;
+    private EditText mEtCountry;
     private TextView mTvEligibleTrips;
     private Toolbar mToolbar;
     private CardView cardReservation;
@@ -47,7 +49,21 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     private Timer runTimer = new Timer();
     private TimerTask showTimerTask;
 
+    private String[] autoCompleteData;
+
     public CheckInSearchFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Bundle params = getArguments();
+
+        if (params != null) {
+            autoCompleteData = params.getStringArray(TAG_AUTO_COMPLETE);
+        }
+
     }
 
     @Nullable
@@ -63,12 +79,19 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         mEtConfirmationNumber = (EditText) searchView.findViewById(R.id.edt_confirmation);
         mEtFirstName = (EditText) searchView.findViewById(R.id.edt_first_name);
         mEtLastName = (EditText) searchView.findViewById(R.id.edt_last_name);
+        mEtCountry = (EditText) searchView.findViewById(R.id.edt_country);
         cardReservation = (CardView) searchView.findViewById(R.id.card_reservation);
 
         cardReservation.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         mBtRetrieve.setOnClickListener(this);
         scannPassport.setOnClickListener(this);
+
+        if (autoCompleteData != null) {
+            mEtCountry.setText(autoCompleteData[0]);
+            mEtLastName.setText(autoCompleteData[1]);
+            mEtFirstName.setText(autoCompleteData[2]);
+        }
 
         return searchView;
     }
@@ -90,11 +113,6 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 }
             });
         }
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

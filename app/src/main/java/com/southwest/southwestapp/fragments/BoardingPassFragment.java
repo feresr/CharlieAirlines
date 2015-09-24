@@ -148,7 +148,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.optionCancel:
-                AppHelper.screenManager.showCheckInSearchScreen(getActivity());
+                AppHelper.screenManager.showCheckInSearchScreen(getActivity(),null);
                 return true;
             case R.id.optionSend:
                 return true;

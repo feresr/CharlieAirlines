@@ -1,7 +1,6 @@
 package com.southwest.southwestapp.views;
 
 
-
 import android.content.Context;
 
 import android.graphics.Bitmap;
@@ -41,9 +40,8 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
     CameraViewCallback mOrcCallback;
 
-
     public interface CameraViewCallback {
-        public void onOcrResult(int i);
+        public void onOcrResult(boolean valid, String[] data);
     }
 
     public CameraView(Context context, Camera camera) {
@@ -72,28 +70,12 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
         try {
             String result = opticalRecognition.get();
+            Log.d("RESULT OCR:", result);
+            String[] parseado = parseMrz(result);
+            if (parseado != null) {
+                mOrcCallback.onOcrResult(true, parseado);
+            }
 
-            /*
-            new AlertDialog.Builder(getContext())
-                    .setTitle("OCR")
-                    .setMessage(result)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // continue with delete
-                        }
-                    })
-                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // do nothing
-                        }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-
-            */
-            Log.d("RESULT OCR: ", result);
-
-            mOrcCallback.onOcrResult(666);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -102,6 +84,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
         }
 
     }
+
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
@@ -113,6 +96,49 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
         }
     }
 
+    private String[] parseMrz(String mrz) {
+
+        String[] result = null;
+
+        try {
+
+            //if (resultTwo.length() >= 88) {
+            int indexP = mrz.indexOf("P<");
+            if (indexP != -1) {
+                result = new String[3];
+                String firstRow = mrz.substring(indexP, indexP + 44);
+                //Log.d("RESULT OCR:", firstRow);
+                String country = firstRow.substring(2, 5);
+                result[0] = country;
+                //Log.d("RESULT OCR:", country);
+                String surnames = firstRow.substring(5, firstRow.indexOf("<<"));
+                //Log.d("RESULT OCR:", surnames);
+                String surnamesArray[] = surnames.split("<");
+                result[1] = surnamesArray[0];
+                for (String SName : surnamesArray) {
+                    //  Log.d("RESULT OCR:", SName);
+                }
+                String names = firstRow.substring(firstRow.indexOf("<<") + 2, 44);
+
+                //Log.d("RESULT OCR:", names);
+                String namesArray[] = names.split("<");
+                result[2] = namesArray[0];
+                for (String Name : namesArray) {
+                    //Log.d("RESULT OCR:", Name);
+                }                    //String secondRow = result.substring(indexP + 43, indexP + 43 + 43);
+                //Log.e("secondRow", secondRow);
+            }
+            //}
+
+            return result;
+
+        } catch (Exception error) {
+            Log.d("RESULT OCR: ", error.getMessage());
+        }
+
+        return result;
+
+    }
 
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i2, int i3) {
@@ -129,9 +155,6 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
             mCamera.setPreviewDisplay(mHolder);
             mCamera.setPreviewCallback(this);
             mCamera.startPreview();
-            //AutoFocusEngine mAutoFocus = AutoFocusEngine.New(mCamera);
-            //mAutoFocus.start();
-
             mAutoFocus.start();
         } catch (IOException e) {
             Log.d("ERROR", "Camera error on surfaceChanged " + e.getMessage());
@@ -140,6 +163,10 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+        mCamera.setPreviewCallback(null);
+        if (mAutoFocus != null && mAutoFocus.isRunning()) {
+            mAutoFocus.stop();
+        }
         mCamera.stopPreview();
         mCamera.release();
     }
@@ -157,7 +184,6 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
     @Override
     public void onPreviewFrame(final byte[] data, Camera camera) {
 
-        //TODO: THIS MUST BE EVERY X TIME.. NOT X FRAMES
         if (framesCount >= 150) {
 
             Camera.Parameters parameters = camera.getParameters();
@@ -188,7 +214,6 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
     @Override
     public void onShutter() {
-
     }
 
     public void autoFocus() {
@@ -204,7 +229,6 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
                     opticalRecognition.cancel(true);
                 }
                 framesCount = 150;
-                Log.d("CameraView", "FOCO");
             }
         }
     };
