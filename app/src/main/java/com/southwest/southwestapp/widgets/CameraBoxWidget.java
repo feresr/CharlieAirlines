@@ -23,6 +23,8 @@ public class CameraBoxWidget extends View {
     private static final int MIN_FOCUS_BOX_HEIGHT = 20;
 
     private final Paint paint;
+    private Rect box;
+    private static Point ScrRes;
     private final int maskColor;
     private final int frameColor;
     private final int cornerColor;
@@ -34,14 +36,11 @@ public class CameraBoxWidget extends View {
 
         maskColor = ContextCompat.getColor(context, R.color.camera_box_mask);
         frameColor = ContextCompat.getColor(context, R.color.camera_box_frame);
-        cornerColor = ContextCompat.getColor(context, R.color.dark_blue);
+        cornerColor = ContextCompat.getColor(context, android.R.color.black);
 
         this.setOnTouchListener(getTouchListener());
     }
 
-    private Rect box;
-
-    private static Point ScrRes;
 
     private Rect getBoxRect() {
 

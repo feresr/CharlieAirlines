@@ -7,7 +7,9 @@
     <FrameLayout
         android:id="@+id/camera_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
     <com.southwest.southwestapp.widgets.CameraBoxWidget
         android:id="@+id/focus_box"
@@ -22,6 +24,14 @@
         android:layout_gravity="right|top"
         android:background="@android:drawable/ic_menu_close_clear_cancel"
         android:padding="20dp" />
+
+    <ImageButton
+        android:id="@+id/requesFocus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/reques_focus_icon" />
 
 
 </FrameLayout>

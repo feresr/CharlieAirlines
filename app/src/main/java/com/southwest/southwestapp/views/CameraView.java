@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
 
+
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -35,6 +36,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
     private SurfaceHolder mHolder;
     private Camera mCamera;
     private AutoFocusEngine mAutoFocus;
+    private OpticalRecognitionAsyn opticalRecognition;
     private int framesCount = 0;
 
     public CameraView(Context context, Camera camera) {
@@ -47,13 +49,13 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_NORMAL);
 
-        mAutoFocus =  AutoFocusEngine.New(mCamera);
+        mAutoFocus = AutoFocusEngine.New(mCamera);
 
     }
 
     private void doOCR(final Bitmap bitmap) {
 
-        OpticalRecognitionAsyn opticalRecognition = new OpticalRecognitionAsyn();
+        opticalRecognition = new OpticalRecognitionAsyn();
         opticalRecognition.execute(bitmap);
 
         try {
@@ -174,11 +176,6 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
     }
 
-    public void takePicture() {
-        mCamera.takePicture(null, null, this);
-    }
-
-
     public void autoFocus() {
         mCamera.autoFocus(autoFocusCallback);
     }
@@ -186,7 +183,13 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
     Camera.AutoFocusCallback autoFocusCallback = new android.hardware.Camera.AutoFocusCallback() {
         @Override
         public void onAutoFocus(boolean success, android.hardware.Camera camera) {
-
+            if (success) {
+                if (!opticalRecognition.isCancelled()) {
+                    opticalRecognition.cancel(true);
+                }
+                framesCount = 150;
+                Log.d("CameraView", "FOCO");
+            }
         }
     };
 

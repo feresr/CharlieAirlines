@@ -21,8 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -43,6 +41,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     private CardView cardReservation;
     private View searchView;
     private ImageView mProgresSwLogo;
+    private Button scannPassport;
 
     private Timer runTimer = new Timer();
     private TimerTask showTimerTask;
@@ -59,6 +58,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         setUpToolBar();
 
         mBtRetrieve = (Button) searchView.findViewById(R.id.btn_retrieve_reservation);
+        scannPassport = (Button) searchView.findViewById(R.id.btn_scan_passport);
         mEtConfirmationNumber = (EditText) searchView.findViewById(R.id.edt_confirmation);
         mEtFirstName = (EditText) searchView.findViewById(R.id.edt_first_name);
         mEtLastName = (EditText) searchView.findViewById(R.id.edt_last_name);
@@ -67,6 +67,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         cardReservation.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         mBtRetrieve.setOnClickListener(this);
+        scannPassport.setOnClickListener(this);
 
         return searchView;
     }
@@ -117,6 +118,10 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                     Toast.makeText(getContext(), "No data", Toast.LENGTH_LONG).show();
                 }
 
+                break;
+
+            case R.id.btn_scan_passport:
+                AppHelper.screenManager.showScanPassport(getActivity());
                 break;
             default:
                 break;

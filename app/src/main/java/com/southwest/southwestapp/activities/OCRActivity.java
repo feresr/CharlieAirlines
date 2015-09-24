@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.models.AutoFocusEngine;
 import com.southwest.southwestapp.views.CameraView;
 import com.southwest.southwestapp.widgets.CameraBoxWidget;
 
@@ -34,6 +34,8 @@ public class OCRActivity extends Activity implements OnClickListener {
 
     private Camera mCamera;
     private CameraView mCameraView;
+    private ImageButton mRequesFocus;
+    private ImageButton mImgClose;
     public static CameraBoxWidget focusBox;
 
     @Override
@@ -44,9 +46,12 @@ public class OCRActivity extends Activity implements OnClickListener {
         initCamera();
 
         focusBox = (CameraBoxWidget) findViewById(R.id.focus_box);
-        ImageButton imgClose = (ImageButton) findViewById(R.id.orcImgClose);
-        imgClose.setOnClickListener(this);
+        mImgClose = (ImageButton) findViewById(R.id.orcImgClose);
+        mRequesFocus = (ImageButton) findViewById(R.id.requesFocus);
 
+        mImgClose.setOnClickListener(this);
+        mRequesFocus.setOnClickListener(this);
+        focusBox.setOnClickListener(this);
 
     }
 
@@ -59,8 +64,9 @@ public class OCRActivity extends Activity implements OnClickListener {
 
             if (mCamera != null) {
                 mCameraView = new CameraView(this, mCamera);
-                FrameLayout camera_view = (FrameLayout) findViewById(R.id.camera_view);
-                camera_view.addView(mCameraView);
+                FrameLayout cameraView = (FrameLayout) findViewById(R.id.camera_view);
+
+                cameraView.addView(mCameraView);
             }
 
         } catch (Exception e) {
@@ -90,8 +96,14 @@ public class OCRActivity extends Activity implements OnClickListener {
 
         switch (id) {
             case R.id.orcImgClose:
-
+                finish();
                 break;
+
+            case R.id.requesFocus:
+                mCameraView.autoFocus();
+                break;
+
+
         }
     }
 

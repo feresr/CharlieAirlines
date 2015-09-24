@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
 import com.southwest.southwestapp.activities.MainActivity;
+import com.southwest.southwestapp.activities.OCRActivity;
 import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.fragments.LoginFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
@@ -111,6 +112,11 @@ public class ScreenManager {
         Intent intent = new Intent(origin, MainActivity.class);
         origin.startActivity(intent);
         origin.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void showScanPassport(Activity origin){
+        Intent intent = new Intent(origin, OCRActivity.class);
+        origin.startActivity(intent);
     }
 
     public void showBoardingAfterShaking(Context context) {
