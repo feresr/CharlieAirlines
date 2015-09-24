@@ -20,6 +20,7 @@ public class AutoFocusEngine implements Camera.AutoFocusCallback {
         this.timer = new Timer();
     }
 
+
     static public AutoFocusEngine New(Camera camera) {
         return new AutoFocusEngine(camera);
     }
