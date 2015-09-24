@@ -9,7 +9,7 @@ import java.util.TimerTask;
 @SuppressWarnings("deprecation")
 public class AutoFocusEngine implements Camera.AutoFocusCallback {
 
-    private static final long AUTO_FOCUS_INTERVAL_MS = 9000;
+    private static final long AUTO_FOCUS_INTERVAL_MS = 14000;
 
     private Timer timer;
     private Camera camera;

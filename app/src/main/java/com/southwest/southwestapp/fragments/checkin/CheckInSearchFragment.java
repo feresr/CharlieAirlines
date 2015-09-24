@@ -4,6 +4,7 @@ import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
+import com.southwest.southwestapp.views.CameraView;
 import com.southwest.southwestapp.vo.PassengerVO;
 
 import android.os.Bundle;
@@ -28,7 +29,7 @@ import java.util.TimerTask;
 /**
  * Created by emiliano.gudino on 02/09/2015.
  */
-public class CheckInSearchFragment extends BaseFragment implements View.OnClickListener {
+public class CheckInSearchFragment extends BaseFragment implements View.OnClickListener{
 
     private static final String TAG = CheckInSearchFragment.class.getSimpleName();
 
@@ -105,6 +106,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)) {
 
+                    scannPassport.setVisibility(View.INVISIBLE);
                     PassengerVO[] param = {new PassengerVO(mEtFirstName.getText().toString() + " " + mEtLastName.getText().toString(), "", 0)};
                     AppHelper.userCheckInController.setConfirmationNumer(number);
                     AppHelper.userCheckInController.setPassangers(param);
