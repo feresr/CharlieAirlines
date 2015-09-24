@@ -61,7 +61,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
     }
 
 
-    public void setGameCallback(CameraViewCallback cb) {
+    public void setOcrCallback(CameraViewCallback cb) {
         this.mOrcCallback = cb;
     }
 
