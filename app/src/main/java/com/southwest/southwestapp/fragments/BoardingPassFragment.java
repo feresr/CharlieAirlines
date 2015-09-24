@@ -25,6 +25,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     private View boardingPassView;
     private NestedScrollView mContainer;
     private String mData;
+    public static final String BOARDING_PASS_SHOWN = "BOARDING_PASS_SHOWN";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
 
         Bundle info = getActivity().getIntent().getExtras();
         if (info != null) {
-            mData = info.getString("BOARDING_PASS_SHOWN");
+            mData = info.getString(BOARDING_PASS_SHOWN);
         }
     }
 
