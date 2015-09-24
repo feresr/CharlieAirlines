@@ -94,7 +94,6 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
                 AppHelper.screenManager.showCheckInSearchScreen(getActivity());
                 return true;
             case R.id.optionSend:
-                ServiceShakeMotion.start(getActivity());
                 return true;
             case R.id.optionSave:
                 showAlertSaveToPhotos();
@@ -103,5 +102,11 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ServiceShakeMotion.start(getActivity());
     }
 }
