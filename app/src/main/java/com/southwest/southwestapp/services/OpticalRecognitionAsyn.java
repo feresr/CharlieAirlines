@@ -1,10 +1,10 @@
-package com.southwest.southwestapp.models;
+package com.southwest.southwestapp.services;
 
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.util.Log;
+
+import com.southwest.southwestapp.models.Ocr;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
@@ -18,17 +18,11 @@ public class OpticalRecognitionAsyn extends AsyncTask<Bitmap, Void, String> {
 
     private Ocr mTessOCR;
 
-    private Context context;
-
-    public OpticalRecognitionAsyn(Context context) {
-        this.context = context;
-    }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         mTessOCR = new Ocr();
-
     }
 
     @Override

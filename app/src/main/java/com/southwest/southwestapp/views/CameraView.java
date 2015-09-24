@@ -14,7 +14,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import com.southwest.southwestapp.activities.OCRActivity;
-import com.southwest.southwestapp.models.OpticalRecognitionAsyn;
+import com.southwest.southwestapp.models.AutoFocusEngine;
+import com.southwest.southwestapp.services.OpticalRecognitionAsyn;
 import com.southwest.southwestapp.utils.OcrUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -27,11 +28,14 @@ import java.util.concurrent.ExecutionException;
  */
 @SuppressWarnings("deprecation")
 public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
-        Camera.PictureCallback, android.hardware.Camera.ShutterCallback, Camera.PreviewCallback {
+        Camera.PictureCallback,
+        Camera.ShutterCallback,
+        Camera.PreviewCallback {
 
     private SurfaceHolder mHolder;
     private Camera mCamera;
-    private int frame = 0;
+    private AutoFocusEngine mAutoFocus;
+    private int framesCount = 0;
 
     public CameraView(Context context, Camera camera) {
         super(context);
@@ -43,11 +47,13 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_NORMAL);
 
+        mAutoFocus =  AutoFocusEngine.New(mCamera);
+
     }
 
     private void doOCR(final Bitmap bitmap) {
 
-        OpticalRecognitionAsyn opticalRecognition = new OpticalRecognitionAsyn(getContext());
+        OpticalRecognitionAsyn opticalRecognition = new OpticalRecognitionAsyn();
         opticalRecognition.execute(bitmap);
 
         try {
@@ -106,6 +112,10 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
             mCamera.setPreviewDisplay(mHolder);
             mCamera.setPreviewCallback(this);
             mCamera.startPreview();
+            //AutoFocusEngine mAutoFocus = AutoFocusEngine.New(mCamera);
+            //mAutoFocus.start();
+
+            mAutoFocus.start();
         } catch (IOException e) {
             Log.d("ERROR", "Camera error on surfaceChanged " + e.getMessage());
         }
@@ -119,26 +129,19 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
     @Override
     public void onPictureTaken(byte[] bytes, android.hardware.Camera camera) {
-
         if (bytes == null) {
             return;
         }
-
-        //Bitmap bmp = OcrUtils.getFocusedBitmap(getContext(), camera, bytes, OCRActivity.focusBox.getBox());
-
-
         mCamera.stopPreview();
         mCamera.startPreview();
-
     }
 
 
     @Override
     public void onPreviewFrame(final byte[] data, Camera camera) {
 
-        Log.d("Aloha", "PREVIW FRAME");
-
-        if (frame >= 150) {
+        //TODO: THIS MUST BE EVERY X TIME.. NOT X FRAMES
+        if (framesCount >= 150) {
 
             Camera.Parameters parameters = camera.getParameters();
             int width = parameters.getPreviewSize().width;
@@ -157,11 +160,11 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
             doOCR(finalB);
 
-            frame = 0;
+            framesCount = 0;
 
         }
 
-        frame++;
+        framesCount++;
 
     }
 

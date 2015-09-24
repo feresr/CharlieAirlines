@@ -34,7 +34,7 @@ public class CameraBoxWidget extends View {
 
         maskColor = ContextCompat.getColor(context, R.color.camera_box_mask);
         frameColor = ContextCompat.getColor(context, R.color.camera_box_frame);
-        cornerColor = ContextCompat.getColor(context, R.color.camera_box_corner);
+        cornerColor = ContextCompat.getColor(context, R.color.dark_blue);
 
         this.setOnTouchListener(getTouchListener());
     }
@@ -246,10 +246,10 @@ public class CameraBoxWidget extends View {
         canvas.drawRect(frame.left, frame.bottom - 1, frame.right + 1, frame.bottom + 1, paint);
 
         paint.setColor(cornerColor);
-        canvas.drawCircle(frame.left - 32, frame.top - 32, 32, paint);
-        canvas.drawCircle(frame.right + 32, frame.top - 32, 32, paint);
-        canvas.drawCircle(frame.left - 32, frame.bottom + 32, 32, paint);
-        canvas.drawCircle(frame.right + 32, frame.bottom + 32, 32, paint);
+        canvas.drawCircle(frame.left - 20, frame.top - 20, 20, paint);
+        canvas.drawCircle(frame.right + 20, frame.top - 20, 20, paint);
+        canvas.drawCircle(frame.left - 20, frame.bottom + 20, 20, paint);
+        canvas.drawCircle(frame.right + 20, frame.bottom + 20, 20, paint);
 
     }
 }
