@@ -1,6 +1,7 @@
 package com.southwest.southwestapp.views;
 
 
+
 import android.content.Context;
 
 import android.graphics.Bitmap;
@@ -8,7 +9,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
-
 
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -39,6 +39,13 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
     private OpticalRecognitionAsyn opticalRecognition;
     private int framesCount = 0;
 
+    CameraViewCallback mOrcCallback;
+
+
+    public interface CameraViewCallback {
+        public void onOcrResult(int i);
+    }
+
     public CameraView(Context context, Camera camera) {
         super(context);
 
@@ -51,6 +58,11 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
         mAutoFocus = AutoFocusEngine.New(mCamera);
 
+    }
+
+
+    public void setGameCallback(CameraViewCallback cb) {
+        this.mOrcCallback = cb;
     }
 
     private void doOCR(final Bitmap bitmap) {
@@ -80,6 +92,9 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
             */
             Log.d("RESULT OCR: ", result);
+
+            mOrcCallback.onOcrResult(666);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -182,9 +197,10 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
     Camera.AutoFocusCallback autoFocusCallback = new android.hardware.Camera.AutoFocusCallback() {
         @Override
-        public void onAutoFocus(boolean success, android.hardware.Camera camera) {
+        public void onAutoFocus(boolean success, Camera camera) {
             if (success) {
-                if (!opticalRecognition.isCancelled()) {
+
+                if (opticalRecognition != null && !opticalRecognition.isCancelled()) {
                     opticalRecognition.cancel(true);
                 }
                 framesCount = 150;
