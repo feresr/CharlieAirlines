@@ -24,10 +24,16 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     private Toolbar mToolbar;
     private View boardingPassView;
     private NestedScrollView mContainer;
+    private String mData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle info = getActivity().getIntent().getExtras();
+        if (info != null) {
+            mData = info.getString("BOARDING_PASS_SHOWN");
+        }
     }
 
     @Nullable
@@ -107,6 +113,8 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     @Override
     public void onStop() {
         super.onStop();
-        ServiceShakeMotion.start(getActivity());
+        if (mData == null) {
+            ServiceShakeMotion.start(getActivity());
+        }
     }
 }

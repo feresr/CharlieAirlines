@@ -121,6 +121,7 @@ public class ScreenManager {
         Intent intent = new Intent(context, BaseActivity.class);
         intent.putExtra(BaseActivity.FRAGMENT, BoardingPassFragment.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("BOARDING_PASS_SHOWN", "boardingPassShown");
         context.startActivity(intent);
     }
 }
