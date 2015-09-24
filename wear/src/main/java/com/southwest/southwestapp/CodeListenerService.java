@@ -1,8 +1,6 @@
 package com.southwest.southwestapp;
 
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,7 +27,6 @@ import java.io.InputStream;
 public class CodeListenerService extends WearableListenerService implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     public static Bitmap mbitmap;
     private final String TAG = CodeListenerService.class.getSimpleName();
-    private int mNotificationId = 1;
     public static final String ACTION_DISMISS = "de.peterfriese.notificationwithopenactivityonwearableaction.DISMISS";
     private GoogleApiClient googleApiClient;
 
@@ -82,7 +79,7 @@ public class CodeListenerService extends WearableListenerService implements Goog
 
 
                 NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-                notificationManagerCompat.notify(mNotificationId++, mBuilder.build());
+                notificationManagerCompat.notify(0, mBuilder.build());
 
 
             }

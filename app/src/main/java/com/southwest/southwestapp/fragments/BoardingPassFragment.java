@@ -76,8 +76,21 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
         mGoogleApiClient.disconnect();
     }
 
+    private void sendBoardingPassToWearables() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.qr_code_example);
+        Asset asset = createAssetFromBitmap(bitmap);
+        PutDataMapRequest dataMap = PutDataMapRequest.create("/image");
+        dataMap.getDataMap().putAsset("qrcodeImage", asset);
+        PutDataRequest request = dataMap.asPutDataRequest();
+        Wearable.DataApi.deleteDataItems(
+                mGoogleApiClient, dataMap.getUri());
+
+        PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi
+                .putDataItem(mGoogleApiClient, request);
+    }
+
     private void setUpToolBar() {
-        mToolbar = (Toolbar)boardingPassView.findViewById(R.id.toolbarGeneral);
+        mToolbar = (Toolbar) boardingPassView.findViewById(R.id.toolbarGeneral);
         if (mToolbar != null) {
             mToolbar.setTitle(getResources().getString(R.string.boarding_pass_title));
             mToolbar.setSubtitle(getResources().getString(R.string.boarding_pass_subtitle));
@@ -101,23 +114,23 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
     private void showAlertSaveToPhotos() {
 
         AppHelper.dialogManager.showDialog(getActivity(),
-                                           getResources().getString(R.string.boarding_pass_save_dialog_title),
-                                           getResources().getString(R.string.boarding_pass_save_dialog_message),
-                                           getResources().getString(R.string.boarding_pass_save_dialog_yes),
-                                           new DialogInterface.OnClickListener() {
-                                               @Override
-                                               public void onClick(DialogInterface dialog, int which) {
-                                                   //AppHelper.screenManager.showMainScreen(getActivity());
-                                                   getActivity().finish();
-                                               }
-                                           },
-                                           getResources().getString(R.string.boarding_pass_save_dialog_no),
-                                           new DialogInterface.OnClickListener() {
-                                               @Override
-                                               public void onClick(DialogInterface dialog, int which) {
-                                                   //Complete flow
-                                               }
-                                           }, false);
+                getResources().getString(R.string.boarding_pass_save_dialog_title),
+                getResources().getString(R.string.boarding_pass_save_dialog_message),
+                getResources().getString(R.string.boarding_pass_save_dialog_yes),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //AppHelper.screenManager.showMainScreen(getActivity());
+                        getActivity().finish();
+                    }
+                },
+                getResources().getString(R.string.boarding_pass_save_dialog_no),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Complete flow
+                    }
+                }, false);
     }
 
     @Override
@@ -127,20 +140,6 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
                 AppHelper.screenManager.showCheckInSearchScreen(getActivity());
                 return true;
             case R.id.optionSend:
-
-
-
-                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.qr_code_example);
-                Asset asset = createAssetFromBitmap(bitmap);
-                PutDataMapRequest dataMap = PutDataMapRequest.create("/image");
-                dataMap.getDataMap().putAsset("qrcodeImage", asset);
-                PutDataRequest request = dataMap.asPutDataRequest();
-
-                Wearable.DataApi.deleteDataItems(
-                        mGoogleApiClient, dataMap.getUri());
-
-                PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi
-                        .putDataItem(mGoogleApiClient, request);
                 return true;
             case R.id.optionSave:
                 showAlertSaveToPhotos();
@@ -153,7 +152,7 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
 
     @Override
     public void onConnected(Bundle bundle) {
-
+        sendBoardingPassToWearables();
     }
 
     @Override
