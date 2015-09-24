@@ -7,7 +7,6 @@ import android.hardware.Camera;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
@@ -48,14 +47,13 @@ public class OCRActivity extends Activity implements OnClickListener {
         }
 
         if (mCamera != null) {
-            mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
+            mCameraView = new CameraView(this, mCamera);
             FrameLayout camera_view = (FrameLayout) findViewById(R.id.camera_view);
-            camera_view.addView(mCameraView);//add the SurfaceView to the layout
+            camera_view.addView(mCameraView);
         }
 
         focusBox = (CameraBoxWidget) findViewById(R.id.focus_box);
 
-        //btn to close the application
         ImageButton imgClose = (ImageButton) findViewById(R.id.imgClose);
         imgClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,13 +86,6 @@ public class OCRActivity extends Activity implements OnClickListener {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
     }
@@ -104,7 +95,6 @@ public class OCRActivity extends Activity implements OnClickListener {
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
-
 
 
         }

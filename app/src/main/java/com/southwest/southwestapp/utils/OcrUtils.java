@@ -24,6 +24,7 @@ public class OcrUtils {
     private static int MIN_PREVIEW_PIXELS = 470 * 320;
     private static int MAX_PREVIEW_PIXELS = 800 * 600;
 
+
     public static Point getScreenResolution(Context context) {
 
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -100,7 +101,7 @@ public class OcrUtils {
     }
 
 
-    public static Bitmap getFocusedBitmap(Context context, Camera camera, byte[] data, Rect box) {
+    public static Bitmap getFocusedBitmap(Context context, Camera camera, Bitmap bmp, Rect box) {
         Point CamRes = getCameraResolution(context, camera);
         Point ScrRes = getScreenResolution(context);
 
@@ -121,7 +122,6 @@ public class OcrUtils {
         int CW = CamRes.x;
         int CH = CamRes.y;
 
-        Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
 
         if (CW > CH)
             bmp = rotateBitmap(bmp, 90);

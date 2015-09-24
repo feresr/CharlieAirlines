@@ -4,6 +4,7 @@ package com.southwest.southwestapp.models;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;

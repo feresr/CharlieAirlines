@@ -2,20 +2,22 @@ package com.southwest.southwestapp.views;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
+
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.graphics.YuvImage;
 import android.hardware.Camera;
 
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
 import com.southwest.southwestapp.activities.OCRActivity;
 import com.southwest.southwestapp.models.OpticalRecognitionAsyn;
 import com.southwest.southwestapp.utils.OcrUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
@@ -25,10 +27,11 @@ import java.util.concurrent.ExecutionException;
  */
 @SuppressWarnings("deprecation")
 public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
-        Camera.PictureCallback, android.hardware.Camera.ShutterCallback {
+        Camera.PictureCallback, android.hardware.Camera.ShutterCallback, Camera.PreviewCallback {
 
     private SurfaceHolder mHolder;
     private Camera mCamera;
+    private int frame = 0;
 
     public CameraView(Context context, Camera camera) {
         super(context);
@@ -50,6 +53,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
         try {
             String result = opticalRecognition.get();
 
+            /*
             new AlertDialog.Builder(getContext())
                     .setTitle("OCR")
                     .setMessage(result)
@@ -66,7 +70,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
 
-
+            */
             Log.d("RESULT OCR: ", result);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -100,6 +104,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
         try {
             mCamera.setPreviewDisplay(mHolder);
+            mCamera.setPreviewCallback(this);
             mCamera.startPreview();
         } catch (IOException e) {
             Log.d("ERROR", "Camera error on surfaceChanged " + e.getMessage());
@@ -119,12 +124,44 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
             return;
         }
 
-        Bitmap bmp = OcrUtils.getFocusedBitmap(getContext(), camera, bytes, OCRActivity.focusBox.getBox());
+        //Bitmap bmp = OcrUtils.getFocusedBitmap(getContext(), camera, bytes, OCRActivity.focusBox.getBox());
 
-        doOCR(bmp);
 
         mCamera.stopPreview();
         mCamera.startPreview();
+
+    }
+
+
+    @Override
+    public void onPreviewFrame(final byte[] data, Camera camera) {
+
+        Log.d("Aloha", "PREVIW FRAME");
+
+        if (frame >= 150) {
+
+            Camera.Parameters parameters = camera.getParameters();
+            int width = parameters.getPreviewSize().width;
+            int height = parameters.getPreviewSize().height;
+
+            YuvImage yuv = new YuvImage(data, parameters.getPreviewFormat(), width, height, null);
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            yuv.compressToJpeg(new Rect(0, 0, width, height), 50, out);
+
+            byte[] bytes = out.toByteArray();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
+            final Bitmap finalB = OcrUtils.getFocusedBitmap(getContext(), mCamera, bitmap, OCRActivity.focusBox.getBox());
+            bitmap.recycle();
+
+            doOCR(finalB);
+
+            frame = 0;
+
+        }
+
+        frame++;
 
     }
 
