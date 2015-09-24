@@ -136,7 +136,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_toEndOf="@+id/boardingPassPassenger"
                     android:layout_toRightOf="@+id/boardingPassPassenger"
-                    android:text="Kelly / Gary"
+                    android:layout_marginLeft="8dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold" />
 
