@@ -158,6 +158,7 @@
     <!-- Optical Recognition -->
     <string name="progress_dialog_processing">Processing</string>
     <string name="progress_dialog_scanning">scanning</string>
+    <string name="try_scan">Try Scan</string>
 
 
 </resources>
