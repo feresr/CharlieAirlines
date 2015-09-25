@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
@@ -33,7 +34,7 @@ public class OCRActivity extends Activity implements OnClickListener, CameraView
 
     private Camera mCamera;
     private CameraView mCameraView;
-    private ImageButton mRequesFocus;
+    private Button mRequesFocus;
     private ImageButton mImgClose;
     public static CameraBoxWidget focusBox;
 
@@ -46,7 +47,7 @@ public class OCRActivity extends Activity implements OnClickListener, CameraView
 
         focusBox = (CameraBoxWidget) findViewById(R.id.focus_box);
         mImgClose = (ImageButton) findViewById(R.id.orcImgClose);
-        mRequesFocus = (ImageButton) findViewById(R.id.requesFocus);
+        mRequesFocus = (Button) findViewById(R.id.requesFocus);
 
         mImgClose.setOnClickListener(this);
         mRequesFocus.setOnClickListener(this);
