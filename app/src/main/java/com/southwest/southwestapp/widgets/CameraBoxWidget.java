@@ -49,7 +49,7 @@ public class CameraBoxWidget extends View {
             ScrRes = OcrUtils.getScreenResolution(getContext());
 
             int width = ScrRes.x * 6 / 7;
-            int height = ScrRes.y / 9;
+            int height = ScrRes.y / 13;
 
             width = width == 0
                     ? MIN_FOCUS_BOX_WIDTH
