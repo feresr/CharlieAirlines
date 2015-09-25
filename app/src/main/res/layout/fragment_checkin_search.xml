@@ -169,6 +169,7 @@
                 android:id="@+id/btn_scan_passport"
                 android:layout_width="45dp"
                 android:layout_height="35dp"
+                android:layout_marginRight="15dp"
                 android:layout_gravity="right"
                 android:background="@null"
                 android:text="Scan" />
