@@ -207,7 +207,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,
 
         }
 
-        framesCount++;
+        //framesCount++;
 
     }
 
