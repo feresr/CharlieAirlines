@@ -25,13 +25,14 @@
         android:background="@android:drawable/ic_menu_close_clear_cancel"
         android:padding="20dp" />
 
-    <ImageButton
+    <Button
         android:id="@+id/requesFocus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/reques_focus_icon" />
+        android:background="@color/dark_blue"
+        android:text="@string/try_scan"
+        android:textColor="@color/neutral_white" />
 
 
 </FrameLayout>
