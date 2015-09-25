@@ -10,7 +10,6 @@ import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -58,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mDrawerToggle;
     private TripActionsFragment tripFragment;
+    private ImageView navviewHeader;
+
     private GoogleApiClient mGoogleApiClient;
 
     private int mCurrentSelectedPosition;
@@ -165,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
 
     private void setUpNavDrawer() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.nav_drawer);
+        navviewHeader = ((ImageView) mDrawerLayout.findViewById(R.id.drawer_background));
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -301,7 +303,8 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
         if (response.body().photos.photo.size() > 0) {
             Random r = new Random();
             FlickrPhoto photo = response.body().photos.photo.get(r.nextInt(response.body().photos.photo.size()));
-            Picasso.with(this).load(photo.getUrl("z")).placeholder(ContextCompat.getDrawable(this, R.drawable.bw_drawable_header)).into(((ImageView) findViewById(R.id.drawer_background)));
+
+            Picasso.with(this).load(photo.getUrl("z")).placeholder(navviewHeader.getDrawable()).into(navviewHeader);
         }
     }
 
