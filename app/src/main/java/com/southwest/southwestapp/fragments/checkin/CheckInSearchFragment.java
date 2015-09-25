@@ -235,6 +235,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
     private void showError() {
         mProgresSwLogo.clearAnimation();
+        scannPassport.setVisibility(View.VISIBLE);
         AnimationGenericUtils.fadeOutAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
         Toast.makeText(getContext(), "Reservation not found", Toast.LENGTH_SHORT).show();
     }
