@@ -62,6 +62,7 @@ public class ScreenManager {
             i.putExtra(BaseActivity.FRAGMENT_PARAMS, params);
         }
         i.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         origin.startActivity(i);
     }
 
