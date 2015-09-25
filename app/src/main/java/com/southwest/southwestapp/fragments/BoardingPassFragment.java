@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 
@@ -57,6 +58,8 @@ public class BoardingPassFragment extends BaseFragment implements Toolbar.OnMenu
 
         mContainer = (NestedScrollView)boardingPassView.findViewById(R.id.container);
         mContainer.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        String username = AppHelper.userCheckInController.getPassenger(0).getName();
+        ((TextView) boardingPassView.findViewById(R.id.boardingPassPassengerName)).setText(username);
 
         setUpToolBar();
         buildGoogleApiClient();

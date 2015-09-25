@@ -1,17 +1,8 @@
 package com.southwest.southwestapp.fragments.checkin;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.LabeledText;
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-import com.southwest.southwestapp.vo.CheckInVO;
-import com.southwest.southwestapp.vo.PassengerVO;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +10,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.LabeledText;
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.models.CheckIn;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,16 +29,13 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
 
     private static final String TAG = CheckInFragment.class.getSimpleName();
 
-    private Button mBtConfirmation;
-    private LinearLayout linearBody;
     private Toolbar mToolbar;
-    private LabeledText passengerName;
-    private LabeledText confirmation;
-    private View checkInView;
+    private Button mBtConfirmation;
+    private View nCheckInView;
     private ImageView mProgresSwLogo;
 
-    private Timer runTimer = new Timer();
-    private TimerTask showTimerTask;
+    private Timer nRunTimer = new Timer();
+    private TimerTask nShowTimerTask;
 
     public CheckInFragment() {
     }
@@ -49,29 +44,59 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        checkInView = inflater.inflate(R.layout.fragment_checkin, container, false);
-
-        mBtConfirmation = (Button) checkInView.findViewById(R.id.confirmationButton);
-        linearBody = (LinearLayout) checkInView.findViewById(R.id.checkInBodyWrapper);
-        passengerName = (LabeledText) checkInView.findViewById(R.id.passenger);
-        confirmation = (LabeledText) checkInView.findViewById(R.id.confirmation_one);
-
-        if (AppHelper.userCheckInController.getCheckin() != null) {
-            passengerName.setMainText(AppHelper.userCheckInController.getCheckin().getPassengers()[0].getName());
-            confirmation.setMainText(AppHelper.userCheckInController.getCheckin().getConfirmationNumber());
-        }
-
-        linearBody.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+        nCheckInView = inflater.inflate(R.layout.fragment_checkin, container, false);
 
         setUpToolBar();
 
+        mBtConfirmation = (Button) nCheckInView.findViewById(R.id.confirmationButton);
         mBtConfirmation.setOnClickListener(this);
 
-        return checkInView;
+        LinearLayout linearBody = (LinearLayout) nCheckInView.findViewById(R.id.checkInBodyWrapper);
+        linearBody.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
+
+        fillView(nCheckInView);
+
+        return nCheckInView;
+    }
+
+    private void fillView(View nCheckInView) {
+
+        CheckIn checkIn = AppHelper.userCheckInController.getCheckIn();
+
+        if (checkIn != null) {
+
+            LabeledText passengerName = (LabeledText) nCheckInView.findViewById(R.id.passenger_name);
+            LabeledText confirmation = (LabeledText) nCheckInView.findViewById(R.id.confirmation_number);
+            LabeledText city = (LabeledText) nCheckInView.findViewById(R.id.city);
+            LabeledText date = (LabeledText) nCheckInView.findViewById(R.id.date);
+            LabeledText depart = (LabeledText) nCheckInView.findViewById(R.id.depart);
+            LabeledText arrive = (LabeledText) nCheckInView.findViewById(R.id.arrive);
+            LabeledText flight_number = (LabeledText) nCheckInView.findViewById(R.id.flight_number);
+            LabeledText flight_travel_time = (LabeledText) nCheckInView.findViewById(R.id.flight_travel_time);
+
+            passengerName.setMainText(checkIn.getPassengers().get(0).getName());
+            confirmation.setMainText(checkIn.getConfirmationNumber());
+
+            city.setMainText(checkIn.getCity());
+            city.setUpperText(checkIn.getMonthDate());
+
+            date.setMainText(checkIn.getMonthDate());
+            date.setBottomText(checkIn.getDateDay());
+
+            arrive.setMainText(checkIn.getArrivesCity());
+            arrive.setBottomText(checkIn.getArrivesTime());
+
+            depart.setMainText(checkIn.getDepartsCity());
+            depart.setBottomText(checkIn.getDepartsTime());
+
+            flight_number.setMainText(checkIn.getFlightNumber());
+
+            flight_travel_time.setMainText(checkIn.getTravelTime());
+        }
     }
 
     private void setUpToolBar() {
-        mToolbar = (Toolbar) checkInView.findViewById(R.id.toolbarGeneral);
+        mToolbar = (Toolbar) nCheckInView.findViewById(R.id.toolbarGeneral);
         mProgresSwLogo = (ImageView) mToolbar.findViewById(R.id.progresSwLogo);
         if (mToolbar != null) {
             mToolbar.setTitle(getResources().getString(R.string.check_in_tool_bar_title));
@@ -89,11 +114,6 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.confirmationButton:
@@ -102,14 +122,13 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
                 mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
                 delay();
                 break;
-
         }
     }
 
     private void delay() {
         long delay = 4000;
 
-        showTimerTask = new TimerTask() {
+        nShowTimerTask = new TimerTask() {
             @Override
             public void run() {
                 AppHelper.screenManager.showEmergencyContact(getActivity());
@@ -117,7 +136,7 @@ public class CheckInFragment extends BaseFragment implements View.OnClickListene
         };
 
         // Start the timer
-        runTimer.schedule(showTimerTask, delay);
+        nRunTimer.schedule(nShowTimerTask, delay);
     }
 
 }

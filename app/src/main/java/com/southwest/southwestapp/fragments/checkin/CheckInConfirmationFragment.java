@@ -1,31 +1,23 @@
 package com.southwest.southwestapp.fragments.checkin;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.LabeledText;
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.adapters.CheckInRecyclerAdapter;
-import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.vo.CheckInVO;
-import com.southwest.southwestapp.vo.PassengerVO;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.southwest.southwestapp.AppHelper;
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.adapters.CheckInRecyclerAdapter;
+import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.models.CheckIn;
 
 
 /**
@@ -54,7 +46,6 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         faqContainer = (LinearLayout) confirmationView.findViewById(R.id.faqWrapper);
         mRecycler = (RecyclerView) confirmationView.findViewById(R.id.recycler_flights);
 
-
         setUpToolBar();
 
         mSuccessText.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_right));
@@ -64,26 +55,11 @@ public class CheckInConfirmationFragment extends BaseFragment implements View.On
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         mRecycler.setLayoutManager(llm);
 
+        CheckIn checkIn = AppHelper.userCheckInController.getCheckIn();
 
-        if (AppHelper.userCheckInController.getCheckin() != null && AppHelper.userCheckInController.getCheckin().getPassengers().length != 0) {
-            AppHelper.userCheckInController.getCheckin().getPassengers()[0].setGroup("A");
-            AppHelper.userCheckInController.getCheckin().getPassengers()[0].setPosition(22);
-            AppHelper.userCheckInController.getCheckin().setFlightNumber("4852");
-            AppHelper.userCheckInController.getCheckin().setGate("F5");
-            AppHelper.userCheckInController.getCheckin().setTravelTime("3h 23m");
-            CheckInVO[] arrayCheck = {AppHelper.userCheckInController.getCheckin()};
-            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck, getActivity()));
-        } else {
-            PassengerVO[] arrayPass = {new PassengerVO("Homer Thompson", "A", 11),
-                    new PassengerVO("Marge Thompson", "B", 19),
-                    new PassengerVO("Lisa Thompson", "B", 31),};
+        CheckIn[] arrayCheck = {checkIn};
 
-
-            CheckInVO[] arrayCheck = {new CheckInVO("666", "1h 10m", "A1", "MCX456Q1", arrayPass),
-                    new CheckInVO("999", "1h 35m", "B1", "MXC4576F", arrayPass)};
-
-            mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck, getActivity()));
-        }
+        mRecycler.setAdapter(new CheckInRecyclerAdapter(arrayCheck, getActivity()));
 
         return confirmationView;
     }

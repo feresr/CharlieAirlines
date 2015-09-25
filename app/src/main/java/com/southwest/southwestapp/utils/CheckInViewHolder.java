@@ -30,7 +30,7 @@ public class CheckInViewHolder  extends RecyclerView.ViewHolder{
 
         mCardView            = (CardView) itemView.findViewById(R.id.card_view);
         mLabeledFlight       = (LabeledText) itemView.findViewById(R.id.flight);
-        mLabeledTime         = (LabeledText) itemView.findViewById(R.id.travel_time);
+        mLabeledTime         = (LabeledText) itemView.findViewById(R.id.travelTime);
         mLabeledGate         = (LabeledText) itemView.findViewById(R.id.gate);
         mLinearWrapper       = (LinearLayout) itemView.findViewById(R.id.passengerWrapper);
         mLabeledPassenger    = (LabeledText) itemView.findViewById(R.id.passenger);

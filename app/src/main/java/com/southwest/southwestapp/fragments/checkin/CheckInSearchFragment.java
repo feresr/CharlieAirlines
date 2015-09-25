@@ -1,11 +1,5 @@
 package com.southwest.southwestapp.fragments.checkin;
 
-import com.southwest.southwestapp.AppHelper;
-import com.southwest.southwestapp.R;
-import com.southwest.southwestapp.fragments.BaseFragment;
-import com.southwest.southwestapp.utils.AnimationGenericUtils;
-import com.southwest.southwestapp.vo.PassengerVO;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -21,14 +15,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.Timer;
 import java.util.TimerTask;
+
+import com.southwest.southwestapp.AppHelper;
+
+import com.southwest.southwestapp.R;
+import com.southwest.southwestapp.fragments.BaseFragment;
+import com.southwest.southwestapp.models.CheckIn;
+import com.southwest.southwestapp.models.Passenger;
+import com.southwest.southwestapp.network.models.ParseCheckIn;
+import com.southwest.southwestapp.network.models.ParseCheckInList;
+import com.southwest.southwestapp.utils.AnimationGenericUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
+import retrofit.Callback;
+import retrofit.Response;
 
 
 /**
  * Created by emiliano.gudino on 02/09/2015.
  */
-public class CheckInSearchFragment extends BaseFragment implements View.OnClickListener {
+public class CheckInSearchFragment extends BaseFragment implements View.OnClickListener, Callback<ParseCheckInList> {
 
     private static final String TAG = CheckInSearchFragment.class.getSimpleName();
 
@@ -38,18 +53,22 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     private EditText mEtConfirmationNumber;
     private EditText mEtFirstName;
     private EditText mEtLastName;
+
     private EditText mEtCountry;
     private TextView mTvEligibleTrips;
+
     private Toolbar mToolbar;
     private CardView cardReservation;
     private View searchView;
     private ImageView mProgresSwLogo;
     private Button scannPassport;
 
+
     private Timer runTimer = new Timer();
     private TimerTask showTimerTask;
 
     private String[] autoCompleteData;
+
 
     public CheckInSearchFragment() {
     }
@@ -119,20 +138,20 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_retrieve_reservation:
-                String number = mEtConfirmationNumber.getText().toString();
-                String name = mEtFirstName.getText().toString() + mEtLastName.getText().toString();
 
-                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(number)) {
+                String number = mEtConfirmationNumber.getText().toString().trim();
+                String firstName = mEtFirstName.getText().toString().trim();
+                String lastName = mEtLastName.getText().toString().trim();
+
+
+                if (!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(number)) {
 
                     scannPassport.setVisibility(View.INVISIBLE);
-                    PassengerVO[] param = {new PassengerVO(mEtFirstName.getText().toString() + " " + mEtLastName.getText().toString(), "", 0)};
-                    AppHelper.userCheckInController.setConfirmationNumer(number);
-                    AppHelper.userCheckInController.setPassangers(param);
-
                     AppHelper.screenManager.hideSoftKeyboard(getActivity());
                     AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
                     mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
-                    delay();
+
+                    AppHelper.parseApi.doRetrieveReservation(getApiRequestQuery(number, firstName, lastName)).enqueue(this);
 
                 } else {
                     Toast.makeText(getContext(), "No data", Toast.LENGTH_LONG).show();
@@ -149,19 +168,75 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         }
     }
 
+    private String getApiRequestQuery(String number, String firstName, String lastName) {
+        try {
+            JSONObject json = new JSONObject();
+            json.put("confirmationNumber", number);
+            json.put("firstName", firstName);
+            json.put("lastName", lastName);
+            return URLEncoder.encode(json.toString(), "UTF-8").toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
-    private void delay() {
-        long delay = 4000;
+    @Override
+    public void onResponse(Response<ParseCheckInList> response) {
 
-        showTimerTask = new TimerTask() {
-            @Override
-            public void run() {
-                AppHelper.screenManager.showCheckInScreen(getActivity());
-            }
-        };
+        if (!response.isSuccess()
+                || response == null
+                || response.body() == null
+                || response.body().getResults().isEmpty()) {
 
-        // Start the timer
-        runTimer.schedule(showTimerTask, delay);
+            showError();
+            return;
+        }
+
+        ParseCheckIn parseCheckIn = response.body().getResults().get(0);
+
+        fillData(parseCheckIn);
+
+        AppHelper.screenManager.showCheckInScreen(getActivity());
+    }
+
+    private void fillData(ParseCheckIn parseCheckIn) {
+
+        Passenger passenger = new Passenger();
+        passenger.setFirstName(parseCheckIn.getFirstName());
+        passenger.setLastName(parseCheckIn.getLastName());
+        passenger.setGroup("A");
+        passenger.setPosition(0);
+
+        CheckIn checkIn = AppHelper.userCheckInController.getCheckIn();
+        checkIn.setConfirmationNumber(parseCheckIn.getConfirmationNumber());
+        checkIn.setFlightNumber(parseCheckIn.getFlightNumber());
+        checkIn.setGate(parseCheckIn.getGate());
+        checkIn.setTravelTime(parseCheckIn.getTravelTime());
+        checkIn.setArrivesCity(parseCheckIn.getArrivesCity());
+        checkIn.setArrivesTime(parseCheckIn.getArrivesTime());
+        checkIn.setCity(parseCheckIn.getCity());
+        checkIn.setDateDay(parseCheckIn.getDateDay());
+        checkIn.setDepartsCity(parseCheckIn.getDepartsCity());
+        checkIn.setDepartsTime(parseCheckIn.getDepartsTime());
+        checkIn.setMonthDate(parseCheckIn.getMonthDate());
+
+        ArrayList arrayList = new ArrayList<Passenger>();
+        arrayList.add(passenger);
+        checkIn.setPassengers(arrayList);
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+        showError();
+    }
+
+    private void showError() {
+        mProgresSwLogo.clearAnimation();
+        AnimationGenericUtils.fadeOutAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
+        Toast.makeText(getContext(), "Reservation not found", Toast.LENGTH_SHORT).show();
     }
 
 }

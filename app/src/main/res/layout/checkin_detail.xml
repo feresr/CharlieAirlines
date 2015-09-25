@@ -53,7 +53,7 @@
                     app:upperText="FLIGHT"/>
 
                 <com.southwest.southwestapp.LabeledText
-                    android:id="@+id/travel_time"
+                    android:id="@+id/travelTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
