@@ -12,9 +12,15 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.southwest.southwestapp.AppHelper;
+
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.models.CheckIn;
@@ -41,16 +47,42 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
     private static final String TAG = CheckInSearchFragment.class.getSimpleName();
 
+    public static final String TAG_AUTO_COMPLETE = "autocomplete";
+
     private Button mBtRetrieve;
     private EditText mEtConfirmationNumber;
     private EditText mEtFirstName;
     private EditText mEtLastName;
+
+    private EditText mEtCountry;
+    private TextView mTvEligibleTrips;
+
     private Toolbar mToolbar;
     private CardView cardReservation;
     private View searchView;
     private ImageView mProgresSwLogo;
+    private Button scannPassport;
+
+
+    private Timer runTimer = new Timer();
+    private TimerTask showTimerTask;
+
+    private String[] autoCompleteData;
+
 
     public CheckInSearchFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Bundle params = getArguments();
+
+        if (params != null) {
+            autoCompleteData = params.getStringArray(TAG_AUTO_COMPLETE);
+        }
+
     }
 
     @Nullable
@@ -62,14 +94,23 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
         setUpToolBar();
 
         mBtRetrieve = (Button) searchView.findViewById(R.id.btn_retrieve_reservation);
+        scannPassport = (Button) searchView.findViewById(R.id.btn_scan_passport);
         mEtConfirmationNumber = (EditText) searchView.findViewById(R.id.edt_confirmation);
         mEtFirstName = (EditText) searchView.findViewById(R.id.edt_first_name);
         mEtLastName = (EditText) searchView.findViewById(R.id.edt_last_name);
+        mEtCountry = (EditText) searchView.findViewById(R.id.edt_country);
         cardReservation = (CardView) searchView.findViewById(R.id.card_reservation);
 
         cardReservation.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_bottom));
 
         mBtRetrieve.setOnClickListener(this);
+        scannPassport.setOnClickListener(this);
+
+        if (autoCompleteData != null) {
+            mEtCountry.setText(autoCompleteData[0]);
+            mEtLastName.setText(autoCompleteData[1]);
+            mEtFirstName.setText(autoCompleteData[2]);
+        }
 
         return searchView;
     }
@@ -94,11 +135,6 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_retrieve_reservation:
@@ -107,8 +143,10 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 String firstName = mEtFirstName.getText().toString().trim();
                 String lastName = mEtLastName.getText().toString().trim();
 
+
                 if (!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(number)) {
 
+                    scannPassport.setVisibility(View.INVISIBLE);
                     AppHelper.screenManager.hideSoftKeyboard(getActivity());
                     AnimationGenericUtils.fadeInAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
                     mProgresSwLogo.startAnimation(AnimationUtils.loadAnimation(AppHelper.getInstance().getBaseContext(), R.anim.pulse));
@@ -119,6 +157,10 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                     Toast.makeText(getContext(), "No data", Toast.LENGTH_LONG).show();
                 }
 
+                break;
+
+            case R.id.btn_scan_passport:
+                AppHelper.screenManager.showScanPassport(getActivity());
                 break;
             default:
                 break;
@@ -193,6 +235,7 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
 
     private void showError() {
         mProgresSwLogo.clearAnimation();
+        scannPassport.setVisibility(View.VISIBLE);
         AnimationGenericUtils.fadeOutAnimation(mProgresSwLogo, null, AppHelper.getInstance().getBaseContext());
         Toast.makeText(getContext(), "Reservation not found", Toast.LENGTH_SHORT).show();
     }

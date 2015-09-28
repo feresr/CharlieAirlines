@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements BigPagerHomeFragm
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
                 switch (menuItem.getItemId()) {
                     case R.id.checkIn:
-                        AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this);
+                        AppHelper.screenManager.showCheckInSearchScreen(MainActivity.this,null);
                         mCurrentSelectedPosition = 2;
                         return true;
 

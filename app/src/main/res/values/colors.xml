@@ -34,4 +34,8 @@
     <color name="progress_end">#ff747674</color>
     <color name="progress_center">#ff5a5d5a</color>
 
+    <color name="camera_box_corner">#ffffffff</color>
+    <color name="camera_box_frame">#ffd6d6d6</color>
+    <color name="camera_box_mask">#60000000</color>
+
 </resources>

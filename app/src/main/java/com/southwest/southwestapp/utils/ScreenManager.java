@@ -2,6 +2,7 @@ package com.southwest.southwestapp.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.inputmethod.InputMethodManager;
@@ -9,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.activities.BaseActivity;
 import com.southwest.southwestapp.activities.MainActivity;
+import com.southwest.southwestapp.activities.OCRActivity;
 import com.southwest.southwestapp.fragments.BoardingPassFragment;
 import com.southwest.southwestapp.fragments.LoginFragment;
 import com.southwest.southwestapp.fragments.checkin.CheckInConfirmationFragment;
@@ -19,6 +21,7 @@ import com.southwest.southwestapp.fragments.emergency.EmergencyContactListFragme
 import com.southwest.southwestapp.fragments.homepage.BigPagerHomeFragment;
 
 import android.content.Context;
+
 /**
  * Created by emiliano.gudino on 02/09/2015.
  */
@@ -48,6 +51,18 @@ public class ScreenManager {
     public void showCheckInSearchScreen(FragmentActivity origin) {
         Intent i = new Intent(origin, BaseActivity.class);
         i.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
+        origin.startActivity(i);
+    }
+
+    public void showCheckInSearchScreen(Activity origin, String[] data) {
+        Intent i = new Intent(origin, BaseActivity.class);
+        if (data != null) {
+            Bundle params = new Bundle();
+            params.putStringArray(CheckInSearchFragment.TAG_AUTO_COMPLETE, data);
+            i.putExtra(BaseActivity.FRAGMENT_PARAMS, params);
+        }
+        i.putExtra(BaseActivity.FRAGMENT, CheckInSearchFragment.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         origin.startActivity(i);
     }
 
@@ -111,6 +126,11 @@ public class ScreenManager {
         Intent intent = new Intent(origin, MainActivity.class);
         origin.startActivity(intent);
         origin.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void showScanPassport(Activity origin) {
+        Intent intent = new Intent(origin, OCRActivity.class);
+        origin.startActivity(intent);
     }
 
     public void showBoardingAfterShaking(Context context) {
