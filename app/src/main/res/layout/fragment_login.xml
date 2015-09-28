@@ -64,10 +64,12 @@
                         <EditText
                             android:id="@+id/et_user"
                             style="@style/editTextLogIn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:hint="@string/log_in_username_hint"
-                            android:inputType="textEmailAddress"
                             android:imeOptions="actionNext"
-                            android:singleLine="true"/>
+                            android:inputType="textEmailAddress"
+                            android:singleLine="true" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -81,6 +83,8 @@
                         <EditText
                             android:id="@+id/et_pass"
                             style="@style/editTextLogIn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:hint="@string/log_in_password_hint"
                             android:imeOptions="actionDone"
                             android:inputType="textPassword"
@@ -121,8 +125,8 @@
                         android:id="@+id/btn_login"
                         style="@style/bigButton"
                         android:layout_marginTop="20dp"
-                        android:text="@string/log_in_button_title"
                         android:enabled="false"
+                        android:text="@string/log_in_button_title"
                         android:textAllCaps="false" />
 
                     <ImageView

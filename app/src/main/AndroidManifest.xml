@@ -41,16 +41,14 @@
             android:name=".activities.MainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_main"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Translucent">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/title_activity_splash"
             android:noHistory="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Translucent">
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,7 +65,6 @@
         <activity
             android:name=".activities.OCRActivity"
             android:label="@string/app_name">
-
 
 
             <intent-filter>
