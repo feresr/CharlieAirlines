@@ -14,9 +14,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.southwest.southwestapp.AppHelper;
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
-
 
 
 /**
@@ -30,7 +31,7 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
     private BookTripsItemsFragment bookTrips;
     private ManageTripsItemsFragment manageTrips;
 
-    public BookingViewPagerAdapter(FragmentManager fragmentManager,String[] mPageTitles ,Context context) {
+    public BookingViewPagerAdapter(FragmentManager fragmentManager, String[] mPageTitles, Context context) {
         super(fragmentManager);
         this.context = context;
 
@@ -46,8 +47,8 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
         manageIcons[1] = R.drawable.ic_access_time_black_48dp;
         manageIcons[2] = R.drawable.ic_swap_horiz_black_48dp;
 
-        bookTrips   =  BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), bookIcons  );
-        manageTrips =  ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), manageIcons  );
+        bookTrips = BookTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_trips_titles), bookIcons);
+        manageTrips = ManageTripsItemsFragment.newInstance(context.getResources().getStringArray(R.array.booking_adapter_manage_titles), manageIcons);
 
     }
 
@@ -63,7 +64,7 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        switch (position){
+        switch (position) {
             case 0:
                 return bookTrips;
             case 1:
@@ -74,9 +75,9 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
     }
 
-    public void animateAtIndex(int index){
+    public void animateAtIndex(int index) {
 
-        switch (index){
+        switch (index) {
             case 0:
                 bookTrips.introAnimate();
                 break;
@@ -88,7 +89,6 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
         }
 
     }
-
 
 
     @Override
@@ -107,8 +107,7 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
         protected static final String TITLE_TAG = "TITLES";
         protected static final String DRAWABLE_TAG = "DRAWABLE";
 
-        public static  BookTripsItemsFragment newInstance(String[] titles, int[] drawables)
-        {
+        public static BookTripsItemsFragment newInstance(String[] titles, int[] drawables) {
             BookTripsItemsFragment fragment = new BookTripsItemsFragment();
             Bundle bundle = new Bundle(2);
             bundle.putStringArray(TITLE_TAG, titles);
@@ -119,7 +118,7 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
 
         @Override
-        public void onCreate(Bundle savedInstanceState){
+        public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             titles = getArguments().getStringArray(TITLE_TAG);
             drawables = getArguments().getIntArray(DRAWABLE_TAG);
@@ -127,10 +126,10 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-            View rootView     = inflater.inflate(R.layout.items_homepage_booking, container, false);
-            mLinearContainer  = (LinearLayout) rootView.findViewById(R.id.items_homepage_booking_container);
+            View rootView = inflater.inflate(R.layout.items_homepage_booking, container, false);
+            mLinearContainer = (LinearLayout) rootView.findViewById(R.id.items_homepage_booking_container);
 
             initializeChilds();
 
@@ -139,17 +138,17 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
         }
 
 
-        protected void initializeChilds(){
+        protected void initializeChilds() {
             int childCount = mLinearContainer.getChildCount();
             mItems = new RelativeLayout[childCount];
-            for(int b=0; b<childCount; b++){
+            for (int b = 0; b < childCount; b++) {
                 mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
-                ( (TextView)mItems[b].findViewById(R.id.item_homepage_first_title)).setText(titles[b]);
-                ( (ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setImageResource(drawables[b]);
+                ((TextView) mItems[b].findViewById(R.id.item_homepage_first_title)).setText(titles[b]);
+                ((ImageView) mItems[b].findViewById(R.id.item_homepage_first_icon)).setImageResource(drawables[b]);
             }
         }
 
-        public void introAnimate(){
+        public void introAnimate() {
 
         }
 
@@ -161,8 +160,7 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
 
     public static class ManageTripsItemsFragment extends BookTripsItemsFragment {
 
-        public static  ManageTripsItemsFragment newInstance(String[] titles, int[] drawables)
-        {
+        public static ManageTripsItemsFragment newInstance(String[] titles, int[] drawables) {
             ManageTripsItemsFragment fragment = new ManageTripsItemsFragment();
             Bundle bundle = new Bundle(2);
             bundle.putStringArray(TITLE_TAG, titles);
@@ -171,19 +169,31 @@ public class BookingViewPagerAdapter extends FragmentPagerAdapter {
             return fragment;
         }
 
+        private void setListeners(int index, View view) {
 
-        protected void setupListeners(){
+            switch (index) {
+                case 0:
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AppHelper.screenManager.showCheckInSearchScreen(getActivity(), null);
+                        }
+                    });
+                    break;
+
+            }
 
         }
 
-        public void introAnimate(){
+        public void introAnimate() {
 
-            if(mLinearContainer != null) {
+            if (mLinearContainer != null) {
                 int childCount = mLinearContainer.getChildCount();
                 mItems = new RelativeLayout[childCount];
 
                 for (int b = 0; b < childCount; b++) {
-                    mItems[b] = (RelativeLayout)mLinearContainer.getChildAt(b);
+                    mItems[b] = (RelativeLayout) mLinearContainer.getChildAt(b);
+                    setListeners(b, mItems[b]);
                     AnimationGenericUtils.slideRightToLeft(mItems[b], getAnimationDelay(b), getContext());
                 }
             }
