@@ -2,11 +2,7 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
+        <item name="android:windowTranslucentStatus">true</item>
         <!-- colorPrimaryDark is used for the status bar -->
-
-        <item name="colorPrimaryDark">@color/dark_blue</item>
-        <item name="colorAccent">@color/dark_blue</item>
-        <item name="android:checkboxStyle">@style/checkboxStyle</item>
     </style>
 </resources>

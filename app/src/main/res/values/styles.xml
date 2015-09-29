@@ -1,10 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- colorPrimaryDark is used for the status bar -->
-        <item name="colorPrimaryDark">@color/color_accent_dark</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
         <item name="colorAccent">@color/dark_blue</item>
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
 
@@ -26,31 +26,31 @@
         <item name="colorAccent">@color/button_background</item>
     </style>
 
-    <style name="textWhiteTitle" parent="@android:style/TextAppearance" >
+    <style name="textWhiteTitle" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/dark_blue</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="textLabeledAbove" parent="@android:style/TextAppearance" >
+    <style name="textLabeledAbove" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/neutral_gray_4</item>
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">bottom</item>
     </style>
 
-    <style name="textLabeledMain" parent="@android:style/TextAppearance" >
+    <style name="textLabeledMain" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/dark_blue</item>
         <item name="android:gravity">bottom</item>
     </style>
 
-    <style name="textLink" parent="@android:style/TextAppearance" >
+    <style name="textLink" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/link_blue</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">bottom</item>
     </style>
 
-    <style name="textGreen" parent="@android:style/TextAppearance" >
+    <style name="textGreen" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/green</item>
         <item name="android:textSize">40sp</item>
         <item name="android:textStyle">bold</item>
