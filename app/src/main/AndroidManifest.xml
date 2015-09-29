@@ -39,6 +39,7 @@
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".activities.MainActivity"
+            android:theme="@style/AppThemeTranslucent"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait">
