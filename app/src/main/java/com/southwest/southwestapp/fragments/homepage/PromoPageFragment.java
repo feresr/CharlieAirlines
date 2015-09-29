@@ -1,15 +1,21 @@
 package com.southwest.southwestapp.fragments.homepage;
 
+import android.app.ActionBar;
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.southwest.southwestapp.R;
 import com.southwest.southwestapp.fragments.BaseFragment;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
+import com.southwest.southwestapp.utils.OcrUtils;
 
 public class PromoPageFragment extends BaseFragment {
 
@@ -58,7 +64,21 @@ public class PromoPageFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         if (isFirstFragment) {
             introAnimation();
+            Point point = OcrUtils.getScreenResolution(getActivity());
+            if (point.y <= 800) {
+                mainInformationTopMargin(65);
+            } else {
+                mainInformationTopMargin(105);
+            }
         }
+    }
+
+    //TODO:: THIS COULD BE DIFFERENT
+    private void mainInformationTopMargin(int marginTop) {
+        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, marginTop, getResources().getDisplayMetrics());
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mainInformationContainer.getLayoutParams();
+        params.setMargins(params.leftMargin, margin, params.rightMargin, params.bottomMargin);
+        mainInformationContainer.setLayoutParams(params);
     }
 
     @Override
@@ -77,26 +97,26 @@ public class PromoPageFragment extends BaseFragment {
         }
     }
 
-    public void animateFirstContainer(AnimationGenericUtils.animations animation){
+    public void animateFirstContainer(AnimationGenericUtils.animations animation) {
         switch (animation) {
             case FADE_IN:
-                AnimationGenericUtils.fadeInAnimation(mainInformationContainer, null ,context);
+                AnimationGenericUtils.fadeInAnimation(mainInformationContainer, null, context);
                 break;
             case SLIDE_IN_LEFT:
                 AnimationGenericUtils.slideRightToLeft(mainInformationContainer, 0, context);
         }
     }
 
-    public void animateSecondContainer(AnimationGenericUtils.animations animation){
+    public void animateSecondContainer(AnimationGenericUtils.animations animation) {
         switch (animation) {
             case FADE_IN:
-                AnimationGenericUtils.fadeInAnimation(secondaryInformationContainer,null ,context);
+                AnimationGenericUtils.fadeInAnimation(secondaryInformationContainer, null, context);
                 break;
             case SLIDE_IN_LEFT:
                 AnimationGenericUtils.slideRightToLeft(secondaryInformationContainer, 100, context);
                 break;
             case FADE_OUT:
-                AnimationGenericUtils.fadeOutAnimation(secondaryInformationContainer, null,context);
+                AnimationGenericUtils.fadeOutAnimation(secondaryInformationContainer, null, context);
         }
 
         //for the first fragment, we don't show the secondary promo info the first time show it.
