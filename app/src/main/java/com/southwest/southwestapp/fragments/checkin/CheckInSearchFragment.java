@@ -28,6 +28,7 @@ import com.southwest.southwestapp.models.Passenger;
 import com.southwest.southwestapp.network.models.ParseCheckIn;
 import com.southwest.southwestapp.network.models.ParseCheckInList;
 import com.southwest.southwestapp.utils.AnimationGenericUtils;
+import com.southwest.southwestapp.utils.OcrUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -160,7 +161,9 @@ public class CheckInSearchFragment extends BaseFragment implements View.OnClickL
                 break;
 
             case R.id.btn_scan_passport:
-                AppHelper.screenManager.showScanPassport(getActivity());
+                if (OcrUtils.hasTrainedData()) {
+                    AppHelper.screenManager.showScanPassport(getActivity());
+                }
                 break;
             default:
                 break;

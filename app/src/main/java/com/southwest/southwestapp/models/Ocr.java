@@ -2,6 +2,7 @@ package com.southwest.southwestapp.models;
 
 import android.graphics.Bitmap;
 import android.os.Environment;
+
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -28,9 +29,6 @@ public class Ocr {
         dataPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).
                 getAbsolutePath() + "/tesseract-ocr/";
 
-        File dir = new File(dataPath + "tessdata/");
-        if (!dir.exists())
-            dir.mkdirs();
         mOcr.init(dataPath, LANGUAGE);
 
         mOcr.setVariable(TessBaseAPI.VAR_CHAR_WHITELIST, VAR_WHITELIST);

@@ -6,9 +6,11 @@ import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
+import android.os.Environment;
 import android.view.Display;
 import android.view.WindowManager;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,6 +35,20 @@ public class OcrUtils {
         int height = display.getHeight();
 
         return new Point(width, height);
+
+    }
+
+    public static boolean hasTrainedData() {
+
+        String dataPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).
+                getAbsolutePath() + "/tesseract-ocr/";
+
+        File dir = new File(dataPath + "tessdata/");
+        if (!dir.exists()) {
+            return false;
+        } else {
+            return true;
+        }
 
     }
 
