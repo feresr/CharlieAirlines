@@ -9,23 +9,4 @@
         <item name="colorAccent">@color/dark_blue</item>
         <item name="android:checkboxStyle">@style/checkboxStyle</item>
     </style>
-
-    <style name="AppTheme.Translucent" parent="Theme.AppCompat.Light.NoActionBar">
-
-        <!-- colorPrimaryDark is used for the status bar -->
-
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="colorPrimaryDark">@color/color_accent_dark</item>
-        <item name="colorAccent">@android:color/white</item>
-        <item name="android:checkboxStyle">@style/checkboxStyle</item>
-    </style>
-
-    <style name="editTextLogIn" parent="Widget.AppCompat.EditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColorHint">@android:color/white</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:layout_marginTop">20dp</item>
-    </style>
-
 </resources>
