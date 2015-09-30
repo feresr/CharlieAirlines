@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+<com.southwest.southwestapp.utils.LinearLayoutNoOverlap xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:orientation="horizontal">
+    <Button
+        android:id="@+id/footer_information_btn1"
+        android:layout_width="@dimen/footer_page_information_circle_size"
+        android:layout_height="@dimen/footer_page_information_circle_size"
+        android:background="@drawable/sel_circle_pager_information"/>
 
+    <Button
+        android:id="@+id/footer_information_btn2"
+        android:layout_width="@dimen/footer_page_information_circle_size"
+        android:layout_height="@dimen/footer_page_information_circle_size"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/sel_circle_pager_information"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <Button
+        android:id="@+id/footer_information_btn3"
+        android:layout_width="@dimen/footer_page_information_circle_size"
+        android:layout_height="@dimen/footer_page_information_circle_size"
+        android:background="@drawable/sel_circle_pager_information"/>
 
-        <Button
-            android:id="@+id/footer_information_btn1"
-            android:layout_width="@dimen/footer_page_information_circle_size"
-            android:layout_height="@dimen/footer_page_information_circle_size"
-            android:background="@drawable/sel_circle_pager_information" />
-
-        <Button
-            android:id="@+id/footer_information_btn2"
-            android:layout_width="@dimen/footer_page_information_circle_size"
-            android:layout_height="@dimen/footer_page_information_circle_size"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/sel_circle_pager_information" />
-
-        <Button
-            android:id="@+id/footer_information_btn3"
-            android:layout_width="@dimen/footer_page_information_circle_size"
-            android:layout_height="@dimen/footer_page_information_circle_size"
-            android:background="@drawable/sel_circle_pager_information" />
-
-    </LinearLayout>
-
-
-</LinearLayout>
+</com.southwest.southwestapp.utils.LinearLayoutNoOverlap>
