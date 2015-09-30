@@ -11,7 +11,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/rsz_nfl_image" />
 
-    <LinearLayout
+    <com.southwest.southwestapp.utils.LinearLayoutNoOverlap
         android:id="@+id/mainInformationContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,9 +41,9 @@
             android:textColor="@color/homepage_main_title"
             android:textSize="45sp"
             android:textStyle="bold" />
-    </LinearLayout>
+    </com.southwest.southwestapp.utils.LinearLayoutNoOverlap>
 
-    <RelativeLayout
+    <com.southwest.southwestapp.utils.RelativeLayoutNoOverlap
         android:id="@+id/secondaryInformationContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,6 +99,6 @@
             android:textColor="@color/neutral_white"
             android:textStyle="bold" />
 
-    </RelativeLayout>
+    </com.southwest.southwestapp.utils.RelativeLayoutNoOverlap>
 
 </RelativeLayout>

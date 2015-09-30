@@ -12,7 +12,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/credit_card" />
 
-    <LinearLayout
+    <com.southwest.southwestapp.utils.LinearLayoutNoOverlap
         android:id="@+id/mainInformationContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,9 +56,9 @@
             android:textStyle="italic" />
 
 
-    </LinearLayout>
+    </com.southwest.southwestapp.utils.LinearLayoutNoOverlap>
 
-    <RelativeLayout
+    <com.southwest.southwestapp.utils.RelativeLayoutNoOverlap
         android:id="@+id/secondaryInformationContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,6 +76,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/information_book_text"
             android:textStyle="bold" />
-    </RelativeLayout>
+    </com.southwest.southwestapp.utils.RelativeLayoutNoOverlap>
 
 </RelativeLayout>
